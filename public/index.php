@@ -7,4 +7,4 @@ $router = new Router();
 
 $router->get('/', [LandingController::class, "index"]);
 
-$router->dispatch($_SERVER['REQUEST_METHOD'], $SERVER['REQUEST_URL']);
+$router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
