@@ -14,6 +14,8 @@ class Router
         $path = parse_url($uri, PHP_URL_PATH);
         $handler = $this->routes[$method][$path] ?? null;
 
+        echo "Attempting to find route: " . $path . "<br>";
+
         if ($handler === null) {
             http_response_code(404);
             echo '404 - Page not found';

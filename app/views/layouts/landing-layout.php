@@ -38,7 +38,7 @@
                 <a href="/login" style="border: 1px solid #d1d5db; color: #0a0a0a; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.625rem 1.25rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#f9fafb'" onmouseout="this.style.backgroundColor='transparent'">
                     Login
                 </a>
-                <a href="/onboarding?flow=get-started" style="background-color: #E31837; color: white; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.625rem 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
+                <a href="/personal-details" style="background-color: #E31837; color: white; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.625rem 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
                     Join Now
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                 </a>

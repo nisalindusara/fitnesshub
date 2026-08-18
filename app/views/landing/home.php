@@ -35,8 +35,8 @@
                     Experience Sri Lanka's premiere automated fitness facility. Book classes, track workouts, and manage your membership completely on your terms.
                 </p>
                 <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                    <a href="/onboarding?flow=membership" style="font-family: 'Barlow', sans-serif; background-color: #E31837; color: white; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 2rem; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
-                        Claim Offer
+                    <a href="/personal-details" style="font-family: 'Barlow', sans-serif; background-color: #E31837; color: white; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 2rem; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
+                        Get Started
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                     </a>
                     <a href="#membership" style="font-family: 'Barlow', sans-serif; border: 2px solid white; color: white; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 2rem; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='white'; this.style.color='black';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';">
