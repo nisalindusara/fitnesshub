@@ -1,11 +1,52 @@
 <?php
 
 require_once __DIR__ . '/../core/Controller.php';
+require_once __DIR__ . '/../models/User.php';
 
 class AuthController extends Controller 
 {
+    // Renders the form
     public function personalDetails(): void 
     {
         $this->render('landing/personal-details', 'landing-layout'); 
+    }
+
+    // Handles the form submission
+    public function storeUser(): void 
+    {
+        // 1. Check if the request is a POST request
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            // 2. Sanitize and collect the input data
+            $firstName = htmlspecialchars(trim($_POST['first_name'] ?? ''));
+            $lastName  = htmlspecialchars(trim($_POST['last_name'] ?? ''));
+            $email     = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+            $phone     = htmlspecialchars(trim($_POST['phone_number'] ?? ''));
+            $password  = $_POST['password'] ?? '';
+
+            // 3. Hash the password
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            // 4. Prepare data for the model
+            $userData = [
+                'first_name'    => $firstName,
+                'last_name'     => $lastName,
+                'email'         => $email,
+                'phone_number'  => $phone,
+                'password_hash' => $hashedPassword
+            ];
+
+            // 5. Instantiate the model and save to the database
+            $userModel = new User();
+            
+            if ($userModel->register($userData)) {
+                // Registration successful, redirect to a success page or login
+                header("Location: /");
+                exit;
+            } else {
+                // Registration failed, handle the error (e.g., show an error message)
+                echo "Registration failed. Please try again.";
+            }
+        }
     }
 }
