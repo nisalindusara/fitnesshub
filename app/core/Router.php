@@ -22,6 +22,7 @@ class Router
 
         [$controllerClass, $action] = $handler;
         $controller = new $controllerClass();
+        $controller->setRoute($path);
         $controller->$action();
     }
 }
