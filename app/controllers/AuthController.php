@@ -51,8 +51,36 @@ class AuthController extends Controller
                 // Registration failed, handle the error (e.g., show an error message)
                 echo "Registration failed. Please try again.";
             }
-
-
         }
+    }
+
+    public function login() : void {
+        $data['error'] = $_SESSION['error'] ?? null;
+        unset($_SESSION['error']); // clear it so it only shows once
+
+        $this->render('landing/login', 'landing-layout', $data);
+    }
+
+    public function authenticate(): void
+    {
+        $email    = trim($_POST['email'] ?? '');
+        $password = $_POST['password'] ?? '';
+
+        $userModel = new User();
+        $user = $userModel->findByEmail($email); 
+
+        if ($user && password_verify($password, $user['password_hash'])) {
+            session_regenerate_id(true);
+            $_SESSION['user_id']   = $user['id'];
+            $_SESSION['user_name'] = $user['first_name'];
+
+            header('Location: /dashboard');
+            exit;
+        }
+
+        // Failed login — store the error in session, then redirect (not render)
+        $_SESSION['error'] = 'Invalid email or password';
+        header('Location: /login');
+        exit;
     }
 }

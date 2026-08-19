@@ -26,4 +26,14 @@ class User extends Model
 
         return false;
     }
+
+    public function findByEmail(string $email): array|false
+    {
+        $query = "SELECT * FROM users WHERE email = :email LIMIT 1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':email' => $email]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
