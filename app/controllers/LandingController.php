@@ -19,4 +19,14 @@ class LandingController extends Controller
         $data['isLoggedIn'] = isset($_SESSION['user_id']);
         $this->render('landing/contact', 'landing-layout', $data);
     }
+    public function privacyPolicy(): void
+    {
+        $data['isLoggedIn'] = isset($_SESSION['user_id']);
+        $this->render('landing/privacy-policy', 'landing-layout', $data);
+    }
+    public function termsOfConditions(): void
+    {
+        $data['isLoggedIn'] = isset($_SESSION['user_id']);
+        $this->render('landing/terms-of-conditions', 'landing-layout', $data);
+    }
 }
