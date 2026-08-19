@@ -16,8 +16,12 @@ $router->get('/about', [LandingController::class, "about"]);
 $router->get('/privacy-policy', [LandingController::class, "privacyPolicy"]);
 $router->get('/terms-of-conditions', [LandingController::class, "termsOfConditions"]);
 
-
 $router->get('/store', [StoreController::class, "ecommerceLandingPage"]);
+$router->get('/catalog', [StoreController::class, "ecommerceCatalogue"]);
+$router->get('/sample-product', [StoreController::class, "sampleProduct"]);
+$router->get('/cart', [StoreController::class, "cart"]);
+$router->get('/store-checkout', [StoreController::class, "ecommerceCheckout"]);
+
 
 $router->get('/personal-details', [AuthController::class, "personalDetails"]);
 $router->post('/register-submit', [AuthController::class, "storeUser"]);

@@ -105,7 +105,7 @@
         <div class="about-content">
             <h2 class="about-title">Explore the Full Catalogue</h2>
             <p class="about-desc">Unlike general marketplaces, everything in our store is selected specifically for training, recovery, and performance. If it's not something we'd recommend to our own members, it's not on these shelves.</p>
-            <a href="/about" class="about-btn">
+            <a href="/catalog" class="about-btn">
                 Explore Catalogue
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
