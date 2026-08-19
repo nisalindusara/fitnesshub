@@ -38,15 +38,21 @@ class AuthController extends Controller
 
             // 5. Instantiate the model and save to the database
             $userModel = new User();
-            
-            if ($userModel->register($userData)) {
-                // Registration successful, redirect to a success page or login
-                header("Location: /");
+            $newUserId = $userModel->register($userData);
+
+            if ($newUserId) {
+                session_regenerate_id(true);
+                $_SESSION['user_id']   = $newUserId;
+                $_SESSION['user_name'] = $firstName;
+
+                header("Location: /dashboard");
                 exit;
             } else {
                 // Registration failed, handle the error (e.g., show an error message)
                 echo "Registration failed. Please try again.";
             }
+
+
         }
     }
 }

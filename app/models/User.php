@@ -12,12 +12,18 @@ class User extends Model
         $stmt = $this->db->prepare($query);
         
         // Execute the prepared statement with the passed array of data
-        return $stmt->execute([
+        $success = $stmt->execute([
             ':first_name'    => $userData['first_name'],
             ':last_name'     => $userData['last_name'],
             ':email'         => $userData['email'],
             ':phone_number'  => $userData['phone_number'],
             ':password_hash' => $userData['password_hash']
         ]);
+
+        if ($success) {
+            return (int) $this->db->lastInsertId();
+        }
+
+        return false;
     }
 }
