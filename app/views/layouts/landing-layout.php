@@ -34,15 +34,23 @@
             </div>
 
             <!-- CTAs -->
-            <div style="display: flex; align-items: center; gap: 0.75rem;" class="hide-on-mobile">
-                <a href="/login" style="border: 1px solid #d1d5db; color: #0a0a0a; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.625rem 1.25rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#f9fafb'" onmouseout="this.style.backgroundColor='transparent'">
-                    Login
+            <?php if ($isLoggedIn): ?>
+                <a href="/dashboard" class="profile-icon" aria-label="Go to dashboard">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/>
+                    </svg>
                 </a>
-                <a href="/personal-details" style="background-color: #E31837; color: white; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.625rem 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
-                    Join Now
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </a>
-            </div>
+            <?php else: ?>
+                <div style="display: flex; align-items: center; gap: 0.75rem;" class="hide-on-mobile">
+                    <a href="/login" style="border: 1px solid #d1d5db; color: #0a0a0a; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.625rem 1.25rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#f9fafb'" onmouseout="this.style.backgroundColor='transparent'">
+                        Login
+                    </a>
+                    <a href="/personal-details" style="background-color: #E31837; color: white; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.625rem 1.25rem; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
+                        Join Now
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </a>
+                </div>
+            <?php endif; ?>
 
             <!-- Mobile Hamburger -->
             <button onclick="document.getElementById('mobile-menu').style.display = document.getElementById('mobile-menu').style.display === 'none' ? 'flex' : 'none'" style="display: flex; flex-direction: column; gap: 0.375rem; padding: 0.5rem; background: none; border: none; cursor: pointer;" class="show-on-mobile">

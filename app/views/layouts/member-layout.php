@@ -15,16 +15,8 @@
     <header class="top-header">
       <div class="header-container">
         <!-- Logo -->
-        <a href="#home" class="brand-logo" aria-label="The Fitness Hub">
-          <div class="logo-circle">
-            <svg viewBox="0 0 100 100" class="logo-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="48" stroke="#18181B" stroke-width="3" fill="#FFFFFF"/>
-              <!-- Stylized Bodybuilder/Fitness Silhouette -->
-              <path d="M50 20C53.5 20 56 22.5 56 26C56 29.5 53.5 32 50 32C46.5 32 44 29.5 44 26C44 22.5 46.5 20 50 20Z" fill="#DC2626"/>
-              <path d="M38 34C40 33 43 32 46 32H54C57 32 60 33 62 34L69 41C71 43 70 47 67 48C65 49 63 47 62 45L59 41V55L64 68C65 71 63 74 60 75L50 63L40 75C37 74 35 71 36 68L41 55V41L38 45C37 47 35 49 33 48C30 47 29 43 31 41L38 34Z" fill="#DC2626"/>
-              <text x="50" y="86" text-anchor="middle" font-size="8.5" font-weight="800" fill="#18181B" font-family="'Plus Jakarta Sans', sans-serif">FITNESS HUB</text>
-            </svg>
-          </div>
+        <a href="/" class="brand-logo" aria-label="The Fitness Hub">
+          <img src="/assets/images/logo_bg_removed.png" alt="Logo" style="width: 48px; height: 48px;">
         </a>
 
         <!-- Header Actions -->
@@ -149,21 +141,6 @@
             .brand-logo {
             display: inline-flex;
             text-decoration: none;
-            }
-
-            .logo-circle {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            }
-
-            .logo-svg {
-            width: 100%;
-            height: 100%;
             }
 
             .header-actions {
