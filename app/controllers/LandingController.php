@@ -9,4 +9,10 @@ class LandingController extends Controller
         $data['isLoggedIn'] = isset($_SESSION['user_id']);
         $this->render('landing/home', 'landing-layout', $data);
     }
+
+    public function contact(): void
+    {
+        $data['isLoggedIn'] = isset($_SESSION['user_id']);
+        $this->render('landing/contact', 'landing-layout', $data);
+    }
 }
