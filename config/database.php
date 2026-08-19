@@ -1,7 +1,7 @@
 <?php
 return [
     'host'     => 'localhost',
-    'dbname'   => 'fitnesshub',
+    'dbname'   => 'fitnesshub_db',
     'username' => 'root',
     'password' => '', // default XAMPP MySQL has no password
     'charset'  => 'utf8mb4',
