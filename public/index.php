@@ -6,12 +6,15 @@ require_once __DIR__ . '/../app/core/Router.php';
 require_once __DIR__ . '/../app/controllers/LandingController.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/controllers/MemberController.php';
+require_once __DIR__ . '/../app/controllers/StoreController.php';
 
 $router = new Router();
 
 $router->get('/', [LandingController::class, "index"]);
 $router->get('/contact', [LandingController::class, "contact"]);
 $router->get('/about', [LandingController::class, "about"]);
+
+$router->get('/store', [StoreController::class, "ecommerceLandingPage"]);
 
 $router->get('/personal-details', [AuthController::class, "personalDetails"]);
 $router->post('/register-submit', [AuthController::class, "storeUser"]);

@@ -32,7 +32,7 @@
                 <a href="/classes" class="nav-link">Classes</a>
                 <a href="/about" class="nav-link <?= $currentRoute === '/about' ? 'active' : '' ?>">About Us</a>
                 <a href="/contact" class="nav-link <?= $currentRoute === '/contact' ? 'active' : '' ?>">Contact</a>
-                <a href="/onboarding?flow=store" class="nav-link">Store</a>
+                <a href="/store" class="nav-link <?= $currentRoute === '/store' ? 'active' : '' ?>">Store</a>
             </div>
 
             <!-- CTAs -->
