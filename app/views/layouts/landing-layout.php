@@ -28,7 +28,7 @@
             <div style="display: flex; align-items: center; gap: 2.5rem;" class="hide-on-mobile">
                 <a href="/" class="nav-link <?= $currentRoute === '/' ? 'active' : '' ?>">Home</a>
                 <a href="/classes" class="nav-link">Classes</a>
-                <a href="/about" class="nav-link">About Us</a>
+                <a href="/about" class="nav-link <?= $currentRoute === '/about' ? 'active' : '' ?>">About Us</a>
                 <a href="/contact" class="nav-link">Contact</a>
                 <a href="/onboarding?flow=store" class="nav-link">Store</a>
             </div>

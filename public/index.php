@@ -10,6 +10,7 @@ require_once __DIR__ . '/../app/controllers/MemberController.php';
 $router = new Router();
 
 $router->get('/', [LandingController::class, "index"]);
+$router->get('/about', [LandingController::class, "about"]);
 
 $router->get('/personal-details', [AuthController::class, "personalDetails"]);
 $router->post('/register-submit', [AuthController::class, "storeUser"]);
