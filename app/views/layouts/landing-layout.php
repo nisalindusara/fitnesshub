@@ -217,7 +217,8 @@
             transition: transform 0.2s;
         }
 
-        .nav-link:hover::after {
+        .nav-link:hover::after,
+        .nav-link.active::after {
             transform: scaleX(1);
         }
 
