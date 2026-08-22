@@ -11,7 +11,9 @@
         </div>
         <div style="position: relative; z-index: 10; max-width: 1440px; margin: 0 auto; padding: 5rem 2rem;">
             <a href="/" style="font-family: 'Barlow', sans-serif; display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; margin-bottom: 2rem; transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
                 Back to Home
             </a>
             <p style="font-family: 'Barlow', sans-serif; color: #E31837; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 0.75rem; margin-top: 0;">
@@ -43,7 +45,10 @@
             </div>
             <div style="margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 1rem;">
                 <a href="/onboarding?flow=get-started" style="font-family: 'Barlow', sans-serif; background-color: #E31837; color: white; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 2rem; font-size: 0.875rem; display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
-                    Join Us <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    Join Us <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
                 </a>
                 <a href="/contact" style="font-family: 'Barlow', sans-serif; border: 1px solid #d1d5db; color: #0a0a0a; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 2rem; font-size: 0.875rem; display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#0a0a0a'" onmouseout="this.style.borderColor='#d1d5db'">
                     Contact Us
@@ -127,22 +132,22 @@
                 Experienced &amp; Friendly Coaches
             </h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
-                
+
                 <!-- Coach 1 -->
                 <div>
                     <div style="position: relative; overflow: hidden; aspect-ratio: 3/4; background-color: #111827; margin-bottom: 1.25rem;">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=400&h=533" alt="Kasun Perera" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.5s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(1)'" />
+                        <img src="/assets/images/landing/trainer1.jpg" alt="Kasun Perera" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.5s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(1)'" />
                         <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); pointer-events: none;"></div>
                     </div>
                     <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; text-transform: uppercase; color: white; letter-spacing: -0.02em; margin: 0;">Kasun Perera</h3>
                     <p style="font-family: 'Barlow', sans-serif; color: #E31837; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin: 0.25rem 0 0.5rem 0;">Head Coach</p>
                     <p style="font-family: 'Barlow', sans-serif; color: rgba(255,255,255,0.4); font-size: 0.875rem; line-height: 1.625; margin: 0;">SLAF Certified with 8 years of experience. Specializes in strength programming and body transformation.</p>
                 </div>
-                
+
                 <!-- Coach 2 -->
                 <div>
                     <div style="position: relative; overflow: hidden; aspect-ratio: 3/4; background-color: #111827; margin-bottom: 1.25rem;">
-                        <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=400&h=533" alt="Nimali Fernando" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.5s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(1)'" />
+                        <img src="/assets/images/landing/trainer2.jpg" alt="Nimali Fernando" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.5s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(1)'" />
                         <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); pointer-events: none;"></div>
                     </div>
                     <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; text-transform: uppercase; color: white; letter-spacing: -0.02em; margin: 0;">Nimali Fernando</h3>
@@ -153,7 +158,7 @@
                 <!-- Coach 3 -->
                 <div>
                     <div style="position: relative; overflow: hidden; aspect-ratio: 3/4; background-color: #111827; margin-bottom: 1.25rem;">
-                        <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=400&h=533" alt="Nimali Fernando" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.5s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(1)'" />
+                        <img src="/assets/images/landing/trainer3.jpg" alt="Nimali Fernando" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.5s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(1)'" />
                         <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); pointer-events: none;"></div>
                     </div>
                     <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; text-transform: uppercase; color: white; letter-spacing: -0.02em; margin: 0;">Nimali Fernando</h3>
@@ -164,7 +169,7 @@
                 <!-- Coach 4 -->
                 <div>
                     <div style="position: relative; overflow: hidden; aspect-ratio: 3/4; background-color: #111827; margin-bottom: 1.25rem;">
-                        <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=400&h=533" alt="Nimali Fernando" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.5s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(1)'" />
+                        <img src="/assets/images/landing/trainer4.jpg" alt="Nimali Fernando" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.5s;" onmouseover="this.style.opacity='0.9'; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(1)'" />
                         <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); pointer-events: none;"></div>
                     </div>
                     <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; text-transform: uppercase; color: white; letter-spacing: -0.02em; margin: 0;">Nimali Fernando</h3>
@@ -175,6 +180,68 @@
             </div>
         </div>
     </div>
+
+    <section class="section-container">
+        <div class="content-wrapper">
+
+            <!-- Header -->
+            <header class="header">
+                <div class="title-group">
+                    <span class="eyebrow">Inside The Hub</span>
+                    <h2 class="title">Built to Train.<br>Designed to Inspire.</h2>
+                </div>
+            </header>
+
+            <!-- Top Gallery Area -->
+            <div class="gallery-top">
+
+                <!-- Large Main Image -->
+                <div class="gallery-item item-large">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop" alt="Main Training Floor">
+                    <div class="overlay overlay-bottom"></div>
+                </div>
+
+                <!-- Top Row Small Images -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1470&auto=format&fit=crop" alt="Cardio Zone">
+                    <div class="overlay overlay-bottom-light"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/images/landing/photo-gallery1.jpg" alt="Dumbbells Rack">
+                    <div class="overlay overlay-flat"></div>
+                </div>
+
+                <!-- Bottom Row Small Images -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1596357395217-80de13130e92?q=80&w=1471&auto=format&fit=crop" alt="Treadmills">
+                    <div class="overlay overlay-bottom-light"></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1598289431512-b97b0917affc?q=80&w=1474&auto=format&fit=crop" alt="Spin Bikes">
+                    <div class="overlay overlay-flat"></div>
+                </div>
+            </div>
+
+            <!-- Bottom Gallery Area -->
+            <div class="gallery-bottom">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop" alt="Free Weights">
+                    <div class="overlay overlay-left"></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586401100295-7a8096fd231a?q=80&w=1374&auto=format&fit=crop" alt="Weight Plates">
+                    <div class="overlay overlay-flat"></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1374&auto=format&fit=crop" alt="Machines">
+                    <div class="overlay overlay-right"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     <!-- CTA -->
     <div style="background-color: white; padding: 4rem 0; border-top: 1px solid #f3f4f6;">
@@ -192,9 +259,215 @@
                     Contact Us
                 </a>
                 <a href="/onboarding?flow=get-started" style="font-family: 'Barlow', sans-serif; background-color: #E31837; color: white; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 2rem; font-size: 0.875rem; display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
-                    Join Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    Join Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                    </svg>
                 </a>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: #FFFFFF;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Layout Container */
+    .section-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 80px 32px;
+        width: 100%;
+    }
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1102.4px;
+    }
+
+    /* Header Section */
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 16px;
+        margin-bottom: 40px;
+        width: 100%;
+    }
+
+    .title-group {
+        display: flex;
+        flex-direction: column;
+        max-width: 400px;
+    }
+
+    .eyebrow {
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 3.6px;
+        text-transform: uppercase;
+        color: #E31837;
+        margin-bottom: 12px;
+    }
+
+    .title {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 900;
+        font-size: 46.6px;
+        line-height: 0.93;
+        letter-spacing: -1.16px;
+        text-transform: uppercase;
+        color: #0A0A0A;
+    }
+
+    /* Gallery Base */
+    .gallery-item {
+        position: relative;
+        background: #F3F4F6;
+        overflow: hidden;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    /* Specific Overlays */
+    .overlay-bottom {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .overlay-bottom-light {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .overlay-left {
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .overlay-right {
+        background: linear-gradient(270deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    .overlay-flat {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    /* Typography inside Images */
+    .badge {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+        background: #E31837;
+        padding: 4px 12px;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 900;
+        font-size: 18px;
+        line-height: 1.55;
+        letter-spacing: -0.45px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    /* Top Grid Layout */
+    .gallery-top {
+        display: grid;
+        /* Using fractions based on Figma proportions (638 : 266 : 174) */
+        grid-template-columns: 3.67fr 1.53fr 1fr;
+        grid-template-rows: 314px 314px;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .item-large {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+    }
+
+    /* Bottom Grid Layout */
+    .gallery-bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 208px;
+        gap: 12px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .description {
+            max-width: 100%;
+        }
+
+        .gallery-top {
+            grid-template-columns: 2fr 1.5fr;
+            grid-template-rows: auto auto auto;
+        }
+
+        .item-large {
+            grid-column: 1 / -1;
+            grid-row: 1 / 2;
+            height: 400px;
+        }
+
+        .gallery-bottom {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 250px 250px;
+        }
+
+        /* Span the last item across the bottom on tablets */
+        .gallery-bottom .gallery-item:last-child {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .section-container {
+            padding: 40px 16px;
+        }
+
+        .gallery-top,
+        .gallery-bottom {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+        .item-large,
+        .gallery-item {
+            height: 300px;
+            grid-column: 1 / -1 !important;
+            grid-row: auto !important;
+        }
+    }
+</style>
