@@ -11,6 +11,7 @@ require_once __DIR__ . '/../app/controllers/StoreController.php';
 $router = new Router();
 
 $router->get('/', [LandingController::class, "index"]);
+$router->get('/classes', [LandingController::class, "class"]);
 $router->get('/contact', [LandingController::class, "contact"]);
 $router->get('/about', [LandingController::class, "about"]);
 $router->get('/privacy-policy', [LandingController::class, "privacyPolicy"]);
