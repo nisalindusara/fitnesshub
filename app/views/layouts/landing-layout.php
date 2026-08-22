@@ -29,7 +29,7 @@
             <!-- Desktop Links -->
             <div style="display: flex; align-items: center; gap: 2.5rem;" class="hide-on-mobile">
                 <a href="/" class="nav-link <?= $currentRoute === '/' ? 'active' : '' ?>">Home</a>
-                <a href="/classes" class="nav-link">Classes</a>
+                <a href="/classes" class="nav-link <?= $currentRoute === '/classes' ? 'active' : '' ?>">Classes</a>
                 <a href="/about" class="nav-link <?= $currentRoute === '/about' ? 'active' : '' ?>">About Us</a>
                 <a href="/contact" class="nav-link <?= $currentRoute === '/contact' ? 'active' : '' ?>">Contact</a>
                 <a href="/store" class="nav-link <?= $currentRoute === '/store' ? 'active' : '' ?>">Store</a>
