@@ -1,125 +1,309 @@
-<?php
-// Default login page view for FitnessHub
-?>
+<style>
+    /* globals & resets via classes */
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Barlow:wght@500;600;700&display=swap');
 
-<div style="min-height: 100vh; display: flex; background-color: #0a0a0a; padding-top: 4rem;">
-    <!-- Left panel — image -->
-    <div style="display: none; position: relative; overflow: hidden; width: 50%;" id="login-left-panel">
-        <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?w=800&h=1200&fit=crop&auto=format" alt="Gym training" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
-        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3), transparent);"></div>
-        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent, rgba(0,0,0,0.4));"></div>
-        
-        <!-- Quote overlay -->
-        <div style="position: absolute; bottom: 4rem; left: 2.5rem; right: 2.5rem;">
-            <p style="font-family: 'Barlow Condensed', sans-serif; color: white; font-size: 1.875rem; font-weight: 900; text-transform: uppercase; line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 0.75rem; margin-top: 0;">
-                "Every rep counts.<br />Every session matters."
-            </p>
-            <div style="display: flex; gap: 0.25rem; margin-bottom: 0.5rem;" id="login-stars">
-                <!-- Stars rendered via CSS classes in main file or inline SVG here -->
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="#E31837"><path d="M9 1.5l2.09 4.26 4.7.68-3.4 3.32.8 4.69L9 12.27l-4.19 2.18.8-4.69-3.4-3.32 4.7-.68L9 1.5z" /></svg>
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="#E31837"><path d="M9 1.5l2.09 4.26 4.7.68-3.4 3.32.8 4.69L9 12.27l-4.19 2.18.8-4.69-3.4-3.32 4.7-.68L9 1.5z" /></svg>
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="#E31837"><path d="M9 1.5l2.09 4.26 4.7.68-3.4 3.32.8 4.69L9 12.27l-4.19 2.18.8-4.69-3.4-3.32 4.7-.68L9 1.5z" /></svg>
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="#E31837"><path d="M9 1.5l2.09 4.26 4.7.68-3.4 3.32.8 4.69L9 12.27l-4.19 2.18.8-4.69-3.4-3.32 4.7-.68L9 1.5z" /></svg>
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="#E31837"><path d="M9 1.5l2.09 4.26 4.7.68-3.4 3.32.8 4.69L9 12.27l-4.19 2.18.8-4.69-3.4-3.32 4.7-.68L9 1.5z" /></svg>
-            </div>
-            <p style="font-family: 'Barlow', sans-serif; color: rgba(255,255,255,0.5); font-size: 0.875rem; font-weight: 500; margin: 0;">
-                Rated 5/5 by 500+ members across Sri Lanka
-            </p>
-        </div>
-        
-        <!-- Logo -->
-        <div style="position: absolute; top: 2rem; left: 2.5rem; background-color: rgba(255,255,255,0.9); padding: 0.5rem 0.75rem; backdrop-filter: blur(4px);">
-            <a href="/" style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none;">
-                <img src="/assets/images/Logo_Background_Removed.png" alt="Logo" style="width: 36px; height: 36px; object-fit: contain;" />
-                <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.05em; color: #0a0a0a; text-transform: uppercase;">
-                    The Fitness <span style="color: #E31837;">Hub</span>
-                </span>
-            </a>
-        </div>
-    </div>
-    <style>@media (min-width: 1024px) { #login-left-panel { display: block !important; } }</style>
+    .reset-all,
+    .reset-all::before,
+    .reset-all::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-    <!-- Right panel — form -->
-    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem; position: relative;">
-        <!-- Mobile logo -->
-        <div style="margin-bottom: 2.5rem; display: block;" id="login-mobile-logo">
-            <a href="/" style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none;">
-                <img src="/assets/images/Logo_Background_Removed.png" alt="Logo" style="width: 40px; height: 40px; object-fit: contain;" />
-                <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.05em; color: white; text-transform: uppercase;">
-                    The Fitness <span style="color: #E31837;">Hub</span>
-                </span>
-            </a>
-        </div>
-        <style>@media (min-width: 1024px) { #login-mobile-logo { display: none !important; } }</style>
+    .main-wrapper {
+        font-family: 'Barlow', sans-serif;
+        background-color: #0A0A0A;
+        color: #FFFFFF;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
 
-        <div style="max-width: 28rem; width: 100%; margin: 0 auto;">
-            <p style="font-family: 'Barlow', sans-serif; color: #E31837; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 0.75rem; margin-top: 0;">
-                Welcome Back
-            </p>
-            <h1 style="font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 900; text-transform: uppercase; color: white; line-height: 0.9; letter-spacing: -0.02em; margin-bottom: 0.5rem; margin-top: 0;">
-                Sign In
-            </h1>
-            <p style="font-family: 'Barlow', sans-serif; color: rgba(255,255,255,0.4); font-size: 0.875rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0;">
-                Access your training dashboard, classes, and progress.
-            </p>
+    .btn-reset {
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-family: inherit;
+    }
 
-            <!-- Form -->
-            <form style="display: flex; flex-direction: column; gap: 1.25rem;" action="/login" method="POST">
-                <div>
-                    <label style="display: block; font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">
-                        Email Address
-                    </label>
-                    <input type="email" name="email" placeholder="you@example.com" required style="width: 100%; box-sizing: border-box; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.875rem 1rem; font-family: 'Barlow', sans-serif; font-size: 0.875rem; font-weight: 500; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#E31837'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-                </div>
+    .link-reset {
+        text-decoration: none;
+        color: inherit;
+    }
 
-                <div>
-                    <label style="display: block; font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">
-                        Password
-                    </label>
-                    <div style="position: relative;">
-                        <input type="password" name="password" id="login-password" placeholder="••••••••" required style="width: 100%; box-sizing: border-box; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.875rem 3rem 0.875rem 1rem; font-family: 'Barlow', sans-serif; font-size: 0.875rem; font-weight: 500; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#E31837'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-                        <button type="button" onclick="var input=document.getElementById('login-password'); if(input.type==='password'){input.type='text';}else{input.type='password';}" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 0; cursor: pointer; color: rgba(255,255,255,0.3); transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                <circle cx="12" cy="12" r="3" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div style="display: flex; justify-content: flex-end; margin-top: 0.5rem;">
-                        <a href="/login?action=forgot-password" style="font-family: 'Barlow', sans-serif; font-size: 0.75rem; color: #E31837; font-weight: 600; text-decoration: none; letter-spacing: 0.025em; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-                            Forgot password?
-                        </a>
-                    </div>
-                </div>
+    .input-reset {
+        font-family: inherit;
+    }
 
-                <?php if (!empty($error)): ?>
-                    <p style="color: red;"><?= htmlspecialchars($error) ?></p>
-                <?php endif; ?>
-                
-                <button type="submit" style="width: 100%; font-family: 'Barlow', sans-serif; background-color: #E31837; color: white; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; border: none; cursor: pointer; margin-top: 0.5rem; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
-                    Sign In <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-            </form>
+    /* LoginScreen specific styles */
+    .login-screen {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background: #0A0A0A;
+    }
 
-            <!-- Divider -->
-            <div style="display: flex; align-items: center; gap: 1rem; margin: 2rem 0;">
-                <div style="flex: 1; height: 1px; background-color: rgba(255,255,255,0.1);"></div>
-                <span style="font-family: 'Barlow', sans-serif; color: rgba(255,255,255,0.2); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">or</span>
-                <div style="flex: 1; height: 1px; background-color: rgba(255,255,255,0.1);"></div>
-            </div>
+    /* --- Hero Section (Left) --- */
+    .hero-section {
+        flex: 1 1 50%;
+        /* Grow, shrink, and start at 50% width */
+        height: 100%;
+        background:
+            linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%),
+            url('/assets/images/landing/login_hero.png') center/cover no-repeat;
+        position: relative;
+        /* Added back so the absolute back button stays inside the image */
+    }
 
-            <!-- Social login -->
-            <button type="button" style="width: 100%; font-family: 'Barlow', sans-serif; background-color: transparent; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.875rem; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.color='white'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.6)'">
-                <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Continue with Google
+    .back-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: absolute;
+        top: 32px;
+        left: 32px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.2s ease;
+    }
+
+    .back-btn:hover {
+        color: #FFFFFF;
+    }
+
+    /* --- Form Section (Right) --- */
+    .form-section {
+        flex: 1 1 50%;
+        /* Grow, shrink, and start at 50% width */
+        /* Removed width: 100%; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 423.2px;
+    }
+
+    /* Typography */
+    .welcome-text {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 3.6px;
+        text-transform: uppercase;
+        color: #E31837;
+    }
+
+    .heading {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 900;
+        font-size: 48px;
+        line-height: 43px;
+        letter-spacing: -1.2px;
+        text-transform: uppercase;
+        margin-top: 12px;
+    }
+
+    .subtitle {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 8px;
+    }
+
+    /* Form Elements */
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .input-label {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 8px;
+    }
+
+    .text-input {
+        width: 100%;
+        height: 49.6px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 0.8px solid rgba(255, 255, 255, 0.1);
+        padding: 14px 16px;
+        font-size: 14px;
+        color: #FFFFFF;
+        outline: none;
+        transition: border-color 0.2s ease;
+    }
+
+    .text-input::placeholder {
+        color: rgba(255, 255, 255, 0.2);
+    }
+
+    .text-input:focus {
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .password-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .password-input {
+        padding-right: 48px;
+    }
+
+    .eye-btn {
+        position: absolute;
+        right: 16px;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .forgot-password {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -8px;
+    }
+
+    .forgot-password-link {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0.3px;
+        color: #E31837;
+    }
+
+    .submit-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        height: 52px;
+        background: #E31837;
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        margin-top: 20px;
+        transition: background 0.2s ease;
+    }
+
+    .submit-btn:hover {
+        background: #c5142f;
+    }
+
+    /* Footer / Signup Prompt */
+    .signup-prompt {
+        margin-top: 32px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .signup-text {
+        margin: 0;
+    }
+
+    .signup-link {
+        font-weight: 700;
+        color: #E31837;
+        letter-spacing: 0.35px;
+        margin-left: 4px;
+    }
+</style>
+
+<div class="main-wrapper reset-all">
+    <main class="login-screen reset-all">
+        <!-- Left Side: Hero Image -->
+        <section class="hero-section reset-all">
+            <button class="back-btn btn-reset reset-all">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="reset-all">
+                    <line x1="19" y1="12" x2="5" y2="12" class="reset-all"></line>
+                    <polyline points="12 19 5 12 12 5" class="reset-all"></polyline>
+                </svg>
+                Back
             </button>
+        </section>
 
-            <p style="font-family: 'Barlow', sans-serif; text-align: center; color: rgba(255,255,255,0.3); font-size: 0.875rem; font-weight: 500; margin-top: 2rem; margin-bottom: 0;">
-                Don't have an account?{' '}
-                <a href="/login?action=welcome" style="color: #E31837; font-weight: 700; text-decoration: none; letter-spacing: 0.025em; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-                    Create one
-                </a>
-            </p>
-        </div>
-    </div>
+        <!-- Right Side: Form Content -->
+        <section class="form-section reset-all">
+            <div class="form-container reset-all">
+                <span class="welcome-text reset-all">Welcome Back</span>
+                <h1 class="heading reset-all">Sign In</h1>
+                <p class="subtitle reset-all">Access your training dashboard, classes, and progress.</p>
+
+                <form class="login-form reset-all" action="" method="POST">
+                    <div class="input-group reset-all">
+                        <label for="email" class="input-label reset-all">Email Address</label>
+                        <input type="email" name="email" id="email" class="text-input input-reset reset-all" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="input-group reset-all">
+                        <label for="password" class="input-label reset-all">Password</label>
+                        <div class="password-wrapper reset-all">
+                            <input type="password" name="password" id="password" class="text-input password-input input-reset reset-all" placeholder="••••••••" required>
+                            <button type="button" class="eye-btn btn-reset reset-all" aria-label="Toggle password visibility">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="reset-all">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" class="reset-all"></path>
+                                    <line x1="1" y1="1" x2="23" y2="23" class="reset-all"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="forgot-password reset-all">
+                        <a href="#" class="forgot-password-link link-reset reset-all">Forgot password?</a>
+                    </div>
+
+                    <p><? if (isset($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                        } ?></p>
+                    <button type="submit" class="submit-btn btn-reset reset-all">
+                        Sign In
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="reset-all">
+                            <line x1="5" y1="12" x2="19" y2="12" class="reset-all"></line>
+                            <polyline points="12 5 19 12 12 19" class="reset-all"></polyline>
+                        </svg>
+                    </button>
+                </form>
+
+                <div class="signup-prompt reset-all">
+                    <p class="signup-text reset-all">Don't have an account? <a href="#" class="signup-link link-reset reset-all">Create one</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
 </div>
