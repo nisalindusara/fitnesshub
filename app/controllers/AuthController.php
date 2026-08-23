@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../core/Controller.php';
 require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../models/Role.php';
+require_once __DIR__ . '/../services/AuthorizationService.php';
 
 class AuthController extends Controller
 {
@@ -74,6 +76,9 @@ class AuthController extends Controller
             session_regenerate_id(true);
             $_SESSION['user_id']   = $user['id'];
             $_SESSION['user_name'] = $user['first_name'];
+
+            $authService = new AuthorizationService(new Role());
+            $_SESSION['permissions'] = $authService->computePermissionsForRole($user['role_id'] ?? null);
 
             header('Location: /dashboard');
             exit;
