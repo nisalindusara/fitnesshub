@@ -1,6 +1,5 @@
    <?php
-    var_dump($_SESSION['permissions']);
-    ?>
+    var_dump($_SESSION['user_id']);    ?>
 
    <main class="main-content">
      <div class="content-container">
