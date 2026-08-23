@@ -3,6 +3,13 @@
 require_once __DIR__ . '/../core/Model.php';
 require_once __DIR__ . '/../contracts/StaffProfileRepositoryInterface.php';
 
+/**
+ * One shared table for all four staff roles (Manager, Super Admin,
+ * Receptionist, E-commerce Admin), differentiated by role_id rather than
+ * four near-duplicate tables — see project notes for the SOLID rationale
+ * (SRP: one "staff employment record" responsibility; OCP: a 5th role never
+ * requires a schema change).
+ */
 class StaffProfile extends Model implements StaffProfileRepositoryInterface
 {
     public function findByUserId(int $userId): ?array
