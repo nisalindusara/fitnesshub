@@ -4,12 +4,18 @@ class Controller
 {
     protected string $route = '';
 
-    public function setRoute(string $route) : void 
+    public function setRoute(string $route): void
     {
         $this->route = $route;
     }
 
-    protected function render(string $view, string $layout, array $data = []) : void
+    protected function redirect(string $path): void
+    {
+        header('Location: ' . $path);
+        exit;
+    }
+
+    protected function render(string $view, string $layout, array $data = []): void
     {
         extract($data);
         $currentRoute = $this->route;

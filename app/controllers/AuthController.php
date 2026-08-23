@@ -3,20 +3,20 @@
 require_once __DIR__ . '/../core/Controller.php';
 require_once __DIR__ . '/../models/User.php';
 
-class AuthController extends Controller 
+class AuthController extends Controller
 {
     // Renders the form
-    public function personalDetails(): void 
+    public function personalDetails(): void
     {
-        $this->render('landing/personal-details', 'landing-layout'); 
+        $this->render('landing/personal-details', 'landing-layout');
     }
 
     // Handles the form submission
-    public function storeUser(): void 
+    public function storeUser(): void
     {
         // 1. Check if the request is a POST request
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
+
             // 2. Sanitize and collect the input data
             $firstName = htmlspecialchars(trim($_POST['first_name'] ?? ''));
             $lastName  = htmlspecialchars(trim($_POST['last_name'] ?? ''));
@@ -54,11 +54,12 @@ class AuthController extends Controller
         }
     }
 
-    public function login() : void {
+    public function login(): void
+    {
         $data['error'] = $_SESSION['error'] ?? null;
-        unset($_SESSION['error']); // clear it so it only shows once
+        unset($_SESSION['error']); // clear it so it only shows once\  
 
-        $this->render('landing/login', 'landing-layout', $data);
+        $this->render('landing/login', 'minimal', $data);
     }
 
     public function authenticate(): void
@@ -67,7 +68,7 @@ class AuthController extends Controller
         $password = $_POST['password'] ?? '';
 
         $userModel = new User();
-        $user = $userModel->findByEmail($email); 
+        $user = $userModel->findByEmail($email);
 
         if ($user && password_verify($password, $user['password_hash'])) {
             session_regenerate_id(true);
