@@ -4,27 +4,41 @@ class Router
 {
     private array $routes = [];
 
-    public function get(string $path, array $handler): void
+    /**
+     * $permission is optional. Routes that omit it stay open to anyone —
+     * this keeps every pre-existing public route (landing, store, auth)
+     * unaffected by the RBAC layer added later.
+     */
+    public function get(string $path, array $handler, ?string $permission = null): void
     {
-        $this->routes['GET'][$path] = $handler;
+        $this->routes['GET'][$path] = ['handler' => $handler, 'permission' => $permission];
     }
-    public function post(string $path, array $handler): void
+
+    public function post(string $path, array $handler, ?string $permission = null): void
     {
-        $this->routes['POST'][$path] = $handler;
+        $this->routes['POST'][$path] = ['handler' => $handler, 'permission' => $permission];
     }
 
     public function dispatch(string $method, string $uri): void
     {
         $path = parse_url($uri, PHP_URL_PATH);
-        $handler = $this->routes[$method][$path] ?? null;
+        $route = $this->routes[$method][$path] ?? null;
 
-        if ($handler === null) {
+        if ($route === null) {
             http_response_code(404);
             echo '404 - Page not found';
             return;
         }
 
-        [$controllerClass, $action] = $handler;
+        // Permission check happens before the controller is even instantiated —
+        // an unauthorized request never reaches application/business logic.
+        if ($route['permission'] !== null && !Gate::allows($route['permission'])) {
+            http_response_code(403);
+            echo '403 - Forbidden';
+            return;
+        }
+
+        [$controllerClass, $action] = $route['handler'];
         $controller = new $controllerClass();
         $controller->setRoute($path);
         $controller->$action();

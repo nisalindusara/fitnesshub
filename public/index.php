@@ -3,6 +3,7 @@
 session_start();
 
 require_once __DIR__ . '/../app/core/Router.php';
+require_once __DIR__ . '/../app/core/Gate.php';
 require_once __DIR__ . '/../app/controllers/LandingController.php';
 require_once __DIR__ . '/../app/controllers/AuthController.php';
 require_once __DIR__ . '/../app/controllers/MemberController.php';
@@ -13,6 +14,9 @@ require_once __DIR__ . '/../app/controllers/onboarding/MembershipOnboardingContr
 require_once __DIR__ . '/../app/controllers/onboarding/ClassOnboardingController.php';
 require_once __DIR__ . '/../app/controllers/onboarding/DayPassOnboardingController.php';
 require_once __DIR__ . '/../app/controllers/onboarding/StoreOnboardingController.php';
+require_once __DIR__ . '/../app/controllers/AdminController.php';
+require_once __DIR__ . '/../app/controllers/MemberManagementController.php';
+require_once __DIR__ . '/../app/controllers/AdminController.php';
 
 $router = new Router();
 
@@ -91,6 +95,8 @@ $router->get('/personal-details', [AuthController::class, "personalDetails"]);
 $router->post('/register-submit', [AuthController::class, "storeUser"]);
 $router->get('/login', [AuthController::class, "login"]);
 $router->post('/login', [AuthController::class, "authenticate"]);
+
+$router->get('/admin/reports', [AdminController::class, 'reports'], 'view_reports');
 
 $router->get('/dashboard', [MemberController::class, "dashboard"]);
 
