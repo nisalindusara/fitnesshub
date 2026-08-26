@@ -15,7 +15,7 @@
 
     <div class="staff-shell">
         <aside class="staff-shell__sidebar">
-            <?php include __DIR__ . '/../partials/sidebar-nav.php'; ?>
+            <?php include __DIR__ . '/../partials/_sidebar.php'; ?>
         </aside>
 
         <main class="staff-shell__content">
@@ -23,8 +23,8 @@
         </main>
     </div>
 
-    <script type="module" src="/assets/js/sidebar/components/fh-nav-item.js"></script>
-    <script type="module" src="/assets/js/sidebar/components/fh-nav-dropdown.js"></script>
+    <script type="module" src="/assets/js/fh-nav-item.js"></script>
+    <script type="module" src="/assets/js/fh-nav-dropdown.js"></script>
 
 </body>
 
