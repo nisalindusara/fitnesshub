@@ -88,6 +88,15 @@ class AuthController extends Controller
             $authService = new AuthorizationService(new Role());
             $_SESSION['permissions'] = $authService->computePermissionsForRole($user['role_id'] ?? null);
 
+            // Nav is a staff-only concept — Customers use a different PWA shell entirely
+            // and never render a sidebar.
+            // Skip the nav_items query for them rather than computing an always-empty
+            // tree, unlike permissions (which costs nothing extra to leave unconditional).
+            if (($user['role_id'] ?? null) !== null) {
+                $navService = new NavService(new NavItem());
+                $_SESSION['nav'] = $navService->getVisibleNavForSession($_SESSION['permissions']);
+            }
+
             header('Location: /dashboard');
             exit;
         }
