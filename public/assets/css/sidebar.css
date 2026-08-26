@@ -46,3 +46,33 @@
 .fh-nav-item--active .fh-nav-item__link svg {
   color: #fff; /* currentColor propagation for the <use> icon */
 }
+
+.staff-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.staff-shell__sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: #fff;
+  border-right: 1px solid #eee;
+  padding: 1rem 0;
+}
+
+.staff-shell__content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.nav-section {
+  margin-bottom: 1.5rem;
+}
+
+.nav-section-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #999;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
