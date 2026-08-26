@@ -16,7 +16,9 @@ require_once __DIR__ . '/../app/controllers/onboarding/DayPassOnboardingControll
 require_once __DIR__ . '/../app/controllers/onboarding/StoreOnboardingController.php';
 require_once __DIR__ . '/../app/controllers/AdminController.php';
 require_once __DIR__ . '/../app/controllers/MemberManagementController.php';
+require_once __DIR__ . '/../app/controllers/StaffDashboardController.php';
 require_once __DIR__ . '/../app/controllers/AdminController.php';
+require_once __DIR__ . '/../app/controllers/InstructorController.php';
 
 $router = new Router();
 
@@ -85,19 +87,29 @@ $router->post('/onboarding/store/address', [StoreOnboardingController::class, 's
 $router->get('/onboarding/store/payment', [StoreOnboardingController::class, 'payment']);
 $router->post('/onboarding/store/payment', [StoreOnboardingController::class, 'completePayment']);
 
+// STORE ROUTES
 $router->get('/store', [StoreController::class, "ecommerceLandingPage"]);
 $router->get('/catalog', [StoreController::class, "ecommerceCatalogue"]);
 $router->get('/sample-product', [StoreController::class, "sampleProduct"]);
 $router->get('/cart', [StoreController::class, "cart"]);
 $router->get('/store-checkout', [StoreController::class, "ecommerceCheckout"]);
 
+// CHECK AGAIN
 $router->get('/personal-details', [AuthController::class, "personalDetails"]);
 $router->post('/register-submit', [AuthController::class, "storeUser"]);
 $router->get('/login', [AuthController::class, "login"]);
 $router->post('/login', [AuthController::class, "authenticate"]);
 
-$router->get('/admin/reports', [AdminController::class, 'reports'], 'view_reports');
-
+// MEMBER ROUTES
 $router->get('/dashboard', [MemberController::class, "dashboard"]);
+
+// INSTRUCTOR ROUTES
+$router->get('/my-clients', [InstructorController::class, 'myClients'], 'view_own_clients');
+
+// STAFF ROUTES
+$router->get('/members', [MemberManagementController::class, 'index'], 'manage_members');
+$router->get('/dashboard-ecom', [StaffDashboardController::class, 'ecommerceAdmin'], 'manage_inventory');
+$router->get('/dashboard-super-admin', [StaffDashboardController::class, 'superAdmin'], 'register_super_admins');
+$router->get('/dashboard-manager', [StaffDashboardController::class, 'manager'], 'view_overview');
 
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);

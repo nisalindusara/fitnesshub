@@ -88,10 +88,27 @@ class AuthController extends Controller
             $authService = new AuthorizationService(new Role());
             $_SESSION['permissions'] = $authService->computePermissionsForRole($user['role_id'] ?? null);
 
-            header('Location: /dashboard');
+            if (($user['role_id'] ?? null) !== null) {
+                $roleModel = new Role();
+                $role = $roleModel->findById($user['role_id']);
+
+                $sidebarShellRoles = ['receptionist', 'ecommerce_admin', 'super_admin', 'manager'];
+                $_SESSION['is_staff'] = in_array($role['name'], $sidebarShellRoles, true);
+                $_SESSION['role_name'] = $role['name'];
+
+                $redirects = [
+                    'receptionist'     => '/members',
+                    'ecommerce_admin'  => '/dashboard-ecom',
+                    'super_admin'      => '/dashboard-super-admin',
+                    'manager'          => '/dashboard-manager',
+                    'instructor'       => '/my-clients',
+                ];
+                header('Location: ' . ($redirects[$role['name']] ?? '/dashboard'));
+            } else {
+                header('Location: /dashboard');
+            }
             exit;
         }
-
         $_SESSION['error'] = 'Invalid email or password';
         header('Location: /login');
         exit;

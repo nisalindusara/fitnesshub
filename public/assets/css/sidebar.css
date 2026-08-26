@@ -1,0 +1,170 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  overflow: hidden; /* prevent the whole page from scrolling */
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  display: flex;
+}
+
+.staff-shell__sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 212px;
+  border-right: 2px solid rgba(28, 28, 28, 0.1);
+  padding: 20px 16px;
+  height: 100vh;
+  overflow-y: auto; /* in case the nav itself grows taller than the screen */
+  flex-shrink: 0; /* prevent sidebar from shrinking when content is wide */
+}
+
+.sidebar-logo {
+  height: 28px;
+  margin-bottom: 16px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 4px 0;
+}
+
+.nav-section {
+  margin-bottom: 12px;
+}
+
+.nav-section-label {
+  padding: 4px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(28, 28, 28, 0.4);
+  margin-bottom: 4px;
+}
+
+/* ---- Plain link item (fh-nav-item) ---- */
+.fh-nav-item__link {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px 4px 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: #1c1c1c;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.fh-nav-item__link:hover {
+  background: rgba(28, 28, 28, 0.05);
+}
+
+.fh-nav-item--active .fh-nav-item__link {
+  background: rgba(28, 28, 28, 0.05);
+  color: #1c1c1c;
+}
+
+.fh-nav-item--active .fh-nav-item__link::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 14px;
+  background: #1c1c1c;
+  border-radius: 4px;
+}
+
+.fh-nav-item__icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+/* ---- Dropdown trigger (fh-nav-dropdown) ---- */
+.fh-nav-dropdown__trigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 4px 8px 4px 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 14px;
+  color: #1c1c1c;
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.fh-nav-dropdown__trigger:hover {
+  background: rgba(28, 28, 28, 0.05);
+}
+
+.fh-nav-dropdown__chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-left: 8px;
+  order: 3;
+  color: rgba(28, 28, 28, 0.4);
+  transform: rotate(-90deg);
+  transition: transform 0.15s ease;
+}
+
+.fh-nav-dropdown__trigger[aria-expanded="true"] .fh-nav-dropdown__chevron {
+  transform: rotate(0deg);
+}
+
+.fh-nav-dropdown__icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  order: 1;
+}
+
+.fh-nav-dropdown__label {
+  order: 2;
+  flex: 1;
+  text-align: left;
+}
+
+.fh-nav-dropdown__children {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.fh-nav-dropdown__children[hidden] {
+  display: none;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.staff-shell__content {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto; /* THIS is what makes only the content scroll */
+  padding: 2rem;
+}
