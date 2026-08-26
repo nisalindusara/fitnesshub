@@ -6,6 +6,6 @@ class MemberManagementController extends Controller
 {
     public function index(): void
     {
-        $this->render('admin/members', 'staff-layout');
+        $this->render('staff/members', 'staff-layout');
     }
 }
