@@ -1,0 +1,48 @@
+.fh-nav-dropdown__trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  background: none;
+  border: none;
+  font: inherit;
+  color: var(--ink-black);
+  cursor: pointer;
+  border-radius: 16px; /* matches your documented card radius */
+}
+
+.fh-nav-dropdown__chevron {
+  margin-left: auto;
+  transition: transform 0.15s ease;
+}
+
+.fh-nav-dropdown__trigger[aria-expanded="true"] .fh-nav-dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+.fh-nav-dropdown__children {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.5rem; /* indent children under parent */
+}
+
+.fh-nav-item__link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border-radius: 16px;
+  color: var(--ink-black);
+  text-decoration: none;
+}
+
+.fh-nav-item--active .fh-nav-item__link {
+  background: var(--ink-black);
+  color: #fff;
+}
+
+.fh-nav-item--active .fh-nav-item__link svg {
+  color: #fff; /* currentColor propagation for the <use> icon */
+}
