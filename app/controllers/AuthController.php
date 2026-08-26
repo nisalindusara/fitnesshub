@@ -4,9 +4,6 @@ require_once __DIR__ . '/../core/Controller.php';
 require_once __DIR__ . '/../models/User.php';
 require_once __DIR__ . '/../models/Role.php';
 require_once __DIR__ . '/../services/AuthorizationService.php';
-require_once __DIR__ . '/../services/NavService.php';
-require_once __DIR__ . '/../models/NavItem.php';
-require_once __DIR__ . '/../contracts/NavItemRepositoryInterface.php';
 
 /**
  * Handles registration and login for all account types.
@@ -98,11 +95,6 @@ class AuthController extends Controller
                 $sidebarShellRoles = ['receptionist', 'ecommerce_admin', 'super_admin', 'manager'];
                 $_SESSION['is_staff'] = in_array($role['name'], $sidebarShellRoles, true);
                 $_SESSION['role_name'] = $role['name'];
-
-                if ($_SESSION['is_staff']) {
-                    $navService = new NavService(new NavItem());
-                    $_SESSION['nav'] = $navService->getVisibleNavForSession($_SESSION['permissions']);
-                }
 
                 $redirects = [
                     'receptionist'     => '/members',
