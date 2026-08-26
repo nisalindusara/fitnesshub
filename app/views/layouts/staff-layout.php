@@ -11,7 +11,7 @@
 
 <body>
 
-    <?php include __DIR__ . '/../partials/icon-sprite.php'; ?>
+    <?php include __DIR__ . '/../partials/_icon-sprite.php'; ?>
 
     <div class="staff-shell">
         <aside class="staff-shell__sidebar">

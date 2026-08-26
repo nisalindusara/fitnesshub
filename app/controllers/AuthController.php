@@ -4,6 +4,9 @@ require_once __DIR__ . '/../core/Controller.php';
 require_once __DIR__ . '/../models/User.php';
 require_once __DIR__ . '/../models/Role.php';
 require_once __DIR__ . '/../services/AuthorizationService.php';
+require_once __DIR__ . '/../services/NavService.php';
+require_once __DIR__ . '/../models/NavItem.php';
+require_once __DIR__ . '/../contracts/NavItemRepositoryInterface.php';
 
 /**
  * Handles registration and login for all account types.
@@ -88,19 +91,32 @@ class AuthController extends Controller
             $authService = new AuthorizationService(new Role());
             $_SESSION['permissions'] = $authService->computePermissionsForRole($user['role_id'] ?? null);
 
-            // Nav is a staff-only concept — Customers use a different PWA shell entirely
-            // and never render a sidebar.
-            // Skip the nav_items query for them rather than computing an always-empty
-            // tree, unlike permissions (which costs nothing extra to leave unconditional).
             if (($user['role_id'] ?? null) !== null) {
-                $navService = new NavService(new NavItem());
-                $_SESSION['nav'] = $navService->getVisibleNavForSession($_SESSION['permissions']);
-            }
+                $roleModel = new Role();
+                $role = $roleModel->findById($user['role_id']);
 
-            header('Location: /dashboard');
+                $sidebarShellRoles = ['receptionist', 'ecommerce_admin', 'super_admin', 'manager'];
+                $_SESSION['is_staff'] = in_array($role['name'], $sidebarShellRoles, true);
+                $_SESSION['role_name'] = $role['name'];
+
+                if ($_SESSION['is_staff']) {
+                    $navService = new NavService(new NavItem());
+                    $_SESSION['nav'] = $navService->getVisibleNavForSession($_SESSION['permissions']);
+                }
+
+                $redirects = [
+                    'receptionist'     => '/members',
+                    'ecommerce_admin'  => '/dashboard-ecom',
+                    'super_admin'      => '/dashboard-super-admin',
+                    'manager'          => '/dashboard-manager',
+                    'instructor'       => '/my-clients',
+                ];
+                header('Location: ' . ($redirects[$role['name']] ?? '/dashboard'));
+            } else {
+                header('Location: /dashboard');
+            }
             exit;
         }
-
         $_SESSION['error'] = 'Invalid email or password';
         header('Location: /login');
         exit;
