@@ -52,6 +52,7 @@ foreach ($visibleNav as $item) {
     <title><?= htmlspecialchars($pageTitle ?? 'FitnessHub') ?></title>
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/portals.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 

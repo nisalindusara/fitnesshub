@@ -19,6 +19,7 @@ require_once __DIR__ . '/../app/controllers/MemberManagementController.php';
 require_once __DIR__ . '/../app/controllers/StaffDashboardController.php';
 require_once __DIR__ . '/../app/controllers/AdminController.php';
 require_once __DIR__ . '/../app/controllers/InstructorController.php';
+require_once __DIR__ . '/../app/controllers/OrderController.php';
 
 $router = new Router();
 
@@ -107,9 +108,10 @@ $router->get('/dashboard', [MemberController::class, "dashboard"]);
 $router->get('/my-clients', [InstructorController::class, 'myClients'], 'view_own_clients');
 
 // STAFF ROUTES
-$router->get('/members', [MemberManagementController::class, 'index'], 'manage_members');
+$router->get('/portal/members', [MemberManagementController::class, 'index'], 'manage_members');
 $router->get('/dashboard-ecom', [StaffDashboardController::class, 'ecommerceAdmin'], 'manage_inventory');
 $router->get('/dashboard-super-admin', [StaffDashboardController::class, 'superAdmin'], 'register_super_admins');
 $router->get('/dashboard-manager', [StaffDashboardController::class, 'manager'], 'view_overview');
+$router->get('/portal/orders', [OrderController::class, 'index'], 'manage_orders');
 
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);

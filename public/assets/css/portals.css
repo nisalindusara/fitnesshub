@@ -1,0 +1,96 @@
+/* portal.css — shared styles for the staff portal shell (/portal/**) */
+/* Manager, Super Admin, Receptionist, E-Commerce Admin all render through this */
+
+@import url("tokens.css");
+
+/* ============================
+   Page structure
+   ============================ */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: calc(var(--spacing-unit) * 6); /* 24px */
+}
+
+.page-header h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink-black);
+  margin: 0;
+}
+
+.empty-state {
+  color: var(--neutral-gray);
+  text-align: center;
+  padding: calc(var(--spacing-unit) * 10) 0;
+}
+
+/* ============================
+   Data table (orders, products, members, etc.)
+   ============================ */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface-white);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.data-table thead {
+  background: var(--off-white);
+}
+
+.data-table th {
+  text-align: left;
+  padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--neutral-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.data-table td {
+  padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+  border-top: 1px solid var(--off-white);
+  color: var(--ink-black);
+  font-size: 0.95rem;
+}
+
+.data-table tbody tr:hover {
+  background: var(--off-white);
+}
+
+/* ============================
+   Status badges
+   ============================ */
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-pending {
+  background: #f7f7f7;
+  color: var(--neutral-gray);
+}
+.status-paid {
+  background: #e8f5ee;
+  color: var(--success-green);
+}
+.status-ready_for_pickup {
+  background: #fbefe0;
+  color: var(--warning-amber);
+}
+.status-completed {
+  background: #e8f5ee;
+  color: var(--success-green);
+}
+.status-cancelled {
+  background: #fdecec;
+  color: var(--brand-red);
+}
