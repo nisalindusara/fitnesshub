@@ -14,7 +14,7 @@ $navItems = [
         ['label' => 'Add Payment', 'icon' => 'plus-circle', 'route' => '/payments/add', 'permission' => 'add_payment'],
     ]],
     ['section' => 'eCommerce', 'label' => 'Store', 'icon' => 'box', 'route' => '/store', 'permission' => 'manage_inventory'],
-    ['section' => 'eCommerce', 'label' => 'Orders', 'icon' => 'package', 'route' => '/orders', 'permission' => 'manage_orders'],
+    ['section' => 'eCommerce', 'label' => 'Orders', 'icon' => 'package', 'route' => '/portal/orders', 'permission' => 'manage_orders'],
 ];
 
 $visibleNav = [];
