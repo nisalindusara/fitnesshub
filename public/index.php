@@ -33,13 +33,9 @@ $router->get('/terms-of-conditions', [LandingController::class, "termsOfConditio
 
 // ONBOARDING — CHOOSER
 $router->get('/onboarding', [OnboardingController::class, 'start']);
-$router->post('/onboarding/browse-plans', [OnboardingController::class, 'browsePlans']);
-$router->get('/onboarding/classes-prompt', [OnboardingController::class, 'classesPrompt']);
-$router->post('/onboarding/browse-classes', [OnboardingController::class, 'browseClasses']);
-$router->get('/onboarding/store-prompt', [OnboardingController::class, 'storePrompt']);
-$router->post('/onboarding/browse-store', [OnboardingController::class, 'browseStore']);
-$router->get('/onboarding/personal-info', [OnboardingController::class, 'personalInfo']);
-$router->post('/onboarding/personal-info', [OnboardingController::class, 'storePersonalInfo']);
+$router->get('/onboarding/browse-plans', [OnboardingController::class, 'browsePlans']);
+$router->get('/onboarding/view-classes', [OnboardingController::class, 'browseClasses']);
+$router->get('/onboarding/view-store', [OnboardingController::class, 'browseStore']);
 
 // MEMBERSHIP ONBOARDING FLOW
 $router->get('/onboarding/membership', [MembershipOnboardingController::class, 'selectGoal']);
