@@ -16,7 +16,7 @@ class AuthController extends Controller
 {
     public function personalDetails(): void
     {
-        $this->render('landing/personal-details', 'landing-layout');
+        $this->render('landing/personal-details', 'minimal');
     }
 
     public function storeUser(): void

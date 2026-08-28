@@ -1,151 +1,403 @@
-<?php
-// Default register page view for FitnessHub
-?>
+<div class="onboarding-container-full">
+    <div class="inner-wrapper">
 
-<div style="min-height: 100vh; display: flex; background-color: #0a0a0a; padding-top: 4rem;">
-    <!-- Left panel — image -->
-    <div style="display: none; position: relative; overflow: hidden; width: 50%;" id="register-left-panel">
-        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&h=1200&fit=crop&auto=format" alt="Gym training" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
-        <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.3), transparent);"></div>
-        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent, rgba(0,0,0,0.4));"></div>
+        <div class="back-btn-container">
+            <button type="button" class="back-btn" onclick="window.location.href='/onboarding/view-store';">
+                <svg class="icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                BACK
+            </button>
+        </div>
 
-        <!-- Stats overlay -->
-        <div style="position: absolute; bottom: 4rem; left: 2.5rem; right: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
-            <div style="display: flex; align-items: baseline; gap: 1rem; border-left: 2px solid #E31837; padding-left: 1.25rem;">
-                <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 2.25rem; font-weight: 900; color: white;">500+</span>
-                <span style="font-family: 'Barlow', sans-serif; color: rgba(255,255,255,0.5); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Active Members</span>
+        <div class="progress-section">
+            <div class="progress-header">
+                <span class="step-text">Step 4 of 4</span>
+                <span class="percentage-text">100%</span>
             </div>
-            <div style="display: flex; align-items: baseline; gap: 1rem; border-left: 2px solid #E31837; padding-left: 1.25rem;">
-                <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 2.25rem; font-weight: 900; color: white;">12+</span>
-                <span style="font-family: 'Barlow', sans-serif; color: rgba(255,255,255,0.5); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Certified Trainers</span>
-            </div>
-            <div style="display: flex; align-items: baseline; gap: 1rem; border-left: 2px solid #E31837; padding-left: 1.25rem;">
-                <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 2.25rem; font-weight: 900; color: white;">30+</span>
-                <span style="font-family: 'Barlow', sans-serif; color: rgba(255,255,255,0.5); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Weekly Classes</span>
+            <div class="progress-bars">
+                <div class="progress-bar bar-active"></div>
+                <div class="progress-bar bar-active"></div>
+                <div class="progress-bar bar-active"></div>
+                <div class="progress-bar bar-active"></div>
             </div>
         </div>
 
-        <!-- Logo -->
-        <div style="position: absolute; top: 2rem; left: 2.5rem; background-color: rgba(255,255,255,0.9); padding: 0.5rem 0.75rem; backdrop-filter: blur(4px);">
-            <a href="/" style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none;">
-                <img src="/assets/images/Logo_Background_Removed.png" alt="Logo" style="width: 36px; height: 36px; object-fit: contain;" />
-                <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.05em; color: #0a0a0a; text-transform: uppercase;">
-                    The Fitness <span style="color: #E31837;">Hub</span>
-                </span>
-            </a>
-        </div>
-    </div>
-    <style>
-        @media (min-width: 1024px) {
-            #register-left-panel {
-                display: block !important;
-            }
-        }
-    </style>
+        <div class="form-section">
+            <div class="form-wrapper">
 
-    <!-- Right panel — form -->
-    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem; position: relative; overflow-y: auto;">
-        <!-- Mobile logo -->
-        <div style="margin-bottom: 2.5rem; display: block;" id="register-mobile-logo">
-            <a href="/" style="display: flex; align-items: center; gap: 0.625rem; text-decoration: none;">
-                <img src="/assets/images/Logo_Background_Removed.png" alt="Logo" style="width: 40px; height: 40px; object-fit: contain;" />
-                <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.05em; color: white; text-transform: uppercase;">
-                    The Fitness <span style="color: #E31837;">Hub</span>
-                </span>
-            </a>
-        </div>
-        <style>
-            @media (min-width: 1024px) {
-                #register-mobile-logo {
-                    display: none !important;
-                }
-            }
-        </style>
+                <h1 class="heading-step4">Enter Your<br>Details</h1>
+                <p class="description">You're almost there. Create your account to save your preferences, track progress, and book classes.</p>
 
-        <div style="max-width: 28rem; width: 100%; margin: 0 auto;">
-            <p style="font-family: 'Barlow', sans-serif; color: #E31837; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 0.75rem; margin-top: 0;">
-                New Member
-            </p>
-            <h1 style="font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 900; text-transform: uppercase; color: white; line-height: 0.9; letter-spacing: -0.02em; margin-bottom: 0.5rem; margin-top: 0;">
-                Create Account
-            </h1>
-            <p style="font-family: 'Barlow', sans-serif; color: rgba(255,255,255,0.4); font-size: 0.875rem; font-weight: 500; margin-bottom: 2.5rem; margin-top: 0;">
-                Fill in your details to get started with FitnessHub.
-            </p>
+                <form action="/register-submit" method="POST" class="account-form">
+                    <div class="form-fields">
 
-            <!-- Form -->
-            <form style="display: flex; flex-direction: column; gap: 1.25rem;" action="/register-submit" method="POST">
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
-                    <div>
-                        <label style="display: block; font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">
-                            First Name
-                        </label>
-                        <!-- Added name="first_name" -->
-                        <input type="text" name="first_name" placeholder="Kasun" required style="width: 100%; box-sizing: border-box; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.875rem 1rem; font-family: 'Barlow', sans-serif; font-size: 0.875rem; font-weight: 500; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#E31837'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+                        <div class="form-row split-row">
+                            <div class="input-group">
+                                <label class="input-label" for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="first_name" class="input-field" placeholder="Kasun" required>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label" for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="last_name" class="input-field" placeholder="Perera" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label class="input-label" for="email">Email Address</label>
+                                <input type="email" id="email" name="email" class="input-field" placeholder="kasun@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label class="input-label" for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone_number" class="input-field" placeholder="+94 77 123 4567">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label class="input-label" for="password">Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="password" name="password" class="input-field" placeholder="Min 8 characters" required>
+                                    <button type="button" class="icon-btn" aria-label="Toggle password visibility">
+                                        <svg class="icon-svg-dim" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24M1 1l22 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label class="input-label" for="confirmPassword">Confirm Password</label>
+                                <div class="input-with-icon">
+                                    <input type="password" id="confirmPassword" name="confirmPassword" class="input-field" placeholder="Min 8 characters" required>
+                                    <button type="button" class="icon-btn" aria-label="Toggle password visibility">
+                                        <svg class="icon-svg-dim" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24M1 1l22 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div>
-                        <label style="display: block; font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">
-                            Last Name
-                        </label>
-                        <!-- Added name="last_name" -->
-                        <input type="text" name="last_name" placeholder="Perera" required style="width: 100%; box-sizing: border-box; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.875rem 1rem; font-family: 'Barlow', sans-serif; font-size: 0.875rem; font-weight: 500; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#E31837'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+
+                    <div class="submit-btn-container">
+                        <button type="submit" class="btn-primary-submit">CREATE ACCOUNT</button>
                     </div>
-                </div>
+                </form>
 
-                <div>
-                    <label style="display: block; font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">
-                        Email Address
-                    </label>
-                    <!-- Added name="email" -->
-                    <input type="email" name="email" placeholder="kasun@example.com" required style="width: 100%; box-sizing: border-box; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.875rem 1rem; font-family: 'Barlow', sans-serif; font-size: 0.875rem; font-weight: 500; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#E31837'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-                </div>
-
-                <div>
-                    <label style="display: block; font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">
-                        Phone Number
-                    </label>
-                    <!-- Added name="phone_number" -->
-                    <input type="tel" name="phone_number" placeholder="+94 77 123 4567" required style="width: 100%; box-sizing: border-box; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.875rem 1rem; font-family: 'Barlow', sans-serif; font-size: 0.875rem; font-weight: 500; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#E31837'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-                </div>
-
-                <div>
-                    <label style="display: block; font-family: 'Barlow', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">
-                        Password
-                    </label>
-                    <div style="position: relative;">
-                        <!-- Added name="password" -->
-                        <input type="password" name="password" id="register-password" placeholder="Min 8 characters" required style="width: 100%; box-sizing: border-box; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 0.875rem 3rem 0.875rem 1rem; font-family: 'Barlow', sans-serif; font-size: 0.875rem; font-weight: 500; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#E31837'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-                        <button type="button" onclick="var input=document.getElementById('register-password'); if(input.type==='password'){input.type='text';}else{input.type='password';}" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 0; cursor: pointer; color: rgba(255,255,255,0.3); transition: color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.3)'">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                <circle cx="12" cy="12" r="3" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <div style="margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                    <p style="font-family:'Barlow', sans-serif; color: #FFF;">
-                        By signing up you agree to our <span><a href="/privacy-policy">privacy policy</a></span> and <span><a href="/terms-of-conditions">terms of conditions</a></span>
-                    </p>
-                    <button type="submit" style="width: 100%; font-family: 'Barlow', sans-serif; background-color: #E31837; color: white; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#c21430'" onmouseout="this.style.backgroundColor='#E31837'">
-                        Create My Account <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-
-                    <a href="/login?action=welcome" style="display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; background-color: transparent; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.875rem; font-size: 0.875rem; cursor: pointer; text-decoration: none; transition: all 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.3)'; this.style.color='white'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='rgba(255,255,255,0.4)'">
-                        Back
-                    </a>
-                </div>
-            </form>
-
-            <p style="font-family: 'Barlow', sans-serif; text-align: center; color: rgba(255,255,255,0.3); font-size: 0.875rem; font-weight: 500; margin-top: 2rem; margin-bottom: 0;">
-                Already have an account?{' '}
-                <a href="/login" style="color: #E31837; font-weight: 700; text-decoration: none; letter-spacing: 0.025em; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-                    Sign in
-                </a>
-            </p>
+            </div>
         </div>
+
     </div>
 </div>
+
+<style>
+    /* Main Layout Container */
+    .onboarding-container-full {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0 auto;
+        background-color: #0A0A0A;
+        color: #FFFFFF;
+        font-family: 'Barlow', sans-serif;
+        min-height: 100vh;
+    }
+
+    .inner-wrapper {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        padding: 48px 80px;
+        width: 100%;
+    }
+
+    /* Back Button */
+    .back-btn-container {
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .back-btn {
+        box-sizing: border-box;
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.6);
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .back-btn:hover {
+        color: #FFFFFF;
+    }
+
+    .icon-svg {
+        display: block;
+    }
+
+    /* Progress Indicator */
+    .progress-section {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    .progress-header {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: 0 0 12px 0;
+    }
+
+    .step-text {
+        box-sizing: border-box;
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .percentage-text {
+        box-sizing: border-box;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 20px;
+        color: #E31837;
+    }
+
+    .progress-bars {
+        box-sizing: border-box;
+        display: flex;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .progress-bar {
+        box-sizing: border-box;
+        flex: 1;
+        height: 4px;
+        border-radius: 20px;
+    }
+
+    .bar-active {
+        background: #E31837;
+    }
+
+    /* Content Section */
+    .form-section {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .form-wrapper {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 384px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Typography */
+    .heading-step4 {
+        box-sizing: border-box;
+        margin: 0 0 20px 0;
+        padding: 0;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-weight: 900;
+        font-size: clamp(40px, 5vw, 58.32px);
+        line-height: 0.88;
+        letter-spacing: -1.458px;
+        text-transform: uppercase;
+    }
+
+    .description {
+        box-sizing: border-box;
+        margin: 0 0 40px 0;
+        padding: 0;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.62;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Form Styles */
+    .account-form {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-fields {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+    }
+
+    .form-row {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .split-row {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .input-group {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        flex: 1;
+    }
+
+    .input-label {
+        box-sizing: border-box;
+        margin-bottom: 8px;
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .input-field {
+        box-sizing: border-box;
+        width: 100%;
+        height: 46px;
+        padding: 12px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 0.8px solid rgba(255, 255, 255, 0.1);
+        color: #FFFFFF;
+        font-family: 'Barlow', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        outline: none;
+        transition: border-color 0.2s ease;
+    }
+
+    .input-field:focus {
+        border-color: #E31837;
+    }
+
+    .input-field::placeholder {
+        color: rgba(255, 255, 255, 0.2);
+    }
+
+    .input-with-icon {
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+    }
+
+    .input-with-icon .input-field {
+        padding-right: 48px;
+    }
+
+    .icon-btn {
+        box-sizing: border-box;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon-svg-dim {
+        color: rgba(255, 255, 255, 0.3);
+        transition: color 0.2s ease;
+    }
+
+    .icon-btn:hover .icon-svg-dim {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Submit Button */
+    .submit-btn-container {
+        box-sizing: border-box;
+        margin-top: 32px;
+        width: 100%;
+    }
+
+    .btn-primary-submit {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 16px 0;
+        margin: 0;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #E31837;
+        color: #FFFFFF;
+        font-family: 'Barlow', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        transition: background 0.2s ease;
+    }
+
+    .btn-primary-submit:hover {
+        background: #c2122d;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 576px) {
+        .inner-wrapper {
+            padding: 48px 24px;
+        }
+
+        .split-row {
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+</style>
