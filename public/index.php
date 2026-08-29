@@ -40,7 +40,7 @@ $router->get('/onboarding/confirmation', [OnboardingController::class, 'showOnbo
 $router->get('/onboarding/membership/select-goal', [MembershipOnboardingController::class, 'showSelectGoal']);
 $router->get('/onboarding/membership/coach-recommend', [MembershipOnboardingController::class, 'showCoachRecommend']);
 $router->get('/onboarding/membership/select-coach', [MembershipOnboardingController::class, 'showSelectCoach']);
-$router->get('/onboarding/membership/want-seesion', [MembershipOnboardingController::class, 'showWantSession']);
+$router->get('/onboarding/membership/want-session', [MembershipOnboardingController::class, 'showWantSession']);
 $router->get('/onboarding/membership/pick-date', [MembershipOnboardingController::class, 'showPickDate']);
 $router->get('/onboarding/membership/select-session', [MembershipOnboardingController::class, 'showSelectSession']);
 
