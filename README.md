@@ -1,60 +1,39 @@
 # FitnessHub
 
-FitnessHub is a Progressive Web App for gym management, built for Sri Lankan gyms. It supports Customer, Instructor, and Admin/Owner roles, collecting member data and presenting it through informative analytics visuals — helping gym owners make more informed business decisions — alongside membership, class scheduling, payments, and e-commerce.
+FitnessHub is a gym management web app built for Sri Lankan gyms. It is a university group project developed using plain PHP with a custom MVC framework, MySQL, and vanilla JavaScript. No external libraries or Composer packages are used, as required by the coursework.
+
+## What It Does
+
+The system supports five types of users:
+
+- Customer
+- Instructor
+- Admin
+- Receptionist
+- Manager
+
+It covers account and membership management, class and personal training bookings, work schedules, communication, payments and billing, an online store, daily action plans and adherence tracking, equipment management, and reporting.
 
 ## Tech Stack
 
-- **Backend:** PHP (plain, no framework)
-- **Architecture:** 3-tier MVC (custom-built routing, controllers, models)
-- **Database:** MySQL
-- **Frontend:** HTML, CSS, JavaScript (Progressive Web App)
+Backend: Plain PHP with a custom Router, Controller, and Model structure, using PDO to connect to MySQL.
+Frontend: Vanilla JavaScript and Web Components, with no build tools required.
+Database: MySQL, run locally through XAMPP.
+Design: Figma was used for UI and UX design before development began.
 
-## Actors
+## Branching Model
 
-- **Customer** — books classes, views membership/workout/meal plans, messages instructor, shops the store
-- **Instructor** — manages sessions and schedule
-- **Wellness Instructor** *(specialized Instructor)* — additionally creates and assigns meal plans
-- **Admin** — manages members, equipment, payments, and views analytics
-- **Owner** — full administrative access including business-level reporting
+- The main branch is protected and represents stable, gradeable code.
+- The dev branch is where all completed features come together before being merged into main.
+- All new work happens on feature branches created from dev, and every change goes through a pull request.
+- A CODEOWNERS file ensures pull requests are reviewed and approved before merging.
 
-## System Modules
+## Getting Started
 
-1. Account & Membership Management
-2. Class & Personal Training Management
-3. Work Schedule Management
-4. Communication Management
-5. Payment & Billing Management
-6. E-Commerce Management
-7. Daily Action Plan & Adherence Tracking
-8. Equipment Management
-9. Reporting & Analytics Management
+- Clone the repository and place it inside your XAMPP htdocs folder.
+- Import the database file found in the database folder into MySQL through phpMyAdmin.
+- Start Apache and MySQL through XAMPP, then open the project in your browser.
 
-## Project Structure
+## Project Status
 
-```
-fitnesshub/
-├── public/              # Web root (only exposed folder)
-│   ├── index.php        # Front controller
-│   ├── manifest.json    # PWA manifest
-│   ├── service-worker.js
-│   └── assets/          # CSS, JS, images
-├── app/
-│   ├── controllers/     # Application tier
-│   ├── models/          # Data tier
-│   ├── views/           # Presentation tier (templates)
-│   └── core/            # Router, base Controller/Model, Database
-├── config/               # Database and app configuration
-├── storage/              # Logs and uploads (not web-accessible)
-└── tests/                 # Test suite
-```
-
-## Setup
-
-1. Clone the repository
-2. Copy `.env.example` to `.env` and fill in your database credentials
-3. Point your web server's document root to the `public/` folder
-4. Import the database schema (to be added)
-
-## Team
-
-This is a second-year group project developed by a 4-member team, with biweekly progress reports submitted to project supervisors and subject coordinators.
+This project is under active development as part of a university coursework requirement.
