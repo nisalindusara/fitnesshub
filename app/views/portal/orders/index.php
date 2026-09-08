@@ -59,6 +59,7 @@
             <tbody>
                 <?php foreach ($orders as $order): ?>
                     <tr>
+                        <!-- Order Number (kept as plain text) -->
                         <td><?= htmlspecialchars($order['order_number']) ?></td>
                         <td><?= htmlspecialchars($order['customer_name'] ?? 'Unknown') ?></td>
                         <td><?= htmlspecialchars($order['placed_by_name']) ?></td>
@@ -74,11 +75,11 @@
                         <!-- Actions Column -->
                         <td class="col-options">
                             <div style="display: flex; gap: 10px; align-items: center;">
-                                <!-- View -->
-                                <a href="view_order.php?id=<?= urlencode($order['order_number']) ?>"
+                                <!-- View Link wrapping ONLY the SVG icon -->
+                                <a href="/portal/orders/view?id=<?= (int) $order['id'] ?>"
                                     title="View order"
                                     style="display: inline-flex; color: #0284c7;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg xmlns="http://w3.org" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                         <polyline points="15 3 21 3 21 9"></polyline>
                                         <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -91,7 +92,7 @@
                                     <button type="submit"
                                         title="Delete order"
                                         style="display: inline-flex; border: none; background: none; padding: 0; cursor: pointer; color: #dc2626;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://w3.org" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <polyline points="3 6 5 6 21 6"></polyline>
                                             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                                             <line x1="10" y1="11" x2="10" y2="17"></line>
@@ -102,6 +103,7 @@
                             </div>
                         </td>
                     </tr>
+
                 <?php endforeach; ?>
             </tbody>
         </table>
