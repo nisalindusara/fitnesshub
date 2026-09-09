@@ -39,4 +39,27 @@ class Order extends Model
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function findByIdWithDetails(int $id): array|false
+    {
+        $query = "SELECT
+                    o.*,
+                    COALESCE(CONCAT(m.first_name, ' ', m.last_name), o.guest_name) AS customer_name,
+                    m.email AS member_email,
+                    m.phone_number AS member_phone,
+                    m.created_at AS member_since,
+                    CONCAT(s.first_name, ' ', s.last_name) AS placed_by_name,
+                    sm.name AS shipping_method_name
+                  FROM orders o
+                  LEFT JOIN users m ON o.member_id = m.id
+                  LEFT JOIN users s ON o.placed_by = s.id
+                  LEFT JOIN shipping_methods sm ON o.shipping_method_id = sm.id
+                  WHERE o.id = :id
+                  LIMIT 1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':id' => $id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
