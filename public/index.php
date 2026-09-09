@@ -67,6 +67,8 @@ $router->get('/portal/members', [MemberManagementController::class, 'index'], 'm
 $router->get('/dashboard-ecom', [StaffDashboardController::class, 'ecommerceAdmin'], 'manage_inventory');
 $router->get('/dashboard-super-admin', [StaffDashboardController::class, 'superAdmin'], 'register_super_admins');
 $router->get('/dashboard-manager', [StaffDashboardController::class, 'manager'], 'view_overview');
+
 $router->get('/portal/orders', [OrderController::class, 'index'], 'manage_orders');
+$router->get('/portal/orders/view', [OrderController::class, 'show'], 'manage_orders');
 
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
