@@ -84,7 +84,7 @@ function money($n)
                         </div>
                         <div class="totals-row">
                             <span>Shipping</span>
-                            <span>—</span>
+                            <span><?= $order['shipping_method_id'] ? money($order['shipping_cost']) : '—' ?></span>
                         </div>
                         <div class="totals-row totals-final">
                             <span>Total</span>
@@ -102,8 +102,18 @@ function money($n)
                 <div class="card-content detail-grid">
                     <div class="detail-item">
                         <p class="detail-label">Shipping Method</p>
-                        <p class="detail-value">Not yet available</p>
+                        <p class="detail-value">
+                            <?= $order['shipping_method_id']
+                                ? htmlspecialchars($order['shipping_method_name'])
+                                : 'No shipping method recorded' ?>
+                        </p>
                     </div>
+                    <?php if ($order['shipping_method_id']): ?>
+                        <div class="detail-item">
+                            <p class="detail-label">Shipping Cost</p>
+                            <p class="detail-value"><?= money($order['shipping_cost']) ?></p>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </section>
 
