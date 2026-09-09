@@ -40,6 +40,12 @@ class Order extends Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Single order header, joined with member/staff names.
+     * Returns false if the id doesn't exist — controller must handle that
+     * as a 404, not assume a row is always present.
+     */
+
     public function findByIdWithDetails(int $id): array|false
     {
         $query = "SELECT
@@ -48,12 +54,19 @@ class Order extends Model
                     m.email AS member_email,
                     m.phone_number AS member_phone,
                     m.created_at AS member_since,
+
                     CONCAT(s.first_name, ' ', s.last_name) AS placed_by_name,
                     sm.name AS shipping_method_name
                   FROM orders o
                   LEFT JOIN users m ON o.member_id = m.id
                   LEFT JOIN users s ON o.placed_by = s.id
                   LEFT JOIN shipping_methods sm ON o.shipping_method_id = sm.id
+
+                    CONCAT(s.first_name, ' ', s.last_name) AS placed_by_name
+                  FROM orders o
+                  LEFT JOIN users m ON o.member_id = m.id
+                  LEFT JOIN users s ON o.placed_by = s.id
+
                   WHERE o.id = :id
                   LIMIT 1";
 
@@ -61,5 +74,20 @@ class Order extends Model
         $stmt->execute([':id' => $id]);
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Line items for one order — separate query rather than a JOIN on the
+     * header query, same reasoning as getOrderListing()'s item_count:
+     * avoids multiplying/duplicating header columns per item row.
+     */
+    public function getItemsByOrderId(int $orderId): array
+    {
+        $query = "SELECT * FROM order_items WHERE order_id = :order_id";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':order_id' => $orderId]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

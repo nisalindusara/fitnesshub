@@ -114,20 +114,6 @@ data-table th {
   background: var(--bg-muted);
 }
 
-/* Custom Checkbox */
-input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  border: 1px solid var(--border-light);
-  cursor: pointer;
-}
-
-input[type="checkbox"]:checked {
-  background: var(--text-main);
-  accent-color: var(--text-main);
-}
-
 /* Status badges */
 .status-badge {
   display: inline-block;
@@ -161,4 +147,244 @@ input[type="checkbox"]:checked {
 .col-options {
   width: 48px;
   text-align: center;
+}
+
+/* ============================
+   Order detail view
+   ============================ */
+.order-view {
+  max-width: 1068px;
+  margin: 0 auto;
+}
+
+.order-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 0.8px solid rgba(28, 28, 28, 0.08);
+  margin-bottom: 20px;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.icon-btn:hover {
+  background: rgba(28, 28, 28, 0.05);
+}
+
+.order-heading h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+.order-subline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+.order-date {
+  font-size: 13px;
+  color: rgba(28, 28, 28, 0.45);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.status-pending {
+  color: var(--neutral-gray);
+}
+.status-paid {
+  color: var(--success-green);
+}
+.status-ready_for_pickup {
+  color: var(--warning-amber);
+}
+.status-completed {
+  color: var(--success-green);
+}
+.status-cancelled {
+  color: var(--brand-red);
+}
+
+.order-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.order-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.order-col-main {
+  flex: 2;
+  min-width: 0;
+}
+.order-col-side {
+  flex: 1;
+  min-width: 260px;
+}
+
+.card {
+  border: 0.8px solid rgba(28, 28, 28, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.card-shaded {
+  background: #f7f9fb;
+  border-color: transparent;
+}
+.card-header {
+  padding: 12px 16px;
+  border-bottom: 0.8px solid rgba(28, 28, 28, 0.08);
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+}
+.card-content {
+  padding: 16px;
+}
+
+.product-row {
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+}
+.product-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.product-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+.product-meta {
+  font-size: 13px;
+  color: rgba(28, 28, 28, 0.5);
+  margin: 2px 0 0;
+}
+.product-price {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  margin: 0;
+}
+.product-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.pill {
+  font-size: 12px;
+  color: rgba(28, 28, 28, 0.45);
+  background: rgba(28, 28, 28, 0.05);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.totals {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 0.8px solid rgba(28, 28, 28, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgba(28, 28, 28, 0.5);
+}
+.totals-row span:last-child {
+  color: #1c1c1c;
+}
+.totals-final {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 0.8px solid rgba(28, 28, 28, 0.08);
+  font-size: 14px;
+  font-weight: 600;
+}
+.totals-final span {
+  color: #1c1c1c;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+}
+.detail-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.detail-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: rgba(28, 28, 28, 0.45);
+  margin: 0 0 4px;
+}
+.detail-value {
+  font-size: 14px;
+  color: #1c1c1c;
+  margin: 0;
+  line-height: 20px;
+}
+
+.note-text {
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(28, 28, 28, 0.5);
+  line-height: 18px;
+  margin: 0;
+}
+.note-empty {
+  font-size: 13px;
+  color: rgba(28, 28, 28, 0.4);
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .order-body {
+    flex-direction: column;
+  }
+  .order-col-side {
+    min-width: 0;
+    width: 100%;
+  }
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
 }

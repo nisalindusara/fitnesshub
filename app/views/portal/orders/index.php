@@ -46,7 +46,6 @@
         <table class="data-table">
             <thead>
                 <tr>
-                    <th class="col-checkbox"><input type="checkbox"></th>
                     <th>Order #</th>
                     <th>Customer</th>
                     <th>Placed By</th>
@@ -60,7 +59,7 @@
             <tbody>
                 <?php foreach ($orders as $order): ?>
                     <tr>
-                        <td class="col-checkbox"><input type="checkbox"></td>
+                        <!-- Order Number (kept as plain text) -->
                         <td><?= htmlspecialchars($order['order_number']) ?></td>
                         <td><?= htmlspecialchars($order['customer_name'] ?? 'Unknown') ?></td>
                         <td><?= htmlspecialchars($order['placed_by_name']) ?></td>
@@ -72,16 +71,39 @@
                             </span>
                         </td>
                         <td><?= date('M j, Y', strtotime($order['created_at'])) ?></td>
+
+                        <!-- Actions Column -->
                         <td class="col-options">
-                            <button class="icon-btn" style="width: 24px; height: 24px;">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2">
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                    <circle cx="19" cy="12" r="1"></circle>
-                                    <circle cx="5" cy="12" r="1"></circle>
-                                </svg>
-                            </button>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <!-- View Link wrapping ONLY the SVG icon -->
+                                <a href="/portal/orders/view?id=<?= (int) $order['id'] ?>"
+                                    title="View order"
+                                    style="display: inline-flex; color: #0284c7;">
+                                    <svg xmlns="http://w3.org" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                </a>
+
+                                <!-- Delete -->
+                                <form action="delete_order.php" method="POST" style="margin: 0; display: inline-flex;" onsubmit="return confirm('Are you sure you want to delete Order #<?= htmlspecialchars($order['order_number']) ?>?');">
+                                    <input type="hidden" name="order_id" value="<?= htmlspecialchars($order['order_number']) ?>">
+                                    <button type="submit"
+                                        title="Delete order"
+                                        style="display: inline-flex; border: none; background: none; padding: 0; cursor: pointer; color: #dc2626;">
+                                        <svg xmlns="http://w3.org" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
+
                 <?php endforeach; ?>
             </tbody>
         </table>
