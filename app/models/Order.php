@@ -82,4 +82,92 @@ class Order extends Model
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function create(array $orderData, array $items): int|false
+    {
+        $variantModel = new ProductVariant();
+
+        try {
+            $this->db->beginTransaction();
+
+            $insertOrder = "INSERT INTO orders
+                (order_number, member_id, guest_name, guest_phone, placed_by,
+                 shipping_method_id, shipping_cost, subtotal, discount_amount,
+                 tax_amount, total_amount, notes, status)
+                VALUES
+                (:order_number, :member_id, :guest_name, :guest_phone, :placed_by,
+                 :shipping_method_id, :shipping_cost, :subtotal, :discount_amount,
+                 :tax_amount, :total_amount, :notes, 'pending')";
+
+            $stmt = $this->db->prepare($insertOrder);
+            $stmt->execute([
+                ':order_number'        => 'TEMP',
+                ':member_id'           => $orderData['member_id'],
+                ':guest_name'          => $orderData['guest_name'],
+                ':guest_phone'         => $orderData['guest_phone'],
+                ':placed_by'           => $orderData['placed_by'],
+                ':shipping_method_id'  => $orderData['shipping_method_id'],
+                ':shipping_cost'       => $orderData['shipping_cost'],
+                ':subtotal'            => $orderData['subtotal'],
+                ':discount_amount'     => $orderData['discount_amount'],
+                ':tax_amount'          => $orderData['tax_amount'],
+                ':total_amount'        => $orderData['total_amount'],
+                ':notes'               => $orderData['notes'] ?? null,
+            ]);
+
+            $orderId = (int) $this->db->lastInsertId();
+
+            $orderNumber = 'FH-' . date('Y') . '-' . str_pad((string) $orderId, 5, '0', STR_PAD_LEFT);
+            $this->db->prepare("UPDATE orders SET order_number = :order_number WHERE id = :id")
+                ->execute([':order_number' => $orderNumber, ':id' => $orderId]);
+
+            $insertItem = "INSERT INTO order_items
+                (order_id, product_variant_id, product_name, variant_label, unit_price, quantity, line_subtotal)
+                VALUES (:order_id, :product_variant_id, :product_name, :variant_label, :unit_price, :quantity, :line_subtotal)";
+            $itemStmt = $this->db->prepare($insertItem);
+
+            foreach ($items as $item) {
+                $variant = $variantModel->findById($item['variant_id']);
+
+                if ($variant === false) {
+                    throw new RuntimeException("Variant {$item['variant_id']} not found or inactive.");
+                }
+
+                $decremented = $variantModel->decrementStock($item['variant_id'], $item['quantity']);
+
+                if (!$decremented) {
+                    throw new RuntimeException("Insufficient stock for variant {$item['variant_id']}.");
+                }
+
+                $variantLabel = trim(implode(' / ', array_filter([$variant['size'], $variant['color']])));
+
+                $itemStmt->execute([
+                    ':order_id'           => $orderId,
+                    ':product_variant_id' => $item['variant_id'],
+                    ':product_name'       => $variant['product_name'],
+                    ':variant_label'      => $variantLabel ?: null,
+                    ':unit_price'         => $variant['price'],
+                    ':quantity'           => $item['quantity'],
+                    ':line_subtotal'      => $variant['price'] * $item['quantity'],
+                ]);
+            }
+
+            $this->db->commit();
+            return $orderId;
+        } catch (Throwable $e) {
+            $this->db->rollBack();
+            return false;
+        }
+    }
+
+    /**
+     * Direct status update — used when a form lets staff set an initial
+     * status other than 'pending'. Callers must check OrderStatusService
+     * first; this method does not enforce the payment-verification link.
+     */
+    public function updateStatus(int $orderId, string $status): bool
+    {
+        $stmt = $this->db->prepare("UPDATE orders SET status = :status WHERE id = :id");
+        return $stmt->execute([':status' => $status, ':id' => $orderId]);
+    }
 }

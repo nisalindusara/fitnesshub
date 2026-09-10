@@ -20,6 +20,7 @@ require_once __DIR__ . '/../app/controllers/StaffDashboardController.php';
 require_once __DIR__ . '/../app/controllers/AdminController.php';
 require_once __DIR__ . '/../app/controllers/InstructorController.php';
 require_once __DIR__ . '/../app/controllers/OrderController.php';
+require_once __DIR__ . '/../app/controllers/ProductController.php';
 
 $router = new Router();
 
@@ -70,5 +71,11 @@ $router->get('/dashboard-manager', [StaffDashboardController::class, 'manager'],
 
 $router->get('/portal/orders', [OrderController::class, 'index'], 'manage_orders');
 $router->get('/portal/orders/view', [OrderController::class, 'show'], 'manage_orders');
+$router->get('/portal/products/search', [ProductController::class, 'searchVariants'], 'manage_orders');
+$router->get('/portal/products/add-order', [OrderController::class, 'showAddOrder'], 'manage_orders');
+$router->get('/portal/orders/create', [OrderController::class, 'create'], 'manage_orders');
+$router->post('/portal/orders', [OrderController::class, 'store'], 'manage_orders');
+$router->get('/portal/products/search', [ProductController::class, 'searchVariants'], 'manage_orders');
+$router->get('/portal/members/search', [MemberController::class, 'search'], 'manage_orders');
 
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
