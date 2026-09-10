@@ -60,15 +60,21 @@ class User extends Model
                   FROM users
                   WHERE role_id IS NULL
                     AND (
-                        first_name LIKE :term
-                        OR last_name LIKE :term
-                        OR phone_number LIKE :term
-                        OR CONCAT(first_name, ' ', last_name) LIKE :term
+                        first_name LIKE :term1
+                        OR last_name LIKE :term2
+                        OR phone_number LIKE :term3
+                        OR CONCAT(first_name, ' ', last_name) LIKE :term4
                     )
                   LIMIT 20";
 
         $stmt = $this->db->prepare($query);
-        $stmt->execute([':term' => '%' . $term . '%']);
+        $likeTerm = '%' . $term . '%';
+        $stmt->execute([
+            ':term1' => $likeTerm,
+            ':term2' => $likeTerm,
+            ':term3' => $likeTerm,
+            ':term4' => $likeTerm,
+        ]);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -48,16 +48,22 @@ class ProductVariant extends Model
                   WHERE pv.is_active = 1
                     AND p.is_active = 1
                     AND (
-                        p.name LIKE :term
-                        OR pv.sku LIKE :term
-                        OR pv.size LIKE :term
-                        OR pv.color LIKE :term
+                        p.name LIKE :term1
+                        OR pv.sku LIKE :term2
+                        OR pv.size LIKE :term3
+                        OR pv.color LIKE :term4
                     )
                   ORDER BY p.name ASC, pv.size ASC, pv.color ASC
                   LIMIT 20";
 
         $stmt = $this->db->prepare($query);
-        $stmt->execute([':term' => '%' . $term . '%']);
+        $likeTerm = '%' . $term . '%';
+        $stmt->execute([
+            ':term1' => $likeTerm,
+            ':term2' => $likeTerm,
+            ':term3' => $likeTerm,
+            ':term4' => $likeTerm,
+        ]);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
