@@ -21,13 +21,14 @@ class ProductVariant extends Model
     public function decrementStock(int $variantId, int $quantity): bool
     {
         $query = "UPDATE product_variants
-                  SET stock_quantity = stock_quantity - :quantity
-                  WHERE id = :id AND stock_quantity >= :quantity";
+                  SET stock_quantity = stock_quantity - :quantity1
+                  WHERE id = :id AND stock_quantity >= :quantity2";
 
         $stmt = $this->db->prepare($query);
         $stmt->execute([
-            ':quantity' => $quantity,
-            ':id'       => $variantId,
+            ':quantity1' => $quantity,
+            ':id'        => $variantId,
+            ':quantity2' => $quantity,
         ]);
 
         return $stmt->rowCount() > 0;

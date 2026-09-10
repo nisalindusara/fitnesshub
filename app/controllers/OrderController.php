@@ -63,7 +63,7 @@ class OrderController extends Controller
         try {
             $customer = OrderService::resolveCustomer($_POST);
         } catch (InvalidArgumentException $e) {
-            $this->redirect('/portal/orders/create?error=' . urlencode($e->getMessage()));
+            $this->redirect('/portal/orders/add-order?error=' . urlencode($e->getMessage()));
             return;
         }
 
@@ -72,21 +72,21 @@ class OrderController extends Controller
         $shippingMethodRow = $shippingMethodModel->findActiveById($shippingMethodId);
 
         if ($shippingMethodRow === false) {
-            $this->redirect('/portal/orders/create?error=invalid_shipping_method');
+            $this->redirect('/portal/orders/add-order?error=invalid_shipping_method');
             return;
         }
 
         $handler = ShippingHandlerFactory::make($shippingMethodRow['key']);
 
         if (!$handler->validate($_POST)) {
-            $this->redirect('/portal/orders/create?error=missing_shipping_details');
+            $this->redirect('/portal/orders/add-order?error=missing_shipping_details');
             return;
         }
 
         $items = json_decode($_POST['items_json'] ?? '[]', true);
 
         if (!is_array($items) || empty($items)) {
-            $this->redirect('/portal/orders/create?error=empty_cart');
+            $this->redirect('/portal/orders/add-order?error=empty_cart');
             return;
         }
 
@@ -97,7 +97,7 @@ class OrderController extends Controller
         foreach ($items as $item) {
             $variant = $variantModel->findById((int) $item['variant_id']);
             if ($variant === false) {
-                $this->redirect('/portal/orders/create?error=invalid_product');
+                $this->redirect('/portal/orders/add-order?error=invalid_product');
                 return;
             }
             $subtotal += $variant['price'] * (int) $item['quantity'];
@@ -124,7 +124,7 @@ class OrderController extends Controller
         $orderId = $orderModel->create($orderData, $items);
 
         if ($orderId === false) {
-            $this->redirect('/portal/orders/create?error=stock_or_creation_failed');
+            $this->redirect('/portal/orders/add-order?error=stock_or_creation_failed');
             return;
         }
 
