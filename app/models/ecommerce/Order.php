@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../core/Model.php';
+require_once __DIR__ . '/../../core/Model.php';
 
 class Order extends Model
 {

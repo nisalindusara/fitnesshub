@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../models/Payment.php';
+require_once __DIR__ . '/../models/payment/Payment.php';
 
 /**
  * Enforces the rule that an order cannot move to a "money already

@@ -1,8 +1,8 @@
 <?php
 
 require_once __DIR__ . '/../core/Controller.php';
-require_once __DIR__ . '/../models/User.php';
-require_once __DIR__ . '/../models/Role.php';
+require_once __DIR__ . '/../models/account/User.php';
+require_once __DIR__ . '/../models/account/Role.php';
 require_once __DIR__ . '/../services/AuthorizationService.php';
 
 /**
