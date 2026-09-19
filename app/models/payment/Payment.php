@@ -162,4 +162,23 @@ class Payment extends Model
 
         return $stmt->rowCount() > 0;
     }
+
+    /**
+     * The single payment linked to an order (one payment per order), with the
+     * name of the person who recorded it. Returns false if none is recorded.
+     */
+    public function findByOrderId(int $orderId): array|false
+    {
+        $query = "SELECT p.*, CONCAT(u.first_name, ' ', u.last_name) AS recorded_by_name
+                  FROM payments p
+                  JOIN order_payments op ON op.payment_id = p.id
+                  JOIN users u ON p.recorded_by = u.id
+                  WHERE op.order_id = :order_id
+                  LIMIT 1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':order_id' => $orderId]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

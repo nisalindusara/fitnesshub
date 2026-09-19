@@ -288,4 +288,18 @@ class Order extends Model
             ':changed_by' => $changedBy,
         ]);
     }
+
+    /** History rows for one order, oldest first. Pending has no row (see order_status_history.sql). */
+    public function getStatusHistory(int $orderId): array
+    {
+        $stmt = $this->db->prepare(
+            "SELECT status, changed_by, changed_at
+             FROM order_status_history
+             WHERE order_id = :order_id
+             ORDER BY id ASC"
+        );
+        $stmt->execute([':order_id' => $orderId]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
