@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../core/Model.php';
+require_once __DIR__ . '/../../core/Model.php';
 
 class Payment extends Model
 {
@@ -144,5 +144,41 @@ class Payment extends Model
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $result['verification_status'] ?? null;
+    }
+
+    /**
+     * Approves a bank transfer. Only matches a payment that is still
+     * pending_verification, so approving twice is harmless (returns false).
+     * The caller must already have checked the payments.verify permission.
+     */
+    public function markVerified(int $paymentId): bool
+    {
+        $query = "UPDATE payments
+                  SET verification_status = 'verified'
+                  WHERE id = :id AND verification_status = 'pending_verification'";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':id' => $paymentId]);
+
+        return $stmt->rowCount() > 0;
+    }
+
+    /**
+     * The single payment linked to an order (one payment per order), with the
+     * name of the person who recorded it. Returns false if none is recorded.
+     */
+    public function findByOrderId(int $orderId): array|false
+    {
+        $query = "SELECT p.*, CONCAT(u.first_name, ' ', u.last_name) AS recorded_by_name
+                  FROM payments p
+                  JOIN order_payments op ON op.payment_id = p.id
+                  JOIN users u ON p.recorded_by = u.id
+                  WHERE op.order_id = :order_id
+                  LIMIT 1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':order_id' => $orderId]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

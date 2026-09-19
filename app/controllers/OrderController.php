@@ -1,11 +1,11 @@
 <?php
 
 require_once __DIR__ . '/../core/Controller.php';
-require_once __DIR__ . '/../models/Order.php';
-require_once __DIR__ . '/../models/ShippingMethod.php';
+require_once __DIR__ . '/../models/ecommerce/Order.php';
+require_once __DIR__ . '/../models/ecommerce/ShippingMethod.php';
 require_once __DIR__ . '/../services/shipping/ShippingHandlerFactory.php';
-require_once __DIR__ . '/../models/ProductVariant.php';
-require_once __DIR__ . '/../models/Payment.php';
+require_once __DIR__ . '/../models/ecommerce/ProductVariant.php';
+require_once __DIR__ . '/../models/payment/Payment.php';
 require_once __DIR__ . '/../services/OrderService.php';
 require_once __DIR__ . '/../services/OrderStatusService.php';
 require_once __DIR__ . '/../services/PaymentVerificationService.php';
@@ -13,6 +13,10 @@ require_once __DIR__ . '/../services/shipping/ShippingHandlerFactory.php';
 
 class OrderController extends Controller
 {
+
+    // Permission that allows advancing and cancelling orders.
+    private const PERM_UPDATE_STATUS = 'manage_orders';
+
     public function index(): void
     {
         $orderModel = new Order();
@@ -41,8 +45,22 @@ class OrderController extends Controller
             return;
         }
 
+        $statusService = new OrderStatusService();
+
+        // Set by advance() after a successful change, so the fill animation
+        // plays once on the next page load and never again on refresh.
+        $animateProgress = ($_SESSION['order_status_animate'] ?? null) === $orderId;
+        unset($_SESSION['order_status_animate']);
+
         $data['order'] = $order;
         $data['items'] = $orderModel->getItemsByOrderId($orderId);
+        $data['statusBlock'] = $statusService->buildStatusBlock(
+            $order,
+            $orderModel->getStatusHistory($orderId)
+        );
+        $data['payment'] = (new Payment())->findByOrderId($orderId);
+        $data['canUpdateStatus'] = Gate::allows(self::PERM_UPDATE_STATUS);
+        $data['animateProgress'] = $animateProgress;
 
         $this->render('portal/orders/show', 'staff-layout', $data);
     }
@@ -151,5 +169,63 @@ class OrderController extends Controller
         }
 
         $this->redirect('/portal/orders/view?id=' . $orderId . '&success=1');
+    }
+
+    /**
+     * POST: the "Mark as ..." button on the order page.
+     * expected_status is the status the admin was looking at when they pressed it.
+     */
+    public function advance(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            return;
+        }
+
+        if (!Gate::allows(self::PERM_UPDATE_STATUS)) {
+            http_response_code(403);
+            echo '403 - Forbidden';
+            return;
+        }
+
+        $orderId = (int) ($_POST['order_id'] ?? 0);
+        $expectedStatus = (string) ($_POST['expected_status'] ?? '');
+        $back = '/portal/orders/view?id=' . $orderId;
+
+        try {
+            (new OrderStatusService())->advance($orderId, (int) $_SESSION['user_id'], $expectedStatus);
+        } catch (InvalidArgumentException | RuntimeException $e) {
+            $this->redirect($back . '&error=' . urlencode($e->getMessage()));
+            return;
+        }
+
+        $_SESSION['order_status_animate'] = $orderId;
+        $this->redirect($back . '&success=1');
+    }
+
+    /** POST: the cancel dialog. The reason is mandatory and checked in the service. */
+    public function cancel(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            return;
+        }
+
+        if (!Gate::allows(self::PERM_UPDATE_STATUS)) {
+            http_response_code(403);
+            echo '403 - Forbidden';
+            return;
+        }
+
+        $orderId = (int) ($_POST['order_id'] ?? 0);
+        $reason = (string) ($_POST['reason'] ?? '');
+        $back = '/portal/orders/view?id=' . $orderId;
+
+        try {
+            (new OrderStatusService())->cancel($orderId, (int) $_SESSION['user_id'], $reason);
+        } catch (InvalidArgumentException | RuntimeException $e) {
+            $this->redirect($back . '&error=' . urlencode($e->getMessage()));
+            return;
+        }
+
+        $this->redirect($back . '&success=1');
     }
 }

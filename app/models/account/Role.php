@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../core/Model.php';
-require_once __DIR__ . '/../contracts/RoleRepositoryInterface.php';
+require_once __DIR__ . '/../../core/Model.php';
+require_once __DIR__ . '/../../contracts/RoleRepositoryInterface.php';
 
 /**
  * Concrete, PDO-backed implementation of role data access.

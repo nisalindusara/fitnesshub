@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../core/Model.php';
+require_once __DIR__ . '/../../core/Model.php';
 
 class ProductVariant extends Model
 {
@@ -29,6 +29,21 @@ class ProductVariant extends Model
             ':quantity1' => $quantity,
             ':id'        => $variantId,
             ':quantity2' => $quantity,
+        ]);
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function incrementStock(int $variantId, int $quantity): bool
+    {
+        $query = "UPDATE product_variants
+                  SET stock_quantity = stock_quantity + :quantity
+                  WHERE id = :id";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([
+            ':quantity' => $quantity,
+            ':id'       => $variantId,
         ]);
 
         return $stmt->rowCount() > 0;

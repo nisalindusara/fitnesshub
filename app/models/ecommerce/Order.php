@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../core/Model.php';
+require_once __DIR__ . '/../../core/Model.php';
 
 class Order extends Model
 {
@@ -54,7 +54,8 @@ class Order extends Model
                     m.phone_number AS member_phone,
                     m.created_at AS member_since,
                     CONCAT(s.first_name, ' ', s.last_name) AS placed_by_name,
-                    sm.name AS shipping_method_name
+                    sm.name AS shipping_method_name,
+                    sm.requires_address
                   FROM orders o
                   LEFT JOIN users m ON o.member_id = m.id
                   LEFT JOIN users s ON o.placed_by = s.id
@@ -161,13 +162,144 @@ class Order extends Model
     }
 
     /**
-     * Direct status update — used when a form lets staff set an initial
-     * status other than 'pending'. Callers must check OrderStatusService
-     * first; this method does not enforce the payment-verification link.
+     * Sets an order's status at creation time only (for example an in-store order
+     * that is created already 'completed'). It does NOT write order_status_history
+     * and does NOT enforce the status flow. For every later change use
+     * OrderStatusService::advance(), confirmPayment() or cancel().
      */
     public function updateStatus(int $orderId, string $status): bool
     {
         $stmt = $this->db->prepare("UPDATE orders SET status = :status WHERE id = :id");
         return $stmt->execute([':status' => $status, ':id' => $orderId]);
+    }
+
+    /**
+     * Moves an order from one status to another and records the change in
+     * order_status_history, as one atomic unit.
+     *
+     * The UPDATE only matches if the order is STILL in $from. If two admins press
+     * Update at the same time (or one double-clicks), the second one matches zero
+     * rows and gets false. Same idea as decrementStock()'s atomic WHERE clause.
+     * The unique key on (order_id, status) is a second safety net.
+     *
+     * $changedBy is the user id, or null for an automatic change.
+     */
+    public function applyStatusChange(int $orderId, string $from, string $to, ?int $changedBy): bool
+    {
+        try {
+            $this->db->beginTransaction();
+
+            $stmt = $this->db->prepare(
+                "UPDATE orders SET status = :to WHERE id = :id AND status = :from"
+            );
+            $stmt->execute([
+                ':to'   => $to,
+                ':id'   => $orderId,
+                ':from' => $from,
+            ]);
+
+            if ($stmt->rowCount() === 0) {
+                $this->db->rollBack();
+                return false;
+            }
+
+            $this->insertStatusHistory($orderId, $to, $changedBy);
+
+            $this->db->commit();
+            return true;
+        } catch (Throwable $e) {
+            if ($this->db->inTransaction()) {
+                $this->db->rollBack();
+            }
+            return false;
+        }
+    }
+
+    /**
+     * Soft-cancels an order: status, reason and time, the history row, and the
+     * stock restore, all in one transaction. Mirrors create(), which decrements
+     * stock in its own transaction.
+     *
+     * Like applyStatusChange(), it only matches if the order is still in $from,
+     * so a double cancel can never restore stock twice.
+     */
+    public function cancel(int $orderId, string $from, string $reason, ?int $changedBy): bool
+    {
+        $variantModel = new ProductVariant();
+
+        try {
+            $this->db->beginTransaction();
+
+            $stmt = $this->db->prepare(
+                "UPDATE orders
+                 SET status = 'cancelled',
+                     cancelled_at = CURRENT_TIMESTAMP,
+                     cancelled_reason = :reason
+                 WHERE id = :id AND status = :from"
+            );
+            $stmt->execute([
+                ':reason' => $reason,
+                ':id'     => $orderId,
+                ':from'   => $from,
+            ]);
+
+            if ($stmt->rowCount() === 0) {
+                $this->db->rollBack();
+                return false;
+            }
+
+            foreach ($this->getItemsByOrderId($orderId) as $item) {
+                $restored = $variantModel->incrementStock(
+                    (int) $item['product_variant_id'],
+                    (int) $item['quantity']
+                );
+
+                if (!$restored) {
+                    throw new RuntimeException("Could not restore stock for variant {$item['product_variant_id']}.");
+                }
+            }
+
+            $this->insertStatusHistory($orderId, 'cancelled', $changedBy);
+
+            $this->db->commit();
+            return true;
+        } catch (Throwable $e) {
+            if ($this->db->inTransaction()) {
+                $this->db->rollBack();
+            }
+            return false;
+        }
+    }
+
+    /**
+     * Private on purpose: a history row must only ever be written inside a
+     * transaction that also changes orders.status.
+     * changed_at is filled by the column default (CURRENT_TIMESTAMP).
+     */
+    private function insertStatusHistory(int $orderId, string $status, ?int $changedBy): void
+    {
+        $stmt = $this->db->prepare(
+            "INSERT INTO order_status_history (order_id, status, changed_by)
+             VALUES (:order_id, :status, :changed_by)"
+        );
+        $stmt->execute([
+            ':order_id'   => $orderId,
+            ':status'     => $status,
+            ':changed_by' => $changedBy,
+        ]);
+    }
+
+    /** History rows for one order, oldest first. Pending has no row (see order_status_history.sql). */
+    public function getStatusHistory(int $orderId): array
+    {
+        $stmt = $this->db->prepare(
+            "SELECT status, changed_by, changed_at
+             FROM order_status_history
+             WHERE order_id = :order_id
+             ORDER BY id ASC"
+        );
+        $stmt->execute([':order_id' => $orderId]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
