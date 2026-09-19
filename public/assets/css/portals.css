@@ -153,7 +153,6 @@ data-table th {
    Order detail view
    ============================ */
 .order-view {
-  max-width: 1068px;
   margin: 0 auto;
 }
 
