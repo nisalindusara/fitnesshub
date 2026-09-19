@@ -1,6 +1,5 @@
 <?php
 
-// Adjust these two paths to wherever Order.php and Payment.php live.
 require_once __DIR__ . '/../models/ecommerce/Order.php';
 require_once __DIR__ . '/../models/payment/Payment.php';
 
@@ -45,6 +44,15 @@ class OrderStatusService
 
     private const MAX_REASON_LENGTH = 255; // orders.cancelled_reason is varchar(255)
 
+    private const LABELS = [
+        'pending'             => 'Pending',
+        'confirmed'           => 'Confirmed',
+        'ready_for_pickup'    => 'Ready for Pickup',
+        'handed_for_delivery' => 'Handed for Delivery',
+        'completed'           => 'Completed',
+        'cancelled'           => 'Cancelled',
+    ];
+
     private Order $orders;
     private Payment $payments;
 
@@ -64,13 +72,16 @@ class OrderStatusService
      */
     public function getFlow(array $order): array
     {
-        if ($order['channel'] === 'in_store') {
+        $isDelivery = (int) ($order['requires_address'] ?? 0) === 1;
+
+        // Only an in-store PICKUP order collapses to a single Completed state
+        // (paid and collected at the counter). An in-store delivery order still
+        // has to go out with a courier, so it follows the delivery flow.
+        if ($order['channel'] === 'in_store' && !$isDelivery) {
             return self::IN_STORE_FLOW;
         }
 
-        return (int) $order['requires_address'] === 1
-            ? self::DELIVERY_FLOW
-            : self::PICKUP_FLOW;
+        return $isDelivery ? self::DELIVERY_FLOW : self::PICKUP_FLOW;
     }
 
     /** The status after the current one, or null at the end of the flow / when cancelled. */
@@ -99,14 +110,82 @@ class OrderStatusService
         return in_array($order['status'], self::CANCELLABLE, true);
     }
 
+    /**
+     * Everything the status block in the view needs, so the view stays a plain renderer.
+     * $history is Order::getStatusHistory() for this order.
+     *
+     * Pending's time is orders.created_at. So is the single Completed state of an
+     * in-store pickup order. Every other time comes from order_status_history; orders
+     * migrated from before that table have no row for earlier steps, so 'at' is null.
+     */
+    public function buildStatusBlock(array $order, array $history): array
+    {
+        if ($order['status'] === 'cancelled') {
+            return [
+                'is_cancelled'     => true,
+                'steps'            => [],
+                'cancelled_at'     => $order['cancelled_at'],
+                'cancelled_reason' => $order['cancelled_reason'],
+                'next_action'      => null,
+                'can_cancel'       => false,
+            ];
+        }
+
+        $timeByStatus = [];
+        foreach ($history as $row) {
+            $timeByStatus[$row['status']] = $row['changed_at'];
+        }
+
+        $flow = $this->getFlow($order);
+        $currentIndex = array_search($order['status'], $flow, true);
+
+        $steps = [];
+        foreach ($flow as $index => $status) {
+            $isFirstOrInStore = $status === 'pending' || $flow === self::IN_STORE_FLOW;
+
+            $steps[] = [
+                'status'  => $status,
+                'label'   => self::LABELS[$status],
+                'reached' => $currentIndex !== false && $index <= $currentIndex,
+                'current' => $index === $currentIndex,
+                'at'      => $isFirstOrInStore ? $order['created_at'] : ($timeByStatus[$status] ?? null),
+            ];
+        }
+
+        $next = $this->getNextManualStatus($order);
+
+        return [
+            'is_cancelled'     => false,
+            'steps'            => $steps,
+            'cancelled_at'     => null,
+            'cancelled_reason' => null,
+            'next_action'      => $next === null ? null : [
+                'status' => $next,
+                'label'  => 'Mark as ' . self::LABELS[$next],
+            ],
+            'can_cancel'       => $this->canCancel($order),
+        ];
+    }
+
     // ------------------------------------------------------------------
     // Actions
     // ------------------------------------------------------------------
 
-    /** Admin pressed Update. Moves the order to its next manual status. */
-    public function advance(int $orderId, int $adminId): void
+    /**
+     * Admin pressed the "Mark as ..." button. Moves the order to its next manual status.
+     * $expectedStatus is the status the admin was looking at when they pressed it.
+     */
+    public function advance(int $orderId, int $adminId, string $expectedStatus): void
     {
         $order = $this->getOrderOrFail($orderId);
+
+        // If the status changed since the page loaded, do nothing. Pressing
+        // "Mark as Ready" must never complete an order that someone else has
+        // just moved to Ready.
+        if ($order['status'] !== $expectedStatus) {
+            throw new RuntimeException('This order was updated by someone else. Reload and try again.');
+        }
+
         $next = $this->getNextManualStatus($order);
 
         if ($next === null) {

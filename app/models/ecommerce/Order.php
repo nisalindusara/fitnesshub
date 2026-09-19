@@ -55,7 +55,7 @@ class Order extends Model
                     m.created_at AS member_since,
                     CONCAT(s.first_name, ' ', s.last_name) AS placed_by_name,
                     sm.name AS shipping_method_name,
-                    sm.require_address
+                    sm.requires_address
                   FROM orders o
                   LEFT JOIN users m ON o.member_id = m.id
                   LEFT JOIN users s ON o.placed_by = s.id
