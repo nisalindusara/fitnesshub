@@ -34,6 +34,21 @@ class ProductVariant extends Model
         return $stmt->rowCount() > 0;
     }
 
+    public function incrementStock(int $variantId, int $quantity): bool
+    {
+        $query = "UPDATE product_variants
+                  SET stock_quantity = stock_quantity + :quantity
+                  WHERE id = :id";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([
+            ':quantity' => $quantity,
+            ':id'       => $variantId,
+        ]);
+
+        return $stmt->rowCount() > 0;
+    }
+
     public function search(string $term): array
     {
         $query = "SELECT

@@ -145,4 +145,21 @@ class Payment extends Model
 
         return $result['verification_status'] ?? null;
     }
+
+    /**
+     * Approves a bank transfer. Only matches a payment that is still
+     * pending_verification, so approving twice is harmless (returns false).
+     * The caller must already have checked the payments.verify permission.
+     */
+    public function markVerified(int $paymentId): bool
+    {
+        $query = "UPDATE payments
+                  SET verification_status = 'verified'
+                  WHERE id = :id AND verification_status = 'pending_verification'";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':id' => $paymentId]);
+
+        return $stmt->rowCount() > 0;
+    }
 }
