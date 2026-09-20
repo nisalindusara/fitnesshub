@@ -12,18 +12,18 @@
     <!-- Toolbar -->
     <div class="toolbar">
         <div class="toolbar-actions">
-            <button class="icon-btn">
+            <button class="icon-btn add-list-item-button">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                 </svg>
             </button>
-            <button class="icon-btn">
+            <button class="icon-btn filter-list-items-button">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2">
                     <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
                 </svg>
             </button>
-            <button class="icon-btn">
+            <button class="icon-btn sort-list-items-button">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <polyline points="19 12 12 19 5 12"></polyline>
