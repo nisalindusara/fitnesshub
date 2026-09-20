@@ -18,18 +18,6 @@
   gap: 8px;
 }
 
-.icon-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-}
-
 .page-title {
   font-size: 14px;
   color: var(--text-main);
