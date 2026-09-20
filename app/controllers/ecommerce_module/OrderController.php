@@ -1,15 +1,15 @@
 <?php
 
-require_once __DIR__ . '/../core/Controller.php';
-require_once __DIR__ . '/../models/ecommerce/Order.php';
-require_once __DIR__ . '/../models/ecommerce/ShippingMethod.php';
-require_once __DIR__ . '/../services/shipping/ShippingHandlerFactory.php';
-require_once __DIR__ . '/../models/ecommerce/ProductVariant.php';
-require_once __DIR__ . '/../models/payment/Payment.php';
-require_once __DIR__ . '/../services/OrderService.php';
-require_once __DIR__ . '/../services/OrderStatusService.php';
-require_once __DIR__ . '/../services/PaymentVerificationService.php';
-require_once __DIR__ . '/../services/shipping/ShippingHandlerFactory.php';
+require_once __DIR__ . '/../../core/Controller.php';
+require_once __DIR__ . '/../../models/ecommerce/Order.php';
+require_once __DIR__ . '/../../models/ecommerce/ShippingMethod.php';
+require_once __DIR__ . '/../../services/shipping/ShippingHandlerFactory.php';
+require_once __DIR__ . '/../../models/ecommerce/ProductVariant.php';
+require_once __DIR__ . '/../../models/payment/Payment.php';
+require_once __DIR__ . '/../../services/OrderService.php';
+require_once __DIR__ . '/../../services/OrderStatusService.php';
+require_once __DIR__ . '/../../services/PaymentVerificationService.php';
+require_once __DIR__ . '/../../services/shipping/ShippingHandlerFactory.php';
 
 class OrderController extends Controller
 {
