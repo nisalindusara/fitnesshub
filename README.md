@@ -108,6 +108,7 @@ fitnesshub/
 │   └── views/        Templates, organised by actor
 ├── config/           Application and database configuration
 ├── database/         SQL schema file and database notes
+├── docs/             Cross-cutting documentation and ADRs
 ├── public/           Web root: entry point, assets, public uploads
 ├── storage/          Logs and private uploads (not publicly served)
 └── tests/            Automated tests
@@ -115,12 +116,13 @@ fitnesshub/
 
 ## Documentation index
 
-| README                                     | Covers                                        |
-| ------------------------------------------ | --------------------------------------------- |
-| [`app/README.md`](app/README.md)           | Architecture and where code goes              |
-| [`database/README.md`](database/README.md) | Schema file, import, and the schema sync rule |
-| [`public/README.md`](public/README.md)     | Web root and assets                           |
-| [`CONTRIBUTING.md`](CONTRIBUTING.md)       | Git workflow and pull request checklist       |
+| README                                     | Covers                                            |
+| ------------------------------------------ | ------------------------------------------------- |
+| [`app/README.md`](app/README.md)           | Architecture and where code goes                  |
+| [`database/README.md`](database/README.md) | Schema file, import, and the schema sync rule     |
+| [`public/README.md`](public/README.md)     | Web root and assets                               |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md)       | Git workflow and pull request checklist           |
+| [`docs/README.md`](docs/README.md)         | Order lifecycle and architecture decision records |
 
 ## Contributing
 
