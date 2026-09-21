@@ -7,6 +7,7 @@
 | [0001](0001-business-logic-in-services.md)      | Business logic lives in services             |
 | [0002](0002-permission-based-access-control.md) | Access control checks permissions, not roles |
 | [0003](0003-shipping-handler-pattern.md)        | Shipping methods use a handler pattern       |
+| [0004](0004-custom-autoloader.md)               | Classes are loaded by a custom autoloader    |
 
 ## Writing a new record
 
