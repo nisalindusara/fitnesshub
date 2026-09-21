@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../contracts/RoleRepositoryInterface.php';
+require_once __DIR__ . '/../../models/account_module/RoleRepositoryInterface.php';
 
 /**
  * The only place that turns "a role_id" into "a list of permission keys."
