@@ -57,11 +57,7 @@ $router->post('/login', [AuthController::class, "authenticate"]);
 // MEMBER ROUTES
 $router->get('/dashboard', [MemberController::class, "dashboard"]);
 
-// INSTRUCTOR ROUTES
-$router->get('/my-clients', [InstructorController::class, 'myClients'], 'view_own_clients');
-
 // STAFF ROUTES
-$router->get('/portal/members', [MemberManagementController::class, 'index'], 'manage_members');
 $router->get('/dashboard-ecom', [StaffDashboardController::class, 'ecommerceAdmin'], 'manage_inventory');
 $router->get('/dashboard-super-admin', [StaffDashboardController::class, 'superAdmin'], 'register_super_admins');
 $router->get('/dashboard-manager', [StaffDashboardController::class, 'manager'], 'view_overview');
@@ -72,7 +68,6 @@ $router->post('/portal/orders', [OrderController::class, 'store'], 'manage_order
 $router->get('/portal/orders/add-order', [OrderController::class, 'showAddOrder'], 'manage_orders');
 $router->post('/portal/orders/advance', [OrderController::class, 'advance'], 'manage_orders');
 $router->post('/portal/orders/cancel', [OrderController::class, 'cancel'], 'manage_orders');
-
 $router->get('/portal/products/search', [ProductController::class, 'searchVariants'], 'manage_orders');
 $router->get('/portal/members/search', [MemberController::class, 'search'], 'manage_orders');
 
