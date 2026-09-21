@@ -98,19 +98,21 @@ Make sure PHP can write to `storage/logs/`, `storage/uploads/`, and the folders 
 
 ```
 fitnesshub/
-├── .github/          GitHub configuration (CODEOWNERS, PR template)
+├── .github/                GitHub configuration (CODEOWNERS, PR template)
 ├── app/
-│   ├── controllers/  Request handling
-│   ├── core/         Framework internals (router, base classes, database)
-│   ├── models/       Data access
-│   ├── services/     Business rules
-│   └── views/        Templates, organised by actor
-├── config/           Application and database configuration
-├── database/         SQL schema file and database notes
-├── docs/             Cross-cutting documentation and ADRs
-├── public/           Web root: entry point, assets, public uploads
-├── storage/          Logs and private uploads (not publicly served)
-└── tests/            Automated tests
+│   ├── controllers/        Request handling
+│   ├── core/               Framework internals (router, base classes, database)
+│   ├── models/             Data access
+│   ├── routes/             ROute registration
+│   ├── services/           Business rules
+│   └── views/              Templates, organised by actor
+│   └── bootstrap.php       Start-up story
+├── config/                 Application and database configuration
+├── database/               SQL schema file and database notes
+├── docs/                   Cross-cutting documentation and ADRs
+├── public/                 Web root: entry point, assets, public uploads
+├── storage/                Logs and private uploads (not publicly served)
+└── tests/                  Automated tests
 ```
 
 ## Documentation index
