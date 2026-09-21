@@ -1,8 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../../core/Controller.php";
-require_once __DIR__ . '/../../models/account_module/User.php';
-
 class MemberController extends Controller
 {
     public function dashboard(): void

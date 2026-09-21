@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/ShippingHandlerInterface.php';
-
 class PickupHandler implements ShippingHandlerInterface
 {
     public function calculateCost(array $orderContext): float

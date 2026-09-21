@@ -2,9 +2,9 @@
 
 session_start();
 
-require_once __DIR__ . '/core/Autoloader.php';
+require_once __DIR__ . '/core/AutoLoader.php';
 
-Autoloader::register([
+AutoLoader::register([
     __DIR__ . '/core',
     __DIR__ . '/controllers',
     __DIR__ . '/models',

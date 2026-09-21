@@ -1,8 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../../core/Controller.php';
-require_once __DIR__ . '/../../models/ecommerce_module/ProductVariant.php';
-
 class ProductController extends Controller
 {
     /**
