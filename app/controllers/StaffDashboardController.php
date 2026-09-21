@@ -6,16 +6,16 @@ class StaffDashboardController extends Controller
 {
     public function ecommerceAdmin(): void
     {
-        $this->render('staff/dashboard-ecommerce-admin', 'staff-layout');
+        $this->render('dashboards/dashboard-ecommerce-admin', 'staff-layout');
     }
 
     public function superAdmin(): void
     {
-        $this->render('staff/dashboard-super-admin', 'staff-layout');
+        $this->render('dashboards/dashboard-super-admin', 'staff-layout');
     }
 
     public function manager(): void
     {
-        $this->render('staff/dashboard-manager', 'staff-layout');
+        $this->render('dashboards/dashboard-manager', 'staff-layout');
     }
 }

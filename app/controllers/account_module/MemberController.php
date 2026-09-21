@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../../core/Controller.php";
-require_once __DIR__ . '/../../models/account/User.php';
+require_once __DIR__ . '/../../models/account_module/User.php';
 
 class MemberController extends Controller
 {
@@ -14,7 +14,7 @@ class MemberController extends Controller
 
         $data['userName'] = $_SESSION['user_name'];
 
-        $this->render('member/dashboard', 'member-layout', $data);
+        $this->render('dashboards/dashboard', 'member-layout', $data);
     }
 
     public function search(): void

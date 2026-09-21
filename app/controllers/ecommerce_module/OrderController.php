@@ -1,15 +1,15 @@
 <?php
 
 require_once __DIR__ . '/../../core/Controller.php';
-require_once __DIR__ . '/../../models/ecommerce/Order.php';
-require_once __DIR__ . '/../../models/ecommerce/ShippingMethod.php';
-require_once __DIR__ . '/../../services/shipping/ShippingHandlerFactory.php';
-require_once __DIR__ . '/../../models/ecommerce/ProductVariant.php';
-require_once __DIR__ . '/../../models/payment/Payment.php';
-require_once __DIR__ . '/../../services/OrderService.php';
-require_once __DIR__ . '/../../services/OrderStatusService.php';
-require_once __DIR__ . '/../../services/PaymentVerificationService.php';
-require_once __DIR__ . '/../../services/shipping/ShippingHandlerFactory.php';
+require_once __DIR__ . '/../../models/ecommerce_module/Order.php';
+require_once __DIR__ . '/../../models/ecommerce_module/ShippingMethod.php';
+require_once __DIR__ . '/../../services/ecommerce_module/ShippingHandlerFactory.php';
+require_once __DIR__ . '/../../models/ecommerce_module/ProductVariant.php';
+require_once __DIR__ . '/../../models/payment_module/Payment.php';
+require_once __DIR__ . '/../../services/ecommerce_module/OrderService.php';
+require_once __DIR__ . '/../../services/ecommerce_module/OrderStatusService.php';
+require_once __DIR__ . '/../../services/payment_module/PaymentVerificationService.php';
+require_once __DIR__ . '/../../services/ecommerce_module/ShippingHandlerFactory.php';
 
 class OrderController extends Controller
 {
@@ -23,7 +23,7 @@ class OrderController extends Controller
 
         $data['orders'] = $orderModel->getOrderListing();
 
-        $this->render('portal/orders/index', 'staff-layout', $data);
+        $this->render('ecommerce_module/index', 'staff-layout', $data);
     }
 
     public function show(): void
@@ -62,14 +62,14 @@ class OrderController extends Controller
         $data['canUpdateStatus'] = Gate::allows(self::PERM_UPDATE_STATUS);
         $data['animateProgress'] = $animateProgress;
 
-        $this->render('portal/orders/show', 'staff-layout', $data);
+        $this->render('ecommerce_module/show', 'staff-layout', $data);
     }
 
     public function showAddOrder(): void
     {
         $shippingModel = new ShippingMethod();
         $data['shippingMethods'] = $shippingModel->getAllActive();
-        $this->render('portal/orders/add-order', 'staff-layout', $data);
+        $this->render('ecommerce_module/add-order', 'staff-layout', $data);
     }
 
     public function store(): void

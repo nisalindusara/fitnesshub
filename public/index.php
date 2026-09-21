@@ -14,7 +14,6 @@ require_once __DIR__ . '/../app/controllers/onboarding/MembershipOnboardingContr
 require_once __DIR__ . '/../app/controllers/onboarding/ClassOnboardingController.php';
 require_once __DIR__ . '/../app/controllers/onboarding/DayPassOnboardingController.php';
 require_once __DIR__ . '/../app/controllers/onboarding/StoreOnboardingController.php';
-require_once __DIR__ . '/../app/controllers/account_module/MemberManagementController.php';
 require_once __DIR__ . '/../app/controllers/StaffDashboardController.php';
 require_once __DIR__ . '/../app/controllers/class_pt_module/PtClientController.php';
 require_once __DIR__ . '/../app/controllers/ecommerce_module/OrderController.php';

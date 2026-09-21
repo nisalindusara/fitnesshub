@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../models/ecommerce/Order.php';
-require_once __DIR__ . '/../models/payment/Payment.php';
+require_once __DIR__ . '/../../models/ecommerce_module/Order.php';
+require_once __DIR__ . '/../../models/payment_module/Payment.php';
 
 /**
  * Owns the order status lifecycle. See order-status-logic.md.

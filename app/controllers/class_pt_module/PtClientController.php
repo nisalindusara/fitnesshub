@@ -6,6 +6,6 @@ class InstructorController extends Controller
 {
     public function myClients(): void
     {
-        $this->render('instructor/my-clients', 'instructor-layout');
+        $this->render('class_pt_module/my-clients', 'instructor-layout');
     }
 }
