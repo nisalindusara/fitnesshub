@@ -22,6 +22,16 @@ class Router
     public function dispatch(string $method, string $uri): void
     {
         $path = parse_url($uri, PHP_URL_PATH);
+
+        // Normalize base script directory (e.g. /fitnesshub/public) if running in a subdirectory
+        $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? ''));
+        if ($scriptDir !== '/' && $scriptDir !== '.' && !empty($scriptDir)) {
+            if (strpos($path, $scriptDir) === 0) {
+                $path = substr($path, strlen($scriptDir));
+            }
+        }
+        $path = '/' . ltrim($path, '/');
+
         $route = $this->routes[$method][$path] ?? null;
 
         if ($route === null) {

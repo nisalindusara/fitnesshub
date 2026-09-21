@@ -17,9 +17,7 @@ require_once __DIR__ . '/../app/controllers/onboarding/StoreOnboardingController
 require_once __DIR__ . '/../app/controllers/AdminController.php';
 require_once __DIR__ . '/../app/controllers/MemberManagementController.php';
 require_once __DIR__ . '/../app/controllers/StaffDashboardController.php';
-require_once __DIR__ . '/../app/controllers/AdminController.php';
 require_once __DIR__ . '/../app/controllers/InstructorController.php';
-require_once __DIR__ . '/../app/controllers/OrderController.php';
 
 $router = new Router();
 
@@ -60,13 +58,22 @@ $router->post('/login', [AuthController::class, "authenticate"]);
 $router->get('/dashboard', [MemberController::class, "dashboard"]);
 
 // INSTRUCTOR ROUTES
-$router->get('/my-clients', [InstructorController::class, 'myClients'], 'view_own_clients');
+$router->get('/my-clients', [InstructorController::class, 'myClients']);
+$router->get('/instructor/messages', [InstructorController::class, 'messages']);
+$router->get('/instructor/messages/chat', [InstructorController::class, 'getChat']);
+$router->post('/instructor/messages/send', [InstructorController::class, 'sendMessage']);
+$router->post('/instructor/messages/delete', [InstructorController::class, 'deleteMessage']);
+$router->get('/instructor/overview', [InstructorController::class, 'overview']);
+$router->get('/instructor/schedule', [InstructorController::class, 'schedule']);
+$router->get('/instructor/clients',  [InstructorController::class, 'clients']);
+$router->get('/account',             [InstructorController::class, 'account']);
 
 // STAFF ROUTES
 $router->get('/portal/members', [MemberManagementController::class, 'index'], 'manage_members');
 $router->get('/dashboard-ecom', [StaffDashboardController::class, 'ecommerceAdmin'], 'manage_inventory');
 $router->get('/dashboard-super-admin', [StaffDashboardController::class, 'superAdmin'], 'register_super_admins');
 $router->get('/dashboard-manager', [StaffDashboardController::class, 'manager'], 'view_overview');
-$router->get('/portal/orders', [OrderController::class, 'index'], 'manage_orders');
+
+$router->get('/portal/members/search', [MemberController::class, 'search'], 'manage_orders');
 
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);

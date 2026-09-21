@@ -165,6 +165,5 @@ body {
 .staff-shell__content {
   flex: 1;
   height: 100vh;
-  overflow-y: auto; /* THIS is what makes only the content scroll */
-  padding: 2rem;
+  overflow-y: auto;
 }

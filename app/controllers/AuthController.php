@@ -91,9 +91,10 @@ class AuthController extends Controller
             if (($user['role_id'] ?? null) !== null) {
                 $roleModel = new Role();
                 $role = $roleModel->findById($user['role_id']);
+                $roleKey = strtolower($role['name'] ?? '');
 
                 $sidebarShellRoles = ['receptionist', 'ecommerce_admin', 'super_admin', 'manager'];
-                $_SESSION['is_staff'] = in_array($role['name'], $sidebarShellRoles, true);
+                $_SESSION['is_staff'] = in_array($roleKey, $sidebarShellRoles, true);
                 $_SESSION['role_name'] = $role['name'];
 
                 $redirects = [
@@ -101,11 +102,11 @@ class AuthController extends Controller
                     'ecommerce_admin'  => '/dashboard-ecom',
                     'super_admin'      => '/dashboard-super-admin',
                     'manager'          => '/dashboard-manager',
-                    'instructor'       => '/my-clients',
+                    'instructor'       => '/instructor/messages',
                 ];
-                header('Location: ' . ($redirects[$role['name']] ?? '/dashboard'));
+                $this->redirect($redirects[$roleKey] ?? '/dashboard');
             } else {
-                header('Location: /dashboard');
+                $this->redirect('/dashboard');
             }
             exit;
         }

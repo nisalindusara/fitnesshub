@@ -10,4 +10,9 @@ abstract class Model
     {
         $this->db = Database::getConnection();
     }
+
+    public function getDb(): PDO
+    {
+        return $this->db;
+    }
 }
