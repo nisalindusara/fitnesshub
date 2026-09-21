@@ -1,16 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../../core/Controller.php';
-require_once __DIR__ . '/../../models/ecommerce_module/Order.php';
-require_once __DIR__ . '/../../models/ecommerce_module/ShippingMethod.php';
-require_once __DIR__ . '/../../services/ecommerce_module/ShippingHandlerFactory.php';
-require_once __DIR__ . '/../../models/ecommerce_module/ProductVariant.php';
-require_once __DIR__ . '/../../models/payment_module/Payment.php';
-require_once __DIR__ . '/../../services/ecommerce_module/OrderService.php';
-require_once __DIR__ . '/../../services/ecommerce_module/OrderStatusService.php';
-require_once __DIR__ . '/../../services/payment_module/PaymentVerificationService.php';
-require_once __DIR__ . '/../../services/ecommerce_module/ShippingHandlerFactory.php';
-
 class OrderController extends Controller
 {
 

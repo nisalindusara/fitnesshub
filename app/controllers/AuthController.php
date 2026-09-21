@@ -1,10 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../core/Controller.php';
-require_once __DIR__ . '/../models/account_module/User.php';
-require_once __DIR__ . '/../models/account_module/Role.php';
-require_once __DIR__ . '/../services/account_module/AuthorizationService.php';
-
 /**
  * Handles registration and login for all account types.
  *

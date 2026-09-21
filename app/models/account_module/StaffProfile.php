@@ -1,8 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../core/Model.php';
-require_once __DIR__ . '/StaffProfileRepositoryInterface.php';
-
 /**
  * One shared table for all four staff roles (Manager, Super Admin,
  * Receptionist, E-commerce Admin), differentiated by role_id rather than

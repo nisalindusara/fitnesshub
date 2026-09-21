@@ -1,8 +1,5 @@
 <?php
 
-require_once __DIR__ . '/PickupHandler.php';
-require_once __DIR__ . '/StandardDeliveryHandler.php';
-
 class ShippingHandlerFactory
 {
     private static array $handlers = [
