@@ -10,7 +10,7 @@ Orders can be picked up or delivered, and more shipping methods may be added lat
 
 ## Decision
 
-- `ShippingHandlerInterface` (in `app/contracts/`) defines what every shipping handler must do.
+- `ShippingHandlerInterface` defines what every shipping handler must do.
 - Each shipping method has its own concrete handler class (in `app/services/shipping/`).
 - `ShippingHandlerFactory` maps the key string stored in the `shipping_methods` table to the matching handler class.
 - Calling code depends only on the interface.

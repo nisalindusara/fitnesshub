@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../core/Model.php';
-require_once __DIR__ . '/../contracts/StaffProfileRepositoryInterface.php';
+require_once __DIR__ . '/StaffProfileRepositoryInterface.php';
 
 /**
  * One shared table for all four staff roles (Manager, Super Admin,

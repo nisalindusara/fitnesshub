@@ -100,7 +100,6 @@ Make sure PHP can write to `storage/logs/`, `storage/uploads/`, and the folders 
 fitnesshub/
 ├── .github/          GitHub configuration (CODEOWNERS, PR template)
 ├── app/
-│   ├── contracts/    Interfaces
 │   ├── controllers/  Request handling
 │   ├── core/         Framework internals (router, base classes, database)
 │   ├── models/       Data access

@@ -13,7 +13,6 @@ FitnessHub follows an MVC structure. Business rules such as "an order that has b
 - All business rule validation and multi-step workflows live in `app/services/`.
 - **Models** are data access only (queries through PDO).
 - **Controllers** handle the request and response and call services.
-- Interfaces live in `app/contracts/`, kept separate from `app/models/`.
 
 Dependencies point one way: Controller → Service → Model → Database.
 

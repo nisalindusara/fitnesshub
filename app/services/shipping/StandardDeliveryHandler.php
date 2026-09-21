@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../contracts/ShippingHandlerInterface.php';
+require_once __DIR__ . '/ShippingHandlerInterface.php';
 
 class StandardDeliveryHandler implements ShippingHandlerInterface
 {
