@@ -87,7 +87,7 @@ foreach ($visibleNav as $item) {
 
     <aside class="staff-shell__sidebar">
         <div class="sidebar-logo">
-            <img src="/assets/images/logo_bg_removed.png" alt="FitnessHub" width="28" height="28">
+            <img src="/assets/images/logo_bg_removed.png" alt="FitnessHub">
         </div>
 
         <nav class="sidebar-nav">

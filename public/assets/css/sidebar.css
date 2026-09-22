@@ -27,8 +27,16 @@ body {
 }
 
 .sidebar-logo {
-  height: 28px;
   margin-bottom: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-logo img {
+  width: 44px;
+  height: 44px;
 }
 
 .sidebar-nav {
