@@ -217,6 +217,70 @@ body {
   margin-top: auto;
 }
 
+.fh-account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.fh-account:hover {
+  background: rgba(28, 28, 28, 0.05);
+}
+
+.fh-account__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Figma's 2.68435e+07px is just "force a perfect circle" */
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.fh-account__avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(28, 28, 28, 0.08);
+  color: #1c1c1c;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.fh-account__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.fh-account__name {
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #1c1c1c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fh-account__role {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  line-height: 16px;
+  color: rgba(28, 28, 28, 0.4);
+}
+
+.fh-account__chevron {
+  width: 13px;
+  height: 13px;
+  stroke: rgba(28, 28, 28, 0.3);
+  stroke-width: 1.5px;
+  flex-shrink: 0;
+}
+
 .staff-shell__content {
   flex: 1;
   height: 100vh;

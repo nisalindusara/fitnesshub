@@ -2,6 +2,11 @@
 
 $permissions = $_SESSION['permissions'] ?? [];
 
+$fullName = trim($_SESSION['user_name'] . ' ' . $_SESSION['user_last_name']);
+$avatar   = $_SESSION['user_avatar'] ?? null;
+$initials = mb_strtoupper(mb_substr($_SESSION['user_name'], 0, 1) . mb_substr($_SESSION['user_last_name'], 0, 1));
+$role = $_SESSION['role_name'];
+
 $navItems = [
     // Operations — everything except the storefront
     ['section' => 'Operations', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/dashboard-super-admin', 'permission' => 'view_overview'],
@@ -120,12 +125,30 @@ foreach ($visibleNav as $item) {
         </nav>
 
         <div class="sidebar-bottom">
-            <a href="/account" class="fh-nav-item__link">
-                <svg class="fh-nav-item__icon" width="20" height="20">
-                    <use href="#icon-account"></use>
-                </svg>
-                <span>Account</span>
-            </a>
+            <div class="fh-account">
+                <?php if (!empty($avatar)): ?>
+                    <img
+                        src="<?= htmlspecialchars($avatar) ?>"
+                        alt="<?= htmlspecialchars($fullName) ?>"
+                        class="fh-account__avatar">
+                <?php else: ?>
+                    <div class="fh-account__avatar fh-account__avatar--placeholder">
+                        <?= htmlspecialchars($initials) ?>
+                    </div>
+                <?php endif; ?>
+
+                <div class="fh-account__text">
+                    <span class="fh-account__name"><?= htmlspecialchars($fullName) ?></span>
+                    <span class="fh-account__role">
+                        <?= htmlspecialchars($role) ?>
+                    </span>
+                </div>
+                <span>
+                    <svg class="fh-account__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </span>
+            </div>
         </div>
     </aside>
 

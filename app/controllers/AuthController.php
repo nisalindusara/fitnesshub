@@ -75,11 +75,9 @@ class AuthController extends Controller
             session_regenerate_id(true);
             $_SESSION['user_id']   = $user['id'];
             $_SESSION['user_name'] = $user['first_name'];
+            $_SESSION['user_last_name'] = $user['last_name'];
+            $_SESSION['user_avatar']   = $user['profile_image'];
 
-            // Permissions are computed once, here, at login — not re-queried
-            // on every request. Gate reads this cached array for the rest of
-            // the session. Accepted trade-off: a permission change won't take
-            // effect until the affected staff member logs in again.
             $authService = new AuthorizationService(new Role());
             $_SESSION['permissions'] = $authService->computePermissionsForRole($user['role_id'] ?? null);
 
