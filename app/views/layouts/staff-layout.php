@@ -26,6 +26,7 @@ $navItems = [
     ['section' => 'Operations', 'label' => 'Payments', 'icon' => 'credit-card', 'children' => [
         ['label' => 'Transactions', 'icon' => 'bar-chart', 'route' => '/payments/transactions', 'permission' => 'view_payments_overview'],
         ['label' => 'Bank Slip Verification', 'icon' => 'file-check', 'route' => '/payments/bank-slips', 'permission' => 'verify_bank_slips'],
+        ['label' => 'Payment Settings', 'icon' => 'file-check' /* change the icon*/, 'route' => '/payments/payment-settings', 'permission' => 'change_payment_settings' /*need to add this in the database */],
     ]],
 
     ['section' => 'Operations', 'label' => 'Assigned Plans', 'icon' => 'clipboard-list', 'route' => '/action-plans', 'permission' => 'manage_action_plans'],
@@ -38,8 +39,9 @@ $navItems = [
     ['section' => 'Operations', 'label' => 'At-Risk Members', 'icon' => 'alert-triangle', 'route' => '/reports/at-risk', 'permission' => 'view_at_risk_members'],
 
     // eCommerce — storefront only
-    ['section' => 'eCommerce', 'label' => 'Store', 'icon' => 'box', 'route' => '/store', 'permission' => 'manage_inventory'],
     ['section' => 'eCommerce', 'label' => 'Orders', 'icon' => 'package', 'route' => '/portal/orders', 'permission' => 'manage_orders'],
+    ['section' => 'eCommerce', 'label' => 'Products', 'icon' => 'box', 'route' => '/portal/products', 'permission' => 'manage_inventory'],
+    ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'package', 'route' => '/portal/categories', 'permission' => 'manage_inventory'],
 ];
 
 $visibleNav = [];
@@ -49,12 +51,17 @@ foreach ($navItems as $item) {
             $item['children'],
             fn($child) => in_array($child['permission'], $permissions, true)
         ));
-
         if (count($visibleChildren) > 1) {
-            $visibleNav[] = $item + ['type' => 'dropdown', 'children' => $visibleChildren];
+            $newItem = array_merge($item, [
+                'type' => 'dropdown',
+                'children' => $visibleChildren
+            ]);
+
+            $visibleNav[] = $newItem;
         } elseif (count($visibleChildren) === 1) {
             $visibleNav[] = $visibleChildren[0] + ['type' => 'link', 'section' => $item['section']];
         }
+        echo "<br>";
     } else {
         if (in_array($item['permission'], $permissions, true)) {
             $visibleNav[] = $item + ['type' => 'link'];
