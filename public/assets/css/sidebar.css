@@ -8,8 +8,6 @@
 
 html,
 body {
-  height: 100vh;
-  overflow: hidden; /* prevent the whole page from scrolling */
   font-family: "Inter", sans-serif;
 }
 
@@ -24,8 +22,8 @@ body {
   border-right: 2px solid rgba(28, 28, 28, 0.1);
   padding: 20px 16px;
   height: 100vh;
-  overflow-y: auto; /* in case the nav itself grows taller than the screen */
-  flex-shrink: 0; /* prevent sidebar from shrinking when content is wide */
+  overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .sidebar-logo {
@@ -36,7 +34,7 @@ body {
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
   padding: 4px 0;
 }
 
@@ -148,6 +146,41 @@ body {
   text-align: left;
 }
 
+.fh-nav-item__label,
+.fh-nav-dropdown__label {
+  white-space: normal;
+  line-height: 18px;
+}
+
+.fh-nav-item__link,
+.fh-nav-dropdown__trigger {
+  height: auto;
+  min-height: 28px;
+  align-items: flex-start;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.fh-nav-item__icon,
+.fh-nav-dropdown__icon,
+.fh-nav-dropdown__chevron {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.fh-nav-dropdown__children {
+  margin-top: 4px;
+  padding-top: 4px;
+}
+
+.fh-nav-dropdown__children .fh-nav-item__link {
+  margin-bottom: 6px;
+}
+
+.staff-shell__sidebar {
+  scrollbar-gutter: stable;
+}
+
 .fh-nav-dropdown__children {
   display: flex;
   flex-direction: column;
@@ -156,6 +189,28 @@ body {
 
 .fh-nav-dropdown__children[hidden] {
   display: none;
+}
+
+.staff-shell__sidebar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(28, 28, 28, 0.2) transparent;
+}
+
+.staff-shell__sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.staff-shell__sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.staff-shell__sidebar::-webkit-scrollbar-thumb {
+  background: rgba(28, 28, 28, 0.2);
+  border-radius: 3px;
+}
+
+.staff-shell__sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(28, 28, 28, 0.35);
 }
 
 .sidebar-bottom {

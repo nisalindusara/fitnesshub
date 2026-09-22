@@ -3,16 +3,36 @@
 $permissions = $_SESSION['permissions'] ?? [];
 
 $navItems = [
-    ['section' => 'Dashboards', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/dashboard-super-admin', 'permission' => 'view_overview'],
-    ['section' => 'Dashboards', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
-    ['section' => 'Dashboards', 'label' => 'Members', 'icon' => 'users', 'route' => '/members', 'permission' => 'manage_members'],
-    ['section' => 'Dashboards', 'label' => 'Support', 'icon' => 'headset', 'route' => '/support', 'permission' => 'handle_support_tickets'],
-    ['section' => 'Dashboards', 'label' => 'Classes', 'icon' => 'folder', 'route' => '/classes', 'permission' => 'manage_classes'],
-    ['section' => 'Dashboards', 'label' => 'Facility', 'icon' => 'building', 'route' => '/facility', 'permission' => 'manage_equipment'],
-    ['section' => 'Dashboards', 'label' => 'Payments', 'icon' => 'credit-card', 'children' => [
-        ['label' => 'Overview', 'icon' => 'bar-chart', 'route' => '/payments/overview', 'permission' => 'view_payments_overview'],
-        ['label' => 'Add Payment', 'icon' => 'plus-circle', 'route' => '/payments/add', 'permission' => 'add_payment'],
+    // Operations — everything except the storefront
+    ['section' => 'Operations', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/dashboard-super-admin', 'permission' => 'view_overview'],
+
+    ['section' => 'Operations', 'label' => 'Members', 'icon' => 'users', 'route' => '/members', 'permission' => 'manage_members'],
+    ['section' => 'Operations', 'label' => 'Membership Plans', 'icon' => 'id-card', 'route' => '/membership-plans', 'permission' => 'manage_membership_plans'],
+
+    ['section' => 'Operations', 'label' => 'Classes', 'icon' => 'folder', 'route' => '/classes', 'permission' => 'manage_classes'],
+    ['section' => 'Operations', 'label' => 'Personal Training', 'icon' => 'user-check', 'route' => '/personal-training', 'permission' => 'manage_personal_training'],
+    ['section' => 'Operations', 'label' => 'Staff Availability', 'icon' => 'calendar', 'route' => '/staff-availability', 'permission' => 'manage_staff_schedule'],
+    ['section' => 'Operations', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
+
+    ['section' => 'Operations', 'label' => 'Messages', 'icon' => 'message-circle', 'route' => '/messages', 'permission' => 'manage_messages'],
+    ['section' => 'Operations', 'label' => 'Notifications', 'icon' => 'bell', 'route' => '/notifications', 'permission' => 'manage_notifications'],
+    ['section' => 'Operations', 'label' => 'Support', 'icon' => 'headset', 'route' => '/support', 'permission' => 'handle_support_tickets'],
+
+    ['section' => 'Operations', 'label' => 'Payments', 'icon' => 'credit-card', 'children' => [
+        ['label' => 'Transactions', 'icon' => 'bar-chart', 'route' => '/payments/transactions', 'permission' => 'view_payments_overview'],
+        ['label' => 'Bank Slip Verification', 'icon' => 'file-check', 'route' => '/payments/bank-slips', 'permission' => 'verify_bank_slips'],
     ]],
+
+    ['section' => 'Operations', 'label' => 'Assigned Plans', 'icon' => 'clipboard-list', 'route' => '/action-plans', 'permission' => 'manage_action_plans'],
+    ['section' => 'Operations', 'label' => 'Adherence Tracking', 'icon' => 'activity', 'route' => '/adherence', 'permission' => 'view_adherence'],
+
+    ['section' => 'Operations', 'label' => 'Equipment', 'icon' => 'tool', 'route' => '/equipment', 'permission' => 'manage_equipment'],
+    ['section' => 'Operations', 'label' => 'Facility Map', 'icon' => 'map', 'route' => '/facility-map', 'permission' => 'view_facility_map'],
+
+    ['section' => 'Operations', 'label' => 'Reports', 'icon' => 'trending-up', 'route' => '/reports', 'permission' => 'view_reports'],
+    ['section' => 'Operations', 'label' => 'At-Risk Members', 'icon' => 'alert-triangle', 'route' => '/reports/at-risk', 'permission' => 'view_at_risk_members'],
+
+    // eCommerce — storefront only
     ['section' => 'eCommerce', 'label' => 'Store', 'icon' => 'box', 'route' => '/store', 'permission' => 'manage_inventory'],
     ['section' => 'eCommerce', 'label' => 'Orders', 'icon' => 'package', 'route' => '/portal/orders', 'permission' => 'manage_orders'],
 ];
