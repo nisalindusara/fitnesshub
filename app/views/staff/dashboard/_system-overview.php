@@ -254,7 +254,7 @@
 </div>
 
 <div class="sys-chart-panel">
-    <div class="sys-panel-heading">Attendance Trends — This Week</div>
+    <div class="sys-panel-heading">Attendance Trends</div>
 
     <div class="sys-bar-chart-container">
         <div class="sys-y-axis">
