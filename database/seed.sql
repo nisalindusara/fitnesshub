@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2026 at 09:26 PM
+-- Generation Time: Sep 23, 2026 at 06:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `fitnesshub_db`
 --
-CREATE DATABASE IF NOT EXISTS `fitnesshub_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `fitnesshub_db`;
 
 --
 -- Truncate table before insert `class_payments`
@@ -151,7 +149,8 @@ INSERT INTO `permissions` (`id`, `key`, `description`) VALUES
 (21, 'manage_action_plans', 'Assign workout and meal plans to members'),
 (22, 'view_adherence', 'View member adherence to assigned action plans'),
 (23, 'view_facility_map', 'View the facility equipment map'),
-(24, 'view_at_risk_members', 'View members flagged for dropping attendance or poor adherence');
+(24, 'view_at_risk_members', 'View members flagged for dropping attendance or poor adherence'),
+(25, 'change_payment_settings', 'Edit payment related settings');
 
 --
 -- Truncate table before insert `products`
@@ -269,6 +268,7 @@ INSERT INTO `role_permissions` (`role_id`, `permission_id`) VALUES
 (3, 21),
 (3, 22),
 (3, 23),
+(3, 25),
 (4, 1),
 (4, 2),
 (4, 3),
@@ -292,6 +292,7 @@ INSERT INTO `role_permissions` (`role_id`, `permission_id`) VALUES
 (4, 22),
 (4, 23),
 (4, 24),
+(4, 25),
 (5, 2),
 (5, 6),
 (5, 11),

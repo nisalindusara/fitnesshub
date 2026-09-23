@@ -26,7 +26,7 @@ $navItems = [
     ['section' => 'Operations', 'label' => 'Payments', 'icon' => 'credit-card', 'children' => [
         ['label' => 'Transactions', 'icon' => 'bar-chart', 'route' => '/payments/transactions', 'permission' => 'view_payments_overview'],
         ['label' => 'Bank Slip Verification', 'icon' => 'file-check', 'route' => '/payments/bank-slips', 'permission' => 'verify_bank_slips'],
-        ['label' => 'Payment Settings', 'icon' => 'file-check' /* change the icon*/, 'route' => '/payments/payment-settings', 'permission' => 'change_payment_settings' /*need to add this in the database */],
+        ['label' => 'Payment Settings', 'icon' => 'settings', 'route' => '/payments/payment-settings', 'permission' => 'change_payment_settings'],
     ]],
 
     ['section' => 'Operations', 'label' => 'Assigned Plans', 'icon' => 'clipboard-list', 'route' => '/action-plans', 'permission' => 'manage_action_plans'],
@@ -41,7 +41,14 @@ $navItems = [
     // eCommerce — storefront only
     ['section' => 'eCommerce', 'label' => 'Orders', 'icon' => 'package', 'route' => '/portal/orders', 'permission' => 'manage_orders'],
     ['section' => 'eCommerce', 'label' => 'Products', 'icon' => 'box', 'route' => '/portal/products', 'permission' => 'manage_inventory'],
-    ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'package', 'route' => '/portal/categories', 'permission' => 'manage_inventory'],
+    ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'tag', 'route' => '/portal/categories', 'permission' => 'manage_inventory'],
+
+    // Instructor 
+    ['section' => 'My Work', 'label' => 'My Clients', 'icon' => 'users', 'route' => '/my-clients', 'permission' => 'view_own_clients'],
+    ['section' => 'My Work', 'label' => 'My Schedule', 'icon' => 'calendar', 'route' => '/my-schedule', 'permission' => 'view_own_schedule'],
+    ['section' => 'My Work', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
+    ['section' => 'My Work', 'label' => 'Adherence Tracking', 'icon' => 'activity', 'route' => '/adherence', 'permission' => 'view_adherence'],
+    ['section' => 'My Work', 'label' => 'Messages', 'icon' => 'message-circle', 'route' => '/messages', 'permission' => 'manage_messages'],
 ];
 
 $visibleNav = [];
