@@ -26,7 +26,7 @@ $navItems = [
     ['section' => 'Operations', 'label' => 'Payments', 'icon' => 'credit-card', 'children' => [
         ['label' => 'Transactions', 'icon' => 'bar-chart', 'route' => '/payments/transactions', 'permission' => 'view_payments_overview'],
         ['label' => 'Bank Slip Verification', 'icon' => 'file-check', 'route' => '/payments/bank-slips', 'permission' => 'verify_bank_slips'],
-        ['label' => 'Payment Settings', 'icon' => 'file-check' /* change the icon*/, 'route' => '/payments/payment-settings', 'permission' => 'change_payment_settings' /*need to add this in the database */],
+        ['label' => 'Payment Settings', 'icon' => 'settings', 'route' => '/payments/payment-settings', 'permission' => 'change_payment_settings'],
     ]],
 
     ['section' => 'Operations', 'label' => 'Assigned Plans', 'icon' => 'clipboard-list', 'route' => '/action-plans', 'permission' => 'manage_action_plans'],
@@ -41,7 +41,7 @@ $navItems = [
     // eCommerce — storefront only
     ['section' => 'eCommerce', 'label' => 'Orders', 'icon' => 'package', 'route' => '/portal/orders', 'permission' => 'manage_orders'],
     ['section' => 'eCommerce', 'label' => 'Products', 'icon' => 'box', 'route' => '/portal/products', 'permission' => 'manage_inventory'],
-    ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'package', 'route' => '/portal/categories', 'permission' => 'manage_inventory'],
+    ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'tag', 'route' => '/portal/categories', 'permission' => 'manage_inventory'],
 ];
 
 $visibleNav = [];
