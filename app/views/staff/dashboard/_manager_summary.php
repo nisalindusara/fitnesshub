@@ -1,1 +1,0 @@
-<h1>Manager Summary</h1>
