@@ -2,19 +2,46 @@
 
 $permissions = $_SESSION['permissions'] ?? [];
 
+$fullName = trim($_SESSION['user_name'] . ' ' . $_SESSION['user_last_name']);
+$avatar   = $_SESSION['user_avatar'] ?? null;
+$initials = mb_strtoupper(mb_substr($_SESSION['user_name'], 0, 1) . mb_substr($_SESSION['user_last_name'], 0, 1));
+$role = $_SESSION['role_name'];
+
 $navItems = [
-    ['section' => 'Dashboards', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/dashboard-super-admin', 'permission' => 'view_overview'],
-    ['section' => 'Dashboards', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
-    ['section' => 'Dashboards', 'label' => 'Members', 'icon' => 'users', 'route' => '/members', 'permission' => 'manage_members'],
-    ['section' => 'Dashboards', 'label' => 'Support', 'icon' => 'headset', 'route' => '/support', 'permission' => 'handle_support_tickets'],
-    ['section' => 'Dashboards', 'label' => 'Classes', 'icon' => 'folder', 'route' => '/classes', 'permission' => 'manage_classes'],
-    ['section' => 'Dashboards', 'label' => 'Facility', 'icon' => 'building', 'route' => '/facility', 'permission' => 'manage_equipment'],
-    ['section' => 'Dashboards', 'label' => 'Payments', 'icon' => 'credit-card', 'children' => [
-        ['label' => 'Overview', 'icon' => 'bar-chart', 'route' => '/payments/overview', 'permission' => 'view_payments_overview'],
-        ['label' => 'Add Payment', 'icon' => 'plus-circle', 'route' => '/payments/add', 'permission' => 'add_payment'],
+    // Operations — everything except the storefront
+    ['section' => 'Operations', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/dashboard-super-admin', 'permission' => 'view_overview'],
+
+    ['section' => 'Operations', 'label' => 'Members', 'icon' => 'users', 'route' => '/members', 'permission' => 'manage_members'],
+    ['section' => 'Operations', 'label' => 'Membership Plans', 'icon' => 'id-card', 'route' => '/membership-plans', 'permission' => 'manage_membership_plans'],
+
+    ['section' => 'Operations', 'label' => 'Classes', 'icon' => 'folder', 'route' => '/classes', 'permission' => 'manage_classes'],
+    ['section' => 'Operations', 'label' => 'Personal Training', 'icon' => 'user-check', 'route' => '/personal-training', 'permission' => 'manage_personal_training'],
+    ['section' => 'Operations', 'label' => 'Staff Availability', 'icon' => 'calendar', 'route' => '/staff-availability', 'permission' => 'manage_staff_schedule'],
+    ['section' => 'Operations', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
+
+    ['section' => 'Operations', 'label' => 'Messages', 'icon' => 'message-circle', 'route' => '/messages', 'permission' => 'manage_messages'],
+    ['section' => 'Operations', 'label' => 'Notifications', 'icon' => 'bell', 'route' => '/notifications', 'permission' => 'manage_notifications'],
+    ['section' => 'Operations', 'label' => 'Support', 'icon' => 'headset', 'route' => '/support', 'permission' => 'handle_support_tickets'],
+
+    ['section' => 'Operations', 'label' => 'Payments', 'icon' => 'credit-card', 'children' => [
+        ['label' => 'Transactions', 'icon' => 'bar-chart', 'route' => '/payments/transactions', 'permission' => 'view_payments_overview'],
+        ['label' => 'Bank Slip Verification', 'icon' => 'file-check', 'route' => '/payments/bank-slips', 'permission' => 'verify_bank_slips'],
+        ['label' => 'Payment Settings', 'icon' => 'file-check' /* change the icon*/, 'route' => '/payments/payment-settings', 'permission' => 'change_payment_settings' /*need to add this in the database */],
     ]],
-    ['section' => 'eCommerce', 'label' => 'Store', 'icon' => 'box', 'route' => '/store', 'permission' => 'manage_inventory'],
+
+    ['section' => 'Operations', 'label' => 'Assigned Plans', 'icon' => 'clipboard-list', 'route' => '/action-plans', 'permission' => 'manage_action_plans'],
+    ['section' => 'Operations', 'label' => 'Adherence Tracking', 'icon' => 'activity', 'route' => '/adherence', 'permission' => 'view_adherence'],
+
+    ['section' => 'Operations', 'label' => 'Equipment', 'icon' => 'tool', 'route' => '/equipment', 'permission' => 'manage_equipment'],
+    ['section' => 'Operations', 'label' => 'Facility Map', 'icon' => 'map', 'route' => '/facility-map', 'permission' => 'view_facility_map'],
+
+    ['section' => 'Operations', 'label' => 'Reports', 'icon' => 'trending-up', 'route' => '/reports', 'permission' => 'view_reports'],
+    ['section' => 'Operations', 'label' => 'At-Risk Members', 'icon' => 'alert-triangle', 'route' => '/reports/at-risk', 'permission' => 'view_at_risk_members'],
+
+    // eCommerce — storefront only
     ['section' => 'eCommerce', 'label' => 'Orders', 'icon' => 'package', 'route' => '/portal/orders', 'permission' => 'manage_orders'],
+    ['section' => 'eCommerce', 'label' => 'Products', 'icon' => 'box', 'route' => '/portal/products', 'permission' => 'manage_inventory'],
+    ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'package', 'route' => '/portal/categories', 'permission' => 'manage_inventory'],
 ];
 
 $visibleNav = [];
@@ -24,12 +51,17 @@ foreach ($navItems as $item) {
             $item['children'],
             fn($child) => in_array($child['permission'], $permissions, true)
         ));
-
         if (count($visibleChildren) > 1) {
-            $visibleNav[] = $item + ['type' => 'dropdown', 'children' => $visibleChildren];
+            $newItem = array_merge($item, [
+                'type' => 'dropdown',
+                'children' => $visibleChildren
+            ]);
+
+            $visibleNav[] = $newItem;
         } elseif (count($visibleChildren) === 1) {
             $visibleNav[] = $visibleChildren[0] + ['type' => 'link', 'section' => $item['section']];
         }
+        echo "<br>";
     } else {
         if (in_array($item['permission'], $permissions, true)) {
             $visibleNav[] = $item + ['type' => 'link'];
@@ -62,7 +94,7 @@ foreach ($visibleNav as $item) {
 
     <aside class="staff-shell__sidebar">
         <div class="sidebar-logo">
-            <img src="/assets/images/logo_bg_removed.png" alt="FitnessHub" width="28" height="28">
+            <img src="/assets/images/logo_bg_removed.png" alt="FitnessHub">
         </div>
 
         <nav class="sidebar-nav">
@@ -100,12 +132,30 @@ foreach ($visibleNav as $item) {
         </nav>
 
         <div class="sidebar-bottom">
-            <a href="/account" class="fh-nav-item__link">
-                <svg class="fh-nav-item__icon" width="20" height="20">
-                    <use href="#icon-account"></use>
-                </svg>
-                <span>Account</span>
-            </a>
+            <div class="fh-account">
+                <?php if (!empty($avatar)): ?>
+                    <img
+                        src="<?= htmlspecialchars($avatar) ?>"
+                        alt="<?= htmlspecialchars($fullName) ?>"
+                        class="fh-account__avatar">
+                <?php else: ?>
+                    <div class="fh-account__avatar fh-account__avatar--placeholder">
+                        <?= htmlspecialchars($initials) ?>
+                    </div>
+                <?php endif; ?>
+
+                <div class="fh-account__text">
+                    <span class="fh-account__name"><?= htmlspecialchars($fullName) ?></span>
+                    <span class="fh-account__role">
+                        <?= htmlspecialchars($role) ?>
+                    </span>
+                </div>
+                <span>
+                    <svg class="fh-account__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </span>
+            </div>
         </div>
     </aside>
 

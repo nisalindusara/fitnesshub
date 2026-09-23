@@ -2,10 +2,10 @@
 
 This folder holds the SQL file that defines the FitnessHub database (`fitnesshub_db`).
 
-| File                | Purpose                                                                                        |
-| ------------------- | ---------------------------------------------------------------------------------------------- |
-| `fitnesshub_db.sql` | Contains only the structure of the database. No data is included                               |
-| `seed.sql`          | Contains only the minimum amount of reference data required to demonstrate the functionalities |
+| File         | Purpose                                                                                        |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| `schema.sql` | Contains only the structure of the database. No data is included                               |
+| `seed.sql`   | Contains only the minimum amount of reference data required to demonstrate the functionalities |
 
 ## The sync rule
 

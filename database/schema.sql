@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2026 at 09:51 PM
+-- Generation Time: Sep 22, 2026 at 09:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -103,6 +103,21 @@ DROP TABLE IF EXISTS `order_payments`;
 CREATE TABLE `order_payments` (
   `payment_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_status_history`
+--
+
+DROP TABLE IF EXISTS `order_status_history`;
+CREATE TABLE `order_status_history` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `status` enum('confirmed','ready_for_pickup','handed_for_delivery','completed','cancelled') NOT NULL,
+  `changed_by` int(11) DEFAULT NULL,
+  `changed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -282,6 +297,7 @@ CREATE TABLE `users` (
   `last_name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone_number` varchar(20) NOT NULL,
+  `profile_image` varchar(255) DEFAULT NULL,
   `password_hash` varchar(255) NOT NULL,
   `role_id` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -328,7 +344,16 @@ ALTER TABLE `order_items`
 --
 ALTER TABLE `order_payments`
   ADD PRIMARY KEY (`payment_id`),
+  ADD UNIQUE KEY `uq_order_payments_order` (`order_id`),
   ADD KEY `fk_order_payments_order` (`order_id`);
+
+--
+-- Indexes for table `order_status_history`
+--
+ALTER TABLE `order_status_history`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uq_order_status` (`order_id`,`status`),
+  ADD KEY `idx_changed_by` (`changed_by`);
 
 --
 -- Indexes for table `payments`
@@ -433,6 +458,12 @@ ALTER TABLE `order_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `order_status_history`
+--
+ALTER TABLE `order_status_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
@@ -523,6 +554,13 @@ ALTER TABLE `order_items`
 ALTER TABLE `order_payments`
   ADD CONSTRAINT `fk_order_payments_order` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `fk_order_payments_payment` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_status_history`
+--
+ALTER TABLE `order_status_history`
+  ADD CONSTRAINT `fk_osh_order` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `fk_osh_user` FOREIGN KEY (`changed_by`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `payments`

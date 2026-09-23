@@ -8,8 +8,6 @@
 
 html,
 body {
-  height: 100vh;
-  overflow: hidden; /* prevent the whole page from scrolling */
   font-family: "Inter", sans-serif;
 }
 
@@ -24,19 +22,27 @@ body {
   border-right: 2px solid rgba(28, 28, 28, 0.1);
   padding: 20px 16px;
   height: 100vh;
-  overflow-y: auto; /* in case the nav itself grows taller than the screen */
-  flex-shrink: 0; /* prevent sidebar from shrinking when content is wide */
+  overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .sidebar-logo {
-  height: 28px;
   margin-bottom: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-logo img {
+  width: 44px;
+  height: 44px;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
   padding: 4px 0;
 }
 
@@ -148,6 +154,41 @@ body {
   text-align: left;
 }
 
+.fh-nav-item__label,
+.fh-nav-dropdown__label {
+  white-space: normal;
+  line-height: 18px;
+}
+
+.fh-nav-item__link,
+.fh-nav-dropdown__trigger {
+  height: auto;
+  min-height: 28px;
+  align-items: flex-start;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.fh-nav-item__icon,
+.fh-nav-dropdown__icon,
+.fh-nav-dropdown__chevron {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.fh-nav-dropdown__children {
+  margin-top: 4px;
+  padding-top: 4px;
+}
+
+.fh-nav-dropdown__children .fh-nav-item__link {
+  margin-bottom: 6px;
+}
+
+.staff-shell__sidebar {
+  scrollbar-gutter: stable;
+}
+
 .fh-nav-dropdown__children {
   display: flex;
   flex-direction: column;
@@ -158,8 +199,94 @@ body {
   display: none;
 }
 
+.staff-shell__sidebar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(28, 28, 28, 0.2) transparent;
+}
+
+.staff-shell__sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.staff-shell__sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.staff-shell__sidebar::-webkit-scrollbar-thumb {
+  background: rgba(28, 28, 28, 0.2);
+  border-radius: 3px;
+}
+
+.staff-shell__sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(28, 28, 28, 0.35);
+}
+
 .sidebar-bottom {
   margin-top: auto;
+}
+
+.fh-account {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.fh-account:hover {
+  background: rgba(28, 28, 28, 0.05);
+}
+
+.fh-account__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Figma's 2.68435e+07px is just "force a perfect circle" */
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.fh-account__avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(28, 28, 28, 0.08);
+  color: #1c1c1c;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.fh-account__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.fh-account__name {
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 19px;
+  color: #1c1c1c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fh-account__role {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  line-height: 16px;
+  color: rgba(28, 28, 28, 0.4);
+}
+
+.fh-account__chevron {
+  width: 13px;
+  height: 13px;
+  stroke: rgba(28, 28, 28, 0.3);
+  stroke-width: 1.5px;
+  flex-shrink: 0;
 }
 
 .staff-shell__content {
