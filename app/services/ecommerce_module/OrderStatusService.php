@@ -172,7 +172,7 @@ class OrderStatusService
      * Admin pressed the "Mark as ..." button. Moves the order to its next manual status.
      * $expectedStatus is the status the admin was looking at when they pressed it.
      */
-    public function advance(int $orderId, int $adminId, string $expectedStatus): void
+    public function advanceToNextManualStatus(int $orderId, int $adminId, string $expectedStatus): void
     {
         $order = $this->getOrderOrFail($orderId);
 

@@ -9,7 +9,7 @@ $role = $_SESSION['role_name'];
 
 $navItems = [
     // Operations — everything except the storefront
-    ['section' => 'Operations', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/dashboard-super-admin', 'permission' => 'view_overview'],
+    ['section' => 'Operations', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/portal', 'permission' => 'view_overview'],
 
     ['section' => 'Operations', 'label' => 'Members', 'icon' => 'users', 'route' => '/members', 'permission' => 'manage_members'],
     ['section' => 'Operations', 'label' => 'Membership Plans', 'icon' => 'id-card', 'route' => '/membership-plans', 'permission' => 'manage_membership_plans'],
@@ -142,7 +142,7 @@ foreach ($visibleNav as $item) {
             <div class="fh-account">
                 <?php if (!empty($avatar)): ?>
                     <img
-                        src="<?= htmlspecialchars($avatar) ?>"
+                        src="<?= htmlspecialchars('/' . ltrim($avatar, '/')) ?>"
                         alt="<?= htmlspecialchars($fullName) ?>"
                         class="fh-account__avatar">
                 <?php else: ?>

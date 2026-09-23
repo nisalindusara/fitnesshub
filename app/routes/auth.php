@@ -1,7 +1,8 @@
 <?php
 // Registration and login
 
-$router->get('/personal-details', [AuthController::class, 'personalDetails']);
-$router->post('/register-submit', [AuthController::class, 'storeUser']);
-$router->get('/login', [AuthController::class, 'login']);
-$router->post('/login', [AuthController::class, 'authenticate']);
+$router->get('/personal-details', [AuthController::class, 'showPersonalDetailsScreen']);
+$router->post('/register', [AuthController::class, 'registerNewUserAccount']);
+
+$router->get('/login', [AuthController::class, 'showLoginScreen']);
+$router->post('/login', [AuthController::class, 'authenticateUserOnLogin']);

@@ -7,7 +7,7 @@ class ProductController extends Controller
      * Returns JSON, not a rendered view — the form's JS calls this
      * and builds the dropdown/results client-side.
      */
-    public function searchVariants(): void
+    public function searchProductVariants(): void
     {
         $term = trim($_GET['q'] ?? '');
 
