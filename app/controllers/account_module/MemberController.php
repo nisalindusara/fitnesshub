@@ -2,7 +2,7 @@
 
 class MemberController extends Controller
 {
-    public function dashboard(): void
+    public function showMemberDashboardScreen(): void
     {
         if (!isset($_SESSION['user_id'])) {
             header('Location: /login');
@@ -11,7 +11,12 @@ class MemberController extends Controller
 
         $data['userName'] = $_SESSION['user_name'];
 
-        $this->render('dashboards/dashboard', 'member-layout', $data);
+        $this->render('member/dashboard', 'member-layout', $data);
+    }
+
+    public function showMemberProfileScreen(): void
+    {
+        $this->render('member/member-profile', 'member-layout');
     }
 
     public function search(): void

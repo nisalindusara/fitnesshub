@@ -1,5 +1,7 @@
 <?php
 // Account & Membership
 
-$router->get('/dashboard', [MemberController::class, 'dashboard']);
+$router->get('/dashboard', [MemberController::class, 'showMemberDashboardScreen'], '@auth');
+$router->get('/member-profile', [MemberController::class, 'showMemberProfileScreen'], '@auth');
+
 $router->get('/portal/members/search', [MemberController::class, 'search'], 'manage_orders');

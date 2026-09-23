@@ -30,12 +30,19 @@ class Router
             return;
         }
 
-        // Permission check happens before the controller is even instantiated —
-        // an unauthorized request never reaches application/business logic.
-        if ($route['permission'] !== null && !Gate::allows($route['permission'])) {
-            http_response_code(403);
-            echo '403 - Forbidden';
-            return;
+        if ($route['permission'] !== null) {
+
+            if (empty($_SESSION['user_id'])) {
+                header('Location: /login');
+                exit;
+            }
+
+
+            if ($route['permission'] !== '@auth' && !Gate::allows($route['permission'])) {
+                http_response_code(403);
+                echo '403 - Forbidden';
+                return;
+            }
         }
 
         [$controllerClass, $action] = $route['handler'];

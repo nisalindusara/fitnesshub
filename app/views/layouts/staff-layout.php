@@ -140,28 +140,27 @@ foreach ($visibleNav as $item) {
 
         <div class="sidebar-bottom">
             <div class="fh-account">
-                <?php if (!empty($avatar)): ?>
-                    <img
-                        src="<?= htmlspecialchars('/' . ltrim($avatar, '/')) ?>"
-                        alt="<?= htmlspecialchars($fullName) ?>"
-                        class="fh-account__avatar">
-                <?php else: ?>
-                    <div class="fh-account__avatar fh-account__avatar--placeholder">
-                        <?= htmlspecialchars($initials) ?>
+                <div class="fh-account-top">
+                    <?php if (!empty($avatar)): ?>
+                        <img
+                            src="<?= htmlspecialchars('/' . ltrim($avatar, '/')) ?>"
+                            alt="<?= htmlspecialchars($fullName) ?>"
+                            class="fh-account__avatar">
+                    <?php else: ?>
+                        <div class="fh-account__avatar fh-account__avatar--placeholder">
+                            <?= htmlspecialchars($initials) ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="fh-account__text">
+                        <span class="fh-account__name"><?= htmlspecialchars($fullName) ?></span>
+                        <span class="fh-account__role">
+                            <?= htmlspecialchars($role) ?>
+                        </span>
                     </div>
-                <?php endif; ?>
-
-                <div class="fh-account__text">
-                    <span class="fh-account__name"><?= htmlspecialchars($fullName) ?></span>
-                    <span class="fh-account__role">
-                        <?= htmlspecialchars($role) ?>
-                    </span>
                 </div>
-                <span>
-                    <svg class="fh-account__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </span>
+                <div class="fh-account-bottom">
+                    <form action="/logout" method="post"><button type="submit" class="fh-account__button">Logout</button></form>
+                </div>
             </div>
         </div>
     </aside>
