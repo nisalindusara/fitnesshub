@@ -264,7 +264,7 @@
             <?php endforeach; ?>
             <dialog id="edit-dialog">
                 <div class="dialog-content">
-                    <form action="/portal/ecom/categories/edit-category-name" method="post">
+                    <form action="/portal/ecom/categories" method="post">
                         <input type="hidden" name="category_id" id="edit-dialog-category-id">
                         <input type="text" name="new_name" id="edit-dialog-text-input">
                         <br>

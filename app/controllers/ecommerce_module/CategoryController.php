@@ -8,7 +8,7 @@ class CategoryController extends Controller
     {
         $this->categoryModel = new ItemCategory();
     }
-    public function displayCategoryScreen(): void
+    public function showProductCategoryScreen(): void
     {
 
         $data['categories'] = $this->categoryModel->getCategories();

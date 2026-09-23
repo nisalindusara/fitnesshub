@@ -6,7 +6,7 @@ class OrderController extends Controller
     // Permission that allows advancing and cancelling orders.
     private const PERM_UPDATE_STATUS = 'manage_orders';
 
-    public function index(): void
+    public function showOrdersScreen(): void
     {
         $orderModel = new Order();
 
@@ -15,7 +15,7 @@ class OrderController extends Controller
         $this->render('ecommerce_module/index', 'staff-layout', $data);
     }
 
-    public function show(): void
+    public function showOrderDetailsScreen(): void
     {
         $orderId = (int) ($_GET['id'] ?? 0);
 
@@ -36,8 +36,6 @@ class OrderController extends Controller
 
         $statusService = new OrderStatusService();
 
-        // Set by advance() after a successful change, so the fill animation
-        // plays once on the next page load and never again on refresh.
         $animateProgress = ($_SESSION['order_status_animate'] ?? null) === $orderId;
         unset($_SESSION['order_status_animate']);
 
@@ -54,14 +52,14 @@ class OrderController extends Controller
         $this->render('ecommerce_module/show', 'staff-layout', $data);
     }
 
-    public function showAddOrder(): void
+    public function showCreateOrdeForCustomerScreen(): void
     {
         $shippingModel = new ShippingMethod();
         $data['shippingMethods'] = $shippingModel->getAllActive();
         $this->render('ecommerce_module/add-order', 'staff-layout', $data);
     }
 
-    public function store(): void
+    public function createOrderForCustomer(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             return;
@@ -97,7 +95,6 @@ class OrderController extends Controller
             return;
         }
 
-        // Recompute subtotal server-side — never trust a posted total
         $variantModel = new ProductVariant();
         $subtotal = 0.00;
 
@@ -135,7 +132,6 @@ class OrderController extends Controller
             return;
         }
 
-        // Record the payment
         $paymentMethod = $_POST['payment_method'] ?? 'cash';
         $staffConfirmed = !empty($_POST['payment_confirmed']);
         $verificationStatus = PaymentVerificationService::determineStatus($paymentMethod, $staffConfirmed);
@@ -148,7 +144,6 @@ class OrderController extends Controller
             'recorded_by'         => $_SESSION['user_id'],
         ], $orderId);
 
-        // Apply a non-default initial status only if the payment/order-status link allows it
         $requestedStatus = $_POST['status'] ?? 'pending';
         if ($requestedStatus !== 'pending') {
             $statusService = new OrderStatusService();
@@ -160,11 +155,7 @@ class OrderController extends Controller
         $this->redirect('/portal/orders/view?id=' . $orderId . '&success=1');
     }
 
-    /**
-     * POST: the "Mark as ..." button on the order page.
-     * expected_status is the status the admin was looking at when they pressed it.
-     */
-    public function advance(): void
+    public function advanceOrderToNextManualStatus(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             return;
@@ -181,7 +172,7 @@ class OrderController extends Controller
         $back = '/portal/orders/view?id=' . $orderId;
 
         try {
-            (new OrderStatusService())->advance($orderId, (int) $_SESSION['user_id'], $expectedStatus);
+            (new OrderStatusService())->advanceToNextManualStatus($orderId, (int) $_SESSION['user_id'], $expectedStatus);
         } catch (InvalidArgumentException | RuntimeException $e) {
             $this->redirect($back . '&error=' . urlencode($e->getMessage()));
             return;
@@ -191,8 +182,7 @@ class OrderController extends Controller
         $this->redirect($back . '&success=1');
     }
 
-    /** POST: the cancel dialog. The reason is mandatory and checked in the service. */
-    public function cancel(): void
+    public function cancelOrder(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             return;

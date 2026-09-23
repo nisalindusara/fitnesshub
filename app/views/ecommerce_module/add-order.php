@@ -435,7 +435,7 @@
     }
 </style>
 
-<form method="POST" action="/portal/orders" id="order-form">
+<form method="POST" action="/portal/orders/add-order" id="order-form">
 
     <div class="add-order-view">
         <header class="view-header">

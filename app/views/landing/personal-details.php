@@ -29,7 +29,7 @@
                 <h1 class="heading-step4">Enter Your<br>Details</h1>
                 <p class="description">You're almost there. Create your account to save your preferences, track progress, and book classes.</p>
 
-                <form action="/register-submit" method="POST" class="account-form">
+                <form action="/register" method="POST" class="account-form">
                     <div class="form-fields">
 
                         <div class="form-row split-row">

@@ -7,7 +7,6 @@ $router = new Router();
 require __DIR__ . '/../app/routes/landing.php';
 require __DIR__ . '/../app/routes/auth.php';
 require __DIR__ . '/../app/routes/onboarding.php';
-require __DIR__ . '/../app/routes/dashboards.php';
 require __DIR__ . '/../app/routes/account_module.php';
 require __DIR__ . '/../app/routes/analytics_module.php';
 require __DIR__ . '/../app/routes/class_pt_module.php';
@@ -17,5 +16,6 @@ require __DIR__ . '/../app/routes/ecommerce_module.php';
 require __DIR__ . '/../app/routes/equipment_module.php';
 require __DIR__ . '/../app/routes/payment_module.php';
 require __DIR__ . '/../app/routes/work_schedule_module.php';
+require __DIR__ . '/../app/routes/dashboard.php';
 
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);

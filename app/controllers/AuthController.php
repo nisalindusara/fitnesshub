@@ -1,20 +1,13 @@
 <?php
 
-/**
- * Handles registration and login for all account types.
- *
- * Note: public self-registration (storeUser) only ever creates Customer
- * accounts — role_id stays NULL by default. Staff accounts (Manager, Super
- * Admin, etc.) are provisioned separately and never go through this flow.
- */
 class AuthController extends Controller
 {
-    public function personalDetails(): void
+    public function showPersonalDetailsScreen(): void
     {
         $this->render('landing/personal-details', 'minimal');
     }
 
-    public function storeUser(): void
+    public function registerNewUserAccount(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -24,7 +17,6 @@ class AuthController extends Controller
             $phone     = htmlspecialchars(trim($_POST['phone_number'] ?? ''));
             $password  = $_POST['password'] ?? '';
 
-            // Never store raw passwords — password_hash() applies bcrypt by default.
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             $userData = [
@@ -38,8 +30,6 @@ class AuthController extends Controller
             $userModel = new User();
             $newUserId = $userModel->register($userData);
 
-            // register() returns int|false — falsy check catches both `false`
-            // and (defensively) `0`, though lastInsertId() never legitimately returns 0.
             if ($newUserId) {
                 session_regenerate_id(true);
                 $_SESSION['user_id']   = $newUserId;
@@ -53,17 +43,15 @@ class AuthController extends Controller
         }
     }
 
-    public function login(): void
+    public function showLoginScreen(): void
     {
-        // Flash-style error: read once, then clear, so a page refresh
-        // doesn't keep re-showing a stale login error.
         $data['error'] = $_SESSION['error'] ?? null;
         unset($_SESSION['error']);
 
         $this->render('landing/login', 'minimal', $data);
     }
 
-    public function authenticate(): void
+    public function authenticateUserOnLogin(): void
     {
         $email    = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';

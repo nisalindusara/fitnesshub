@@ -1,21 +1,25 @@
 <?php
 // E-Commerce: public storefront
 
-$router->get('/store', [StoreController::class, 'ecommerceLandingPage']);
-$router->get('/catalog', [StoreController::class, 'ecommerceCatalogue']);
+$router->get('/store', [StoreController::class, 'showStoreLandingPageScreen']);
+$router->get('/store/catalog', [StoreController::class, 'showStoreCatalogScreen']);
+$router->get('/store/cart', [StoreController::class, 'showCartScreen']);
+$router->get('/store/checkout', [StoreController::class, 'showStoreCheckoutScreen']);
+
 $router->get('/sample-product', [StoreController::class, 'sampleProduct']);
-$router->get('/cart', [StoreController::class, 'cart']);
-$router->get('/store-checkout', [StoreController::class, 'ecommerceCheckout']);
 
 // E-Commerce: staff portal
 
-$router->get('/portal/orders', [OrderController::class, 'index'], 'manage_orders');
-$router->get('/portal/orders/view', [OrderController::class, 'show'], 'manage_orders');
-$router->post('/portal/orders', [OrderController::class, 'store'], 'manage_orders');
-$router->get('/portal/orders/add-order', [OrderController::class, 'showAddOrder'], 'manage_orders');
-$router->post('/portal/orders/advance', [OrderController::class, 'advance'], 'manage_orders');
-$router->post('/portal/orders/cancel', [OrderController::class, 'cancel'], 'manage_orders');
-$router->get('/portal/products/search', [ProductController::class, 'searchVariants'], 'manage_orders');
+$router->get('/portal/orders', [OrderController::class, 'showOrdersScreen'], 'manage_orders');
 
-$router->get('/portal/ecom/categories', [CategoryController::class, 'displayCategoryScreen'], 'manage_orders');
-$router->post('/portal/ecom/categories/edit-category-name', [CategoryController::class, 'editCategoryName']);
+$router->get('/portal/orders/add-order', [OrderController::class, 'showCreateOrdeForCustomerScreen'], 'manage_orders');
+$router->post('/portal/orders/add-order', [OrderController::class, 'createOrderForCustomer'], 'manage_orders');
+
+$router->get('/portal/orders/view', [OrderController::class, 'showOrderDetailsScreen'], 'manage_orders');
+$router->post('/portal/orders/advance', [OrderController::class, 'advanceOrderToNextManualStatus'], 'manage_orders');
+$router->post('/portal/orders/cancel', [OrderController::class, 'cancelOrder'], 'manage_orders');
+
+$router->get('/portal/products/search', [ProductController::class, 'searchProductVariants'], 'manage_orders');
+
+$router->post('/portal/ecom/categories', [CategoryController::class, 'editCategoryName']);
+$router->get('/portal/ecom/categories', [CategoryController::class, 'showProductCategoryScreen'], 'manage_orders');
