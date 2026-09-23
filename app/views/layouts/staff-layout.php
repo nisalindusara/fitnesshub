@@ -142,7 +142,7 @@ foreach ($visibleNav as $item) {
             <div class="fh-account">
                 <?php if (!empty($avatar)): ?>
                     <img
-                        src="<?= htmlspecialchars($avatar) ?>"
+                        src="<?= htmlspecialchars('/' . ltrim($avatar, '/')) ?>"
                         alt="<?= htmlspecialchars($fullName) ?>"
                         class="fh-account__avatar">
                 <?php else: ?>
