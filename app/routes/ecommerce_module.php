@@ -21,5 +21,14 @@ $router->post('/portal/orders/cancel', [OrderController::class, 'cancelOrder'], 
 
 $router->get('/portal/products/search', [ProductController::class, 'searchProductVariants'], 'manage_orders');
 
-$router->post('/portal/ecom/categories', [CategoryController::class, 'editCategoryName']);
 $router->get('/portal/ecom/categories', [CategoryController::class, 'showProductCategoryScreen'], 'manage_orders');
+$router->post('/portal/ecom/categories', [CategoryController::class, 'editCategoryName']);
+
+$router->post('/portal/ecom/categories/add-category', [CategoryController::class, 'addNewProductCategory'], 'manage_orders');
+$router->post('/portal/ecom/categories/delete-category', [CategoryController::class, 'deleteProductCategory'], 'manage_orders');
+
+
+$router->get('/portal/ecom/products', [ProductController::class, 'showProductsGridScreen'], 'manage_orders');
+$router->get('/portal/ecom/products/add-product', [ProductController::class, "showAddProductScreen"], 'manage_orders');
+$router->get('/portal/ecom/products/view-product', [ProductController::class, 'showProductDetailScrren'], 'manage_orders');
+$router->get('/portal/ecom/products/edit-product', [ProductController::class, 'showEditProductDetailScrren'], 'manage_orders');
