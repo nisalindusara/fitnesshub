@@ -39,4 +39,9 @@ class ProductController extends Controller
         header('Content-Type: application/json');
         echo json_encode($shaped);
     }
+
+    public function showAddProductScreen(): void
+    {
+        $this->render('ecommerce_module/add-product', 'staff-layout');
+    }
 }

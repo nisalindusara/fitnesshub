@@ -26,3 +26,5 @@ $router->post('/portal/ecom/categories', [CategoryController::class, 'editCatego
 
 $router->post('/portal/ecom/categories/add-category', [CategoryController::class, 'addNewProductCategory'], 'manage_orders');
 $router->post('/portal/ecom/categories/delete-category', [CategoryController::class, 'deleteProductCategory'], 'manage_orders');
+
+$router->get('/portal/ecom/add-order', [ProductController::class, "showAddProductScreen"], 'manage_orders');
