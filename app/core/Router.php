@@ -25,8 +25,7 @@ class Router
         $route = $this->routes[$method][$path] ?? null;
 
         if ($route === null) {
-            http_response_code(404);
-            echo '404 - Page not found';
+            (new ErrorController())->pageNotFoundError404();
             return;
         }
 
@@ -37,10 +36,8 @@ class Router
                 exit;
             }
 
-
             if ($route['permission'] !== '@auth' && !Gate::allows($route['permission'])) {
-                http_response_code(403);
-                echo '403 - Forbidden';
+                (new ErrorController())->accessDeniedError403();
                 return;
             }
         }
