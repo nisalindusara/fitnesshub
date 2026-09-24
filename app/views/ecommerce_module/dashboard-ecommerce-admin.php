@@ -1,1 +1,0 @@
-<h1>E-commerce Admin Dashboard</h1>

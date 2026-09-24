@@ -41,7 +41,7 @@ $navItems = [
     // eCommerce — storefront only
     ['section' => 'eCommerce', 'label' => 'Orders', 'icon' => 'package', 'route' => '/portal/orders', 'permission' => 'manage_orders'],
     ['section' => 'eCommerce', 'label' => 'Products', 'icon' => 'box', 'route' => '/portal/products', 'permission' => 'manage_inventory'],
-    ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'tag', 'route' => '/portal/categories', 'permission' => 'manage_inventory'],
+    ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'tag', 'route' => '/portal/ecom/categories', 'permission' => 'manage_inventory'],
 
     // Instructor 
     ['section' => 'My Work', 'label' => 'My Clients', 'icon' => 'users', 'route' => '/my-clients', 'permission' => 'view_own_clients'],

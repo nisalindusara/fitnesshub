@@ -23,3 +23,5 @@ $router->get('/portal/products/search', [ProductController::class, 'searchProduc
 
 $router->post('/portal/ecom/categories', [CategoryController::class, 'editCategoryName']);
 $router->get('/portal/ecom/categories', [CategoryController::class, 'showProductCategoryScreen'], 'manage_orders');
+
+$router->post('/portal/ecom/categories/add-category', [CategoryController::class, 'addNewProductCategory'], 'manage_orders');

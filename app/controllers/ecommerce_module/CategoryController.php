@@ -37,4 +37,10 @@ class CategoryController extends Controller
             $this->redirect('/portal/ecom/categories?success=1');
         }
     }
+
+    public function addNewProductCategory(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        }
+    }
 }
