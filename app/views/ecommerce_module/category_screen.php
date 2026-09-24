@@ -11,7 +11,6 @@
         --primary-btn-hover: #9CA3AF;
         --bg-surface: #F9FAFB;
         --danger-btn: #ef4444;
-        /* Added for the delete button */
         --danger-btn-hover: #dc2626;
     }
 
@@ -350,21 +349,27 @@
                     Add new
                 </button>
 
-                <!-- Add New Dialog -->
+                <!-- Add New Dialog (Now with a Form) -->
                 <dialog id="categoryDialog">
-                    <div class="dialog-header">
-                        <h2 class="dialog-title">New Category</h2>
-                        <p class="dialog-subtitle">Add a category to organize your store products.</p>
-                    </div>
-                    <hr class="divider">
-                    <div class="form-group">
-                        <label class="form-label" for="categoryName">Category Name</label>
-                        <input class="form-input" type="text" id="categoryName" placeholder="e.g. Supplements">
-                    </div>
-                    <div class="dialog-actions">
-                        <button class="btn-cancel" id="cancelBtn">Cancel</button>
-                        <button class="btn-submit" id="submitBtn">Add Category</button>
-                    </div>
+                    <form action="/portal/ecom/categories/add-category" method="post">
+                        <div class="dialog-header">
+                            <h2 class="dialog-title">New Category</h2>
+                            <p class="dialog-subtitle">Add a category to organize your store products.</p>
+                        </div>
+                        <hr class="divider">
+                        <div class="form-group">
+                            <label class="form-label" for="categoryName">Category Name</label>
+                            <input class="form-input" type="text" name="category_name" id="categoryName" placeholder="e.g. Supplements" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="categoryDescription">Category Description</label>
+                            <input class="form-input" type="text" name="category_description" id="categoryDescription" placeholder="Add a description" required>
+                        </div>
+                        <div class="dialog-actions">
+                            <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
+                            <button type="submit" class="btn-submit">Add Category</button>
+                        </div>
+                    </form>
                 </dialog>
 
                 <button class="btn-action">
@@ -389,10 +394,10 @@
                 <span class="col-center">Product Count</span>
                 <span></span>
             </div>
-            <?php foreach ($categories as $category):  ?>
+            <?php foreach ($categories_array as $category):  ?>
                 <div class="table-row" data-category-id="<?= (int) $category['id'] ?>">
                     <span class="category-name"><?= htmlspecialchars($category['name']) ?></span>
-                    <span class='col-center'>24</span>
+                    <span class='col-center'><?= htmlspecialchars($category['item_count']) ?></span>
                     <div class="col-action">
                         <div class="dropdown">
                             <button class="btn-icon kebab-btn">
@@ -424,30 +429,32 @@
                     <input type="hidden" name="category_id" id="edit-dialog-category-id">
                     <div class="form-group">
                         <label class="form-label" for="edit-dialog-text-input">Category Name</label>
-                        <input class="form-input" type="text" name="new_name" id="edit-dialog-text-input">
+                        <input class="form-input" type="text" name="new_name" id="edit-dialog-text-input" required>
                     </div>
 
                     <div class="dialog-actions">
-                        <!-- Ensure type="button" so it doesn't submit the form -->
                         <button type="button" class="btn-cancel" id="closeEditDialogBtn">Cancel</button>
                         <button type="submit" class="btn-submit">Save Changes</button>
                     </div>
                 </form>
             </dialog>
 
-            <!-- Delete Category Dialog -->
+            <!-- Delete Category Dialog (Now with a Form) -->
             <dialog id="delete-dialog">
-                <div class="dialog-header">
-                    <h2 class="dialog-title">Delete Category</h2>
-                    <p class="dialog-subtitle">Are you sure you want to delete this category? This action cannot be undone.</p>
-                </div>
-                <hr class="divider">
+                <form action="/portal/ecom/categories/delete-category" method="post">
+                    <input type="hidden" name="category_id" id="delete-dialog-category-id">
 
-                <div class="dialog-actions">
-                    <button class="btn-cancel" id="closeDeleteDialogBtn">Cancel</button>
-                    <!-- Uses the new danger button class -->
-                    <button class="btn-danger" id="confirmDeleteBtn">Delete</button>
-                </div>
+                    <div class="dialog-header">
+                        <h2 class="dialog-title">Delete Category</h2>
+                        <p class="dialog-subtitle">Are you sure you want to delete this category? This action cannot be undone.</p>
+                    </div>
+                    <hr class="divider">
+
+                    <div class="dialog-actions">
+                        <button type="button" class="btn-cancel" id="closeDeleteDialogBtn">Cancel</button>
+                        <button type="submit" class="btn-danger">Delete</button>
+                    </div>
+                </form>
             </dialog>
         </div>
     </main>
@@ -457,7 +464,6 @@
     const openDialogBtn = document.getElementById('openDialogBtn');
     const categoryDialog = document.getElementById('categoryDialog');
     const cancelBtn = document.getElementById('cancelBtn');
-    const submitBtn = document.getElementById('submitBtn');
     const editDialog = document.getElementById('edit-dialog');
     const deleteDialog = document.getElementById('delete-dialog');
 
@@ -479,8 +485,9 @@
         openDialogBtn.addEventListener('click', () => categoryDialog.showModal());
     }
 
-    if (cancelBtn) cancelBtn.addEventListener('click', () => categoryDialog.close());
-    if (submitBtn) submitBtn.addEventListener('click', () => categoryDialog.close());
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', () => categoryDialog.close());
+    }
 
     categoryDialog.addEventListener('click', (e) => handleBackdropClick(categoryDialog, e));
     editDialog.addEventListener('click', (e) => handleBackdropClick(editDialog, e));
@@ -505,33 +512,38 @@
             });
         }
 
-        // Open Edit Dialog
+        // Open Edit Dialog & Populate hidden ID
         if (e.target.closest('.editBtn')) {
-            editDialog.showModal();
             const tableRow = e.target.closest('.table-row');
             const categoryNameSpan = tableRow.querySelector('.category-name');
             const categoryId = tableRow.dataset.categoryId;
 
             document.getElementById('edit-dialog-category-id').value = categoryId;
             document.getElementById('edit-dialog-text-input').value = categoryNameSpan.textContent;
+
+            editDialog.showModal();
             document.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show'));
         }
 
-        // Open Delete Dialog
+        // Open Delete Dialog & Populate hidden ID
         if (e.target.closest('.deleteBtn')) {
+            const tableRow = e.target.closest('.table-row');
+            const categoryId = tableRow.dataset.categoryId;
+
+            // Set the ID for the delete form
+            document.getElementById('delete-dialog-category-id').value = categoryId;
+
             deleteDialog.showModal();
             document.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show'));
         }
 
         // Close Edit Dialog (Cancel button)
         if (e.target.closest('#closeEditDialogBtn')) {
-            e.preventDefault();
             editDialog.close();
         }
 
         // Close Delete Dialog (Cancel button)
         if (e.target.closest('#closeDeleteDialogBtn')) {
-            e.preventDefault();
             deleteDialog.close();
         }
     });
