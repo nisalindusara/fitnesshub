@@ -44,4 +44,19 @@ class ProductController extends Controller
     {
         $this->render('ecommerce_module/add-product', 'staff-layout');
     }
+
+    public function showProductsGridScreen(): void
+    {
+        $this->render('ecommerce_module/product-grid', 'staff-layout');
+    }
+
+    public function showProductDetailScrren(): void
+    {
+        $this->render('ecommerce_module/product-detail', 'staff-layout');
+    }
+
+    public function showEditProductDetailScrren(): void
+    {
+        $this->render('ecommerce_module/product-detail-edit', 'staff-layout');
+    }
 }
