@@ -33,5 +33,8 @@
     main {
         width: 100vw;
         overflow-x: hidden;
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: #FFFFFF;
     }
 </style>
