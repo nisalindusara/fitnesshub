@@ -1,3 +1,3 @@
 <?php
 
-$router->get('/communication/unregistered-messages', [CommunicationController::class, 'unregisteredUserMessages']);
+$router->get('/communication/user-messages', [CommunicationController::class, 'UserMessages']);
