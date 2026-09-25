@@ -1,3 +1,3 @@
 <?php
 
-$router->get('/analytics/unregistered-users', [AnalyticsController::class, 'showUnregisteredUserAnalyticsScreen']);
+$router->get('/analytics', [AnalyticsController::class, 'showUserAnalyticsScreen']);

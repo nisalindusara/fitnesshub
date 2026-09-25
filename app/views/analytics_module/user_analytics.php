@@ -1,32 +1,39 @@
 <style>
-  /* Main Container Card */
+  .page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
   .main-content-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 48px 36px 44px;
-    gap: 20px;
 
-    width: 90%;
-    max-width: 580px;            /* Fixed typo: added hyphen */
-    min-height: auto;             /* Removed fixed 814px height */
-    margin: 28px auto 32px;      /* Centers the card horizontally on the page */
+    width: min(92%, 720px);
+    max-height: 100%;
+    /* clamps to leftover space, never forces scroll */
+    padding: 56px 48px;
+    gap: 32px;
 
-    background: #FFFFFF;
+    background: #fff;
     border-radius: 28px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .04);
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
   }
 
-  /* Image Container */
   .illustration-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 240px;            /* Scaled down to match mockup proportion */
+    max-width: 320px;
     height: auto;
   }
 
@@ -37,7 +44,6 @@
     display: block;
   }
 
-  /* Text and Button Wrapper */
   .content-group {
     display: flex;
     flex-direction: column;
@@ -52,7 +58,7 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    max-width: 380px;            /* Prevents the text from stretching across the entire width */
+    max-width: 380px;
   }
 
   .title-text {
@@ -71,7 +77,6 @@
     line-height: 1.45;
   }
 
-  /* CTA Button */
   .cta-button {
     display: inline-flex;
     align-items: center;
@@ -117,31 +122,34 @@
   }
 </style>
 
-<div class="main-content-card" id="main-content-card">
-  <!-- Graphic Illustration Image -->
-  <div class="illustration-container" id="illustration-container">
-    <img 
-      class="illustration-image" 
-      src="/uploads/Analytics/Analytics_1.png" 
-      alt="Fitness Analytics Illustration" 
-    />
-  </div>
-
-  <!-- Text & Action Group -->
-  <div class="content-group" id="content-group">
-    <div class="text-group">
-      <h2 class="title-text">Unlock Your Fitness Analytics</h2>
-      <p class="description-text">Before we can create any charts, we'll first need to get some data in here!</p>
+<div class="page-content">
+  <div class="main-content-card">
+    <div class="illustration-container">
+      <img class="illustration-image"
+        src="/uploads/Analytics/Analytics_1.png"
+        alt="Fitness Analytics Illustration">
     </div>
 
-    <!-- CTA Button -->
-    <button class="cta-button" type="button">
-      <span class="cta-text">View Memberships</span>
-      <span class="cta-icon-circle">
-        <svg class="cta-arrow-svg" viewBox="0 0 24 24" fill="none">
-          <path class="cta-arrow-path" d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-    </button>
+    <div class="content-group">
+      <div class="text-group">
+        <h2 class="title-text">Unlock Your Fitness Analytics</h2>
+        <p class="description-text">
+          Before we can create any charts, we'll first need to get some data in here!
+        </p>
+      </div>
+
+      <button class="cta-button" type="button">
+        <span class="cta-text">View Memberships</span>
+        <span class="cta-icon-circle">
+          <svg class="cta-arrow-svg" viewBox="0 0 24 24" fill="none">
+            <path d="M7 17L17 7M17 7H9M17 7V15"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+      </button>
+    </div>
   </div>
 </div>

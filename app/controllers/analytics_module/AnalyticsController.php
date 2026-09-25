@@ -1,11 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../../core/Controller.php';
-
 class AnalyticsController extends Controller
 {
-    public function showUnregisteredUserAnalyticsScreen(): void
+    public function showUserAnalyticsScreen(): void
     {
-        $this->render('analytics_module/unregistered_user_analytics','member-layout');
+        $this->render('analytics_module/user_analytics', 'member-layout');
     }
 }
