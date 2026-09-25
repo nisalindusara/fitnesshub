@@ -1,10 +1,11 @@
 <?php
 
-class AnalyticsController
+require_once __DIR__ . '/../../core/Controller.php';
+
+class AnalyticsController extends Controller
 {
-    public function showUnregisteredUserAnalyticsScreen()
+    public function showUnregisteredUserAnalyticsScreen(): void
     {
-        // Adjust the relative path if your controller is inside app/controllers/
-        require_once __DIR__ . '/routes/analytics_module.php';
+        $this->render('analytics_module/unregistered_user_analytics','member-layout');
     }
 }
