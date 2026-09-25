@@ -103,5 +103,55 @@ class CommunicationController extends Controller
         ];
         require_once "../app/views/communication_module/instructor_profile_view.php";
     }
+
+        // 1. Non-PT Member Message Overview
+    public function NonPTMessages()
+    {
+        $this->render('communication_module/NonPT_messages','member-layout');
+    }
+
+    // 2. Chat Conversation with Coach Elena (reusing chat_conversation.php)
+    public function chatElena()
+    {
+        $name = 'Coach Elena';
+        $role = 'MEAL PLAN INSTRUCTOR';
+        $avatar = '/uploads/profiles/profile_5.jpg';
+        $profile_url = '/instructor/profile/elena'; // Enables clickable profile
+
+        $messages = [
+            ['type' => 'incoming', 'text' => "Hi there! I reviewed your progress log from this past week.", 'time' => 'Yesterday'],
+            ['type' => 'incoming', 'text' => "I've updated your macros for the week to keep you energized for your sessions.", 'time' => 'Yesterday'],
+            ['type' => 'outgoing', 'text' => "Thanks Elena! Should I still keep carbs lower on rest days?", 'time' => '8:20 AM'],
+            ['type' => 'incoming', 'text' => "Yes, slightly lower on rest days, but keep protein steady.", 'time' => '9:05 AM']
+        ];
+
+        require_once "../app/views/communication_module/chat_conversation.php";
+    }
+
+    // 3. Coach Elena's Profile Screen (reusing instructor_profile.php)
+    public function profileElena()
+    {
+        $instructor = [
+            'name' => 'Elena Rostova',
+            'title' => 'Certified Nutrition & Meal Plan Specialist',
+            'experience' => '6 years experience',
+            'avatar' => '/uploads/profiles/profile_5.jpg',
+            'chat_route' => '/communication/chat-elena',
+            'tags' => [
+                ['name' => 'Meal Planning', 'color' => 'tag-green'],
+                ['name' => 'Sports Nutrition', 'color' => 'tag-orange'],
+                ['name' => 'Habit Coaching', 'color' => 'tag-blue'],
+                ['name' => 'Weight Management', 'color' => 'tag-purple']
+            ],
+            'stats' => ['exp_years' => '6', 'years_with_us' => '2', 'clients' => '95+'],
+            'about_paragraphs' => [
+                "Elena specializes in evidence-based metabolic health and custom nutritional protocols to support high-performance training goals.",
+                "She believes in sustainable, enjoyable eating habits rather than restrictive dieting, ensuring you fuel your workouts while still hitting your body composition targets."
+            ],
+            'certification' => 'Precision Nutrition Level 2 (Pn2) & Registered Dietitian'
+        ];
+
+        require_once "../app/views/communication_module/instructor_profile_view.php";
+    }
     
 }
