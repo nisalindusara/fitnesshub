@@ -20,6 +20,11 @@
       --color-text-muted: #64748B;
       --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       --shadow-dock: 0 10px 30px -4px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+
+      /* NEW: single source of truth for chrome sizes, used to size .main-content */
+      --header-height: 76px;
+      --dock-clearance: 100px;
+      /* dock height + bottom gap + breathing room */
     }
 
     * {
@@ -34,10 +39,12 @@
       color: var(--color-text-primary);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+      /* no page-level scroll */
     }
 
     .app-layout {
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       flex-direction: column;
     }
@@ -45,11 +52,12 @@
     /* Top Header */
     .top-header {
       background-color: var(--color-header-bg);
-      height: 76px;
+      height: var(--header-height);
       width: 100%;
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       position: fixed;
-      background-color: #fff;
+      top: 0;
+      left: 0;
       z-index: 20;
     }
 
@@ -97,17 +105,21 @@
       color: var(--color-text-primary);
     }
 
-    /* Main Content Area */
+    /* Main Content Area — FIXED: exact height, no stacked margins/paddings */
     .main-content {
       font-family: 'DM Sans', sans-serif;
       background-color: #F8F9FA;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      margin-top: 35px;
-      padding-bottom: 100px;
+      height: 100vh;
+      /* exact, not min-height — prevents overflow */
+      box-sizing: border-box;
+      padding-top: var(--header-height);
+      /* clears the fixed header */
+      padding-bottom: var(--dock-clearance);
+      /* clears the fixed dock */
+      overflow: hidden;
     }
 
     .content-container {
@@ -181,14 +193,14 @@
 
     /* Responsiveness */
     @media (max-width: 768px) {
+      :root {
+        --header-height: 64px;
+        --dock-clearance: 88px;
+      }
 
       .header-container,
       .content-container {
         padding: 0 20px;
-      }
-
-      .top-header {
-        height: 64px;
       }
 
       .content-container {
@@ -267,7 +279,7 @@
     </header>
 
     <!-- Page Content Container -->
-    <main style="padding-top: 4rem;" class="main-content">
+    <main class="main-content">
       <?php echo $content; ?>
     </main>
 
