@@ -130,7 +130,7 @@
         <div class="error-code">
             <span class="error-digit">4</span>
             <div class="error-image-placeholder">
-                <img src="assets/images/logo_bg_removed.png" alt="FitnessHub Logo Placeholder" class="logo-img">
+                <img src="/assets/images/logo_bg_removed.png" alt="FitnessHub Logo Placeholder" class="logo-img">
             </div>
             <span class="error-digit">4</span>
         </div>
