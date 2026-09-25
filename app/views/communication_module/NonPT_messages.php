@@ -300,7 +300,7 @@
           Your dedicated coach creates custom workouts, tracks your progress, and gives you the exact nutrition and accountability you need to see real results faster.
         </p>
 
-        <a href="/instructors" class="promo-cta-btn">
+        <a href="/communication/available-instructors" class="promo-cta-btn">
           <span>View Available Instructors</span>
           <svg class="promo-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="7" y1="17" x2="17" y2="7"></line>

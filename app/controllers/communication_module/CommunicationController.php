@@ -104,6 +104,28 @@ class CommunicationController extends Controller
         require_once "../app/views/communication_module/instructor_profile_view.php";
     }
 
+    public function profileKavindu()
+    {
+        $instructor = [
+            'name' => 'Kavindu Perera',
+            'title' => 'Clinical Nutritionist & Trainer',
+            'experience' => '6 years experience',
+            'avatar' => '/uploads/profiles/profile_3.jpg',
+            'chat_route' => '/communication/chat-sarah',
+            'tags' => [
+                ['name' => 'Diet Planning', 'color' => 'tag-green'],
+                ['name' => 'Strength Training', 'color' => 'tag-orange'],
+                ['name' => 'Cardio', 'color' => 'tag-pink']
+            ],
+            'stats' => ['exp_years' => '6', 'years_with_us' => '2', 'clients' => '95+'],
+            'about_paragraphs' => [
+                "Sarah specializes in evidence-based metabolic health and custom nutritional protocols to support high-performance training goals."
+            ],
+            'certification' => 'Registered Dietitian & CPT'
+        ];
+        require_once "../app/views/communication_module/instructor_profile_view.php";
+    }
+
         // 1. Non-PT Member Message Overview
     public function NonPTMessages()
     {
@@ -153,5 +175,40 @@ class CommunicationController extends Controller
 
         require_once "../app/views/communication_module/instructor_profile_view.php";
     }
-    
+
+    public function availableInstructors()
+    {
+        $instructors = [
+            [
+                'name' => 'Coach Marcus',
+                'title' => 'Personal Instructor',
+                'experience' => '8 years exp',
+                'avatar' => '/uploads/profiles/profile_1.jpg',
+                'profile_url' => '/instructor/profile/marcus',
+                'chat_url' => '/communication/chat-marcus',
+                'tags' => ['Strength Training', 'Personal Training', 'HIIT']
+            ],
+            [
+                'name' => 'Sarah Miller',
+                'title' => 'Clinical Nutritionist & Trainer',
+                'experience' => '6 years exp',
+                'avatar' => '/uploads/profiles/profile_2.jpg',
+                'profile_url' => '/instructor/profile/sarah',
+                'chat_url' => '/communication/chat-sarah',
+                'tags' => ['Meal Planning', 'Habit Coaching', 'Weight Loss']
+            ],
+            [
+                'name' => 'Kavindu Perera',
+                'title' => 'Senior Fitness Instructor',
+                'experience' => '8 years exp',
+                'avatar' => '/uploads/profiles/profile_3.jpg',
+                'profile_url' => '/instructor/profile/kavindu',
+                'chat_url' => '/communication/chat-marcus', // links to active chat
+                'tags' => ['Yoga', 'Cardio', 'Mobility']
+            ]
+        ];
+
+        require_once "../app/views/communication_module/available_instructors.php";
+    }
+        
 }

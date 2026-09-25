@@ -14,3 +14,5 @@ $router->get('/communication/chat-elena', [CommunicationController::class, 'chat
 // Profile view for Coach Elena
 $router->get('/instructor/profile/elena', [CommunicationController::class, 'profileElena']);
 $router->get('/communication/NonPT-messages', [CommunicationController::class, 'NonPTMessages']);
+$router->get('/communication/available-instructors', [CommunicationController::class, 'availableInstructors']);
+$router->get('/instructor/profile/kavindu', [CommunicationController::class, 'profileKavindu']);
