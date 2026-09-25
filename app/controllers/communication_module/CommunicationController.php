@@ -9,5 +9,99 @@ class CommunicationController extends Controller
     // Adjust the view helper function to match your project's view-loading convention:
     $this->render('communication_module/user_messages','member-layout');
     
-    }    
+    } 
+    public function PTMemberMessages():void
+    {
+        $this->render('communication_module/Member_withPT_messages','member-layout');
+    } 
+    public function chatMarcus()
+    {
+        $name = 'Coach Marcus';
+        $role = 'PERSONAL INSTRUCTOR';
+        $avatar = '/uploads/profiles/profile_1.jpg';
+        $profile_url ='/instructor/profile/marcus';
+        $messages = [
+            ['type' => 'incoming', 'text' => "That's totally normal! DOMS usually peaks around 24–48 hours post–workout.", 'time' => '10:48 AM'],
+            ['type' => 'incoming', 'text' => 'Make sure to hydrate well today and try to get in some light movement. Active recovery is key.', 'time' => '10:48 AM'],
+            ['type' => 'outgoing', 'text' => "Thanks! I'll do that routine on my lunch break.", 'time' => '10:52 AM'],
+            ['type' => 'outgoing', 'text' => 'Are we still on for Thursday at 6 AM?', 'time' => '10:52 AM']
+        ];
+        require_once "../app/views/communication_module/chat_conversation.php";
+    }
+
+    public function chatSarah()
+    {
+        $name = 'Sarah Miller';
+        $role = 'NUTRITIONIST';
+        $avatar = '/uploads/profiles/profile_2.jpg';
+        $profile_url ='/instructor/profile/sarah';
+        $messages = [
+            ['type' => 'incoming', 'text' => "Hey! How is your protein intake looking this week?", 'time' => 'Yesterday'],
+            ['type' => 'incoming', 'text' => "Don't forget to track your hydration targets today.", 'time' => 'Yesterday'],
+            ['type' => 'outgoing', 'text' => 'Hit 140g yesterday, feeling much more energetic!', 'time' => '8:15 AM']
+        ];
+        require_once "../app/views/communication_module/chat_conversation.php";
+    }
+
+    public function chatSupport()
+    {
+        $name = 'FitnessHub Support Desk';
+        $role = 'CUSTOMER SUPPORT';
+        $avatar = '/uploads/Communication/SupportTeam.png';
+        $profile_url = null;
+        $messages = [
+            ['type' => 'incoming', 'text' => 'Welcome to FitnessHub! Let us know if you need any assistance getting started.', 'time' => 'Sep 24'],
+            ['type' => 'outgoing', 'text' => 'Could you help me change my default subscription payment method?', 'time' => 'Sep 24'],
+            ['type' => 'incoming', 'text' => 'Certainly, head over to your Account > Payment settings to update your card.', 'time' => 'Sep 24']
+        ];
+        require_once "../app/views/communication_module/chat_conversation.php";
+    } 
+
+    public function profileMarcus()
+    {
+        $instructor = [
+            'name' => 'Coach Marcus',
+            'title' => 'Senior Fitness Instructor',
+            'experience' => '8 years experience',
+            'avatar' => '/uploads/profiles/profile_1.jpg',
+            'chat_route' => '/communication/chat-marcus',
+            'tags' => [
+                ['name' => 'Yoga', 'color' => 'tag-purple'],
+                ['name' => 'Strength Training', 'color' => 'tag-orange'],
+                ['name' => 'Cardio', 'color' => 'tag-pink'],
+                ['name' => 'Personal Training', 'color' => 'tag-blue'],
+                ['name' => 'HIIT', 'color' => 'tag-green']
+            ],
+            'stats' => ['exp_years' => '8', 'years_with_us' => '3', 'clients' => '120+'],
+            'about_paragraphs' => [
+                "Marcus began his fitness journey as a competitive athlete and quickly discovered a passion for helping others unlock their physical potential. With over eight years of hands-on experience spanning group classes and one-on-one coaching, he blends evidence-based programming with mindfulness principles.",
+                "His coaching philosophy centers on sustainable progress — he believes that consistency, proper form, and enjoying the process matter far more than short-term intensity. Whether you're stepping into the gym for the first time or chasing a personal record, Marcus meets you exactly where you are."
+            ],
+            'certification' => 'Certified Personal Trainer (CPT)'
+        ];
+        require_once "../app/views/communication_module/instructor_profile_view.php";
+    }
+
+    public function profileSarah()
+    {
+        $instructor = [
+            'name' => 'Sarah Miller',
+            'title' => 'Clinical Nutritionist & Trainer',
+            'experience' => '6 years experience',
+            'avatar' => '/uploads/profiles/profile_2.jpg',
+            'chat_route' => '/communication/chat-sarah',
+            'tags' => [
+                ['name' => 'Diet Planning', 'color' => 'tag-green'],
+                ['name' => 'Strength Training', 'color' => 'tag-orange'],
+                ['name' => 'Cardio', 'color' => 'tag-pink']
+            ],
+            'stats' => ['exp_years' => '6', 'years_with_us' => '2', 'clients' => '95+'],
+            'about_paragraphs' => [
+                "Sarah specializes in evidence-based metabolic health and custom nutritional protocols to support high-performance training goals."
+            ],
+            'certification' => 'Registered Dietitian & CPT'
+        ];
+        require_once "../app/views/communication_module/instructor_profile_view.php";
+    }
+    
 }
