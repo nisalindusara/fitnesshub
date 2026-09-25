@@ -210,5 +210,20 @@ class CommunicationController extends Controller
 
         require_once "../app/views/communication_module/available_instructors.php";
     }
-        
+
+    public function EmptySupportTickets()
+    {
+      $this->render('communication_module/empty_user_submit_ticket','member-layout');  
+    }
+
+    public function userTicketForm()
+    {
+      $this->render('communication_module/user_ticketForm','member-layout');  
+    }
+
+    public function UserSupportTickets()
+    {
+      $this->render('communication_module/user_submit_ticket','member-layout');  
+    }
+            
 }
