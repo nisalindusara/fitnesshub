@@ -1,8 +1,6 @@
 <link rel="stylesheet" href="/assets/css/membership-plans.css">
 
 <section class="mp-page">
-    <div class="mp-breadcrumb">Membership Management <span>/</span> Membership Plans <span>/</span> Edit</div>
-
     <div class="mp-page-head mp-page-head--compact">
         <div><h1>Edit Membership Plan</h1><p>Update plan details for future purchases.</p></div>
     </div>

@@ -1,8 +1,6 @@
 <link rel="stylesheet" href="/assets/css/membership-plans.css">
 
 <section class="mp-page">
-    <div class="mp-breadcrumb">Membership Management <span>/</span> Membership Plans</div>
-
     <?php if (!empty($flash)): ?>
         <div class="mp-flash mp-flash--<?= htmlspecialchars($flash['type']) ?>">
             <?= htmlspecialchars($flash['message']) ?>
@@ -12,7 +10,6 @@
     <div class="mp-page-head">
         <div>
             <h1>Membership Plans</h1>
-            <p>Manage membership packages, pricing, duration and included PT sessions.</p>
         </div>
         <a href="/membership-plans/create" class="mp-btn mp-btn--primary">+ Add Membership Plan</a>
     </div>
