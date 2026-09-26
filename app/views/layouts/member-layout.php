@@ -39,12 +39,10 @@
       color: var(--color-text-primary);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
-      overflow: hidden;
-      /* no page-level scroll */
     }
 
     .app-layout {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
@@ -107,19 +105,17 @@
 
     /* Main Content Area — FIXED: exact height, no stacked margins/paddings */
     .main-content {
-      font-family: 'DM Sans', sans-serif;
-      background-color: #F8F9FA;
+      width: 100%;
+      min-height: 100vh;
+      /* full viewport; padding is carved out of this via border-box */
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      /* exact, not min-height — prevents overflow */
       box-sizing: border-box;
-      padding-top: var(--header-height);
-      /* clears the fixed header */
-      padding-bottom: var(--dock-clearance);
-      /* clears the fixed dock */
-      overflow: hidden;
+      padding: 108px 20px 128px;
+      /* 108px = 76px header clearance + 32px gap; 128px = dock clearance */
+      font-family: 'DM Sans', sans-serif;
+      background-color: #F8F9FA;
     }
 
     .content-container {
