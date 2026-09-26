@@ -9,12 +9,12 @@ class Router
      * this keeps every pre-existing public route (landing, store, auth)
      * unaffected by the RBAC layer added later.
      */
-    public function get(string $path, array $handler, ?string $permission = null): void
+    public function get(string $path, array $handler, string|array|null $permission = null): void
     {
         $this->routes['GET'][$path] = ['handler' => $handler, 'permission' => $permission];
     }
 
-    public function post(string $path, array $handler, ?string $permission = null): void
+    public function post(string $path, array $handler, string|array|null $permission = null): void
     {
         $this->routes['POST'][$path] = ['handler' => $handler, 'permission' => $permission];
     }
@@ -29,16 +29,29 @@ class Router
             return;
         }
 
-        if ($route['permission'] !== null) {
+        $permission = $route['permission'];
 
+        if ($permission !== null) {
             if (empty($_SESSION['user_id'])) {
                 header('Location: /login');
                 exit;
             }
 
-            if ($route['permission'] !== '@auth' && !Gate::allows($route['permission'])) {
-                (new ErrorController())->accessDeniedError403();
-                return;
+            if ($permission === '@member') {
+                if (!empty($_SESSION['is_staff'])) {
+                    (new ErrorController())->accessDeniedError403();
+                    return;
+                }
+            } elseif (is_array($permission)) {
+                if (!Gate::any($permission)) {
+                    (new ErrorController())->accessDeniedError403();
+                    return;
+                }
+            } else {
+                if (!Gate::allows($permission)) {
+                    (new ErrorController())->accessDeniedError403();
+                    return;
+                }
             }
         }
 

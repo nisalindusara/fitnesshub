@@ -182,7 +182,7 @@
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
-        <a href="/member/member-profile/privace-data" class="menu-item">
+        <a href="/member/member-profile/privacy-data" class="menu-item">
             <div class="menu-label">
                 <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
