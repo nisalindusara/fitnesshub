@@ -214,8 +214,8 @@
                 Edit Class
             </a>
 
-            <a href="#" class="cls-btn cls-primary">
-                Schedule Session
+            <a href="/classes/sessions/create" class="cls-btn cls-primary">
+                 Schedule Session
             </a>
         </div>
 

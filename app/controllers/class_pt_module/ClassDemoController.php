@@ -118,4 +118,165 @@ class ClassDemoController extends Controller
             ]
         );
     }
+public function sessions(): void
+{
+    $sessions = [
+
+        [
+            'id' => 1,
+            'class_name' => 'Yoga Flow',
+            'date' => 'Oct 15, 2026',
+            'start_time' => '8:00 AM',
+            'end_time' => '9:00 AM',
+            'instructor' => 'Sarah Johnson',
+            'capacity' => 20,
+            'bookings' => 18,
+            'status' => 'SCHEDULED'
+        ],
+
+        [
+            'id' => 2,
+            'class_name' => 'HIIT Express',
+            'date' => 'Oct 15, 2026',
+            'start_time' => '12:00 PM',
+            'end_time' => '12:45 PM',
+            'instructor' => 'Mike Chen',
+            'capacity' => 16,
+            'bookings' => 16,
+            'status' => 'SCHEDULED'
+        ],
+
+        [
+            'id' => 3,
+            'class_name' => 'Core Pilates',
+            'date' => 'Oct 14, 2026',
+            'start_time' => '5:30 PM',
+            'end_time' => '6:30 PM',
+            'instructor' => 'Emma Wilson',
+            'capacity' => 18,
+            'bookings' => 15,
+            'status' => 'COMPLETED'
+        ],
+
+        [
+            'id' => 4,
+            'class_name' => 'Power Cycle',
+            'date' => 'Oct 14, 2026',
+            'start_time' => '6:30 PM',
+            'end_time' => '7:15 PM',
+            'instructor' => 'Jordan Lee',
+            'capacity' => 22,
+            'bookings' => 20,
+            'status' => 'COMPLETED'
+        ],
+
+        [
+            'id' => 5,
+            'class_name' => 'Strength Basics',
+            'date' => 'Oct 16, 2026',
+            'start_time' => '7:00 AM',
+            'end_time' => '8:00 AM',
+            'instructor' => 'Alex Rivera',
+            'capacity' => 14,
+            'bookings' => 9,
+            'status' => 'SCHEDULED'
+        ],
+
+        [
+            'id' => 6,
+            'class_name' => 'Mobility Reset',
+            'date' => 'Oct 13, 2026',
+            'start_time' => '4:00 PM',
+            'end_time' => '4:45 PM',
+            'instructor' => 'Taylor Brooks',
+            'capacity' => 12,
+            'bookings' => 6,
+            'status' => 'CANCELLED'
+        ]
+
+    ];
+
+    $this->render(
+        'class_pt_module/sessions/index',
+        'staff-layout',
+        [
+            'sessions' => $sessions,
+            'pageTitle' => 'Class Sessions'
+        ]
+    );
+}
+
+
+public function createSession(): void
+{
+    $this->render(
+        'class_pt_module/sessions/create',
+        'staff-layout',
+        [
+            'pageTitle' => 'Schedule Class Session'
+        ]
+    );
+}
+
+
+public function showSession(): void
+{
+    $session = [
+        'id' => 1,
+        'class_name' => 'Yoga Flow',
+        'date' => 'Oct 22, 2026',
+        'day' => 'Thursday',
+        'start_time' => '8:00 AM',
+        'end_time' => '9:00 AM',
+        'instructor' => 'Sarah Johnson',
+        'capacity' => 20,
+        'bookings' => 18,
+        'status' => 'SCHEDULED',
+        'location' => 'Studio A'
+    ];
+
+
+    $members = [
+
+        [
+            'name' => 'Olivia Martinez',
+            'email' => 'olivia.martinez@example.com',
+            'booked_date' => 'Oct 4, 2026 · 10:24 AM',
+            'status' => 'CONFIRMED'
+        ],
+
+        [
+            'name' => 'Daniel Kim',
+            'email' => 'daniel.kim@example.com',
+            'booked_date' => 'Oct 5, 2026 · 2:18 PM',
+            'status' => 'CONFIRMED'
+        ],
+
+        [
+            'name' => 'Ava Thompson',
+            'email' => 'ava.thompson@example.com',
+            'booked_date' => 'Oct 7, 2026 · 9:42 AM',
+            'status' => 'WAITLISTED'
+        ],
+
+        [
+            'name' => 'Noah Williams',
+            'email' => 'noah.williams@example.com',
+            'booked_date' => 'Oct 8, 2026 · 4:05 PM',
+            'status' => 'CONFIRMED'
+        ]
+
+    ];
+
+
+    $this->render(
+        'class_pt_module/sessions/show',
+        'staff-layout',
+        [
+            'session' => $session,
+            'members' => $members,
+            'pageTitle' => 'Class Session Details'
+        ]
+    );
+}
 }
