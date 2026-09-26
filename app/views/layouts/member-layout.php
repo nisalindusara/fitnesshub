@@ -286,8 +286,12 @@
     <!-- Floating Bottom Navigation Dock -->
     <aside class="bottom-dock-wrapper">
       <nav class="floating-dock" aria-label="Primary Navigation">
-        <!-- Home (Active) -->
-        <a href="#home" class="nav-item active" aria-current="page">
+        <?php
+        $route = $currentRoute ?? '';
+        $navAttrs = fn(string $path) => ($route === $path || str_starts_with($route, $path . '/')) ? 'class="nav-item active" aria-current="page"' : 'class="nav-item"';
+        ?>
+        <!-- Home -->
+        <a href="/dashboard" <?= $navAttrs('/dashboard') ?>>
           <svg viewBox="0 0 24 24" class="nav-icon">
             <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" />
           </svg>
@@ -295,7 +299,7 @@
         </a>
 
         <!-- Membership -->
-        <a href="#membership" class="nav-item">
+        <a href="/membership" <?= $navAttrs('/membership') ?>>
           <svg viewBox="0 0 24 24" class="nav-icon">
             <path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3H19ZM19 19H5V8H19V19ZM7 10H17V12H7V10ZM7 14H14V16H7V14Z" />
           </svg>
@@ -303,7 +307,7 @@
         </a>
 
         <!-- Analytics -->
-        <a href="#analytics" class="nav-item">
+        <a href="/analytics" <?= $navAttrs('/analytics') ?>>
           <svg viewBox="0 0 24 24" class="nav-icon">
             <path d="M5 9.2H8V19H5V9.2ZM10.6 5H13.4V19H10.6V5ZM16.2 13H19V19H16.2V13Z" />
           </svg>

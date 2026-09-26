@@ -14,6 +14,34 @@ class MemberController extends Controller
         $this->render('member/dashboard', 'member-layout', $data);
     }
 
+    public function showMembershipScreen(): void
+    {
+        // UI only — placeholder data until membership records are wired up
+        $data['membership'] = [
+            'plan_name' => '1 Year Membership',
+            'expires_on' => 'Oct 24, 2026',
+            'is_active' => true,
+        ];
+
+        $this->render('member/membership', 'member-layout', $data);
+    }
+
+    public function showWorkoutScheduleScreen(): void
+    {
+        // UI only — placeholder data until workout plans are wired up
+        $data['planDate'] = date('l, M j');
+        $data['exercises'] = [
+            ['name' => 'Barbell Squats', 'detail' => '3 sets x 12 reps', 'done' => true],
+            ['name' => 'Bench Press', 'detail' => '3 sets x 12 reps', 'done' => true],
+            ['name' => 'Deadlifts', 'detail' => '3 sets x 12 reps', 'done' => false],
+            ['name' => 'Overhead Press', 'detail' => '3 sets x 12 reps', 'done' => false],
+            ['name' => 'Pull-ups', 'detail' => '3 sets x 12 reps', 'done' => false],
+            ['name' => 'Plank', 'detail' => '3 sets x 60 sec', 'done' => false],
+        ];
+
+        $this->render('member/workout-schedule', 'member-layout', $data);
+    }
+
     public function showMemberProfileScreen(): void
     {
         $this->render('member/member-profile', 'member-layout');
