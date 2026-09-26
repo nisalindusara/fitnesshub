@@ -56,3 +56,137 @@
   if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeDeactivate(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDeactivate(); });
 })();
+function openMenu(button) {
+
+    const wrapper = button.closest('.mp-menu-wrap');
+
+    if (!wrapper) {
+        return;
+    }
+
+    const menu = wrapper.querySelector('[data-menu]');
+
+    if (!menu) {
+        return;
+    }
+
+    if (activeMenu === menu) {
+        closeMenu();
+        return;
+    }
+
+    closeMenu();
+
+    activeMenu = menu;
+    activeWrapper = wrapper;
+
+    document.body.appendChild(menu);
+
+    menu.classList.add('is-open');
+
+    requestAnimationFrame(function () {
+
+        const buttonRect = button.getBoundingClientRect();
+        const menuRect = menu.getBoundingClientRect();
+
+        const menuWidth = menuRect.width;
+        const menuHeight = menuRect.height;
+
+        const gap = 8;
+        const padding = 12;
+        const viewportWidth =
+            window.visualViewport
+                ? window.visualViewport.width
+                : window.innerWidth;
+
+        const viewportHeight =
+            window.visualViewport
+                ? window.visualViewport.height
+                : window.innerHeight;
+
+        const viewportTop =
+            window.visualViewport
+                ? window.visualViewport.offsetTop
+                : 0;
+
+        let left =
+            buttonRect.right -
+            menuWidth;
+        if (
+            left + menuWidth >
+            viewportWidth - padding
+        ) {
+            left =
+                viewportWidth -
+                menuWidth -
+                padding;
+        }
+        if (left < padding) {
+            left = padding;
+        }
+
+
+        const availableBelow =
+            viewportHeight -
+            buttonRect.bottom -
+            padding;
+
+        const availableAbove =
+            buttonRect.top -
+            viewportTop -
+            padding;
+
+        let top;
+        if (
+            availableBelow >=
+            menuHeight + gap
+        ) {
+
+            top =
+                buttonRect.bottom +
+                gap;
+
+        } else if (
+            availableAbove >=
+            menuHeight + gap
+        ) {
+
+            top =
+                buttonRect.top -
+                menuHeight -
+                gap;
+
+        } else {
+
+
+            top =
+                viewportTop +
+                viewportHeight -
+                menuHeight -
+                padding;
+        }
+        const minimumTop =
+            viewportTop + padding;
+
+        const maximumTop =
+            viewportTop +
+            viewportHeight -
+            menuHeight -
+            padding;
+
+        top = Math.max(
+            minimumTop,
+            Math.min(top, maximumTop)
+        );
+
+
+        menu.style.left =
+            `${Math.round(left)}px`;
+
+        menu.style.top =
+            `${Math.round(top)}px`;
+
+        menu.style.right = 'auto';
+        menu.style.bottom = 'auto';
+    });
+}
