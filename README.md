@@ -39,60 +39,7 @@ This is a university group project, built on a custom PHP MVC framework with no 
 
 ## Getting started
 
-### Requirements
-
-- [XAMPP](https://www.apachefriends.org/) with Apache, PHP, and MySQL
-- PHP version: <!-- TODO: add the minimum PHP version you develop and test on -->
-- Git
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/nisalindusara/fitnesshub.git
-cd fitnesshub
-```
-
-### 2. Create the database
-
-1. Start **Apache** and **MySQL** from the XAMPP control panel.
-2. Open phpMyAdmin and create a database named `fitnesshub_db` (collation `utf8mb4_general_ci`).
-3. Import the SQL file from the [`database/`](database/README.md) folder.
-
-Full import instructions, including the command-line method, are in [`database/README.md`](database/README.md).
-
-### 3. Configure the application
-
-Check the database connection settings in [`config/`](config/README.md) and make sure they match your local MySQL credentials.
-
-### 4. Set up the local domain (VirtualHost)
-
-The project is served from the `public/` folder at `http://fitnesshub.local`.
-
-Add this to XAMPP's `httpd-vhosts.conf` (adjust the path to where you cloned the repo):
-
-```apache
-<VirtualHost *:80>
-    ServerName fitnesshub.local
-    DocumentRoot "C:/path/to/fitnesshub/public"
-
-    <Directory "C:/path/to/fitnesshub/public">
-        AllowOverride All
-        Require all granted
-    </Directory>
-</VirtualHost>
-```
-
-Then add this line to your hosts file (`C:\Windows\System32\drivers\etc\hosts`, open as Administrator):
-
-```
-127.0.0.1   fitnesshub.local
-```
-
-Restart Apache and open **http://fitnesshub.local**.
-
-### 5. Folder permissions
-
-Make sure PHP can write to `storage/logs/`, `storage/uploads/`, and the folders under `public/uploads/`.
+See [GETTING-STARTED.md](getting-started.md) for full setup instructions (Mac and Windows).
 
 ## Project structure
 
