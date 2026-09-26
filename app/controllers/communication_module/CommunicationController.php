@@ -4,22 +4,21 @@ require_once __DIR__ . '/../../core/Controller.php';
 
 class CommunicationController extends Controller
 {
-   public function UserMessages():void
+    public function UserMessages(): void
     {
-    // Adjust the view helper function to match your project's view-loading convention:
-    $this->render('communication_module/user_messages','member-layout');
-    
-    } 
-    public function PTMemberMessages():void
+        // Adjust the view helper function to match your project's view-loading convention:
+        $this->render('communication_module/user_messages', 'member-layout');
+    }
+    public function PTMemberMessages(): void
     {
-        $this->render('communication_module/Member_withPT_messages','member-layout');
-    } 
+        $this->render('communication_module/Member_withPT_messages', 'member-layout');
+    }
     public function chatMarcus()
     {
         $name = 'Coach Marcus';
         $role = 'PERSONAL INSTRUCTOR';
         $avatar = '/uploads/profiles/profile_1.jpg';
-        $profile_url ='/instructor/profile/marcus';
+        $profile_url = '/instructor/profile/marcus';
         $user_name = $_SESSION['user_name'] ?? 'Member';
         $messages = [
             ['type' => 'incoming', 'text' => "That's totally normal! DOMS usually peaks around 24–48 hours post–workout.", 'time' => '10:48 AM'],
@@ -27,15 +26,14 @@ class CommunicationController extends Controller
             ['type' => 'outgoing', 'text' => "Thanks! I'll do that routine on my lunch break.", 'time' => '10:52 AM'],
             ['type' => 'outgoing', 'text' => 'Are we still on for Thursday at 6 AM?', 'time' => '10:52 AM']
         ];
-        $this->render('communication_module/chat_conversation','member-layout',compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name'));
+        $this->render('communication_module/chat_conversation', 'member-layout', compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name'));
     }
-
     public function chatSarah()
     {
         $name = 'Sarah Miller';
         $role = 'NUTRITIONIST';
         $avatar = '/uploads/profiles/profile_2.jpg';
-        $profile_url ='/instructor/profile/sarah';
+        $profile_url = '/instructor/profile/sarah';
         $user_name = $_SESSION['user_name'] ?? 'Member';
         $messages = [
             ['type' => 'incoming', 'text' => "Hey! How is your protein intake looking this week?", 'time' => 'Yesterday'],
@@ -45,7 +43,7 @@ class CommunicationController extends Controller
             ['type' => 'outgoing', 'text' => 'Will do! Should I adjust carbs on Saturday?', 'time' => '9:00 AM'],
             ['type' => 'incoming', 'text' => 'Keep them moderate if you plan on doing high intensity training.', 'time' => '9:15 AM'],
         ];
-        $this->render('communication_module/chat_conversation','member-layout',compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name'));
+        $this->render('communication_module/chat_conversation', 'member-layout', compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name'));
     }
 
     public function chatSupport()
@@ -60,8 +58,8 @@ class CommunicationController extends Controller
             ['type' => 'outgoing', 'text' => 'Could you help me change my default subscription payment method?', 'time' => 'Sep 24'],
             ['type' => 'incoming', 'text' => 'Certainly, head over to your Account > Payment settings to update your card.', 'time' => 'Sep 24']
         ];
-        $this->render('communication_module/chat_conversation','member-layout',compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name')); 
-    } 
+        $this->render('communication_module/chat_conversation', 'member-layout', compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name'));
+    }
     public function chatElena()
     {
         $name = 'Coach Elena';
@@ -77,7 +75,7 @@ class CommunicationController extends Controller
             ['type' => 'incoming', 'text' => "Yes, slightly lower on rest days, but keep protein steady.", 'time' => '9:05 AM']
         ];
 
-        $this->render('communication_module/chat_conversation', 'member-layout', compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name')); 
+        $this->render('communication_module/chat_conversation', 'member-layout', compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name'));
     }
 
     public function profileMarcus()
@@ -102,7 +100,7 @@ class CommunicationController extends Controller
             ],
             'certification' => 'Certified Personal Trainer (CPT)'
         ];
-        require_once "../app/views/communication_module/instructor_profile_view.php";
+        $this->render('communication_module/instructor_profile_view', 'member-layout', compact('instructor'));
     }
 
     public function profileSarah()
@@ -124,7 +122,7 @@ class CommunicationController extends Controller
             ],
             'certification' => 'Registered Dietitian & CPT'
         ];
-        require_once "../app/views/communication_module/instructor_profile_view.php";
+        $this->render('communication_module/instructor_profile_view', 'member-layout', compact('instructor'));
     }
 
     public function profileKavindu()
@@ -146,13 +144,13 @@ class CommunicationController extends Controller
             ],
             'certification' => 'Registered Dietitian & CPT'
         ];
-        require_once "../app/views/communication_module/instructor_profile_view.php";
+        $this->render('communication_module/instructor_profile_view', 'member-layout', compact('instructor'));
     }
 
-        // 1. Non-PT Member Message Overview
+    // 1. Non-PT Member Message Overview
     public function NonPTMessages()
     {
-        $this->render('communication_module/NonPT_messages','member-layout');
+        $this->render('communication_module/NonPT_messages', 'member-layout');
     }
 
     // 3. Coach Elena's Profile Screen (reusing instructor_profile.php)
@@ -178,7 +176,7 @@ class CommunicationController extends Controller
             'certification' => 'Precision Nutrition Level 2 (Pn2) & Registered Dietitian'
         ];
 
-        require_once "../app/views/communication_module/instructor_profile_view.php";
+        $this->render('communication_module/instructor_profile_view', 'member-layout', compact('instructor'));
     }
 
     public function availableInstructors()
@@ -213,22 +211,22 @@ class CommunicationController extends Controller
             ]
         ];
 
-        require_once "../app/views/communication_module/available_instructors.php";
+        $this->render('communication_module/available_instructors', 'member-layout', compact('instructors'));
     }
 
     public function EmptySupportTickets()
     {
-      $this->render('communication_module/empty_user_submit_ticket','member-layout');  
+        $this->render('communication_module/empty_user_submit_ticket', 'member-layout');
     }
 
     public function userTicketForm()
     {
-      $this->render('communication_module/user_ticketForm','member-layout');  
+        $this->render('communication_module/user_ticketForm', 'member-layout');
     }
 
     public function UserSupportTickets()
     {
-      $this->render('communication_module/user_submit_ticket','member-layout');  
+        $this->render('communication_module/user_submit_ticket', 'member-layout');
     }
     public function InstructorTickets()
     {
@@ -240,5 +238,4 @@ class CommunicationController extends Controller
         // Pass $data or compact('user_name') depending on your Base Controller's render method
         $this->render('communication_module/instructor_ticket', 'staff-layout', $data);
     }
-         
 }
