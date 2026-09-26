@@ -18,4 +18,4 @@ $router->get('/communication/available-instructors', [CommunicationController::c
 $router->get('/instructor/profile/kavindu', [CommunicationController::class, 'profileKavindu']);
 $router->get('/communication/Empty-support-tickets', [CommunicationController::class, 'EmptySupportTickets']);
 $router->get('/communication/user-ticketForm', [CommunicationController::class, 'userTicketForm']);
-$router->get('/communication/user-support-tickets', [CommunicationController::class, 'UserSupportTickets']);
+$router->get('/communication/instructor-tickets', [CommunicationController::class, 'InstructorTickets']);

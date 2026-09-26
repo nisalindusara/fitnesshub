@@ -230,5 +230,14 @@ class CommunicationController extends Controller
     {
       $this->render('communication_module/user_submit_ticket','member-layout');  
     }
-            
+    public function InstructorTickets()
+    {
+        $user_name = 'Instructor';
+        $data = [
+            'user_name' => $user_name
+        ];
+
+        // Pass $data or compact('user_name') depending on your Base Controller's render method
+        $this->render('communication_module/instructor_ticket', 'staff-layout', $data);
+    }      
 }

@@ -1,8 +1,10 @@
 <?php
 
 $permissions = $_SESSION['permissions'] ?? [];
+$firstName = $_SESSION['user_name'] ?? '';
+$lastName  = $_SESSION['user_last_name'] ?? '';
 
-$fullName = trim($_SESSION['user_name'] . ' ' . $_SESSION['user_last_name']);
+$fullName = trim($firstName . ' ' . $lastName);
 $avatar   = $_SESSION['user_avatar'] ?? null;
 $initials = mb_strtoupper(mb_substr($_SESSION['user_name'], 0, 1) . mb_substr($_SESSION['user_last_name'], 0, 1));
 $role = $_SESSION['role_name'];
