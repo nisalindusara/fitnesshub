@@ -61,8 +61,8 @@ class AuthController extends Controller
 
         if ($user && password_verify($password, $user['password_hash'])) {
             session_regenerate_id(true);
-            $_SESSION['user_id']   = $user['id'];
-            $_SESSION['user_name'] = $user['first_name'];
+            $_SESSION['user_id']       = $user['id'];
+            $_SESSION['user_name']     = $user['first_name'];
             $_SESSION['user_last_name'] = $user['last_name'];
             $_SESSION['user_avatar']   = $user['profile_image'];
 
@@ -73,20 +73,13 @@ class AuthController extends Controller
                 $roleModel = new Role();
                 $role = $roleModel->findById($user['role_id']);
 
-                $sidebarShellRoles = ['receptionist', 'ecommerce_admin', 'super_admin', 'manager'];
-                $_SESSION['is_staff'] = in_array($role['name'], $sidebarShellRoles, true);
+                $sidebarShellRoles = ['receptionist', 'ecommerce_admin', 'super_admin', 'manager', 'instructor'];
+                $_SESSION['is_staff']  = in_array($role['name'], $sidebarShellRoles, true);
                 $_SESSION['role_name'] = $role['name'];
 
-                $redirects = [
-                    'receptionist'     => '/portal',
-                    'ecommerce_admin'  => '/portal',
-                    'super_admin'      => '/portal',
-                    'manager'          => '/portal',
-                    'instructor'       => '/instructor/overview',
-                ];
-                header('Location: ' . ($redirects[$role['name']] ?? '/dashboard'));
+                header('Location: ' . SessionHelper::resolveHomeRouteForSession());
             } else {
-                header('Location: /dashboard');
+                header('Location: /member');
             }
             exit;
         }

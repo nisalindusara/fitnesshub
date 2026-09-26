@@ -22,6 +22,9 @@ FitnessHub has several actors (customers, instructors, admin and manager staff),
 - Permission checks are consistent across routes, controllers, and navigation.
 - Permissions are cached at login, so a change to a user's permissions takes effect at their next login.
 - The permission and role data are part of the database contract and must be kept in the SQL file (see [`database/README.md`](../../database/README.md)).
+- The current set of permissions and their role assignments is documented
+  in [`database/permissions.md`](../../database/permissions.md), which
+  must be kept in sync with the database.
 
 ## Alternatives considered
 

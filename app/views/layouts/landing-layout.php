@@ -11,6 +11,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/landing.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background);
+        }
+
+        nav {
+            font-family: 'Barlow', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-link {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        .active {
+            color: #0a0a0a;
+        }
+
+        .nav-link:hover {
+            color: #0a0a0a;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            left: 0;
+            height: 2px;
+            background-color: #E31837;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.2s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        @media (max-width: 768px) {
+            .hide-on-mobile {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .show-on-mobile {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -37,7 +105,7 @@
 
             <!-- CTAs -->
             <?php if ($isLoggedIn): ?>
-                <a href="/dashboard" class="profile-icon" aria-label="Go to dashboard">
+                <a href="<?= htmlspecialchars(SessionHelper::resolveHomeRouteForSession()) ?>" class="landing-nav__profile-icon">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                         <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" />
                     </svg>
@@ -165,75 +233,6 @@
             </div>
         </div>
     </footer>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--color-background);
-        }
-
-        nav {
-            font-family: 'Barlow', sans-serif;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-link {
-            color: #9ca3af;
-            font-size: 0.875rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.2s;
-        }
-
-        .active {
-            color: #0a0a0a;
-        }
-
-        .nav-link:hover {
-            color: #0a0a0a;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            right: 0;
-            left: 0;
-            height: 2px;
-            background-color: #E31837;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.2s;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            transform: scaleX(1);
-        }
-
-        @media (max-width: 768px) {
-            .hide-on-mobile {
-                display: none !important;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .show-on-mobile {
-                display: none !important;
-            }
-        }
-    </style>
 </body>
 
 </html>
