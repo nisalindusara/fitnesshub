@@ -3,6 +3,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        align-self: flex-start;
         padding: 32px 10px;
         gap: 16px;
         width: 100%;
@@ -148,19 +149,19 @@
     </header>
 
     <section class="menu-card">
-        <a href="#" class="menu-item">
+        <a href="/member/member-profile/personal-details" class="menu-item">
             <span class="menu-text">Personal Details</span>
             <svg class="chevron-icon" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
-        <a href="#" class="menu-item">
+        <a href="/member/member-profile/order-history" class="menu-item">
             <span class="menu-text">Your Orders</span>
             <svg class="chevron-icon" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
-        <a href="#" class="menu-item">
+        <a href="/member/member-profile/payment-history" class="menu-item">
             <span class="menu-text">Payment History</span>
             <svg class="chevron-icon" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -169,7 +170,7 @@
     </section>
 
     <section class="menu-card">
-        <a href="#" class="menu-item">
+        <a href="/member/member-profile/notification-settings" class="menu-item">
             <div class="menu-label">
                 <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -181,7 +182,7 @@
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
-        <a href="#" class="menu-item">
+        <a href="/member/member-profile/privace-data" class="menu-item">
             <div class="menu-label">
                 <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>

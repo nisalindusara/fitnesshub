@@ -17,5 +17,6 @@ require __DIR__ . '/../app/routes/equipment_module.php';
 require __DIR__ . '/../app/routes/payment_module.php';
 require __DIR__ . '/../app/routes/work_schedule_module.php';
 require __DIR__ . '/../app/routes/dashboard.php';
+require __DIR__ . '/../app/routes/member_screens.php';
 
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
