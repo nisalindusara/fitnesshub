@@ -363,6 +363,255 @@
             margin-left: 0;
         }
     }
+
+    /* Flash + toast */
+    .mc-flash {
+        padding: 12px 16px;
+        border-radius: 10px;
+        font-size: 14px;
+        border: 1px solid transparent;
+    }
+
+    .mc-flash--success {
+        background: #ecfdf3;
+        border-color: #c6f0d6;
+        color: #146c3a;
+    }
+
+    .mc-flash--error {
+        background: #fdf0f0;
+        border-color: #f6d5d5;
+        color: #b42318;
+    }
+
+    .mc-toast {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 60;
+        padding: 12px 16px;
+        border-radius: 10px;
+        background: #1c1c1c;
+        color: #ffffff;
+        font-size: 14px;
+        box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Sort menu */
+    .mc-sort {
+        position: relative;
+    }
+
+    .mc-sort__menu {
+        position: absolute;
+        right: 0;
+        top: 42px;
+        z-index: 20;
+        min-width: 180px;
+        padding: 6px;
+        background: #ffffff;
+        border: 1px solid rgba(28, 28, 28, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.15);
+    }
+
+    .mc-sort__menu a {
+        display: block;
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+        color: #1c1c1c;
+        text-decoration: none;
+    }
+
+    .mc-sort__menu a:hover,
+    .mc-sort__menu a[aria-current="true"] {
+        background: #f7f9fb;
+    }
+
+    .mc-sort__menu a[aria-current="true"] {
+        font-weight: 600;
+    }
+
+    .mc-btn.is-active {
+        background: #1c1c1c;
+        border-color: #1c1c1c;
+        color: #ffffff;
+    }
+
+    a.mc-chip {
+        text-decoration: none;
+    }
+
+    /* Grid view */
+    .mc-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 12px;
+        padding-top: 8px;
+    }
+
+    .mc-card {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+        border: 1px solid rgba(28, 28, 28, 0.1);
+        border-radius: 12px;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .mc-card__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .mc-view[data-view="grid"] .mc-table-wrap,
+    .mc-view[data-view="table"] .mc-cards {
+        display: none;
+    }
+
+    .mc-pager a.mc-btn[aria-disabled="true"] {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    /* Add client dialog */
+    .mc-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        background: rgba(15, 15, 20, 0.4);
+    }
+
+    .mc-modal[hidden] {
+        display: none;
+    }
+
+    .mc-modal__box {
+        width: min(460px, 100%);
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 22px;
+        border-radius: 14px;
+        background: #ffffff;
+        box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.25);
+        box-sizing: border-box;
+    }
+
+    .mc-modal__title {
+        font-size: 17px;
+        font-weight: 600;
+        margin: 0 0 4px;
+    }
+
+    .mc-modal__text {
+        font-size: 13px;
+        color: rgba(28, 28, 28, 0.55);
+        margin: 0 0 16px;
+    }
+
+    .mc-modal .mc-search {
+        width: 100%;
+    }
+
+    .mc-results {
+        margin: 10px 0 16px;
+        max-height: 240px;
+        overflow-y: auto;
+    }
+
+    .mc-result {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background: none;
+        font-family: inherit;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .mc-result:hover {
+        background: #f7f9fb;
+    }
+
+    .mc-result.is-selected {
+        border-color: #1c1c1c;
+        background: #f7f9fb;
+    }
+
+    .mc-results__empty {
+        padding: 12px 4px;
+        font-size: 13px;
+        color: rgba(28, 28, 28, 0.5);
+        margin: 0;
+    }
+
+    .mc-field-label {
+        display: block;
+        font-size: 12px;
+        color: rgba(28, 28, 28, 0.55);
+        margin-bottom: 6px;
+    }
+
+    .mc-segment {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .mc-segment label {
+        cursor: pointer;
+    }
+
+    .mc-segment input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .mc-segment span {
+        display: inline-flex;
+        align-items: center;
+        height: 34px;
+        padding: 0 14px;
+        border: 1px solid rgba(28, 28, 28, 0.12);
+        border-radius: 8px;
+        font-size: 13px;
+    }
+
+    .mc-segment input:checked + span {
+        background: #1c1c1c;
+        border-color: #1c1c1c;
+        color: #ffffff;
+    }
+
+    .mc-segment input:focus-visible + span {
+        outline: 2px solid #1c1c1c;
+        outline-offset: 2px;
+    }
+
+    .mc-modal__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+
+    .mc-btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
 </style>
 
 <?php
@@ -377,6 +626,16 @@ $initials = function (string $name): string {
     $parts = preg_split('/\s+/', trim($name));
     return mb_strtoupper(mb_substr($parts[0], 0, 1) . mb_substr(end($parts), 0, 1));
 };
+
+// Builds list links that keep the current search / filter / sort (defaults are left out of the URL)
+$listUrl = function (array $changes) use ($search, $filter, $sort): string {
+    $params = array_merge(['q' => $search, 'filter' => $filter, 'sort' => $sort], $changes);
+    $params = array_filter($params, fn($value, $key) => !in_array([$key, $value], [['q', ''], ['filter', 'all'], ['sort', 'next'], ['page', 1]], true), ARRAY_FILTER_USE_BOTH);
+    return $params ? '?' . http_build_query($params) : '';
+};
+
+$adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%' : ($c['status'] === 'new' ? 'New' : '—');
+$inviteLink = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . '/onboarding';
 ?>
 
 <div class="page-header">
@@ -394,16 +653,29 @@ $initials = function (string $name): string {
     <span class="page-title">My Clients</span>
 </div>
 
-<div class="mc-view">
+<div class="mc-view" data-view="table" id="mc-view">
+    <?php if ($flash): ?>
+        <div class="mc-flash mc-flash--<?= $flash['type'] ?>" role="<?= $flash['type'] === 'error' ? 'alert' : 'status' ?>">
+            <?= htmlspecialchars($flash['message']) ?>
+        </div>
+    <?php endif; ?>
+
     <div class="mc-head">
         <div>
             <h1 class="mc-title">My Clients</h1>
-            <p class="mc-subtitle"><?= (int) $stats[0]['value'] ?> active clients. <?= (int) $stats[3]['value'] ?> need a plan review this week.</p>
+            <p class="mc-subtitle">
+                <?= (int) $stats['active'] ?> active <?= $stats['active'] === 1 ? 'client' : 'clients' ?>.
+                <?php if ($stats['needs_review'] > 0): ?>
+                    <?= (int) $stats['needs_review'] ?> <?= $stats['needs_review'] === 1 ? 'needs' : 'need' ?> a plan review.
+                <?php else: ?>
+                    Everyone is on track.
+                <?php endif; ?>
+            </p>
         </div>
         <div class="mc-actions">
-            <button type="button" class="mc-btn">Export list</button>
-            <button type="button" class="mc-btn">Invite client</button>
-            <button type="button" class="mc-btn mc-btn--primary">
+            <a href="/my-clients/export<?= htmlspecialchars($listUrl([])) ?>" class="mc-btn">Export list</a>
+            <button type="button" class="mc-btn" id="mc-invite" data-link="<?= htmlspecialchars($inviteLink) ?>">Invite client</button>
+            <button type="button" class="mc-btn mc-btn--primary" id="mc-add-open">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -414,35 +686,57 @@ $initials = function (string $name): string {
     </div>
 
     <section class="mc-stats">
-        <?php foreach ($stats as $stat): ?>
-            <div class="mc-stat <?= !empty($stat['alert']) ? 'mc-stat--alert' : '' ?>">
-                <p class="mc-stat__label"><?= htmlspecialchars($stat['label']) ?></p>
-                <p class="mc-stat__value"><?= htmlspecialchars($stat['value']) ?></p>
-                <p class="mc-stat__meta"><?= htmlspecialchars($stat['meta']) ?></p>
-            </div>
-        <?php endforeach; ?>
+        <div class="mc-stat">
+            <p class="mc-stat__label">Active clients</p>
+            <p class="mc-stat__value"><?= (int) $stats['active'] ?></p>
+            <p class="mc-stat__meta">+<?= (int) $stats['new_this_week'] ?> this week</p>
+        </div>
+        <div class="mc-stat">
+            <p class="mc-stat__label">Workouts today</p>
+            <p class="mc-stat__value"><?= (int) $stats['today'] ?></p>
+            <p class="mc-stat__meta"><?= (int) $stats['today_done'] ?> completed, <?= (int) ($stats['today'] - $stats['today_done']) ?> to go</p>
+        </div>
+        <div class="mc-stat">
+            <p class="mc-stat__label">Average adherence</p>
+            <p class="mc-stat__value"><?= $stats['avg_adherence'] !== null ? (int) $stats['avg_adherence'] . '%' : '—' ?></p>
+            <p class="mc-stat__meta">Last 30 days</p>
+        </div>
+        <div class="mc-stat <?= $stats['needs_review'] > 0 ? 'mc-stat--alert' : '' ?>">
+            <p class="mc-stat__label">Needs review</p>
+            <p class="mc-stat__value"><?= (int) $stats['needs_review'] ?></p>
+            <p class="mc-stat__meta">Below <?= ClientRosterService::NEEDS_REVIEW_BELOW ?>% adherence</p>
+        </div>
     </section>
 
     <section class="mc-panel">
         <div class="mc-toolbar">
-            <label class="mc-search">
+            <form class="mc-search" method="get" action="/my-clients" role="search" id="mc-search-form">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(28,28,28,0.4)" stroke-width="2" stroke-linecap="round">
                     <circle cx="11" cy="11" r="7"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="search" id="mc-search" placeholder="Search by name or email" aria-label="Search clients">
-            </label>
+                <input type="search" name="q" id="mc-search" value="<?= htmlspecialchars($search) ?>" placeholder="Search by name or email" aria-label="Search clients">
+                <?php if ($filter !== 'all'): ?><input type="hidden" name="filter" value="<?= htmlspecialchars($filter) ?>"><?php endif; ?>
+                <?php if ($sort !== 'next'): ?><input type="hidden" name="sort" value="<?= htmlspecialchars($sort) ?>"><?php endif; ?>
+            </form>
 
-            <?php foreach ($filters as $i => $filter): ?>
-                <button type="button" class="mc-chip <?= $i === 0 ? 'is-active' : '' ?>" data-filter="<?= htmlspecialchars($filter['key']) ?>">
-                    <?= htmlspecialchars($filter['label']) ?>
-                    <span class="mc-chip__count"><?= (int) $filter['count'] ?></span>
-                </button>
+            <?php foreach (ClientRosterService::FILTERS as $key => $label): ?>
+                <a href="/my-clients<?= htmlspecialchars($listUrl(['filter' => $key])) ?>" class="mc-chip <?= $filter === $key ? 'is-active' : '' ?>" <?= $filter === $key ? 'aria-current="true"' : '' ?>>
+                    <?= htmlspecialchars($label) ?>
+                    <span class="mc-chip__count"><?= (int) $filterCounts[$key] ?></span>
+                </a>
             <?php endforeach; ?>
 
             <div class="mc-toolbar__right">
-                <button type="button" class="mc-btn">Sort: Next session</button>
-                <button type="button" class="mc-btn mc-btn--square" aria-label="Grid view">
+                <div class="mc-sort">
+                    <button type="button" class="mc-btn" id="mc-sort-btn" aria-haspopup="true" aria-expanded="false">Sort: <?= htmlspecialchars(ClientRosterService::SORTS[$sort]) ?></button>
+                    <div class="mc-sort__menu" id="mc-sort-menu" hidden>
+                        <?php foreach (ClientRosterService::SORTS as $key => $label): ?>
+                            <a href="/my-clients<?= htmlspecialchars($listUrl(['sort' => $key])) ?>" <?= $sort === $key ? 'aria-current="true"' : '' ?>><?= htmlspecialchars($label) ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <button type="button" class="mc-btn mc-btn--square" id="mc-view-toggle" aria-label="Switch to grid view" aria-pressed="false">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                         <rect x="4" y="4" width="6" height="6" rx="1"></rect>
                         <rect x="14" y="4" width="6" height="6" rx="1"></rect>
@@ -453,118 +747,301 @@ $initials = function (string $name): string {
             </div>
         </div>
 
-        <div class="mc-table-wrap">
-            <table class="mc-table">
-                <thead>
-                    <tr>
-                        <th>Client</th>
-                        <th>Type</th>
-                        <th>Program</th>
-                        <th>Adherence</th>
-                        <th>Next session</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="mc-rows">
-                    <?php foreach ($clients as $client): ?>
-                        <?php [$statusLabel, $statusClass] = $statusTags[$client['status']]; ?>
-                        <tr data-type="<?= htmlspecialchars(strtolower($client['type'])) ?>"
-                            data-status="<?= htmlspecialchars($client['status']) ?>"
-                            data-search="<?= htmlspecialchars(strtolower($client['name'] . ' ' . $client['email'])) ?>"
-                            data-href="/my-clients/client?member=<?= (int) $client['id'] ?>">
-                            <td>
-                                <div class="mc-client">
-                                    <span class="mc-avatar"><?= htmlspecialchars($initials($client['name'])) ?></span>
-                                    <div>
-                                        <a class="mc-primary mc-client-link" href="/my-clients/client?member=<?= (int) $client['id'] ?>"><?= htmlspecialchars($client['name']) ?></a>
-                                        <p class="mc-secondary"><?= htmlspecialchars($client['email']) ?></p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><span class="mc-tag"><?= htmlspecialchars($client['type']) ?></span></td>
-                            <td>
-                                <p class="mc-program"><?= htmlspecialchars($client['program']) ?></p>
-                                <p class="mc-secondary"><?= htmlspecialchars($client['program_meta']) ?></p>
-                            </td>
-                            <td>
-                                <div class="mc-adherence">
-                                    <div class="mc-bar">
-                                        <?php if ($client['adherence'] !== null): ?>
-                                            <div class="mc-bar__fill <?= $client['adherence'] < 60 ? 'mc-bar__fill--low' : '' ?>" style="width: <?= (int) $client['adherence'] ?>%"></div>
-                                        <?php endif; ?>
-                                    </div>
-                                    <span>
-                                        <?php if ($client['adherence'] !== null): ?>
-                                            <?= (int) $client['adherence'] ?>%
-                                        <?php else: ?>
-                                            <?= $client['status'] === 'new' ? 'New' : '—' ?>
-                                        <?php endif; ?>
-                                    </span>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="mc-program"><?= htmlspecialchars($client['next_session']) ?></p>
-                                <p class="mc-secondary"><?= htmlspecialchars($client['next_session_meta']) ?></p>
-                            </td>
-                            <td><span class="mc-tag <?= $statusClass ?>"><?= $statusLabel ?></span></td>
+        <?php if (empty($clients)): ?>
+            <p class="mc-empty">
+                <?php if ($totalClients === 0): ?>
+                    You don't have any clients yet. Use <strong>Add client</strong> to assign a member.
+                <?php else: ?>
+                    No clients match your search.
+                <?php endif; ?>
+            </p>
+        <?php else: ?>
+            <div class="mc-table-wrap">
+                <table class="mc-table">
+                    <thead>
+                        <tr>
+                            <th>Client</th>
+                            <th>Type</th>
+                            <th>Program</th>
+                            <th>Adherence</th>
+                            <th>Next session</th>
+                            <th>Status</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-            <p class="mc-empty" id="mc-empty" hidden>No clients match your search.</p>
-        </div>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($clients as $client): ?>
+                            <?php
+                            [$statusLabel, $statusClass] = $statusTags[$client['status']];
+                            $href = '/my-clients/client?member=' . (int) $client['member_id'];
+                            ?>
+                            <tr data-href="<?= htmlspecialchars($href) ?>">
+                                <td>
+                                    <div class="mc-client">
+                                        <span class="mc-avatar"><?= htmlspecialchars($initials($client['name'])) ?></span>
+                                        <div>
+                                            <a class="mc-primary mc-client-link" href="<?= htmlspecialchars($href) ?>"><?= htmlspecialchars($client['name']) ?></a>
+                                            <p class="mc-secondary"><?= htmlspecialchars($client['email']) ?></p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="mc-tag"><?= htmlspecialchars($client['type_label']) ?></span></td>
+                                <td>
+                                    <p class="mc-program"><?= htmlspecialchars($client['program']) ?></p>
+                                    <p class="mc-secondary"><?= htmlspecialchars($client['program_meta']) ?></p>
+                                </td>
+                                <td>
+                                    <div class="mc-adherence">
+                                        <div class="mc-bar">
+                                            <?php if ($client['adherence'] !== null): ?>
+                                                <div class="mc-bar__fill <?= $client['adherence'] < ClientRosterService::NEEDS_REVIEW_BELOW ? 'mc-bar__fill--low' : '' ?>" style="width: <?= (int) $client['adherence'] ?>%"></div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <span><?= htmlspecialchars($adherenceText($client)) ?></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="mc-program"><?= htmlspecialchars($client['next_session']) ?></p>
+                                    <p class="mc-secondary"><?= htmlspecialchars($client['next_session_meta']) ?></p>
+                                </td>
+                                <td><span class="mc-tag <?= $statusClass ?>"><?= $statusLabel ?></span></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mc-cards">
+                <?php foreach ($clients as $client): ?>
+                    <?php [$statusLabel, $statusClass] = $statusTags[$client['status']]; ?>
+                    <a class="mc-card" href="/my-clients/client?member=<?= (int) $client['member_id'] ?>">
+                        <div class="mc-client">
+                            <span class="mc-avatar"><?= htmlspecialchars($initials($client['name'])) ?></span>
+                            <div>
+                                <p class="mc-primary"><?= htmlspecialchars($client['name']) ?></p>
+                                <p class="mc-secondary"><?= htmlspecialchars($client['email']) ?></p>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="mc-program"><?= htmlspecialchars($client['program']) ?></p>
+                            <p class="mc-secondary"><?= htmlspecialchars($client['program_meta']) ?></p>
+                        </div>
+                        <div class="mc-adherence">
+                            <div class="mc-bar" style="flex: 1">
+                                <?php if ($client['adherence'] !== null): ?>
+                                    <div class="mc-bar__fill <?= $client['adherence'] < ClientRosterService::NEEDS_REVIEW_BELOW ? 'mc-bar__fill--low' : '' ?>" style="width: <?= (int) $client['adherence'] ?>%"></div>
+                                <?php endif; ?>
+                            </div>
+                            <span><?= htmlspecialchars($adherenceText($client)) ?></span>
+                        </div>
+                        <div class="mc-card__row">
+                            <span class="mc-secondary"><?= htmlspecialchars($client['next_session']) ?></span>
+                            <span class="mc-tag <?= $statusClass ?>"><?= $statusLabel ?></span>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
 
         <div class="mc-footer">
-            <span id="mc-showing">Showing <?= count($clients) ?> of <?= (int) $totalClients ?> clients</span>
+            <span>
+                Showing <?= count($clients) ?> of <?= (int) $matchCount ?> <?= $matchCount === $totalClients ? 'clients' : 'matching clients' ?>
+                <?php if ($pages > 1): ?>· page <?= (int) $page ?> of <?= (int) $pages ?><?php endif; ?>
+            </span>
             <div class="mc-pager">
-                <button type="button" class="mc-btn" disabled>Previous</button>
-                <button type="button" class="mc-btn">Next</button>
+                <a class="mc-btn" href="/my-clients<?= htmlspecialchars($listUrl(['page' => $page - 1])) ?>" <?= $page <= 1 ? 'aria-disabled="true" tabindex="-1"' : '' ?>>Previous</a>
+                <a class="mc-btn" href="/my-clients<?= htmlspecialchars($listUrl(['page' => $page + 1])) ?>" <?= $page >= $pages ? 'aria-disabled="true" tabindex="-1"' : '' ?>>Next</a>
             </div>
         </div>
     </section>
 </div>
 
+<!-- Add client -->
+<div class="mc-modal" id="mc-add-modal" hidden>
+    <form class="mc-modal__box" method="post" action="/my-clients/add" role="dialog" aria-modal="true" aria-labelledby="mc-add-title">
+        <h2 class="mc-modal__title" id="mc-add-title">Add client</h2>
+        <p class="mc-modal__text">Search gym members and assign one to yourself. You'll build their workout plan next.</p>
+
+        <label class="mc-search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(28,28,28,0.4)" stroke-width="2" stroke-linecap="round">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="search" id="mc-member-search" placeholder="Member name or email" autocomplete="off" aria-label="Search members">
+        </label>
+        <div class="mc-results" id="mc-member-results" role="listbox" aria-label="Members">
+            <p class="mc-results__empty">Type at least 2 letters to search.</p>
+        </div>
+        <input type="hidden" name="member_id" id="mc-member-id">
+
+        <span class="mc-field-label">Client type</span>
+        <div class="mc-segment">
+            <?php foreach (ClientRosterService::TYPES as $value => $label): ?>
+                <label>
+                    <input type="radio" name="client_type" value="<?= htmlspecialchars($value) ?>" <?= $value === '1-on-1' ? 'checked' : '' ?>>
+                    <span><?= htmlspecialchars($label) ?></span>
+                </label>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="mc-modal__actions">
+            <button type="button" class="mc-btn" data-close>Cancel</button>
+            <button type="submit" class="mc-btn mc-btn--primary" id="mc-add-submit" disabled>Add client</button>
+        </div>
+    </form>
+</div>
+
+<div class="mc-toast" id="mc-toast" role="status" hidden></div>
+
 <script>
-    // UI only — filtering happens on the rows already on the page
     (function () {
-        const rows = [...document.querySelectorAll('#mc-rows tr')];
-        const search = document.getElementById('mc-search');
-        const chips = document.querySelectorAll('.mc-chip');
-        const showing = document.getElementById('mc-showing');
-        const empty = document.getElementById('mc-empty');
-        const total = <?= (int) $totalClients ?>;
-        let activeFilter = 'all';
+        const view = document.getElementById('mc-view');
 
-        function matchesFilter(row) {
-            if (activeFilter === 'all') return true;
-            if (activeFilter === 'needs_review') return row.dataset.status === 'needs_review';
-            return row.dataset.type === activeFilter;
+        function toast(message) {
+            const el = document.getElementById('mc-toast');
+            el.textContent = message;
+            el.hidden = false;
+            clearTimeout(toast.timer);
+            toast.timer = setTimeout(() => { el.hidden = true; }, 3500);
         }
 
-        function apply() {
-            const term = search.value.trim().toLowerCase();
-            let visible = 0;
-            rows.forEach(row => {
-                const show = matchesFilter(row) && row.dataset.search.includes(term);
-                row.hidden = !show;
-                if (show) visible++;
-            });
-            empty.hidden = visible > 0;
-            showing.textContent = `Showing ${visible} of ${total} clients`;
-        }
-
-        search.addEventListener('input', apply);
-        chips.forEach(chip => chip.addEventListener('click', () => {
-            chips.forEach(c => c.classList.remove('is-active'));
-            chip.classList.add('is-active');
-            activeFilter = chip.dataset.filter;
-            apply();
-        }));
-
-        // Whole row opens the client
-        rows.forEach(row => row.addEventListener('click', e => {
+        // Whole row opens the client's workout plan
+        document.querySelectorAll('.mc-table tbody tr[data-href]').forEach(row => row.addEventListener('click', e => {
             if (e.target.closest('a, button')) return;
             window.location.href = row.dataset.href;
         }));
+
+        // Search runs on the server once typing pauses
+        const search = document.getElementById('mc-search');
+        const searchForm = document.getElementById('mc-search-form');
+        let searchTimer;
+        search.addEventListener('input', () => {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(() => searchForm.submit(), 500);
+        });
+        if (search.value) {
+            search.focus();
+            search.setSelectionRange(search.value.length, search.value.length);
+        }
+
+        // Sort menu
+        const sortBtn = document.getElementById('mc-sort-btn');
+        const sortMenu = document.getElementById('mc-sort-menu');
+        sortBtn.addEventListener('click', () => {
+            sortMenu.hidden = !sortMenu.hidden;
+            sortBtn.setAttribute('aria-expanded', String(!sortMenu.hidden));
+        });
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.mc-sort')) {
+                sortMenu.hidden = true;
+                sortBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Table / grid view, remembered in this browser
+        const viewToggle = document.getElementById('mc-view-toggle');
+        function setView(mode) {
+            view.dataset.view = mode;
+            viewToggle.classList.toggle('is-active', mode === 'grid');
+            viewToggle.setAttribute('aria-pressed', String(mode === 'grid'));
+            viewToggle.setAttribute('aria-label', mode === 'grid' ? 'Switch to table view' : 'Switch to grid view');
+            try { localStorage.setItem('mc-view', mode); } catch (e) {}
+        }
+        try { if (localStorage.getItem('mc-view') === 'grid') setView('grid'); } catch (e) {}
+        viewToggle.addEventListener('click', () => setView(view.dataset.view === 'grid' ? 'table' : 'grid'));
+
+        // Invite client → copy the member sign-up link
+        document.getElementById('mc-invite').addEventListener('click', async e => {
+            const link = e.currentTarget.dataset.link;
+            try {
+                await navigator.clipboard.writeText(link);
+                toast('Sign-up link copied. Send it to your client, then add them once they have joined.');
+            } catch (err) {
+                toast('Sign-up link: ' + link);
+            }
+        });
+
+        // Add client dialog
+        const modal = document.getElementById('mc-add-modal');
+        const memberSearch = document.getElementById('mc-member-search');
+        const results = document.getElementById('mc-member-results');
+        const memberId = document.getElementById('mc-member-id');
+        const submit = document.getElementById('mc-add-submit');
+        let lookupTimer;
+        let lookupSeq = 0;
+
+        function closeModal() {
+            modal.hidden = true;
+        }
+
+        function message(text) {
+            results.innerHTML = '';
+            const p = document.createElement('p');
+            p.className = 'mc-results__empty';
+            p.textContent = text;
+            results.appendChild(p);
+        }
+
+        document.getElementById('mc-add-open').addEventListener('click', () => {
+            modal.hidden = false;
+            memberSearch.focus();
+        });
+        modal.querySelector('[data-close]').addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+
+        memberSearch.addEventListener('input', () => {
+            memberId.value = '';
+            submit.disabled = true;
+            clearTimeout(lookupTimer);
+
+            const term = memberSearch.value.trim();
+            if (term.length < 2) {
+                message('Type at least 2 letters to search.');
+                return;
+            }
+
+            lookupTimer = setTimeout(async () => {
+                const seq = ++lookupSeq;
+                try {
+                    const response = await fetch('/my-clients/members/search?q=' + encodeURIComponent(term));
+                    const members = await response.json();
+                    if (seq !== lookupSeq) return;
+
+                    if (!members.length) {
+                        message('No members found who are not already your clients.');
+                        return;
+                    }
+
+                    results.innerHTML = '';
+                    members.forEach(member => {
+                        const button = document.createElement('button');
+                        button.type = 'button';
+                        button.className = 'mc-result';
+                        button.setAttribute('role', 'option');
+                        button.setAttribute('aria-selected', 'false');
+                        button.innerHTML = '<span class="mc-avatar"></span><span><span class="mc-primary" style="display:block"></span><span class="mc-secondary" style="display:block"></span></span>';
+
+                        const parts = member.name.trim().split(/\s+/);
+                        button.querySelector('.mc-avatar').textContent = (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
+                        button.querySelector('.mc-primary').textContent = member.name;
+                        button.querySelector('.mc-secondary').textContent = member.email;
+
+                        button.addEventListener('click', () => {
+                            results.querySelectorAll('.mc-result').forEach(b => {
+                                b.classList.remove('is-selected');
+                                b.setAttribute('aria-selected', 'false');
+                            });
+                            button.classList.add('is-selected');
+                            button.setAttribute('aria-selected', 'true');
+                            memberId.value = member.id;
+                            submit.disabled = false;
+                        });
+                        results.appendChild(button);
+                    });
+                } catch (err) {
+                    message('Search failed. Check your connection and try again.');
+                }
+            }, 250);
+        });
     })();
 </script>

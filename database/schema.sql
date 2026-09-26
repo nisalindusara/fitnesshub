@@ -611,6 +611,132 @@ ALTER TABLE `staff_profiles`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_role` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+
+-- --------------------------------------------------------
+-- Daily plan module: exercise library, instructor ↔ client assignments,
+-- workout plans (draft / published / archived) and member workout logs.
+-- Tables are self-contained (keys and constraints inline) and are created
+-- after `users` so the foreign keys resolve.
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `workout_logs`;
+DROP TABLE IF EXISTS `workout_plan_exercises`;
+DROP TABLE IF EXISTS `workout_plan_days`;
+DROP TABLE IF EXISTS `workout_plans`;
+DROP TABLE IF EXISTS `instructor_clients`;
+DROP TABLE IF EXISTS `exercises`;
+
+--
+-- Table structure for table `exercises` (the instructor's exercise library)
+--
+CREATE TABLE `exercises` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `muscle_group` varchar(30) NOT NULL,
+  `equipment` varchar(30) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_exercises_name` (`name`),
+  KEY `idx_exercises_muscle` (`muscle_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `instructor_clients` (members assigned to an instructor)
+--
+CREATE TABLE `instructor_clients` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `instructor_id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL,
+  `client_type` enum('1-on-1','group') NOT NULL DEFAULT '1-on-1',
+  `status` enum('active','paused') NOT NULL DEFAULT 'active',
+  `flag_title` varchar(100) DEFAULT NULL,
+  `flag_note` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_instructor_member` (`instructor_id`,`member_id`),
+  KEY `fk_ic_member` (`member_id`),
+  CONSTRAINT `fk_ic_instructor` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_ic_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `workout_plans`
+-- A member has at most one draft and one published plan; older published
+-- versions are kept as 'archived' so workout logs and "copy last week" survive.
+--
+CREATE TABLE `workout_plans` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `instructor_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `goal` varchar(50) NOT NULL,
+  `duration_weeks` tinyint(3) UNSIGNED NOT NULL,
+  `start_date` date NOT NULL,
+  `sessions_per_week` tinyint(3) UNSIGNED NOT NULL,
+  `difficulty` enum('beginner','intermediate','advanced') NOT NULL DEFAULT 'beginner',
+  `status` enum('draft','published','archived') NOT NULL DEFAULT 'draft',
+  `published_at` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_wp_member_status` (`member_id`,`status`),
+  KEY `fk_wp_instructor` (`instructor_id`),
+  CONSTRAINT `fk_wp_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_wp_instructor` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `workout_plan_days` (1 = Monday … 7 = Sunday)
+--
+CREATE TABLE `workout_plan_days` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `plan_id` int(11) NOT NULL,
+  `day_of_week` tinyint(3) UNSIGNED NOT NULL,
+  `focus` varchar(50) DEFAULT NULL,
+  `note` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_plan_day` (`plan_id`,`day_of_week`),
+  CONSTRAINT `fk_wpd_plan` FOREIGN KEY (`plan_id`) REFERENCES `workout_plans` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `workout_plan_exercises`
+-- Rows sharing a superset_group within a day are performed back to back.
+--
+CREATE TABLE `workout_plan_exercises` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `plan_day_id` int(11) NOT NULL,
+  `exercise_id` int(11) NOT NULL,
+  `sort_order` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
+  `sets` tinyint(3) UNSIGNED NOT NULL,
+  `reps` smallint(5) UNSIGNED NOT NULL,
+  `load_text` varchar(20) DEFAULT NULL,
+  `rest_seconds` smallint(5) UNSIGNED NOT NULL DEFAULT 60,
+  `superset_group` tinyint(3) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_wpe_day_order` (`plan_day_id`,`sort_order`),
+  KEY `fk_wpe_exercise` (`exercise_id`),
+  CONSTRAINT `fk_wpe_day` FOREIGN KEY (`plan_day_id`) REFERENCES `workout_plan_days` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_wpe_exercise` FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `workout_logs` (a member ticking off an exercise on a date)
+--
+CREATE TABLE `workout_logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `plan_exercise_id` int(11) NOT NULL,
+  `log_date` date NOT NULL,
+  `completed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_log_member_exercise_date` (`member_id`,`plan_exercise_id`,`log_date`),
+  KEY `fk_wl_plan_exercise` (`plan_exercise_id`),
+  CONSTRAINT `fk_wl_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_wl_plan_exercise` FOREIGN KEY (`plan_exercise_id`) REFERENCES `workout_plan_exercises` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

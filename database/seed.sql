@@ -336,7 +336,106 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `
 (8, 'ecomadmin', 'example', 'ecomadminexample@example.com', '2345678901', 'uploads/profiles/profile_3.jpg', '$2y$10$XCi2RjLD/Xdybxsx.mDBD.BlpvXa/Bus7qOLIrnXQ1Wk6P0q3wMEy', 2, '2026-08-26 05:35:00'),
 (9, 'receptionist', 'example', 'receptionistexample@example.com', '3456789012', 'uploads/profiles/profile_4.jpg', '$2y$10$qzT2/JMMGkayLBh7Z4BtPOfWu0gUMszhv2MdzmuuYRZyEWYsd/M1u', 1, '2026-08-26 05:36:54'),
 (10, 'manager', 'example', 'managerexample@example.com', '4567890123', 'uploads/profiles/profile_5.jpg', '$2y$10$.ZIbxS9yuZrTyCE.9CaiPegHkgfPw1t4l1/zs26Gnyl3Vkk3DZ3By', 4, '2026-08-26 05:37:58'),
-(11, 'user2', 'example', 'userexample1@example.com', '3456789238', 'uploads/profiles/profile_6.jpg', '$2y$10$0uWEGx/MYI6I/qUHtlNgo.0HfLP7tXiuKm/GdEHYViAr0bEz.Apgu', NULL, '2026-08-27 02:56:38');
+(11, 'user2', 'example', 'userexample1@example.com', '3456789238', 'uploads/profiles/profile_6.jpg', '$2y$10$0uWEGx/MYI6I/qUHtlNgo.0HfLP7tXiuKm/GdEHYViAr0bEz.Apgu', NULL, '2026-08-27 02:56:38'),
+(12, 'Instructor', 'One', 'instructorexample@example.com', '077 123 4567', 'uploads/profiles/profile_2.jpg', '$2y$10$TYCdOhNEF9QcfWyxJdcFEu8bJ8OI5l/g3hiNDNdpdqSMMW6x3FHtC', 5, '2026-09-23 11:49:24');
+
+--
+-- Daily plan module seed: exercise library, instructor 12's clients and one published plan.
+-- Member 1 has a published plan (edit flow); member 11 has none (create flow).
+--
+
+TRUNCATE TABLE `workout_logs`;
+TRUNCATE TABLE `workout_plan_exercises`;
+TRUNCATE TABLE `workout_plan_days`;
+TRUNCATE TABLE `workout_plans`;
+TRUNCATE TABLE `instructor_clients`;
+TRUNCATE TABLE `exercises`;
+
+INSERT INTO `exercises` (`id`, `name`, `muscle_group`, `equipment`) VALUES
+(1, 'Barbell bench press', 'Chest', 'Barbell'),
+(2, 'Incline dumbbell press', 'Chest', 'Dumbbell'),
+(3, 'Dumbbell fly', 'Chest', 'Dumbbell'),
+(4, 'Push-up', 'Chest', 'Bodyweight'),
+(5, 'Cable crossover', 'Chest', 'Cable'),
+(6, 'Seated cable row', 'Back', 'Cable'),
+(7, 'Lat pulldown', 'Back', 'Cable'),
+(8, 'Pull-up', 'Back', 'Bodyweight'),
+(9, 'Bent-over barbell row', 'Back', 'Barbell'),
+(10, 'Chest-supported row', 'Back', 'Dumbbell'),
+(11, 'Barbell back squat', 'Legs', 'Barbell'),
+(12, 'Romanian deadlift', 'Legs', 'Barbell'),
+(13, 'Walking lunge', 'Legs', 'Dumbbell'),
+(14, 'Leg press', 'Legs', 'Machine'),
+(15, 'Lying leg curl', 'Legs', 'Machine'),
+(16, 'Standing calf raise', 'Legs', 'Machine'),
+(17, 'Bulgarian split squat', 'Legs', 'Dumbbell'),
+(18, 'Goblet squat', 'Legs', 'Kettlebell'),
+(19, 'Trap bar deadlift', 'Legs', 'Barbell'),
+(20, 'Seated shoulder press', 'Shoulders', 'Dumbbell'),
+(21, 'Lateral raise', 'Shoulders', 'Dumbbell'),
+(22, 'Face pull', 'Shoulders', 'Cable'),
+(23, 'Overhead barbell press', 'Shoulders', 'Barbell'),
+(24, 'Rope tricep pushdown', 'Arms', 'Cable'),
+(25, 'Hammer curl', 'Arms', 'Dumbbell'),
+(26, 'Barbell curl', 'Arms', 'Barbell'),
+(27, 'Overhead tricep extension', 'Arms', 'Dumbbell'),
+(28, 'Plank', 'Core', 'Bodyweight'),
+(29, 'Hanging leg raise', 'Core', 'Bodyweight'),
+(30, 'Cable woodchop', 'Core', 'Cable'),
+(31, 'Farmer carry', 'Core', 'Dumbbell'),
+(32, 'Treadmill intervals', 'Cardio', 'Machine'),
+(33, 'Rowing machine', 'Cardio', 'Machine'),
+(34, 'Assault bike sprint', 'Cardio', 'Machine'),
+(35, 'Hip flow sequence', 'Mobility', 'Bodyweight'),
+(36, 'Thoracic rotation', 'Mobility', 'Bodyweight');
+
+INSERT INTO `instructor_clients` (`id`, `instructor_id`, `member_id`, `client_type`, `status`, `flag_title`, `flag_note`, `created_at`) VALUES
+(1, 12, 1, '1-on-1', 'active', 'Shoulder flag on file', 'Keep overhead pressing under 12 reps and check form on Friday.', '2026-09-01 09:00:00'),
+(2, 12, 11, 'group', 'active', NULL, NULL, '2026-09-24 09:00:00');
+
+INSERT INTO `workout_plans` (`id`, `member_id`, `instructor_id`, `name`, `goal`, `duration_weeks`, `start_date`, `sessions_per_week`, `difficulty`, `status`, `published_at`) VALUES
+(1, 1, 12, 'Hypertrophy Block A', 'Muscle gain', 8, '2026-09-21', 5, 'intermediate', 'published', '2026-09-20 18:00:00');
+
+INSERT INTO `workout_plan_days` (`id`, `plan_id`, `day_of_week`, `focus`, `note`) VALUES
+(1, 1, 1, 'Upper body', NULL),
+(2, 1, 2, 'Cardio', NULL),
+(3, 1, 3, 'Lower body', NULL),
+(4, 1, 4, NULL, NULL),
+(5, 1, 5, 'Full body', 'Check shoulder form before pressing.'),
+(6, 1, 6, 'Mobility', NULL),
+(7, 1, 7, NULL, NULL);
+
+INSERT INTO `workout_plan_exercises` (`plan_day_id`, `exercise_id`, `sort_order`, `sets`, `reps`, `load_text`, `rest_seconds`, `superset_group`) VALUES
+(1, 1, 1, 4, 8, '60 kg', 90, NULL),
+(1, 2, 2, 3, 10, '22 kg', 75, NULL),
+(1, 6, 3, 4, 12, '50 kg', 60, NULL),
+(1, 7, 4, 3, 12, '45 kg', 60, NULL),
+(1, 20, 5, 3, 10, '18 kg', 60, NULL),
+(1, 24, 6, 3, 15, '25 kg', 45, NULL),
+(2, 32, 1, 8, 1, NULL, 60, NULL),
+(2, 33, 2, 3, 1, NULL, 90, NULL),
+(2, 34, 3, 6, 1, NULL, 45, NULL),
+(3, 11, 1, 4, 8, '80 kg', 120, NULL),
+(3, 12, 2, 3, 10, '60 kg', 90, NULL),
+(3, 13, 3, 3, 12, '14 kg', 60, NULL),
+(3, 14, 4, 3, 12, '120 kg', 75, NULL),
+(3, 15, 5, 3, 12, '35 kg', 60, 1),
+(3, 16, 6, 4, 15, '40 kg', 45, 1),
+(5, 19, 1, 4, 6, '90 kg', 120, NULL),
+(5, 1, 2, 3, 10, '55 kg', 75, NULL),
+(5, 8, 3, 3, 8, 'BW', 90, NULL),
+(5, 18, 4, 3, 12, '24 kg', 60, NULL),
+(5, 31, 5, 3, 40, '32 kg', 60, NULL),
+(6, 35, 1, 2, 8, NULL, 30, NULL),
+(6, 36, 2, 2, 10, NULL, 30, NULL),
+(6, 29, 3, 3, 12, NULL, 30, NULL);
+
+INSERT INTO `workout_logs` (`member_id`, `plan_exercise_id`, `log_date`) VALUES
+(1, 1, '2026-09-21'), (1, 2, '2026-09-21'), (1, 3, '2026-09-21'), (1, 4, '2026-09-21'), (1, 5, '2026-09-21'), (1, 6, '2026-09-21'),
+(1, 7, '2026-09-22'), (1, 8, '2026-09-22'), (1, 9, '2026-09-22'),
+(1, 10, '2026-09-23'), (1, 11, '2026-09-23'), (1, 12, '2026-09-23'), (1, 13, '2026-09-23'), (1, 14, '2026-09-23'),
+(1, 16, '2026-09-25'), (1, 17, '2026-09-25'), (1, 18, '2026-09-25'), (1, 19, '2026-09-25');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

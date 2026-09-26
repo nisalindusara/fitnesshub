@@ -28,18 +28,29 @@ class MemberController extends Controller
 
     public function showWorkoutScheduleScreen(): void
     {
-        // UI only — placeholder data until workout plans are wired up
-        $data['planDate'] = date('l, M j');
-        $data['exercises'] = [
-            ['name' => 'Barbell Squats', 'detail' => '3 sets x 12 reps', 'done' => true],
-            ['name' => 'Bench Press', 'detail' => '3 sets x 12 reps', 'done' => true],
-            ['name' => 'Deadlifts', 'detail' => '3 sets x 12 reps', 'done' => false],
-            ['name' => 'Overhead Press', 'detail' => '3 sets x 12 reps', 'done' => false],
-            ['name' => 'Pull-ups', 'detail' => '3 sets x 12 reps', 'done' => false],
-            ['name' => 'Plank', 'detail' => '3 sets x 60 sec', 'done' => false],
-        ];
+        $data['workout'] = (new MemberWorkoutService())->today((int) $_SESSION['user_id']);
 
         $this->render('member/workout-schedule', 'member-layout', $data);
+    }
+
+    /** JSON: tick / untick one of today's exercises. */
+    public function setWorkoutExerciseDone(): void
+    {
+        header('Content-Type: application/json');
+
+        try {
+            $progress = (new MemberWorkoutService())->setDone(
+                (int) $_SESSION['user_id'],
+                (int) ($_POST['plan_exercise_id'] ?? 0),
+                ($_POST['done'] ?? '') === '1'
+            );
+        } catch (InvalidArgumentException $e) {
+            http_response_code(422);
+            echo json_encode(['error' => $e->getMessage()]);
+            return;
+        }
+
+        echo json_encode($progress);
     }
 
     public function showMemberProfileScreen(): void

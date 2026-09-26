@@ -2,71 +2,112 @@
 
 class MyClientsController extends Controller
 {
+    private const PER_PAGE = 10;
+
     public function showMyClientsScreen(): void
     {
-        // UI only — placeholder data until instructor ↔ client assignments are wired up
-        $data['pageTitle'] = 'My Clients';
+        $service = new ClientRosterService();
+        $roster = $service->buildRoster((int) $_SESSION['user_id']);
 
-        $data['stats'] = [
-            ['label' => 'Active clients', 'value' => '18', 'meta' => '+2 this week'],
-            ['label' => 'Sessions today', 'value' => '6', 'meta' => '4 completed, 2 upcoming'],
-            ['label' => 'Average adherence', 'value' => '82%', 'meta' => 'Last 30 days'],
-            ['label' => 'Needs review', 'value' => '2', 'meta' => 'Missed check-ins', 'alert' => true],
-        ];
+        [$search, $filter, $sort] = $this->listParams();
+        $list = $service->query($roster, $search, $filter, $sort);
 
-        $data['totalClients'] = 18;
-        $data['filters'] = [
-            ['key' => 'all', 'label' => 'All', 'count' => 18],
-            ['key' => '1-on-1', 'label' => '1-on-1', 'count' => 11],
-            ['key' => 'group', 'label' => 'Group', 'count' => 7],
-            ['key' => 'needs_review', 'label' => 'Needs review', 'count' => 2],
-        ];
+        $pages = max(1, (int) ceil(count($list) / self::PER_PAGE));
+        $page = min($pages, max(1, (int) ($_GET['page'] ?? 1)));
 
-        $data['clients'] = self::placeholderClients();
-
-        $this->render('instructor/my-clients', 'staff-layout', $data);
+        $this->render('instructor/my-clients', 'staff-layout', [
+            'pageTitle'    => 'My Clients',
+            'stats'        => $service->stats($roster),
+            'filterCounts' => $service->filterCounts($roster),
+            'clients'      => array_slice($list, ($page - 1) * self::PER_PAGE, self::PER_PAGE),
+            'matchCount'   => count($list),
+            'totalClients' => count($roster),
+            'search'       => $search,
+            'filter'       => $filter,
+            'sort'         => $sort,
+            'page'         => $page,
+            'pages'        => $pages,
+            'flash'        => $this->flash(),
+        ]);
     }
 
-    /**
-     * UI only — shared placeholder list so the client-scoped screens
-     * (client page, workout plan) show the same people as this list.
-     */
-    public static function placeholderClients(): array
+    /** CSV of the list as currently searched / filtered / sorted. */
+    public function exportClients(): void
     {
+        $service = new ClientRosterService();
+        [$search, $filter, $sort] = $this->listParams();
+        $list = $service->query($service->buildRoster((int) $_SESSION['user_id']), $search, $filter, $sort);
+
+        $statusLabels = ['active' => 'Active', 'needs_review' => 'Needs review', 'paused' => 'Paused', 'new' => 'New'];
+
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename="my-clients-' . date('Y-m-d') . '.csv"');
+
+        $out = fopen('php://output', 'w');
+        fputcsv($out, ['Name', 'Email', 'Type', 'Program', 'Program status', 'Adherence (%)', 'Next session', 'Status']);
+        foreach ($list as $client) {
+            fputcsv($out, [
+                $client['name'],
+                $client['email'],
+                $client['type_label'],
+                $client['program'],
+                $client['program_meta'],
+                $client['adherence'] ?? '',
+                $client['next_session'] . ' (' . $client['next_session_meta'] . ')',
+                $statusLabels[$client['status']],
+            ]);
+        }
+        fclose($out);
+    }
+
+    /** JSON search for the Add client dialog. */
+    public function searchMembers(): void
+    {
+        $results = (new ClientRosterService())->searchAssignableMembers((int) $_SESSION['user_id'], (string) ($_GET['q'] ?? ''));
+
+        header('Content-Type: application/json');
+        echo json_encode(array_map(fn($row) => [
+            'id'    => (int) $row['id'],
+            'name'  => trim($row['first_name'] . ' ' . $row['last_name']),
+            'email' => $row['email'],
+        ], $results));
+    }
+
+    /** Add client → the new client has no plan yet, so go straight to creating one. */
+    public function addClient(): void
+    {
+        $memberId = (int) ($_POST['member_id'] ?? 0);
+
+        try {
+            (new ClientRosterService())->addClient((int) $_SESSION['user_id'], $memberId, (string) ($_POST['client_type'] ?? ''));
+        } catch (InvalidArgumentException $e) {
+            $this->redirect('/my-clients?error=' . urlencode($e->getMessage()));
+        }
+
+        $this->redirect('/my-clients/client?member=' . $memberId . '&added=1');
+    }
+
+    // ------------------------------------------------------------------
+
+    private function listParams(): array
+    {
+        $filter = (string) ($_GET['filter'] ?? 'all');
+        $sort = (string) ($_GET['sort'] ?? 'next');
+
         return [
-            ['id' => 1, 'name' => 'Marcus Johnson', 'email' => 'marcus.j@email.com', 'type' => '1-on-1',
-                'program' => 'Hypertrophy Block A', 'program_meta' => 'Week 3 of 8', 'adherence' => 86,
-                'next_session' => 'Today, 08:00 AM', 'next_session_meta' => 'Strength & conditioning', 'status' => 'active', 'has_plan' => true],
-            ['id' => 2, 'name' => 'Sarah Chen', 'email' => 's.chen@email.com', 'type' => '1-on-1',
-                'program' => 'Mobility Reset', 'program_meta' => 'Week 1 of 4', 'adherence' => 94,
-                'next_session' => 'Today, 02:00 PM', 'next_session_meta' => 'Mobility assessment', 'status' => 'active', 'has_plan' => true],
-            ['id' => 3, 'name' => 'David Miller', 'email' => 'd.miller@email.com', 'type' => '1-on-1',
-                'program' => 'Fat Loss Phase 2', 'program_meta' => 'Week 6 of 12', 'adherence' => 38,
-                'next_session' => 'Not scheduled', 'next_session_meta' => 'Last active 8 days ago', 'status' => 'needs_review', 'has_plan' => true],
-            ['id' => 4, 'name' => 'Elena Rostova', 'email' => 'elena.r@email.com', 'type' => '1-on-1',
-                'program' => 'Macro Tracking', 'program_meta' => 'Week 2 of 6', 'adherence' => 52,
-                'next_session' => 'Fri, 10:30 AM', 'next_session_meta' => 'Nutrition check-in', 'status' => 'needs_review', 'has_plan' => true],
-            ['id' => 5, 'name' => 'James Okafor', 'email' => 'j.okafor@email.com', 'type' => 'Group',
-                'program' => 'HIIT Bootcamp', 'program_meta' => 'Studio A', 'adherence' => 78,
-                'next_session' => 'Today, 11:30 AM', 'next_session_meta' => 'Group class', 'status' => 'active', 'has_plan' => true],
-            ['id' => 6, 'name' => 'Priya Nair', 'email' => 'priya.n@email.com', 'type' => 'Group',
-                'program' => 'Strength Foundations', 'program_meta' => 'Studio B', 'adherence' => 88,
-                'next_session' => 'Mon, 06:30 PM', 'next_session_meta' => 'Group class', 'status' => 'active', 'has_plan' => true],
-            ['id' => 7, 'name' => 'Tom Becker', 'email' => 't.becker@email.com', 'type' => '1-on-1',
-                'program' => 'Return from injury', 'program_meta' => 'Paused 12 Oct', 'adherence' => null,
-                'next_session' => 'Paused', 'next_session_meta' => 'Resumes 3 Nov', 'status' => 'paused', 'has_plan' => true],
-            ['id' => 8, 'name' => 'Aisha Rahman', 'email' => 'aisha.r@email.com', 'type' => '1-on-1',
-                'program' => 'Onboarding', 'program_meta' => 'Plan not set', 'adherence' => null,
-                'next_session' => 'Wed, 09:00 AM', 'next_session_meta' => 'Intake session', 'status' => 'new', 'has_plan' => false],
+            trim((string) ($_GET['q'] ?? '')),
+            array_key_exists($filter, ClientRosterService::FILTERS) ? $filter : 'all',
+            array_key_exists($sort, ClientRosterService::SORTS) ? $sort : 'next',
         ];
     }
 
-    public static function findPlaceholderClient(int $id): ?array
+    private function flash(): ?array
     {
-        foreach (self::placeholderClients() as $client) {
-            if ($client['id'] === $id) {
-                return $client;
-            }
+        if (isset($_GET['error'])) {
+            return ['type' => 'error', 'message' => (string) $_GET['error']];
+        }
+        if (isset($_GET['deleted'])) {
+            return ['type' => 'success', 'message' => 'Workout plan deleted. The client can no longer see it.'];
         }
         return null;
     }

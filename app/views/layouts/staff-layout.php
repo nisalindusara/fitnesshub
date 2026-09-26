@@ -44,6 +44,7 @@ $navItems = [
     ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'tag', 'route' => '/portal/ecom/categories', 'permission' => 'manage_inventory'],
 
     // Instructor 
+    ['section' => 'My Work', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/instructor/overview', 'permission' => 'view_own_clients'],
     ['section' => 'My Work', 'label' => 'My Clients', 'icon' => 'users', 'route' => '/my-clients', 'permission' => 'view_own_clients'],
     ['section' => 'My Work', 'label' => 'My Schedule', 'icon' => 'calendar', 'route' => '/my-schedule', 'permission' => 'view_own_schedule'],
     ['section' => 'My Work', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
