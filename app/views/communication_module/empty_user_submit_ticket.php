@@ -98,7 +98,7 @@
     <!-- Illustration -->
     <div class="ticket-illustration-wrapper">
       <img 
-        src="/uploads/Communication/checkboard.png" 
+        src="/uploads/Communication/connectionless.png" 
         alt="No tickets yet" 
         class="ticket-illustration-img" 
       />

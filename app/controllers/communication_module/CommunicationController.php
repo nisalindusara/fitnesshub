@@ -20,13 +20,14 @@ class CommunicationController extends Controller
         $role = 'PERSONAL INSTRUCTOR';
         $avatar = '/uploads/profiles/profile_1.jpg';
         $profile_url ='/instructor/profile/marcus';
+        $user_name = $_SESSION['user_name'] ?? 'Member';
         $messages = [
             ['type' => 'incoming', 'text' => "That's totally normal! DOMS usually peaks around 24–48 hours post–workout.", 'time' => '10:48 AM'],
             ['type' => 'incoming', 'text' => 'Make sure to hydrate well today and try to get in some light movement. Active recovery is key.', 'time' => '10:48 AM'],
             ['type' => 'outgoing', 'text' => "Thanks! I'll do that routine on my lunch break.", 'time' => '10:52 AM'],
             ['type' => 'outgoing', 'text' => 'Are we still on for Thursday at 6 AM?', 'time' => '10:52 AM']
         ];
-        require_once "../app/views/communication_module/chat_conversation.php";
+        $this->render('communication_module/chat_conversation','member-layout',compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name'));
     }
 
     public function chatSarah()
@@ -35,12 +36,16 @@ class CommunicationController extends Controller
         $role = 'NUTRITIONIST';
         $avatar = '/uploads/profiles/profile_2.jpg';
         $profile_url ='/instructor/profile/sarah';
+        $user_name = $_SESSION['user_name'] ?? 'Member';
         $messages = [
             ['type' => 'incoming', 'text' => "Hey! How is your protein intake looking this week?", 'time' => 'Yesterday'],
             ['type' => 'incoming', 'text' => "Don't forget to track your hydration targets today.", 'time' => 'Yesterday'],
-            ['type' => 'outgoing', 'text' => 'Hit 140g yesterday, feeling much more energetic!', 'time' => '8:15 AM']
+            ['type' => 'outgoing', 'text' => 'Hit 140g yesterday, feeling much more energetic!', 'time' => '8:15 AM'],
+            ['type' => 'incoming', 'text' => 'Awesome work! Keep that momentum going through the weekend.', 'time' => '8:20 AM'],
+            ['type' => 'outgoing', 'text' => 'Will do! Should I adjust carbs on Saturday?', 'time' => '9:00 AM'],
+            ['type' => 'incoming', 'text' => 'Keep them moderate if you plan on doing high intensity training.', 'time' => '9:15 AM'],
         ];
-        require_once "../app/views/communication_module/chat_conversation.php";
+        $this->render('communication_module/chat_conversation','member-layout',compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name'));
     }
 
     public function chatSupport()
@@ -49,13 +54,31 @@ class CommunicationController extends Controller
         $role = 'CUSTOMER SUPPORT';
         $avatar = '/uploads/Communication/SupportTeam.png';
         $profile_url = null;
+        $user_name = $_SESSION['user_name'] ?? 'Member';
         $messages = [
             ['type' => 'incoming', 'text' => 'Welcome to FitnessHub! Let us know if you need any assistance getting started.', 'time' => 'Sep 24'],
             ['type' => 'outgoing', 'text' => 'Could you help me change my default subscription payment method?', 'time' => 'Sep 24'],
             ['type' => 'incoming', 'text' => 'Certainly, head over to your Account > Payment settings to update your card.', 'time' => 'Sep 24']
         ];
-        require_once "../app/views/communication_module/chat_conversation.php";
+        $this->render('communication_module/chat_conversation','member-layout',compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name')); 
     } 
+    public function chatElena()
+    {
+        $name = 'Coach Elena';
+        $role = 'MEAL PLAN INSTRUCTOR';
+        $avatar = '/uploads/profiles/profile_5.jpg';
+        $profile_url = '/instructor/profile/elena';
+        $user_name = $_SESSION['user_name'] ?? 'Member';
+
+        $messages = [
+            ['type' => 'incoming', 'text' => "Hi there! I reviewed your progress log from this past week.", 'time' => 'Yesterday'],
+            ['type' => 'incoming', 'text' => "I've updated your macros for the week to keep you energized for your sessions.", 'time' => 'Yesterday'],
+            ['type' => 'outgoing', 'text' => "Thanks Elena! Should I still keep carbs lower on rest days?", 'time' => '8:20 AM'],
+            ['type' => 'incoming', 'text' => "Yes, slightly lower on rest days, but keep protein steady.", 'time' => '9:05 AM']
+        ];
+
+        $this->render('communication_module/chat_conversation', 'member-layout', compact('name', 'role', 'avatar', 'profile_url', 'messages', 'user_name')); 
+    }
 
     public function profileMarcus()
     {
@@ -130,24 +153,6 @@ class CommunicationController extends Controller
     public function NonPTMessages()
     {
         $this->render('communication_module/NonPT_messages','member-layout');
-    }
-
-    // 2. Chat Conversation with Coach Elena (reusing chat_conversation.php)
-    public function chatElena()
-    {
-        $name = 'Coach Elena';
-        $role = 'MEAL PLAN INSTRUCTOR';
-        $avatar = '/uploads/profiles/profile_5.jpg';
-        $profile_url = '/instructor/profile/elena'; // Enables clickable profile
-
-        $messages = [
-            ['type' => 'incoming', 'text' => "Hi there! I reviewed your progress log from this past week.", 'time' => 'Yesterday'],
-            ['type' => 'incoming', 'text' => "I've updated your macros for the week to keep you energized for your sessions.", 'time' => 'Yesterday'],
-            ['type' => 'outgoing', 'text' => "Thanks Elena! Should I still keep carbs lower on rest days?", 'time' => '8:20 AM'],
-            ['type' => 'incoming', 'text' => "Yes, slightly lower on rest days, but keep protein steady.", 'time' => '9:05 AM']
-        ];
-
-        require_once "../app/views/communication_module/chat_conversation.php";
     }
 
     // 3. Coach Elena's Profile Screen (reusing instructor_profile.php)

@@ -1,25 +1,28 @@
 <style>
-/* Outer Center Wrapper matching Figma frame constraints */
+
+/* Outer Center Wrapper */
 #chat-view-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: calc(100vh - 140px);
+  height: calc(100vh - 140px); /* Change min-height to height */
+  overflow: hidden;             /* Prevents outer page scroll */
   padding: 16px;
   gap: 10px;
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Middle Card (832px width x 782px height) */
+/* Middle Card */
 #chat-conversation-card {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 832px;
-  height: 782px;
+  height: 100%;       /* Fixes card height relative to viewport */
+  max-height: 782px;
   background: #ffffff;
   border-radius: 28px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
@@ -30,11 +33,21 @@
 
 /* Header */
 .chat-header {
+  flex-shrink: 0; /* Add this */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 28px;
   border-bottom: 1px solid #f0f0f0;
+}
+
+.chat-footer {
+  flex-shrink: 0; /* Add this */
+  display: flex;
+  align-items: center;
+  padding: 18px 28px 24px 28px;
+  gap: 14px;
+  background-color: #ffffff;
 }
 
 .chat-header-left {
@@ -157,9 +170,28 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  overflow-y: auto;
+  min-height: 0;       /* Essential: forces flex container to respect scrolling */
+  overflow-y: auto;    /* Enables vertical scrollbar inside this container */
   padding: 28px 36px;
   gap: 20px;
+}
+
+/* Custom Sleek Scrollbar for the Chat */
+.chat-messages-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-messages-area::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 9999px;
+}
+
+.chat-messages-area::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
 }
 
 .chat-message-group {
@@ -303,10 +335,11 @@
     <div class="chat-header">
       <div class="chat-header-left">
   <!-- Back Button -->
-    <a href="/communication/PTmember-messages" class="chat-back-btn" title="Back to messages">
+    <!-- Back Button -->
+    <a href="#" onclick="if (history.length > 1) { history.back(); return false; } else { window.location.href='/communication/NonPT-messages'; }" class="chat-back-btn" title="Back to messages">
         <svg class="chat-header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-        <polyline points="12 19 5 12 12 5"></polyline>
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
     </a>
 
