@@ -11,3 +11,5 @@ $router->get('/member/member-profile/privacy-data', [MemberScreenController::cla
 $router->get('/member/membership', [MemberController::class, 'showMembershipScreen'], '@member');
 $router->get('/member/membership/workout-schedule', [MemberController::class, 'showWorkoutScheduleScreen'], '@member');
 $router->post('/member/membership/workout-schedule/done', [MemberController::class, 'setWorkoutExerciseDone'], '@member');
+$router->get('/member/membership/meal-plan', [MemberController::class, 'showMealPlanScreen'], '@member');
+$router->post('/member/membership/meal-plan/done', [MemberController::class, 'setMealDone'], '@member');
