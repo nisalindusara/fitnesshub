@@ -1,7 +1,5 @@
 <?php
 
-/** @var Router $router */
-
 $router->get(
     '/classes',
     [ClassDemoController::class, 'index'],

@@ -303,7 +303,7 @@
         </a>
 
         <!-- Analytics -->
-        <a href="/analytics" <?= $navAttrs('/analytics') ?>>
+        <a href="/member/analytics" <?= $navAttrs('/member/analytics') ?>>
           <svg viewBox="0 0 24 24" class="nav-icon">
             <path d="M5 9.2H8V19H5V9.2ZM10.6 5H13.4V19H10.6V5ZM16.2 13H19V19H16.2V13Z" />
           </svg>
@@ -311,7 +311,7 @@
         </a>
 
         <!-- Classes -->
-        <a href="#classes" class="nav-item">
+        <a href="/member/classes" <?= $navAttrs('/member/classes') ?>>
           <svg viewBox="0 0 24 24" class="nav-icon">
             <path d="M16 11C17.66 11 18.99 9.66 18.99 8C18.99 6.34 17.66 5 16 5C14.34 5 13 6.34 13 8C13 9.66 14.34 11 16 11ZM8 11C9.66 11 10.99 9.66 10.99 8C10.99 6.34 9.66 5 8 5C6.34 5 5 6.34 5 8C5 9.66 6.34 11 8 11ZM8 13C5.67 13 1 14.17 1 16.5V19H15V16.5C15 14.17 10.33 13 8 13ZM16 13C15.71 13 15.38 13.02 15.03 13.05C16.19 13.89 17 15.02 17 16.5V19H23V16.5C23 14.17 18.33 13 16 13Z" />
           </svg>
@@ -319,7 +319,7 @@
         </a>
 
         <!-- Message -->
-        <a href="#message" class="nav-item">
+        <a href="/member/messages" <?= $navAttrs('/member/messages') ?>>
           <svg viewBox="0 0 24 24" class="nav-icon">
             <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM9 11C8.45 11 8 10.55 8 10C8 9.45 8.45 9 9 9C9.55 9 10 9.45 10 10C10 10.55 9.55 11 9 11ZM15 11C14.45 11 14 10.55 14 10C14 9.45 14.45 9 15 9C15.55 9 16 9.45 16 10C16 10.55 15.55 11 15 11Z" />
           </svg>
