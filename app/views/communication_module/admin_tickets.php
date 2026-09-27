@@ -365,7 +365,7 @@
             <span class="badge-priority priority-urgent">Urgent</span>
           </div>
           <div class="card-title">
-            <a href="#" class="ticket-link">Cannot access member portal after password reset</a>
+            <a href="/admin/ticket_details" class="ticket-link">Cannot access member portal after password reset</a>
          </div>
           <div class="tag-row">
             <span class="category-tag">Account Access</span>
