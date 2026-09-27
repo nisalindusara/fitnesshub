@@ -564,3 +564,42 @@
         overflow-x: auto;
     }
 }
+
+.schedule-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#btn-request-leave.btn-leave-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+#btn-request-leave.btn-leave-action:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+  color: #111827;
+}
+
+.btn-leave-icon {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-leave-text {
+  line-height: 1;
+}
