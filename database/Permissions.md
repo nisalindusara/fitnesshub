@@ -44,6 +44,7 @@ control works this way — this file is the current state of that system.
 | view_ecommerce_overview  | View ecommerce dashboard overview (ecommerce_admin, manager, super_admin)  |
 | view_system_overview     | View system-wide overview (super_admin, manager)                           |
 | view_manager_summary     | View manager-only summary dashboard                                        |
+| manage_leave_requests    | Approve, reject and cancel instructor leave requests (manager only)        |
 
 ## Role → Permission assignments
 
@@ -61,7 +62,7 @@ add_payment, change_payment_settings, handle_support_tickets, manage_action_plan
 
 ### manager
 
-view_manager_summary, view_overview, view_payments_overview, view_reports, view_system_overview
+manage_leave_requests, view_manager_summary, view_overview, view_payments_overview, view_reports, view_system_overview
 
 > ⚠️ **This does not match the design decision recorded when the manager
 > role was built.** Manager was meant to hold everything `super_admin`

@@ -737,6 +737,167 @@ CREATE TABLE `workout_logs` (
   CONSTRAINT `fk_wl_plan_exercise` FOREIGN KEY (`plan_exercise_id`) REFERENCES `workout_plan_exercises` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+-- Daily plan module: meal plans. One weekly meal plan per member
+-- (day 1 = Mon … 7 = Sun). Each meal of a day has a few options; the member
+-- picks the one they ate, which is logged in `meal_logs`.
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `meal_logs`;
+DROP TABLE IF EXISTS `meal_plan_items`;
+
+--
+-- Table structure for table `meal_plan_items` (one option for one meal on one weekday of a member's meal plan)
+--
+CREATE TABLE `meal_plan_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `instructor_id` int(11) DEFAULT NULL,
+  `day_of_week` tinyint(3) UNSIGNED NOT NULL,
+  `meal_type` enum('breakfast','lunch','dinner','snack') NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `calories` smallint(5) UNSIGNED DEFAULT NULL,
+  `protein_g` smallint(5) UNSIGNED DEFAULT NULL,
+  `sort_order` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_mpi_member_day` (`member_id`,`day_of_week`,`sort_order`),
+  KEY `fk_mpi_instructor` (`instructor_id`),
+  CONSTRAINT `fk_mpi_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_mpi_instructor` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `meal_logs` (the option a member picked for a meal on a date)
+--
+CREATE TABLE `meal_logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `meal_item_id` int(11) NOT NULL,
+  `log_date` date NOT NULL,
+  `completed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_meal_log_member_item_date` (`member_id`,`meal_item_id`,`log_date`),
+  KEY `fk_ml_meal_item` (`meal_item_id`),
+  CONSTRAINT `fk_ml_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_ml_meal_item` FOREIGN KEY (`meal_item_id`) REFERENCES `meal_plan_items` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+-- Work schedule module: instructor sessions an admin puts on the calendar.
+-- A repeating session is stored as one row per date, linked to the series
+-- that holds its repeat rule.
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `leave_request_sessions`;
+DROP TABLE IF EXISTS `leave_requests`;
+DROP TABLE IF EXISTS `work_sessions`;
+DROP TABLE IF EXISTS `work_session_series`;
+
+--
+-- Table structure for table `work_session_series` (the repeat rule shared by a set of sessions)
+--
+CREATE TABLE `work_session_series` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `frequency` enum('daily','weekly','monthly') NOT NULL,
+  `weekdays` varchar(20) DEFAULT NULL COMMENT 'Weekly only: ISO weekdays, e.g. 1,3,5 = Mon, Wed, Fri',
+  `repeat_until` date NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `fk_wss_created_by` (`created_by`),
+  CONSTRAINT `fk_wss_created_by` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `work_sessions` (one instructor session on one date)
+--
+CREATE TABLE `work_sessions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `instructor_id` int(11) NOT NULL,
+  `session_type` varchar(30) NOT NULL,
+  `session_date` date NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `notes` varchar(500) DEFAULT NULL,
+  `series_id` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_ws_date` (`session_date`,`start_time`),
+  KEY `idx_ws_instructor_date` (`instructor_id`,`session_date`),
+  KEY `fk_ws_series` (`series_id`),
+  KEY `fk_ws_created_by` (`created_by`),
+  CONSTRAINT `fk_ws_instructor` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_ws_series` FOREIGN KEY (`series_id`) REFERENCES `work_session_series` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_ws_created_by` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+-- Work schedule module: instructor leave requests. A manager approves or
+-- rejects each request; approving reassigns or cancels the instructor's
+-- sessions in that period, and the outcome for every session is recorded.
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `leave_request_sessions`;
+DROP TABLE IF EXISTS `leave_requests`;
+
+--
+-- Table structure for table `leave_requests` (a planned or immediate leave request from an instructor)
+--
+CREATE TABLE `leave_requests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `instructor_id` int(11) NOT NULL,
+  `leave_type` enum('planned','immediate') NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `status` enum('pending','approved','rejected','cancelled') NOT NULL DEFAULT 'pending',
+  `submitted_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `decided_by` int(11) DEFAULT NULL,
+  `decided_at` datetime DEFAULT NULL,
+  `cancelled_by` int(11) DEFAULT NULL,
+  `cancelled_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_lr_status` (`status`,`start_date`),
+  KEY `idx_lr_instructor_dates` (`instructor_id`,`start_date`,`end_date`),
+  KEY `fk_lr_decided_by` (`decided_by`),
+  KEY `fk_lr_cancelled_by` (`cancelled_by`),
+  CONSTRAINT `fk_lr_instructor` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_lr_decided_by` FOREIGN KEY (`decided_by`) REFERENCES `users` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_lr_cancelled_by` FOREIGN KEY (`cancelled_by`) REFERENCES `users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `leave_request_sessions` (what happened to each session a processed leave affected)
+-- The session details are copied here because a cancelled session is removed from `work_sessions`.
+--
+CREATE TABLE `leave_request_sessions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `leave_request_id` int(11) NOT NULL,
+  `work_session_id` int(11) DEFAULT NULL,
+  `session_date` date NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `session_type` varchar(30) NOT NULL,
+  `notes` varchar(500) DEFAULT NULL,
+  `original_instructor_id` int(11) NOT NULL,
+  `replacement_instructor_id` int(11) DEFAULT NULL,
+  `outcome` enum('replaced','cancelled','kept','reverted','restored') NOT NULL,
+  `outcome_note` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_lrs_request` (`leave_request_id`,`session_date`,`start_time`),
+  KEY `fk_lrs_work_session` (`work_session_id`),
+  KEY `fk_lrs_original` (`original_instructor_id`),
+  KEY `fk_lrs_replacement` (`replacement_instructor_id`),
+  CONSTRAINT `fk_lrs_request` FOREIGN KEY (`leave_request_id`) REFERENCES `leave_requests` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_lrs_work_session` FOREIGN KEY (`work_session_id`) REFERENCES `work_sessions` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_lrs_original` FOREIGN KEY (`original_instructor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_lrs_replacement` FOREIGN KEY (`replacement_instructor_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

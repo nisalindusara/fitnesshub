@@ -18,6 +18,7 @@ $navItems = [
 
     ['section' => 'Operations', 'label' => 'Classes', 'icon' => 'folder', 'route' => '/classes', 'permission' => 'manage_classes'],
     ['section' => 'Operations', 'label' => 'Personal Training', 'icon' => 'user-check', 'route' => '/personal-training', 'permission' => 'manage_personal_training'],
+    ['section' => 'Operations', 'label' => 'Instructor Sessions', 'icon' => 'calendar', 'route' => '/instructor-sessions', 'permission' => 'manage_schedule'],
     ['section' => 'Operations', 'label' => 'Staff Availability', 'icon' => 'calendar', 'route' => '/staff-availability', 'permission' => 'manage_staff_schedule'],
     ['section' => 'Operations', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
 
