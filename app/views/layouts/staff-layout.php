@@ -46,6 +46,7 @@ $navItems = [
     ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'tag', 'route' => '/portal/ecom/categories', 'permission' => 'manage_inventory'],
 
     // Instructor 
+    ['section' => 'My Work', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/instructor', 'permission' => 'view_own_clients'],
     ['section' => 'My Work', 'label' => 'My Clients', 'icon' => 'users', 'route' => '/my-clients', 'permission' => 'view_own_clients'],
     ['section' => 'My Work', 'label' => 'My Schedule', 'icon' => 'calendar', 'route' => '/my-schedule', 'permission' => 'view_own_schedule'],
     ['section' => 'My Work', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
@@ -79,6 +80,9 @@ foreach ($navItems as $item) {
 }
 
 // Group by section, preserving order of first appearance
+// Views can highlight a parent nav item for nested pages (e.g. /my-clients/...)
+$activeNavRoute = $activeNavRoute ?? ($currentRoute ?? '');
+
 $navBySections = [];
 foreach ($visibleNav as $item) {
     $navBySections[$item['section']][] = $item;
@@ -123,7 +127,7 @@ foreach ($visibleNav as $item) {
                                         icon="<?= htmlspecialchars($child['icon']) ?>"
                                         label="<?= htmlspecialchars($child['label']) ?>"
                                         route="<?= htmlspecialchars($child['route']) ?>"
-                                        active="<?= $currentRoute === $child['route'] ? 'true' : 'false' ?>">
+                                        active="<?= $activeNavRoute === $child['route'] ? 'true' : 'false' ?>">
                                     </fh-nav-item>
                                 <?php endforeach; ?>
                             </fh-nav-dropdown>
@@ -132,7 +136,7 @@ foreach ($visibleNav as $item) {
                                 icon="<?= htmlspecialchars($item['icon']) ?>"
                                 label="<?= htmlspecialchars($item['label']) ?>"
                                 route="<?= htmlspecialchars($item['route']) ?>"
-                                active="<?= $currentRoute === $item['route'] ? 'true' : 'false' ?>">
+                                active="<?= $activeNavRoute === $item['route'] ? 'true' : 'false' ?>">
                             </fh-nav-item>
                         <?php endif; ?>
                     <?php endforeach; ?>

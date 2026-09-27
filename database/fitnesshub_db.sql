@@ -854,6 +854,223 @@ ALTER TABLE `staff_profiles`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_role` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+
+-- --------------------------------------------------------
+-- Daily plan module: exercise library, instructor ↔ client assignments,
+-- workout plans (draft / published / archived) and member workout logs.
+-- Tables are self-contained (keys and constraints inline) and are created
+-- after `users` so the foreign keys resolve.
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `workout_logs`;
+DROP TABLE IF EXISTS `workout_plan_exercises`;
+DROP TABLE IF EXISTS `workout_plan_days`;
+DROP TABLE IF EXISTS `workout_plans`;
+DROP TABLE IF EXISTS `instructor_clients`;
+DROP TABLE IF EXISTS `exercises`;
+
+--
+-- Table structure for table `exercises` (the instructor's exercise library)
+--
+CREATE TABLE `exercises` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `muscle_group` varchar(30) NOT NULL,
+  `equipment` varchar(30) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_exercises_name` (`name`),
+  KEY `idx_exercises_muscle` (`muscle_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `instructor_clients` (members assigned to an instructor)
+--
+CREATE TABLE `instructor_clients` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `instructor_id` int(11) NOT NULL,
+  `member_id` int(11) NOT NULL,
+  `client_type` enum('1-on-1','group') NOT NULL DEFAULT '1-on-1',
+  `status` enum('active','paused') NOT NULL DEFAULT 'active',
+  `flag_title` varchar(100) DEFAULT NULL,
+  `flag_note` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_instructor_member` (`instructor_id`,`member_id`),
+  KEY `fk_ic_member` (`member_id`),
+  CONSTRAINT `fk_ic_instructor` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_ic_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `workout_plans`
+-- A member has at most one draft and one published plan; older published
+-- versions are kept as 'archived' so workout logs and "copy last week" survive.
+--
+CREATE TABLE `workout_plans` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `instructor_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `goal` varchar(50) NOT NULL,
+  `duration_weeks` tinyint(3) UNSIGNED NOT NULL,
+  `start_date` date NOT NULL,
+  `sessions_per_week` tinyint(3) UNSIGNED NOT NULL,
+  `difficulty` enum('beginner','intermediate','advanced') NOT NULL DEFAULT 'beginner',
+  `status` enum('draft','published','archived') NOT NULL DEFAULT 'draft',
+  `published_at` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_wp_member_status` (`member_id`,`status`),
+  KEY `fk_wp_instructor` (`instructor_id`),
+  CONSTRAINT `fk_wp_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_wp_instructor` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `workout_plan_days` (1 = Monday … 7 = Sunday)
+--
+CREATE TABLE `workout_plan_days` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `plan_id` int(11) NOT NULL,
+  `day_of_week` tinyint(3) UNSIGNED NOT NULL,
+  `focus` varchar(50) DEFAULT NULL,
+  `note` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_plan_day` (`plan_id`,`day_of_week`),
+  CONSTRAINT `fk_wpd_plan` FOREIGN KEY (`plan_id`) REFERENCES `workout_plans` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `workout_plan_exercises`
+-- Rows sharing a superset_group within a day are performed back to back.
+--
+CREATE TABLE `workout_plan_exercises` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `plan_day_id` int(11) NOT NULL,
+  `exercise_id` int(11) NOT NULL,
+  `sort_order` smallint(5) UNSIGNED NOT NULL DEFAULT 0,
+  `sets` tinyint(3) UNSIGNED NOT NULL,
+  `reps` smallint(5) UNSIGNED NOT NULL,
+  `load_text` varchar(20) DEFAULT NULL,
+  `rest_seconds` smallint(5) UNSIGNED NOT NULL DEFAULT 60,
+  `superset_group` tinyint(3) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_wpe_day_order` (`plan_day_id`,`sort_order`),
+  KEY `fk_wpe_exercise` (`exercise_id`),
+  CONSTRAINT `fk_wpe_day` FOREIGN KEY (`plan_day_id`) REFERENCES `workout_plan_days` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_wpe_exercise` FOREIGN KEY (`exercise_id`) REFERENCES `exercises` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `workout_logs` (a member ticking off an exercise on a date)
+--
+CREATE TABLE `workout_logs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `plan_exercise_id` int(11) NOT NULL,
+  `log_date` date NOT NULL,
+  `completed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_log_member_exercise_date` (`member_id`,`plan_exercise_id`,`log_date`),
+  KEY `fk_wl_plan_exercise` (`plan_exercise_id`),
+  CONSTRAINT `fk_wl_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_wl_plan_exercise` FOREIGN KEY (`plan_exercise_id`) REFERENCES `workout_plan_exercises` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daily plan module seed: exercise library, instructor 12's clients and one published plan.
+-- Member 1 has a published plan (edit flow); member 11 has none (create flow).
+--
+
+
+INSERT INTO `exercises` (`id`, `name`, `muscle_group`, `equipment`) VALUES
+(1, 'Barbell bench press', 'Chest', 'Barbell'),
+(2, 'Incline dumbbell press', 'Chest', 'Dumbbell'),
+(3, 'Dumbbell fly', 'Chest', 'Dumbbell'),
+(4, 'Push-up', 'Chest', 'Bodyweight'),
+(5, 'Cable crossover', 'Chest', 'Cable'),
+(6, 'Seated cable row', 'Back', 'Cable'),
+(7, 'Lat pulldown', 'Back', 'Cable'),
+(8, 'Pull-up', 'Back', 'Bodyweight'),
+(9, 'Bent-over barbell row', 'Back', 'Barbell'),
+(10, 'Chest-supported row', 'Back', 'Dumbbell'),
+(11, 'Barbell back squat', 'Legs', 'Barbell'),
+(12, 'Romanian deadlift', 'Legs', 'Barbell'),
+(13, 'Walking lunge', 'Legs', 'Dumbbell'),
+(14, 'Leg press', 'Legs', 'Machine'),
+(15, 'Lying leg curl', 'Legs', 'Machine'),
+(16, 'Standing calf raise', 'Legs', 'Machine'),
+(17, 'Bulgarian split squat', 'Legs', 'Dumbbell'),
+(18, 'Goblet squat', 'Legs', 'Kettlebell'),
+(19, 'Trap bar deadlift', 'Legs', 'Barbell'),
+(20, 'Seated shoulder press', 'Shoulders', 'Dumbbell'),
+(21, 'Lateral raise', 'Shoulders', 'Dumbbell'),
+(22, 'Face pull', 'Shoulders', 'Cable'),
+(23, 'Overhead barbell press', 'Shoulders', 'Barbell'),
+(24, 'Rope tricep pushdown', 'Arms', 'Cable'),
+(25, 'Hammer curl', 'Arms', 'Dumbbell'),
+(26, 'Barbell curl', 'Arms', 'Barbell'),
+(27, 'Overhead tricep extension', 'Arms', 'Dumbbell'),
+(28, 'Plank', 'Core', 'Bodyweight'),
+(29, 'Hanging leg raise', 'Core', 'Bodyweight'),
+(30, 'Cable woodchop', 'Core', 'Cable'),
+(31, 'Farmer carry', 'Core', 'Dumbbell'),
+(32, 'Treadmill intervals', 'Cardio', 'Machine'),
+(33, 'Rowing machine', 'Cardio', 'Machine'),
+(34, 'Assault bike sprint', 'Cardio', 'Machine'),
+(35, 'Hip flow sequence', 'Mobility', 'Bodyweight'),
+(36, 'Thoracic rotation', 'Mobility', 'Bodyweight');
+
+INSERT INTO `instructor_clients` (`id`, `instructor_id`, `member_id`, `client_type`, `status`, `flag_title`, `flag_note`, `created_at`) VALUES
+(1, 12, 1, '1-on-1', 'active', 'Shoulder flag on file', 'Keep overhead pressing under 12 reps and check form on Friday.', '2026-09-01 09:00:00'),
+(2, 12, 11, 'group', 'active', NULL, NULL, '2026-09-24 09:00:00');
+
+INSERT INTO `workout_plans` (`id`, `member_id`, `instructor_id`, `name`, `goal`, `duration_weeks`, `start_date`, `sessions_per_week`, `difficulty`, `status`, `published_at`) VALUES
+(1, 1, 12, 'Hypertrophy Block A', 'Muscle gain', 8, '2026-09-21', 5, 'intermediate', 'published', '2026-09-20 18:00:00');
+
+INSERT INTO `workout_plan_days` (`id`, `plan_id`, `day_of_week`, `focus`, `note`) VALUES
+(1, 1, 1, 'Upper body', NULL),
+(2, 1, 2, 'Cardio', NULL),
+(3, 1, 3, 'Lower body', NULL),
+(4, 1, 4, NULL, NULL),
+(5, 1, 5, 'Full body', 'Check shoulder form before pressing.'),
+(6, 1, 6, 'Mobility', NULL),
+(7, 1, 7, NULL, NULL);
+
+INSERT INTO `workout_plan_exercises` (`plan_day_id`, `exercise_id`, `sort_order`, `sets`, `reps`, `load_text`, `rest_seconds`, `superset_group`) VALUES
+(1, 1, 1, 4, 8, '60 kg', 90, NULL),
+(1, 2, 2, 3, 10, '22 kg', 75, NULL),
+(1, 6, 3, 4, 12, '50 kg', 60, NULL),
+(1, 7, 4, 3, 12, '45 kg', 60, NULL),
+(1, 20, 5, 3, 10, '18 kg', 60, NULL),
+(1, 24, 6, 3, 15, '25 kg', 45, NULL),
+(2, 32, 1, 8, 1, NULL, 60, NULL),
+(2, 33, 2, 3, 1, NULL, 90, NULL),
+(2, 34, 3, 6, 1, NULL, 45, NULL),
+(3, 11, 1, 4, 8, '80 kg', 120, NULL),
+(3, 12, 2, 3, 10, '60 kg', 90, NULL),
+(3, 13, 3, 3, 12, '14 kg', 60, NULL),
+(3, 14, 4, 3, 12, '120 kg', 75, NULL),
+(3, 15, 5, 3, 12, '35 kg', 60, 1),
+(3, 16, 6, 4, 15, '40 kg', 45, 1),
+(5, 19, 1, 4, 6, '90 kg', 120, NULL),
+(5, 1, 2, 3, 10, '55 kg', 75, NULL),
+(5, 8, 3, 3, 8, 'BW', 90, NULL),
+(5, 18, 4, 3, 12, '24 kg', 60, NULL),
+(5, 31, 5, 3, 40, '32 kg', 60, NULL),
+(6, 35, 1, 2, 8, NULL, 30, NULL),
+(6, 36, 2, 2, 10, NULL, 30, NULL),
+(6, 29, 3, 3, 12, NULL, 30, NULL);
+
+INSERT INTO `workout_logs` (`member_id`, `plan_exercise_id`, `log_date`) VALUES
+(1, 1, '2026-09-21'), (1, 2, '2026-09-21'), (1, 3, '2026-09-21'), (1, 4, '2026-09-21'), (1, 5, '2026-09-21'), (1, 6, '2026-09-21'),
+(1, 7, '2026-09-22'), (1, 8, '2026-09-22'), (1, 9, '2026-09-22'),
+(1, 10, '2026-09-23'), (1, 11, '2026-09-23'), (1, 12, '2026-09-23'), (1, 13, '2026-09-23'), (1, 14, '2026-09-23'),
+(1, 16, '2026-09-25'), (1, 17, '2026-09-25'), (1, 18, '2026-09-25'), (1, 19, '2026-09-25');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

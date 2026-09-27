@@ -76,4 +76,17 @@ class User extends Model
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * A gym member (role_id IS NULL) by ID, or false for staff / unknown IDs.
+     */
+    public function findMemberById(int $id): array|false
+    {
+        $query = "SELECT id, first_name, last_name, email FROM users WHERE id = :id AND role_id IS NULL LIMIT 1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([':id' => $id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
