@@ -52,9 +52,9 @@ class User extends Model
      * Search active members (role_id IS NULL) by name or phone —
      * backs the order form's customer search box.
      */
-    public function searchMembers(string $term): array
+    public function searchMembersByNameOrPhone(string $term): array
     {
-        $query = "SELECT id, first_name, last_name, phone_number
+        $query = "SELECT id, first_name, last_name, phone_number, profile_image
                   FROM users
                   WHERE role_id IS NULL
                     AND (
@@ -82,8 +82,9 @@ class User extends Model
      */
     public function findMemberById(int $id): array|false
     {
-        $query = "SELECT id, first_name, last_name, email FROM users WHERE id = :id AND role_id IS NULL LIMIT 1";
 
+        $query = "SELECT id, first_name, last_name, email, phone_number, profile_image
+          FROM users WHERE id = :id AND role_id IS NULL LIMIT 1";
         $stmt = $this->db->prepare($query);
         $stmt->execute([':id' => $id]);
 
