@@ -312,7 +312,10 @@
         <div class="form-group form-group-sm">
           <label class="form-label" for="request-type">Type</label>
           <div class="input-container">
-            <input type="text" id="request-type" class="text-input" value="Leave Request" />
+            <select id="request-type" name="request_type" class="text-input custom-select-input">
+              <option value="Leave Request" selected>Immediate Leave Request</option>
+              <option value="Account Access">Leave Request</option>
+            </select>
           </div>
         </div>
 

@@ -18,6 +18,21 @@
             </p>
         </div>
 
+        <div class="schedule-header-actions">
+            <!-- Leave Request Button placed before the date navigation -->
+            <a href="/communication/instructor-tickets" id="btn-request-leave" class="btn-leave-action">
+                <span class="btn-leave-icon">&#128197;</span>
+                <span class="btn-leave-text">Request Leave</span>
+            </a>
+
+            <!-- Existing Date / Navigation Control -->
+            <div class="date-navigation-wrapper">
+                <button class="date-nav-btn">&#8592;</button>
+                <span class="date-range-display">Oct 21 – Oct 27, 2024</span>
+                <button class="date-nav-btn">&#8594;</button>
+            </div>
+        </div>
+
         <div class="ws-head-controls">
 
             <div class="ws-week-control">

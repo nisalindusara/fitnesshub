@@ -46,3 +46,4 @@ $router->post('/fitnesshub/public/api/messages/delete', [CommunicationController
 $router->get('/member/profile/nisal', [CommunicationController::class, 'profileNisal']);
 $router->get('/admin/support_tickets', [CommunicationController::class, 'AdminTickets']);
 $router->get('/admin/ticket_details', [CommunicationController::class, 'AdminTicketDetails']);
+$router->get('/manager/support_tickets', [CommunicationController::class, 'ManagerTickets']);
