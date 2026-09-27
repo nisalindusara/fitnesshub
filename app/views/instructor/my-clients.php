@@ -41,12 +41,6 @@
         margin: 4px 0 0;
     }
 
-    .mc-actions {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
     .mc-btn {
         display: inline-flex;
         align-items: center;
@@ -364,7 +358,7 @@
         }
     }
 
-    /* Flash + toast */
+    /* Flash */
     .mc-flash {
         padding: 12px 16px;
         border-radius: 10px;
@@ -382,19 +376,6 @@
         background: #fdf0f0;
         border-color: #f6d5d5;
         color: #b42318;
-    }
-
-    .mc-toast {
-        position: fixed;
-        right: 24px;
-        bottom: 24px;
-        z-index: 60;
-        padding: 12px 16px;
-        border-radius: 10px;
-        background: #1c1c1c;
-        color: #ffffff;
-        font-size: 14px;
-        box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.3);
     }
 
     /* Sort menu */
@@ -479,135 +460,6 @@
         pointer-events: none;
     }
 
-    /* Add client dialog */
-    .mc-modal {
-        position: fixed;
-        inset: 0;
-        z-index: 50;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
-        background: rgba(15, 15, 20, 0.4);
-    }
-
-    .mc-modal[hidden] {
-        display: none;
-    }
-
-    .mc-modal__box {
-        width: min(460px, 100%);
-        max-height: 90vh;
-        overflow-y: auto;
-        padding: 22px;
-        border-radius: 14px;
-        background: #ffffff;
-        box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.25);
-        box-sizing: border-box;
-    }
-
-    .mc-modal__title {
-        font-size: 17px;
-        font-weight: 600;
-        margin: 0 0 4px;
-    }
-
-    .mc-modal__text {
-        font-size: 13px;
-        color: rgba(28, 28, 28, 0.55);
-        margin: 0 0 16px;
-    }
-
-    .mc-modal .mc-search {
-        width: 100%;
-    }
-
-    .mc-results {
-        margin: 10px 0 16px;
-        max-height: 240px;
-        overflow-y: auto;
-    }
-
-    .mc-result {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        width: 100%;
-        padding: 10px;
-        border: 1px solid transparent;
-        border-radius: 8px;
-        background: none;
-        font-family: inherit;
-        text-align: left;
-        cursor: pointer;
-    }
-
-    .mc-result:hover {
-        background: #f7f9fb;
-    }
-
-    .mc-result.is-selected {
-        border-color: #1c1c1c;
-        background: #f7f9fb;
-    }
-
-    .mc-results__empty {
-        padding: 12px 4px;
-        font-size: 13px;
-        color: rgba(28, 28, 28, 0.5);
-        margin: 0;
-    }
-
-    .mc-field-label {
-        display: block;
-        font-size: 12px;
-        color: rgba(28, 28, 28, 0.55);
-        margin-bottom: 6px;
-    }
-
-    .mc-segment {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 20px;
-    }
-
-    .mc-segment label {
-        cursor: pointer;
-    }
-
-    .mc-segment input {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    .mc-segment span {
-        display: inline-flex;
-        align-items: center;
-        height: 34px;
-        padding: 0 14px;
-        border: 1px solid rgba(28, 28, 28, 0.12);
-        border-radius: 8px;
-        font-size: 13px;
-    }
-
-    .mc-segment input:checked + span {
-        background: #1c1c1c;
-        border-color: #1c1c1c;
-        color: #ffffff;
-    }
-
-    .mc-segment input:focus-visible + span {
-        outline: 2px solid #1c1c1c;
-        outline-offset: 2px;
-    }
-
-    .mc-modal__actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 8px;
-    }
-
     .mc-btn:disabled {
         opacity: 0.45;
         cursor: not-allowed;
@@ -635,7 +487,6 @@ $listUrl = function (array $changes) use ($search, $filter, $sort): string {
 };
 
 $adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%' : ($c['status'] === 'new' ? 'New' : '—');
-$inviteLink = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . '/onboarding';
 ?>
 
 <div class="page-header">
@@ -671,17 +522,6 @@ $inviteLink = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https
                     Everyone is on track.
                 <?php endif; ?>
             </p>
-        </div>
-        <div class="mc-actions">
-            <a href="/my-clients/export<?= htmlspecialchars($listUrl([])) ?>" class="mc-btn">Export list</a>
-            <button type="button" class="mc-btn" id="mc-invite" data-link="<?= htmlspecialchars($inviteLink) ?>">Invite client</button>
-            <button type="button" class="mc-btn mc-btn--primary" id="mc-add-open">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-                Add client
-            </button>
         </div>
     </div>
 
@@ -750,7 +590,7 @@ $inviteLink = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https
         <?php if (empty($clients)): ?>
             <p class="mc-empty">
                 <?php if ($totalClients === 0): ?>
-                    You don't have any clients yet. Use <strong>Add client</strong> to assign a member.
+                    You don't have any clients yet.
                 <?php else: ?>
                     No clients match your search.
                 <?php endif; ?>
@@ -855,54 +695,9 @@ $inviteLink = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https
     </section>
 </div>
 
-<!-- Add client -->
-<div class="mc-modal" id="mc-add-modal" hidden>
-    <form class="mc-modal__box" method="post" action="/my-clients/add" role="dialog" aria-modal="true" aria-labelledby="mc-add-title">
-        <h2 class="mc-modal__title" id="mc-add-title">Add client</h2>
-        <p class="mc-modal__text">Search gym members and assign one to yourself. You'll build their workout plan next.</p>
-
-        <label class="mc-search">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(28,28,28,0.4)" stroke-width="2" stroke-linecap="round">
-                <circle cx="11" cy="11" r="7"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="search" id="mc-member-search" placeholder="Member name or email" autocomplete="off" aria-label="Search members">
-        </label>
-        <div class="mc-results" id="mc-member-results" role="listbox" aria-label="Members">
-            <p class="mc-results__empty">Type at least 2 letters to search.</p>
-        </div>
-        <input type="hidden" name="member_id" id="mc-member-id">
-
-        <span class="mc-field-label">Client type</span>
-        <div class="mc-segment">
-            <?php foreach (ClientRosterService::TYPES as $value => $label): ?>
-                <label>
-                    <input type="radio" name="client_type" value="<?= htmlspecialchars($value) ?>" <?= $value === '1-on-1' ? 'checked' : '' ?>>
-                    <span><?= htmlspecialchars($label) ?></span>
-                </label>
-            <?php endforeach; ?>
-        </div>
-
-        <div class="mc-modal__actions">
-            <button type="button" class="mc-btn" data-close>Cancel</button>
-            <button type="submit" class="mc-btn mc-btn--primary" id="mc-add-submit" disabled>Add client</button>
-        </div>
-    </form>
-</div>
-
-<div class="mc-toast" id="mc-toast" role="status" hidden></div>
-
 <script>
     (function () {
         const view = document.getElementById('mc-view');
-
-        function toast(message) {
-            const el = document.getElementById('mc-toast');
-            el.textContent = message;
-            el.hidden = false;
-            clearTimeout(toast.timer);
-            toast.timer = setTimeout(() => { el.hidden = true; }, 3500);
-        }
 
         // Whole row opens the client's workout plan
         document.querySelectorAll('.mc-table tbody tr[data-href]').forEach(row => row.addEventListener('click', e => {
@@ -948,100 +743,5 @@ $inviteLink = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https
         }
         try { if (localStorage.getItem('mc-view') === 'grid') setView('grid'); } catch (e) {}
         viewToggle.addEventListener('click', () => setView(view.dataset.view === 'grid' ? 'table' : 'grid'));
-
-        // Invite client → copy the member sign-up link
-        document.getElementById('mc-invite').addEventListener('click', async e => {
-            const link = e.currentTarget.dataset.link;
-            try {
-                await navigator.clipboard.writeText(link);
-                toast('Sign-up link copied. Send it to your client, then add them once they have joined.');
-            } catch (err) {
-                toast('Sign-up link: ' + link);
-            }
-        });
-
-        // Add client dialog
-        const modal = document.getElementById('mc-add-modal');
-        const memberSearch = document.getElementById('mc-member-search');
-        const results = document.getElementById('mc-member-results');
-        const memberId = document.getElementById('mc-member-id');
-        const submit = document.getElementById('mc-add-submit');
-        let lookupTimer;
-        let lookupSeq = 0;
-
-        function closeModal() {
-            modal.hidden = true;
-        }
-
-        function message(text) {
-            results.innerHTML = '';
-            const p = document.createElement('p');
-            p.className = 'mc-results__empty';
-            p.textContent = text;
-            results.appendChild(p);
-        }
-
-        document.getElementById('mc-add-open').addEventListener('click', () => {
-            modal.hidden = false;
-            memberSearch.focus();
-        });
-        modal.querySelector('[data-close]').addEventListener('click', closeModal);
-        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
-
-        memberSearch.addEventListener('input', () => {
-            memberId.value = '';
-            submit.disabled = true;
-            clearTimeout(lookupTimer);
-
-            const term = memberSearch.value.trim();
-            if (term.length < 2) {
-                message('Type at least 2 letters to search.');
-                return;
-            }
-
-            lookupTimer = setTimeout(async () => {
-                const seq = ++lookupSeq;
-                try {
-                    const response = await fetch('/my-clients/members/search?q=' + encodeURIComponent(term));
-                    const members = await response.json();
-                    if (seq !== lookupSeq) return;
-
-                    if (!members.length) {
-                        message('No members found who are not already your clients.');
-                        return;
-                    }
-
-                    results.innerHTML = '';
-                    members.forEach(member => {
-                        const button = document.createElement('button');
-                        button.type = 'button';
-                        button.className = 'mc-result';
-                        button.setAttribute('role', 'option');
-                        button.setAttribute('aria-selected', 'false');
-                        button.innerHTML = '<span class="mc-avatar"></span><span><span class="mc-primary" style="display:block"></span><span class="mc-secondary" style="display:block"></span></span>';
-
-                        const parts = member.name.trim().split(/\s+/);
-                        button.querySelector('.mc-avatar').textContent = (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
-                        button.querySelector('.mc-primary').textContent = member.name;
-                        button.querySelector('.mc-secondary').textContent = member.email;
-
-                        button.addEventListener('click', () => {
-                            results.querySelectorAll('.mc-result').forEach(b => {
-                                b.classList.remove('is-selected');
-                                b.setAttribute('aria-selected', 'false');
-                            });
-                            button.classList.add('is-selected');
-                            button.setAttribute('aria-selected', 'true');
-                            memberId.value = member.id;
-                            submit.disabled = false;
-                        });
-                        results.appendChild(button);
-                    });
-                } catch (err) {
-                    message('Search failed. Check your connection and try again.');
-                }
-            }, 250);
-        });
     })();
 </script>
