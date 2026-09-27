@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../../core/Controller.php';
+require_once __DIR__ . '/../../models/communication_module/instructor_messages.php';
 
 class CommunicationController extends Controller
 {
@@ -237,5 +238,159 @@ class CommunicationController extends Controller
 
         // Pass $data or compact('user_name') depending on your Base Controller's render method
         $this->render('communication_module/instructor_ticket', 'staff-layout', $data);
+    }
+    public function InstructorMessages(): void
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (empty($_SESSION['user_id'])) {
+            $_SESSION['user_id'] = 12;
+            $_SESSION['user_name'] = 'Instructor';
+            $_SESSION['user_last_name'] = 'One';
+            $_SESSION['role_name'] = 'instructor';
+            $_SESSION['permissions'] = [
+                'manage_messages',
+                'view_own_clients',
+                'view_own_schedule',
+                'manage_attendance',
+                'view_adherence',
+                'manage_action_plans'
+            ];
+        }
+
+        $currentUserId = (int)$_SESSION['user_id'];
+        $this->setRoute('/messages');
+
+        $this->render('communication_module/instructor_messages', 'staff-layout', [
+            'currentUserId' => $currentUserId,
+            'pageTitle'     => 'Messages'
+        ]);
+    }
+    // --- Message Model & API Helpers ---
+
+    private ?instructor_messages $messageModel = null;
+
+    private function getMessageModel(): instructor_messages
+    {
+        if ($this->messageModel === null) {
+            $db = Database::getConnection();
+            $this->messageModel = new instructor_messages($db);
+        }
+        return $this->messageModel;
+    }
+
+    private function getCurrentUserId(): int
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        // Defaults to Instructor One (ID 12) if no user session is active yet
+        return (int)($_SESSION['user_id'] ?? 12);
+    }
+
+    /** Reads and decodes JSON request payload or form POST data */
+    private function body(): array
+    {
+        $raw = file_get_contents('php://input');
+        $data = json_decode($raw, true);
+        return is_array($data) ? $data : $_POST;
+    }
+
+    // --- Chat Action Endpoints ---
+
+    // GET /api/conversations
+    public function listConversations(): void
+    {
+        $userId = $this->getCurrentUserId();
+        $data = $this->getMessageModel()->getConversations($userId);
+        $this->respond(true, $data);
+    }
+
+    private function respond(bool $success, $data = null, ?string $error = null): void
+    {
+        if (ob_get_length()) {
+            ob_clean();
+        }
+        header('Content-Type: application/json');
+        if (!$success) {
+            http_response_code(400);
+        }
+        echo json_encode([
+            'success' => $success,
+            'data'    => $data,
+            'error'   => $error
+        ]);
+        exit;
+    }
+
+    // GET /api/messages?contact_id=16
+    public function listMessages(): void
+    {
+        $contactId = (int)($_GET['contact_id'] ?? 0);
+        if (!$contactId) {
+            $this->respond(false, null, 'contact_id is required');
+        }
+        $userId = $this->getCurrentUserId();
+        $data = $this->getMessageModel()->getMessages($userId, $contactId);
+        $this->respond(true, $data);
+    }
+
+    // POST /api/messages/read   body: { "contact_id": 16 }
+    public function markRead(): void
+    {
+        $input = $this->body();
+        $contactId = (int)($_POST['contact_id'] ?? $input['contact_id'] ?? 0);
+        if (!$contactId) {
+            $this->respond(false, null, 'contact_id is required');
+        }
+        $userId = $this->getCurrentUserId();
+        $updated = $this->getMessageModel()->markAsRead($userId, $contactId);
+        $this->respond(true, ['marked_read' => $updated]);
+    }
+
+    // POST /api/messages/send   body: { "receiver_id": 16, "message": "hi" }
+    public function send(): void
+    {
+        $input      = $this->body();
+        $receiverId = (int)($_POST['receiver_id'] ?? $input['receiver_id'] ?? 0);
+        $text       = trim((string)($_POST['message'] ?? $input['message'] ?? ''));
+
+        if (!$receiverId || $text === '') {
+            $this->respond(false, null, 'receiver_id and message are required');
+        }
+        if (mb_strlen($text) > 2000) {
+            $this->respond(false, null, 'Message is too long');
+        }
+
+        try {
+            $userId = $this->getCurrentUserId();
+            $message = $this->getMessageModel()->create($userId, $receiverId, $text);
+            $this->respond(true, $message);
+        } catch (Throwable $e) {
+            $this->respond(false, null, $e->getMessage());
+        }
+    }
+
+    // POST /api/messages/delete   body: { "id": 12 }
+    public function delete(): void
+    {
+        $input = $this->body();
+        $id = (int)($_POST['id'] ?? $input['id'] ?? 0);
+        if (!$id) {
+            $this->respond(false, null, 'id is required');
+        }
+
+        try {
+            $userId = $this->getCurrentUserId();
+            $ok = $this->getMessageModel()->delete($id, $userId);
+            if ($ok) {
+                $this->respond(true, ['deleted_id' => $id]);
+            }
+            $this->respond(false, null, 'Message not found, or you are not the sender');
+        } catch (Throwable $e) {
+            $this->respond(false, null, $e->getMessage());
+        }
     }
 }
