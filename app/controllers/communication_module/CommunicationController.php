@@ -393,4 +393,9 @@ class CommunicationController extends Controller
             $this->respond(false, null, $e->getMessage());
         }
     }
+
+    public function profileNisal()
+    {
+        $this->render('communication_module/member_profile_view', 'staff-layout');
+    }
 }

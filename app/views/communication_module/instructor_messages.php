@@ -841,7 +841,7 @@
             <header class="chat-header">
                 <div class="active-contact-info">
                     <!-- Wrap avatars in an anchor tag -->
-                    <a id="chatProfileLink" href="#" class="profile-link" target="_blank" rel="noopener noreferrer">
+                    <a id="chatProfileLink" href="/member/profile/nisal" class="profile-link" target="_blank" rel="noopener noreferrer">
                         <img id="chatAvatarImg" class="header-avatar" src="" alt="Avatar" style="display:none;">
                         <span id="chatAvatar" class="header-avatar-circle" style="display:none;"></span>
                     </a>
