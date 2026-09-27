@@ -35,7 +35,7 @@ class AuthController extends Controller
                 $_SESSION['user_id']   = $newUserId;
                 $_SESSION['user_name'] = $firstName;
 
-                header("Location: /dashboard");
+                header("Location: /member");
                 exit;
             } else {
                 echo "Registration failed. Please try again.";

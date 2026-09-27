@@ -1,147 +1,69 @@
-<div class="onboarding-container-full">
-    <div class="inner-wrapper">
-
-        <div class="back-btn-container">
-            <button type="button" class="back-btn" onclick="window.location.href='/onboarding/view-store';">
-                <svg class="icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                BACK
-            </button>
-        </div>
-
-        <div class="progress-section">
-            <div class="progress-header">
-                <span class="step-text">Step 4 of 4</span>
-                <span class="percentage-text">100%</span>
-            </div>
-            <div class="progress-bars">
-                <div class="progress-bar bar-active"></div>
-                <div class="progress-bar bar-active"></div>
-                <div class="progress-bar bar-active"></div>
-                <div class="progress-bar bar-active"></div>
-            </div>
-        </div>
-
-        <div class="form-section">
-            <div class="form-wrapper">
-
-                <h1 class="heading-step4">Enter Your<br>Details</h1>
-                <p class="description">You're almost there. Create your account to save your preferences, track progress, and book classes.</p>
-
-                <form action="/register" method="POST" class="account-form">
-                    <div class="form-fields">
-
-                        <div class="form-row split-row">
-                            <div class="input-group">
-                                <label class="input-label" for="firstName">First Name</label>
-                                <input type="text" id="firstName" name="first_name" class="input-field" placeholder="Kasun" required>
-                            </div>
-                            <div class="input-group">
-                                <label class="input-label" for="lastName">Last Name</label>
-                                <input type="text" id="lastName" name="last_name" class="input-field" placeholder="Perera" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="input-group">
-                                <label class="input-label" for="email">Email Address</label>
-                                <input type="email" id="email" name="email" class="input-field" placeholder="kasun@example.com" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="input-group">
-                                <label class="input-label" for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone_number" class="input-field" placeholder="+94 77 123 4567">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="input-group">
-                                <label class="input-label" for="password">Password</label>
-                                <div class="input-with-icon">
-                                    <input type="password" id="password" name="password" class="input-field" placeholder="Min 8 characters" required>
-                                    <button type="button" class="icon-btn" aria-label="Toggle password visibility">
-                                        <svg class="icon-svg-dim" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24M1 1l22 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="input-group">
-                                <label class="input-label" for="confirmPassword">Confirm Password</label>
-                                <div class="input-with-icon">
-                                    <input type="password" id="confirmPassword" name="confirmPassword" class="input-field" placeholder="Min 8 characters" required>
-                                    <button type="button" class="icon-btn" aria-label="Toggle password visibility">
-                                        <svg class="icon-svg-dim" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24M1 1l22 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="submit-btn-container">
-                        <button type="submit" class="btn-primary-submit">CREATE ACCOUNT</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-
-    </div>
-</div>
-
 <style>
-    /* Main Layout Container */
-    .onboarding-container-full {
+    .reset-all,
+    .reset-all::before,
+    .reset-all::after {
         box-sizing: border-box;
-        width: 100%;
-        margin: 0 auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    .main-wrapper {
+        font-family: 'Barlow', sans-serif;
         background-color: #0A0A0A;
         color: #FFFFFF;
-        font-family: 'Barlow', sans-serif;
         min-height: 100vh;
-    }
-
-    .inner-wrapper {
-        box-sizing: border-box;
         display: flex;
-        flex-direction: column;
-        padding: 48px 80px;
+        justify-content: center;
         width: 100%;
     }
 
-    /* Back Button */
-    .back-btn-container {
-        box-sizing: border-box;
+    .btn-reset {
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-family: inherit;
+    }
+
+    .link-reset {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .input-reset {
+        font-family: inherit;
+    }
+
+    /* Register screen (mirrors LoginScreen layout) */
+    .register-screen {
+        display: flex;
         width: 100%;
-        margin-bottom: 40px;
+        min-height: 100vh;
+        background: #0A0A0A;
+    }
+
+    /* --- Hero Section (Left) --- */
+    .hero-section {
+        flex: 1 1 50%;
+        background:
+            linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%),
+            url('/assets/images/landing/register_hero.png') center/cover no-repeat;
+        position: relative;
     }
 
     .back-btn {
-        box-sizing: border-box;
-        background: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-        color: rgba(255, 255, 255, 0.6);
-        font-family: 'Barlow', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        position: absolute;
+        top: 32px;
+        left: 32px;
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 1.2px;
         text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
+        color: rgba(255, 255, 255, 0.6);
         transition: color 0.2s ease;
     }
 
@@ -149,255 +71,342 @@
         color: #FFFFFF;
     }
 
-    .icon-svg {
-        display: block;
-    }
-
-    /* Progress Indicator */
-    .progress-section {
-        box-sizing: border-box;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 40px;
-    }
-
-    .progress-header {
-        box-sizing: border-box;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 0 0 12px 0;
-    }
-
-    .step-text {
-        box-sizing: border-box;
-        font-family: 'Barlow', sans-serif;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.3);
-    }
-
-    .percentage-text {
-        box-sizing: border-box;
-        font-family: 'Barlow Condensed', sans-serif;
-        font-weight: 900;
-        font-size: 14px;
-        line-height: 20px;
-        color: #E31837;
-    }
-
-    .progress-bars {
-        box-sizing: border-box;
-        display: flex;
-        gap: 8px;
-        width: 100%;
-    }
-
-    .progress-bar {
-        box-sizing: border-box;
-        flex: 1;
-        height: 4px;
-        border-radius: 20px;
-    }
-
-    .bar-active {
-        background: #E31837;
-    }
-
-    /* Content Section */
+    /* --- Form Section (Right) --- */
     .form-section {
-        box-sizing: border-box;
+        flex: 1 1 50%;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        width: 100%;
+        padding: 40px 20px;
     }
 
-    .form-wrapper {
-        box-sizing: border-box;
-        width: 100%;
-        max-width: 384px;
+    .form-container {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        max-width: 423.2px;
     }
 
     /* Typography */
-    .heading-step4 {
-        box-sizing: border-box;
-        margin: 0 0 20px 0;
-        padding: 0;
+    .welcome-text {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 3.6px;
+        text-transform: uppercase;
+        color: #E31837;
+    }
+
+    .heading {
         font-family: 'Barlow Condensed', sans-serif;
         font-weight: 900;
-        font-size: clamp(40px, 5vw, 58.32px);
-        line-height: 0.88;
-        letter-spacing: -1.458px;
+        font-size: 48px;
+        line-height: 43px;
+        letter-spacing: -1.2px;
         text-transform: uppercase;
+        margin-top: 12px;
     }
 
-    .description {
-        box-sizing: border-box;
-        margin: 0 0 40px 0;
-        padding: 0;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 1.62;
-        color: rgba(255, 255, 255, 0.5);
+    .subtitle {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 8px;
     }
 
-    /* Form Styles */
-    .account-form {
-        box-sizing: border-box;
-        width: 100%;
+    /* Form Elements */
+    .login-form {
         display: flex;
         flex-direction: column;
-        margin: 0;
-        padding: 0;
+        margin-top: 40px;
     }
 
-    .form-fields {
-        box-sizing: border-box;
+    .input-group {
         display: flex;
         flex-direction: column;
-        width: 100%;
-        gap: 16px;
+        margin-bottom: 20px;
     }
 
-    .form-row {
-        box-sizing: border-box;
+    .name-row {
         display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .split-row {
         flex-direction: row;
         gap: 12px;
     }
 
-    .input-group {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+    .name-row .input-group {
         flex: 1;
     }
 
     .input-label {
-        box-sizing: border-box;
-        margin-bottom: 8px;
-        font-family: 'Barlow', sans-serif;
         font-weight: 700;
         font-size: 12px;
         line-height: 16px;
         letter-spacing: 1.2px;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 8px;
     }
 
-    .input-field {
-        box-sizing: border-box;
+    .text-input {
         width: 100%;
-        height: 46px;
-        padding: 12px 16px;
+        height: 49.6px;
         background: rgba(255, 255, 255, 0.05);
         border: 0.8px solid rgba(255, 255, 255, 0.1);
-        color: #FFFFFF;
-        font-family: 'Barlow', sans-serif;
-        font-weight: 400;
+        padding: 14px 16px;
         font-size: 14px;
-        line-height: 17px;
+        color: #FFFFFF;
         outline: none;
         transition: border-color 0.2s ease;
     }
 
-    .input-field:focus {
-        border-color: #E31837;
-    }
-
-    .input-field::placeholder {
+    .text-input::placeholder {
         color: rgba(255, 255, 255, 0.2);
     }
 
-    .input-with-icon {
-        box-sizing: border-box;
-        position: relative;
-        width: 100%;
+    .text-input:focus {
+        border-color: rgba(255, 255, 255, 0.3);
     }
 
-    .input-with-icon .input-field {
+    .text-input.input-error {
+        border-color: #E31837;
+    }
+
+    .field-error {
+        color: #E31837;
+        font-size: 12px;
+        font-weight: 500;
+        margin-top: 6px;
+        min-height: 14px;
+    }
+
+    .password-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .password-input {
         padding-right: 48px;
     }
 
-    .icon-btn {
-        box-sizing: border-box;
+    .eye-btn {
         position: absolute;
         right: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
+        width: 18px;
+        height: 18px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .icon-svg-dim {
-        color: rgba(255, 255, 255, 0.3);
-        transition: color 0.2s ease;
+    .eye-btn svg {
+        pointer-events: none;
     }
 
-    .icon-btn:hover .icon-svg-dim {
-        color: rgba(255, 255, 255, 0.6);
-    }
-
-    /* Submit Button */
-    .submit-btn-container {
-        box-sizing: border-box;
-        margin-top: 32px;
-        width: 100%;
-    }
-
-    .btn-primary-submit {
-        box-sizing: border-box;
-        width: 100%;
-        padding: 16px 0;
-        margin: 0;
-        border: none;
-        cursor: pointer;
+    .submit-btn {
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
+        gap: 12px;
+        width: 100%;
+        height: 52px;
         background: #E31837;
         color: #FFFFFF;
-        font-family: 'Barlow', sans-serif;
         font-weight: 700;
         font-size: 14px;
         line-height: 20px;
         letter-spacing: 1.4px;
         text-transform: uppercase;
+        margin-top: 8px;
         transition: background 0.2s ease;
     }
 
-    .btn-primary-submit:hover {
-        background: #c2122d;
+    .submit-btn:hover {
+        background: #c5142f;
     }
 
-    /* Responsive Design */
-    @media (max-width: 576px) {
-        .inner-wrapper {
-            padding: 48px 24px;
+    /* Footer / Login Prompt */
+    .signup-prompt {
+        margin-top: 32px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .signup-text {
+        margin: 0;
+    }
+
+    .signup-link {
+        font-weight: 700;
+        color: #E31837;
+        letter-spacing: 0.35px;
+        margin-left: 4px;
+    }
+
+    @media (max-width: 900px) {
+        .hero-section {
+            display: none;
         }
 
-        .split-row {
+        .form-section {
+            flex: 1 1 100%;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .name-row {
             flex-direction: column;
-            gap: 16px;
+            gap: 20px;
         }
     }
 </style>
+
+<div class="main-wrapper reset-all">
+    <main class="register-screen reset-all">
+        <!-- Left Side: Hero Image -->
+        <section class="hero-section reset-all">
+            <button type="button" class="back-btn btn-reset reset-all" onclick="window.location.href='/onboarding/view-store';">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="reset-all">
+                    <line x1="19" y1="12" x2="5" y2="12" class="reset-all"></line>
+                    <polyline points="12 19 5 12 12 5" class="reset-all"></polyline>
+                </svg>
+                Back
+            </button>
+        </section>
+
+        <!-- Right Side: Form Content -->
+        <section class="form-section reset-all">
+            <div class="form-container reset-all">
+                <span class="welcome-text reset-all">Get Started</span>
+                <h1 class="heading reset-all">Create Account</h1>
+                <p class="subtitle reset-all">You're almost there. Create your account to save your preferences, track progress, and book classes.</p>
+
+                <form class="login-form reset-all" action="/register" method="POST" id="registerForm" novalidate>
+
+                    <div class="name-row reset-all">
+                        <div class="input-group reset-all">
+                            <label for="firstName" class="input-label reset-all">First Name</label>
+                            <input type="text" id="firstName" name="first_name" class="text-input input-reset reset-all" placeholder="Kasun" required>
+                        </div>
+                        <div class="input-group reset-all">
+                            <label for="lastName" class="input-label reset-all">Last Name</label>
+                            <input type="text" id="lastName" name="last_name" class="text-input input-reset reset-all" placeholder="Perera" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group reset-all">
+                        <label for="email" class="input-label reset-all">Email Address</label>
+                        <input type="email" id="email" name="email" class="text-input input-reset reset-all" placeholder="kasun@example.com" required>
+                    </div>
+
+                    <div class="input-group reset-all">
+                        <label for="phone" class="input-label reset-all">Phone Number</label>
+                        <input type="tel" id="phone" name="phone_number" class="text-input input-reset reset-all" placeholder="+94 77 123 4567">
+                    </div>
+
+                    <div class="input-group reset-all">
+                        <label for="password" class="input-label reset-all">Password</label>
+                        <div class="password-wrapper reset-all">
+                            <input type="password" id="password" name="password" class="text-input password-input input-reset reset-all" placeholder="Min 8 characters" required minlength="8">
+                            <button type="button" class="eye-btn btn-reset reset-all toggle-password" data-target="password" aria-label="Toggle password visibility">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="reset-all">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" class="reset-all"></path>
+                                    <line x1="1" y1="1" x2="23" y2="23" class="reset-all"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="input-group reset-all">
+                        <label for="confirmPassword" class="input-label reset-all">Confirm Password</label>
+                        <div class="password-wrapper reset-all">
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="text-input password-input input-reset reset-all" placeholder="Min 8 characters" required minlength="8">
+                            <button type="button" class="eye-btn btn-reset reset-all toggle-password" data-target="confirmPassword" aria-label="Toggle password visibility">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="reset-all">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" class="reset-all"></path>
+                                    <line x1="1" y1="1" x2="23" y2="23" class="reset-all"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="field-error reset-all" id="confirmPasswordError"></p>
+                    </div>
+
+                    <p><? if (isset($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                        } ?></p>
+
+                    <button type="submit" class="submit-btn btn-reset reset-all">
+                        Create Account
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="reset-all">
+                            <line x1="5" y1="12" x2="19" y2="12" class="reset-all"></line>
+                            <polyline points="12 5 19 12 12 19" class="reset-all"></polyline>
+                        </svg>
+                    </button>
+                </form>
+
+                <div class="signup-prompt reset-all">
+                    <p class="signup-text reset-all">Already have an account? <a href="/login" class="signup-link link-reset reset-all">Sign in</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    (function() {
+        var EYE_OPEN = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+        var EYE_CLOSED = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+
+        document.querySelectorAll('.toggle-password').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var targetId = btn.getAttribute('data-target');
+                var input = document.getElementById(targetId);
+                if (!input) return;
+
+                var isHidden = input.type === 'password';
+                input.type = isHidden ? 'text' : 'password';
+
+                var svg = btn.querySelector('svg');
+                if (svg) {
+                    svg.innerHTML = isHidden ? EYE_OPEN : EYE_CLOSED;
+                }
+            });
+        });
+
+        var form = document.getElementById('registerForm');
+        var password = document.getElementById('password');
+        var confirmPassword = document.getElementById('confirmPassword');
+        var confirmError = document.getElementById('confirmPasswordError');
+
+        function validateMatch() {
+            if (confirmPassword.value.length === 0) {
+                confirmError.textContent = '';
+                confirmPassword.classList.remove('input-error');
+                return true;
+            }
+            if (password.value !== confirmPassword.value) {
+                confirmError.textContent = 'Passwords do not match.';
+                confirmPassword.classList.add('input-error');
+                return false;
+            }
+            confirmError.textContent = '';
+            confirmPassword.classList.remove('input-error');
+            return true;
+        }
+
+        password.addEventListener('input', validateMatch);
+        confirmPassword.addEventListener('input', validateMatch);
+
+        form.addEventListener('submit', function(e) {
+            if (!validateMatch()) {
+                e.preventDefault();
+                confirmPassword.focus();
+            }
+        });
+    })();
+</script>

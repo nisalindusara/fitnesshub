@@ -12,11 +12,11 @@ class Attendance extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function checkIn(int $userId): int|false
+    public function checkIn(int $userId, ?int $classId): int|false
     {
-        $query = "INSERT INTO attendance (user_id) VALUES (:user_id)";
+        $query = "INSERT INTO attendance (user_id, class_id) VALUES (:user_id, :class_id)";
         $stmt = $this->db->prepare($query);
-        return $stmt->execute([':user_id' => $userId])
+        return $stmt->execute([':user_id' => $userId, ':class_id' => $classId])
             ? (int) $this->db->lastInsertId()
             : false;
     }
