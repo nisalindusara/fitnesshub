@@ -21,15 +21,17 @@ class WorkoutPlanController extends Controller
         unset($_SESSION['workout_plan_unsaved'][$memberId]);
 
         $this->render('daily_plan_module/workout-plan', 'staff-layout', $editor + [
-            'pageTitle'      => $editor['isEdit'] ? 'Edit workout plan' : 'Create workout plan',
-            'activeNavRoute' => '/my-clients',
-            'memberId'       => $memberId,
-            'unsaved'        => $unsaved,
-            'goals'          => WorkoutPlanService::GOALS,
-            'durations'      => WorkoutPlanService::DURATIONS,
-            'difficulties'   => WorkoutPlanService::DIFFICULTIES,
-            'dayNames'       => WorkoutPlanService::DAYS,
-            'flash'          => $this->flash(),
+            'pageTitle'        => $editor['isEdit'] ? 'Edit workout plan' : 'Create workout plan',
+            'activeNavRoute'   => '/my-clients',
+            'memberId'         => $memberId,
+            'unsaved'          => $unsaved,
+            'goals'            => WorkoutPlanService::GOALS,
+            'durations'        => WorkoutPlanService::DURATIONS,
+            'difficulties'     => WorkoutPlanService::DIFFICULTIES,
+            'dayNames'         => WorkoutPlanService::DAYS,
+            'muscleOptions'    => WorkoutPlanService::MUSCLE_GROUPS,
+            'equipmentOptions' => WorkoutPlanService::EQUIPMENT,
+            'flash'            => $this->flash(),
         ]);
     }
 
@@ -84,6 +86,26 @@ class WorkoutPlanController extends Controller
         }
 
         echo json_encode($previous);
+    }
+
+    /** JSON for "New exercise" in the library panel. */
+    public function addLibraryExercise(): void
+    {
+        header('Content-Type: application/json');
+
+        try {
+            $exercise = (new WorkoutPlanService())->addLibraryExercise(
+                (string) ($_POST['name'] ?? ''),
+                (string) ($_POST['muscle_group'] ?? ''),
+                (string) ($_POST['equipment'] ?? '')
+            );
+        } catch (InvalidArgumentException $e) {
+            http_response_code(422);
+            echo json_encode(['error' => $e->getMessage()]);
+            return;
+        }
+
+        echo json_encode($exercise);
     }
 
     // ------------------------------------------------------------------

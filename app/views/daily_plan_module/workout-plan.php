@@ -526,34 +526,6 @@
         text-align: center;
     }
 
-    /* Side: flag */
-    .wp-flag {
-        display: flex;
-        gap: 10px;
-        padding: 16px 18px;
-        border-radius: 12px;
-        background: #fdf0f0;
-        border: 1px solid #f6d5d5;
-    }
-
-    .wp-flag svg {
-        flex-shrink: 0;
-        margin-top: 2px;
-    }
-
-    .wp-flag__title {
-        font-size: 14px;
-        font-weight: 600;
-        margin: 0;
-    }
-
-    .wp-flag__note {
-        font-size: 13px;
-        color: rgba(28, 28, 28, 0.65);
-        margin: 4px 0 0;
-        line-height: 1.45;
-    }
-
     /* Side: library */
     .wp-lib-filters {
         display: flex;
@@ -614,6 +586,33 @@
 
     .wp-lib-item .wp-btn--icon {
         margin-left: auto;
+    }
+
+    .wp-lib-new {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(28, 28, 28, 0.1);
+        border-radius: 10px;
+        background: #f7f9fb;
+    }
+
+    .wp-lib-new[hidden] {
+        display: none;
+    }
+
+    .wp-lib-new__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .wp-lib-new__error {
+        font-size: 13px;
+        color: #b42318;
+        margin: 0;
     }
 
     .wp-lib-empty {
@@ -984,7 +983,8 @@ foreach ($dayNames as $dow => $_) {
 }
 ksort($initialDays);
 
-$muscleGroups = array_values(array_unique(array_column($library, 'muscle_group')));
+// Every muscle group gets a filter chip, so one added from "New exercise" is filterable straight away
+$muscleGroups = array_values(array_unique(array_merge($muscleOptions, array_column($library, 'muscle_group'))));
 $title = $isEdit ? 'Edit workout plan' : 'Create workout plan';
 
 if ($hasDraft) {
@@ -1212,27 +1212,47 @@ if ($hasDraft) {
                 </div>
             </section>
 
-            <?php if (!empty($client['flag_title'])): ?>
-                <section class="wp-flag">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e5484d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                        <line x1="12" y1="9" x2="12" y2="13"></line>
-                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                    </svg>
-                    <div>
-                        <p class="wp-flag__title"><?= htmlspecialchars($client['flag_title']) ?></p>
-                        <?php if (!empty($client['flag_note'])): ?>
-                            <p class="wp-flag__note"><?= htmlspecialchars($client['flag_note']) ?></p>
-                        <?php endif; ?>
-                    </div>
-                </section>
-            <?php endif; ?>
-
-            <!-- Library -->
-            <section class="wp-panel" id="wp-library">
+            <!-- Library: opened by "Add exercise" -->
+            <section class="wp-panel" id="wp-library" hidden>
                 <div class="wp-panel__head" style="margin-bottom: 12px;">
                     <h2 class="wp-panel__title">Exercise library</h2>
-                    <span class="wp-panel__meta"><?= count($library) ?> items</span>
+                    <span class="wp-panel__meta" id="wp-lib-count" style="margin-right: auto;"><?= count($library) ?> items</span>
+                    <button type="button" class="wp-btn wp-btn--sm" id="wp-lib-new-open">New exercise</button>
+                    <button type="button" class="wp-btn wp-btn--icon" id="wp-lib-close" aria-label="Close exercise library">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="wp-lib-new" id="wp-lib-new" hidden>
+                    <label class="wp-field">
+                        <span class="wp-label">Exercise name</span>
+                        <input class="wp-input" type="text" id="wp-new-name" maxlength="100" placeholder="e.g. Incline dumbbell press">
+                    </label>
+                    <div class="wp-lib-new__row">
+                        <label class="wp-field">
+                            <span class="wp-label">Muscle group</span>
+                            <select class="wp-input" id="wp-new-muscle">
+                                <?php foreach ($muscleOptions as $option): ?>
+                                    <option><?= htmlspecialchars($option) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </label>
+                        <label class="wp-field">
+                            <span class="wp-label">Equipment</span>
+                            <select class="wp-input" id="wp-new-equipment">
+                                <?php foreach ($equipmentOptions as $option): ?>
+                                    <option><?= htmlspecialchars($option) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </label>
+                    </div>
+                    <p class="wp-lib-new__error" id="wp-new-error" role="alert" hidden></p>
+                    <div class="wp-modal__actions">
+                        <button type="button" class="wp-btn wp-btn--sm" id="wp-lib-new-cancel">Cancel</button>
+                        <button type="button" class="wp-btn wp-btn--sm wp-btn--primary" id="wp-lib-new-save">Save to library</button>
+                    </div>
                 </div>
                 <input class="wp-input" type="search" id="wp-lib-search" placeholder="Search exercises" aria-label="Search exercises">
                 <div class="wp-lib-filters">
@@ -1617,15 +1637,23 @@ if ($hasDraft) {
         form.querySelectorAll('.wp-fields input, .wp-fields select').forEach(input => input.addEventListener('input', markDirty));
 
         // ---------- library ----------
+        const library = document.getElementById('wp-library');
+        const libList = document.getElementById('wp-lib-list');
         const libSearch = document.getElementById('wp-lib-search');
-        const libItems = document.querySelectorAll('.wp-lib-item');
         const libFilters = document.querySelectorAll('.wp-lib-filters button');
+        const addSvg = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
         let muscle = null;
+
+        function openLibrary() {
+            library.hidden = false;
+            library.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            libSearch.focus({ preventScroll: true });
+        }
 
         function filterLibrary() {
             const term = libSearch.value.trim().toLowerCase();
             let visible = 0;
-            libItems.forEach(item => {
+            libList.querySelectorAll('.wp-lib-item').forEach(item => {
                 const show = item.dataset.name.toLowerCase().includes(term) && (!muscle || item.dataset.muscle === muscle);
                 item.classList.toggle('is-hidden', !show);
                 if (show) visible++;
@@ -1644,7 +1672,10 @@ if ($hasDraft) {
             filterLibrary();
         }));
 
-        document.querySelectorAll('[data-add]').forEach(btn => btn.addEventListener('click', () => {
+        // Delegated so exercises created with "New exercise" can be added too
+        libList.addEventListener('click', e => {
+            const btn = e.target.closest('[data-add]');
+            if (!btn) return;
             const item = btn.closest('.wp-lib-item');
             const d = day();
             if (d.exercises.length >= 30) {
@@ -1683,12 +1714,97 @@ if ($hasDraft) {
 
             markDirty();
             renderAll();
-        }));
+        });
 
-        document.querySelectorAll('[data-focus-library]').forEach(btn => btn.addEventListener('click', () => {
-            document.getElementById('wp-library').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            libSearch.focus({ preventScroll: true });
-        }));
+        document.querySelectorAll('[data-focus-library]').forEach(btn => btn.addEventListener('click', openLibrary));
+
+        document.getElementById('wp-lib-close').addEventListener('click', () => {
+            library.hidden = true;
+            state.supersetTarget = null;
+            renderDay();
+        });
+
+        // ---------- new exercise (saved to the shared library) ----------
+        const newForm = document.getElementById('wp-lib-new');
+        const newName = document.getElementById('wp-new-name');
+        const newError = document.getElementById('wp-new-error');
+        const newSave = document.getElementById('wp-lib-new-save');
+
+        function closeNewForm() {
+            newForm.hidden = true;
+            newName.value = '';
+            newError.hidden = true;
+        }
+
+        function libraryItem(exercise) {
+            const item = el('div', 'wp-lib-item');
+            item.dataset.id = exercise.id;
+            item.dataset.name = exercise.name;
+            item.dataset.muscle = exercise.muscle_group;
+            item.appendChild(el('span', 'wp-lib-thumb'));
+            const text = el('div');
+            text.appendChild(el('p', 'wp-lib-name', exercise.name));
+            text.appendChild(el('p', 'wp-lib-meta', `${exercise.muscle_group}, ${exercise.equipment.toLowerCase()}`));
+            item.appendChild(text);
+            const add = el('button', 'wp-btn wp-btn--icon');
+            add.type = 'button';
+            add.dataset.add = '';
+            add.innerHTML = addSvg;
+            add.setAttribute('aria-label', `Add ${exercise.name} to the selected day`);
+            item.appendChild(add);
+            return item;
+        }
+
+        async function saveNewExercise() {
+            if (!newName.value.trim()) {
+                newError.textContent = 'Give the exercise a name.';
+                newError.hidden = false;
+                newName.focus();
+                return;
+            }
+
+            const body = new FormData();
+            body.append('name', newName.value);
+            body.append('muscle_group', document.getElementById('wp-new-muscle').value);
+            body.append('equipment', document.getElementById('wp-new-equipment').value);
+
+            newSave.disabled = true;
+            try {
+                const response = await fetch('/my-clients/exercises', { method: 'POST', body });
+                const exercise = await response.json();
+                if (!response.ok) throw new Error(exercise.error || 'Could not save the exercise.');
+
+                // Keep the list in the same muscle group → name order as the server
+                const items = [...libList.querySelectorAll('.wp-lib-item')];
+                const before = items.find(i =>
+                    i.dataset.muscle.localeCompare(exercise.muscle_group) > 0 ||
+                    (i.dataset.muscle === exercise.muscle_group && i.dataset.name.localeCompare(exercise.name) > 0));
+                libList.insertBefore(libraryItem(exercise), before ?? document.getElementById('wp-lib-empty'));
+                document.getElementById('wp-lib-count').textContent = `${items.length + 1} items`;
+
+                closeNewForm();
+                filterLibrary();
+                toast(`${exercise.name} added to the library.`);
+            } catch (e) {
+                newError.textContent = e.message;
+                newError.hidden = false;
+            } finally {
+                newSave.disabled = false;
+            }
+        }
+
+        document.getElementById('wp-lib-new-open').addEventListener('click', () => {
+            newForm.hidden = false;
+            newName.focus();
+        });
+        document.getElementById('wp-lib-new-cancel').addEventListener('click', closeNewForm);
+        newSave.addEventListener('click', saveNewExercise);
+        // Enter would otherwise submit the whole plan form
+        newName.addEventListener('keydown', e => {
+            if (e.key !== 'Enter') return;
+            e.preventDefault();
+            saveNewExercise();
+        });
 
         // ---------- superset + note ----------
         document.getElementById('wp-add-superset').addEventListener('click', () => {
@@ -1699,8 +1815,7 @@ if ($hasDraft) {
             }
             state.supersetTarget = d.exercises.length - 1;
             renderDay();
-            document.getElementById('wp-library').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            libSearch.focus({ preventScroll: true });
+            openLibrary();
         });
 
         document.getElementById('wp-add-note').addEventListener('click', () => {

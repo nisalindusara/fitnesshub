@@ -29,6 +29,9 @@ class WorkoutPlanService
         7 => ['key' => 'sun', 'short' => 'Sun', 'long' => 'Sunday'],
     ];
 
+    public const MUSCLE_GROUPS = ['Arms', 'Back', 'Cardio', 'Chest', 'Core', 'Legs', 'Mobility', 'Shoulders'];
+    public const EQUIPMENT = ['Barbell', 'Bodyweight', 'Cable', 'Dumbbell', 'Kettlebell', 'Machine'];
+
     private const MAX_EXERCISES_PER_DAY = 30;
     private const ADHERENCE_WINDOW_DAYS = 30;
 
@@ -90,6 +93,43 @@ class WorkoutPlanService
             'lastLogDate' => $this->logs->lastLogDate($memberId),
             'library'     => $this->exercises->allActive(),
         ];
+    }
+
+    /**
+     * Adds an exercise to the shared library and returns its row. A name that was
+     * removed from the library earlier is brought back instead of duplicated.
+     */
+    public function addLibraryExercise(string $name, string $muscleGroup, string $equipment): array
+    {
+        $name = trim(preg_replace('/\s+/', ' ', $name));
+
+        if ($name === '') {
+            throw new InvalidArgumentException('Give the exercise a name.');
+        }
+        if (mb_strlen($name) > 100) {
+            throw new InvalidArgumentException('Exercise name must be 100 characters or fewer.');
+        }
+        if (!in_array($muscleGroup, self::MUSCLE_GROUPS, true)) {
+            throw new InvalidArgumentException('Pick a muscle group.');
+        }
+        if (!in_array($equipment, self::EQUIPMENT, true)) {
+            throw new InvalidArgumentException('Pick the equipment.');
+        }
+
+        $existing = $this->exercises->findByName($name);
+        if ($existing && (int) $existing['is_active'] === 1) {
+            throw new InvalidArgumentException("{$existing['name']} is already in the library.");
+        }
+
+        if ($existing) {
+            $this->exercises->reactivate((int) $existing['id'], $muscleGroup, $equipment);
+            $id = (int) $existing['id'];
+            $name = $existing['name'];
+        } else {
+            $id = $this->exercises->create($name, $muscleGroup, $equipment);
+        }
+
+        return ['id' => $id, 'name' => $name, 'muscle_group' => $muscleGroup, 'equipment' => $equipment];
     }
 
     /** Days of the plan before the one being edited, for "Copy last week". */

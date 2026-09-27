@@ -6,3 +6,4 @@ $router->get('/my-clients/client', [WorkoutPlanController::class, 'showWorkoutPl
 $router->post('/my-clients/workout-plan/save', [WorkoutPlanController::class, 'saveWorkoutPlan'], 'manage_action_plans');
 $router->post('/my-clients/workout-plan/delete', [WorkoutPlanController::class, 'deleteWorkoutPlan'], 'manage_action_plans');
 $router->get('/my-clients/workout-plan/previous', [WorkoutPlanController::class, 'previousWorkoutPlan'], 'manage_action_plans');
+$router->post('/my-clients/exercises', [WorkoutPlanController::class, 'addLibraryExercise'], 'manage_action_plans');

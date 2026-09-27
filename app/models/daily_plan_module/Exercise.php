@@ -43,4 +43,28 @@ class Exercise extends Model
         }
         return $byId;
     }
+
+    /** Any library row with this name (active or not) — names are unique. */
+    public function findByName(string $name): ?array
+    {
+        $stmt = $this->db->prepare("SELECT id, name, muscle_group, equipment, is_active FROM exercises WHERE name = ?");
+        $stmt->execute([$name]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
+
+    public function create(string $name, string $muscleGroup, string $equipment): int
+    {
+        $stmt = $this->db->prepare("INSERT INTO exercises (name, muscle_group, equipment) VALUES (?, ?, ?)");
+        $stmt->execute([$name, $muscleGroup, $equipment]);
+
+        return (int) $this->db->lastInsertId();
+    }
+
+    /** Brings a removed exercise back into the library with the details just entered. */
+    public function reactivate(int $id, string $muscleGroup, string $equipment): void
+    {
+        $stmt = $this->db->prepare("UPDATE exercises SET is_active = 1, muscle_group = ?, equipment = ? WHERE id = ?");
+        $stmt->execute([$muscleGroup, $equipment, $id]);
+    }
 }
