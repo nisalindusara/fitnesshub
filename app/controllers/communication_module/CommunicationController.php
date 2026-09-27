@@ -405,4 +405,9 @@ class CommunicationController extends Controller
     {
         $this->render('communication_module/admin_tickets_details', 'staff-layout');
     }
+
+    public function ManagerTickets()
+    {
+        $this->render('communication_module/manager_tickets', 'staff-layout');
+    }
 }
