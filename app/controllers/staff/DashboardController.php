@@ -46,12 +46,6 @@ class DashboardController extends Controller
             fn($section) => in_array($section['permission'], $permissions, true)
         );
 
-        if (empty($visibleSections)) {
-            http_response_code(403);
-            echo 'You do not have access to any dashboard section.';
-            return;
-        }
-
         $requested = $_GET['section'] ?? null;
         if ($requested !== null && isset($visibleSections[$requested])) {
             $activeKey = $requested;

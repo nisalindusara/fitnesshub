@@ -39,12 +39,10 @@
       color: var(--color-text-primary);
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
-      overflow: hidden;
-      /* no page-level scroll */
     }
 
     .app-layout {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
@@ -107,19 +105,17 @@
 
     /* Main Content Area — FIXED: exact height, no stacked margins/paddings */
     .main-content {
-      font-family: 'DM Sans', sans-serif;
-      background-color: #F8F9FA;
+      width: 100%;
+      min-height: 100vh;
+      /* full viewport; padding is carved out of this via border-box */
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      /* exact, not min-height — prevents overflow */
       box-sizing: border-box;
-      padding-top: var(--header-height);
-      /* clears the fixed header */
-      padding-bottom: var(--dock-clearance);
-      /* clears the fixed dock */
-      overflow: hidden;
+      padding: 108px 20px 128px;
+      /* 108px = 76px header clearance + 32px gap; 128px = dock clearance */
+      font-family: 'DM Sans', sans-serif;
+      background-color: #F8F9FA;
     }
 
     .content-container {
@@ -266,7 +262,7 @@
             </button>
           </a>
 
-          <a href="/member-profile">
+          <a href="/member/member-profile">
             <button class="icon-btn" aria-label="Profile" type="button">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                 <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" />
@@ -291,7 +287,7 @@
         $navAttrs = fn(string $path) => ($route === $path || str_starts_with($route, $path . '/')) ? 'class="nav-item active" aria-current="page"' : 'class="nav-item"';
         ?>
         <!-- Home -->
-        <a href="/dashboard" <?= $navAttrs('/dashboard') ?>>
+        <a href="/member" <?= $route === '/member' ? 'class="nav-item active" aria-current="page"' : 'class="nav-item"' ?>>
           <svg viewBox="0 0 24 24" class="nav-icon">
             <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" />
           </svg>
@@ -299,7 +295,7 @@
         </a>
 
         <!-- Membership -->
-        <a href="/membership" <?= $navAttrs('/membership') ?>>
+        <a href="/member/membership" <?= $navAttrs('/member/membership') ?>>
           <svg viewBox="0 0 24 24" class="nav-icon">
             <path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3H19ZM19 19H5V8H19V19ZM7 10H17V12H7V10ZM7 14H14V16H7V14Z" />
           </svg>

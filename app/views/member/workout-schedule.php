@@ -253,7 +253,7 @@ $describe = function (array $exercise): string {
 
 <div class="schedule-page">
   <div class="page-header">
-    <a href="/membership" class="back-btn" aria-label="Back to membership">
+    <a href="/member/membership" class="back-btn" aria-label="Back to membership">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z" />
       </svg>
@@ -356,7 +356,7 @@ $describe = function (array $exercise): string {
         });
 
         try {
-          const response = await fetch('/membership/workout-schedule/done', { method: 'POST', body });
+          const response = await fetch('/member/membership/workout-schedule/done', { method: 'POST', body });
           const result = await response.json();
           if (!response.ok) throw new Error(result.error || 'Could not save.');
           showProgress(result.completed, result.total);

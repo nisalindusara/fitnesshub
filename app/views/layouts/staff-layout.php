@@ -1,8 +1,10 @@
 <?php
 
 $permissions = $_SESSION['permissions'] ?? [];
+$firstName = $_SESSION['user_name'] ?? '';
+$lastName  = $_SESSION['user_last_name'] ?? '';
 
-$fullName = trim($_SESSION['user_name'] . ' ' . $_SESSION['user_last_name']);
+$fullName = trim($firstName . ' ' . $lastName);
 $avatar   = $_SESSION['user_avatar'] ?? null;
 $initials = mb_strtoupper(mb_substr($_SESSION['user_name'], 0, 1) . mb_substr($_SESSION['user_last_name'], 0, 1));
 $role = $_SESSION['role_name'];
@@ -44,7 +46,7 @@ $navItems = [
     ['section' => 'eCommerce', 'label' => 'Categories', 'icon' => 'tag', 'route' => '/portal/ecom/categories', 'permission' => 'manage_inventory'],
 
     // Instructor 
-    ['section' => 'My Work', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/instructor/overview', 'permission' => 'view_own_clients'],
+    ['section' => 'My Work', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/instructor', 'permission' => 'view_own_clients'],
     ['section' => 'My Work', 'label' => 'My Clients', 'icon' => 'users', 'route' => '/my-clients', 'permission' => 'view_own_clients'],
     ['section' => 'My Work', 'label' => 'My Schedule', 'icon' => 'calendar', 'route' => '/my-schedule', 'permission' => 'view_own_schedule'],
     ['section' => 'My Work', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
