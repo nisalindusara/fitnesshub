@@ -1,8 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../../core/Controller.php';
-require_once __DIR__ . '/../../models/communication_module/instructor_messages.php';
-
 class CommunicationController extends Controller
 {
     public function UserMessages(): void
