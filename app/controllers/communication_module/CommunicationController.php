@@ -395,4 +395,14 @@ class CommunicationController extends Controller
     {
         $this->render('communication_module/member_profile_view', 'staff-layout');
     }
+
+    public function AdminTickets()
+    {
+        $this->render('communication_module/admin_tickets', 'staff-layout');
+    }
+
+    public function AdminTicketDetails()
+    {
+        $this->render('communication_module/admin_tickets_details', 'staff-layout');
+    }
 }
