@@ -107,12 +107,14 @@ class MemberController extends Controller
             return;
         }
 
-        $userModel = new User();
-        $results = $userModel->searchMembers($term);
+        $results = (new User())->searchMembersByNameOrPhone($term);
 
         $shaped = array_map(fn($row) => [
-            'member_id' => (int) $row['id'],
-            'display_name' => $row['first_name'] . ' ' . $row['last_name'] . ' — ' . $row['phone_number'],
+            'member_id'     => (int) $row['id'],
+            'first_name'    => $row['first_name'],
+            'last_name'     => $row['last_name'],
+            'phone_number'  => $row['phone_number'],
+            'profile_image' => $row['profile_image'] ? '/' . $row['profile_image'] : null,
         ], $results);
 
         header('Content-Type: application/json');

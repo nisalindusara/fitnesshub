@@ -301,7 +301,7 @@
                 </form>
 
                 <div class="signup-prompt reset-all">
-                    <p class="signup-text reset-all">Don't have an account? <a href="#" class="signup-link link-reset reset-all">Create one</a></p>
+                    <p class="signup-text reset-all">Don't have an account? <a href="/register" class="signup-link link-reset reset-all">Create one</a></p>
                 </div>
             </div>
         </section>

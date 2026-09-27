@@ -1,6 +1,6 @@
 <?php
 // Account & Membership
-$router->get('/portal/members/search', [MemberController::class, 'search'], 'manage_orders');
+$router->get('/portal/members/search', [MemberController::class, 'search'], 'search_members');
 
 // Membership Plan Management CRUD
 $router->get('/membership-plans', [MembershipPlanController::class, 'index'], 'manage_membership_plans');
@@ -10,3 +10,8 @@ $router->get('/membership-plans/show', [MembershipPlanController::class, 'show']
 $router->get('/membership-plans/edit', [MembershipPlanController::class, 'edit'], 'manage_membership_plans');
 $router->post('/membership-plans/update', [MembershipPlanController::class, 'update'], 'manage_membership_plans');
 $router->post('/membership-plans/deactivate', [MembershipPlanController::class, 'deactivate'], 'manage_membership_plans');
+
+$router->get('/portal/attendance', [AttendanceController::class, 'showAttendanceMarkingScreen']);
+$router->get('/portal/attendance/member-status', [AttendanceController::class, 'memberStatus'], 'manage_attendance');
+$router->post('/portal/attendance/check-in', [AttendanceController::class, 'checkIn'], 'manage_attendance');
+$router->post('/portal/attendance/check-out', [AttendanceController::class, 'checkOut'], 'manage_attendance');
