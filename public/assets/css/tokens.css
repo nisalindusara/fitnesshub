@@ -51,6 +51,11 @@
   /* Transition Speeds */
   --transition-fast: 0.22s;
   --transition-slow: 0.5s;
+
+  --neutral-gray: rgba(28, 28, 28, 0.4);
+  --success-green: #1a9c5c;
+  --warning-amber: #b8720a;
+  --brand-red: #e31837; /* matches --color-primary, reuse if you'd rather alias it */
 }
 
 /* landing.css */
