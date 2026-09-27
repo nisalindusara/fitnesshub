@@ -14,8 +14,18 @@ $navItems = [
     ['section' => 'Operations', 'label' => 'Members', 'icon' => 'users', 'route' => '/members', 'permission' => 'manage_members'],
     ['section' => 'Operations', 'label' => 'Membership Plans', 'icon' => 'id-card', 'route' => '/membership-plans', 'permission' => 'manage_membership_plans'],
 
-    ['section' => 'Operations', 'label' => 'Classes', 'icon' => 'folder', 'route' => '/classes', 'permission' => 'manage_classes'],
-    ['section' => 'Operations', 'label' => 'Personal Training', 'icon' => 'user-check', 'route' => '/personal-training', 'permission' => 'manage_personal_training'],
+['section' => 'Operations', 'label' => 'Classes', 'icon' => 'folder', 'children' => [
+['label' => 'Class Management', 'icon' => 'folder', 'route' => '/portal/classes', 'permission' => 'manage_classes'],
+['label' => 'Class Sessions', 'icon' => 'calendar', 'route' => '/portal/classes/sessions', 'permission' => 'manage_classes']
+]], 
+
+    [
+    'section' => 'Operations',
+    'label' => 'Personal Training',
+    'icon' => 'user-check',
+    'route' => '/personal-training/packages',
+    'permission' => 'manage_personal_training'
+],
     ['section' => 'Operations', 'label' => 'Staff Availability', 'icon' => 'calendar', 'route' => '/staff-availability', 'permission' => 'manage_staff_schedule'],
     ['section' => 'Operations', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
 

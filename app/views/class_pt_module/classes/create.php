@@ -320,7 +320,7 @@
 
             <div class="cls-actions">
 
-                <a href="/classes">
+                <a href="/portal/classes">
                     <button class="cls-btn" type="button">
                         Discard
                     </button>

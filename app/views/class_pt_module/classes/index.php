@@ -183,10 +183,9 @@
     <div class="cls-head">
         <div>
             <h1>Classes</h1>
-            <p>Manage available group fitness classes.</p>
         </div>
 
-        <a href="/classes/create" class="cls-btn cls-btn-primary">
+        <a href="/portal/classes/create" class="cls-btn cls-btn-primary">
             + Add Class
         </a>
     </div>
@@ -260,7 +259,7 @@
                         </a>
 
                         <a
-                            href="/classes/create?id=<?= (int)$class['id'] ?>"
+                            href="/portal/classes/create?id=<?= (int)$class['id'] ?>"
                             class="cls-edit"
                         >
                             Edit

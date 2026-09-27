@@ -210,7 +210,7 @@
         </div>
 
         <div class="cls-actions">
-            <a href="/classes/create?id=1" class="cls-btn">
+            <a href="/portal/classes/create?id=1" class="cls-btn">
                 Edit Class
             </a>
 
