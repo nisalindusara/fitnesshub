@@ -108,11 +108,11 @@
         <div class="products-grid">
             <!-- Card 1 -->
             <div class="product-card">
-                <a href="/sample-product" class="product-image img-placeholder">
+                <a href="/store/product" class="product-image img-placeholder">
                     <img src="https://images.unsplash.com/photo-1704650311298-4d6915d34c64?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Creatine Monohydrate 300 g" loading="lazy" width="400" height="500">
                 </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title"><a href="/sample-product">Creatine Monohydrate 300 g</a></h3>
+                    <h3 class="product-card-title"><a href="/store/product">Creatine Monohydrate 300 g</a></h3>
                     <div class="product-bottom">
                         <span class="product-card-price">Rs 7 500</span>
                         <button class="add-btn">
@@ -127,11 +127,11 @@
 
             <!-- Card 2 -->
             <div class="product-card">
-                <a href="/sample-product" class="product-image img-placeholder">
+                <a href="/store/product" class="product-image img-placeholder">
                     <img src="https://images.unsplash.com/photo-1775199603318-7f8a9a63b40d?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Whey Protein &amp; Shaker Bundle" loading="lazy" width="400" height="500">
                 </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title"><a href="/sample-product">Whey Protein &amp; Shaker Bundle</a></h3>
+                    <h3 class="product-card-title"><a href="/store/product">Whey Protein &amp; Shaker Bundle</a></h3>
                     <div class="product-bottom">
                         <span class="product-card-price">Rs 16 900</span>
                         <button class="add-btn">
@@ -146,11 +146,11 @@
 
             <!-- Card 3 -->
             <div class="product-card">
-                <a href="/sample-product" class="product-image img-placeholder">
+                <a href="/store/product" class="product-image img-placeholder">
                     <img src="https://images.unsplash.com/photo-1603077492579-39ff927823db?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Rubber Hex Dumbbells 5 kg (Pair)" loading="lazy" width="400" height="500">
                 </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title"><a href="/sample-product">Rubber Hex Dumbbells 5 kg (Pair)</a></h3>
+                    <h3 class="product-card-title"><a href="/store/product">Rubber Hex Dumbbells 5 kg (Pair)</a></h3>
                     <div class="product-bottom">
                         <span class="product-card-price">Rs 11 000</span>
                         <button class="add-btn">
@@ -165,11 +165,11 @@
 
             <!-- Card 4 -->
             <div class="product-card">
-                <a href="/sample-product" class="product-image img-placeholder">
+                <a href="/store/product" class="product-image img-placeholder">
                     <img src="https://images.unsplash.com/photo-1767404890803-228d5390fcd4?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Pull-Up Assist Band Set" loading="lazy" width="400" height="500">
                 </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title"><a href="/sample-product">Pull-Up Assist Band Set</a></h3>
+                    <h3 class="product-card-title"><a href="/store/product">Pull-Up Assist Band Set</a></h3>
                     <div class="product-bottom">
                         <span class="product-card-price">Rs 6 500</span>
                         <button class="add-btn">

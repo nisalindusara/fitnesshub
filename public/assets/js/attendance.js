@@ -35,7 +35,7 @@ searchInput.addEventListener("input", () => {
 
 async function runSearch(term) {
   const response = await fetch(
-    `/portal/members/search?q=${encodeURIComponent(term)}`,
+    `/api/members/search?q=${encodeURIComponent(term)}`,
   );
   const members = await response.json();
   renderResults(members);
@@ -85,7 +85,7 @@ async function selectMember(memberId) {
   searchInput.value = "";
 
   const response = await fetch(
-    `/portal/attendance/member-status?member_id=${memberId}`,
+    `/api/attendance/member-status?member_id=${memberId}`,
   );
 
   if (!response.ok) {
@@ -213,7 +213,7 @@ actionBtn.addEventListener("click", async () => {
     }
   }
 
-  const response = await fetch(`/portal/attendance/${action}`, {
+  const response = await fetch(`/api/attendance/${action}`, {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: body.toString(),

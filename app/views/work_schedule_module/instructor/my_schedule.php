@@ -20,7 +20,7 @@
 
         <div class="schedule-header-actions">
             <!-- Leave Request Button placed before the date navigation -->
-            <a href="/communication/instructor-tickets" id="btn-request-leave" class="btn-leave-action">
+            <a href="/portal/schedule/requests" id="btn-request-leave" class="btn-leave-action">
                 <span class="btn-leave-icon">&#128197;</span>
                 <span class="btn-leave-text">Request Leave</span>
             </a>

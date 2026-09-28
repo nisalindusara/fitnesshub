@@ -342,7 +342,10 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `
 (12, 'Instructor', 'One', 'instructorexample@example.com', '077 123 4567', 'uploads/profiles/profile_2.jpg', '$2y$10$TYCdOhNEF9QcfWyxJdcFEu8bJ8OI5l/g3hiNDNdpdqSMMW6x3FHtC', 5, '2026-09-23 11:49:24'),
 (13, 'Maya', 'Thompson', 'maya.thompson@example.com', '077 234 5678', NULL, '$2y$10$TYCdOhNEF9QcfWyxJdcFEu8bJ8OI5l/g3hiNDNdpdqSMMW6x3FHtC', 5, '2026-09-23 11:55:00'),
 (14, 'Jordan', 'Lee', 'jordan.lee@example.com', '077 345 6789', NULL, '$2y$10$TYCdOhNEF9QcfWyxJdcFEu8bJ8OI5l/g3hiNDNdpdqSMMW6x3FHtC', 5, '2026-09-23 11:56:00'),
-(15, 'Priya', 'Nair', 'priya.nair@example.com', '077 456 7890', NULL, '$2y$10$TYCdOhNEF9QcfWyxJdcFEu8bJ8OI5l/g3hiNDNdpdqSMMW6x3FHtC', 5, '2026-09-23 11:57:00');
+(15, 'Priya', 'Nair', 'priya.nair@example.com', '077 456 7890', NULL, '$2y$10$TYCdOhNEF9QcfWyxJdcFEu8bJ8OI5l/g3hiNDNdpdqSMMW6x3FHtC', 5, '2026-09-23 11:57:00'),
+(16, 'Kasun', 'Perera', 'kasun.perera@example.com', '077 567 8901', NULL, '$2y$10$wxFiQdTzAHDHi.X1Cq3Jk.1xzVqcQBHZpWrq7Pz43GB5kUrd8nW72', NULL, '2026-09-10 08:30:00'),
+(17, 'Nimali', 'Fernando', 'nimali.fernando@example.com', '077 678 9012', NULL, '$2y$10$wxFiQdTzAHDHi.X1Cq3Jk.1xzVqcQBHZpWrq7Pz43GB5kUrd8nW72', NULL, '2026-09-12 17:45:00'),
+(18, 'Dinesh', 'Silva', 'dinesh.silva@example.com', '077 789 0123', NULL, '$2y$10$wxFiQdTzAHDHi.X1Cq3Jk.1xzVqcQBHZpWrq7Pz43GB5kUrd8nW72', NULL, '2026-09-18 06:20:00');
 
 --
 -- Daily plan module seed: exercise library, instructor 12's clients and one published plan.
@@ -441,6 +444,7 @@ INSERT INTO `workout_logs` (`member_id`, `plan_exercise_id`, `log_date`) VALUES
 (1, 10, '2026-09-23'), (1, 11, '2026-09-23'), (1, 12, '2026-09-23'), (1, 13, '2026-09-23'), (1, 14, '2026-09-23'),
 (1, 16, '2026-09-25'), (1, 17, '2026-09-25'), (1, 18, '2026-09-25'), (1, 19, '2026-09-25');
 
+DELETE FROM `meal_plan_requests`;
 DELETE FROM `meal_logs`;
 DELETE FROM `meal_plan_items`;
 
@@ -452,31 +456,31 @@ INSERT INTO `meal_plan_items` (`id`, `member_id`, `instructor_id`, `day_of_week`
 (1, 1, 12, 1, 'breakfast', 'Oatmeal with Berries', 'Rolled oats, blueberries, honey, almond milk', 380, 14, 1),
 (2, 1, 12, 1, 'lunch', 'Chicken Rice Bowl', 'Grilled chicken, brown rice, steamed broccoli', 560, 42, 2),
 (3, 1, 12, 1, 'dinner', 'Beef Stir-fry', 'Lean beef, peppers, snap peas, jasmine rice', 610, 40, 3),
-(4, 1, 12, 1, 'snack', 'Protein Shake', 'Whey protein, banana, oat milk', 260, 28, 4),
+(4, 1, 12, 1, 'pre_workout', 'Protein Shake', 'Whey protein, banana, oat milk', 260, 28, 4),
 (5, 1, 12, 2, 'breakfast', 'Scrambled Eggs on Toast', '3 eggs, whole grain toast, spinach', 400, 24, 1),
 (6, 1, 12, 2, 'lunch', 'Tuna Wrap', 'Tuna, whole wheat wrap, lettuce, light mayo', 480, 36, 2),
 (7, 1, 12, 2, 'dinner', 'Chicken Curry', 'Chicken breast, light coconut curry, basmati rice', 640, 44, 3),
-(8, 1, 12, 2, 'snack', 'Apple & Peanut Butter', '1 apple, 2 tbsp peanut butter', 280, 8, 4),
+(8, 1, 12, 2, 'pre_workout', 'Apple & Peanut Butter', '1 apple, 2 tbsp peanut butter', 280, 8, 4),
 (9, 1, 12, 3, 'breakfast', 'Avocado Toast with Egg', '2 slices whole grain bread, 2 poached eggs', 420, 22, 1),
 (10, 1, 12, 3, 'lunch', 'Grilled Chicken Salad', 'Mixed greens, cherry tomatoes, balsamic', 510, 45, 2),
 (11, 1, 12, 3, 'dinner', 'Baked Salmon & Quinoa', 'Atlantic salmon, tri-color quinoa', 620, 38, 3),
-(12, 1, 12, 3, 'snack', 'Greek Yogurt & Berries', 'Low-fat Greek yogurt, mixed berries', 220, 18, 4),
+(12, 1, 12, 3, 'pre_workout', 'Greek Yogurt & Berries', 'Low-fat Greek yogurt, mixed berries', 220, 18, 4),
 (13, 1, 12, 4, 'breakfast', 'Protein Pancakes', 'Oat and egg-white pancakes, maple syrup', 430, 30, 1),
 (14, 1, 12, 4, 'lunch', 'Turkey Sandwich', 'Sliced turkey, whole grain bread, avocado', 520, 38, 2),
 (15, 1, 12, 4, 'dinner', 'Shrimp Pasta', 'Whole wheat pasta, garlic shrimp, tomato sauce', 600, 36, 3),
-(16, 1, 12, 4, 'snack', 'Mixed Nuts', 'Almonds, cashews, walnuts (30 g)', 190, 6, 4),
+(16, 1, 12, 4, 'pre_workout', 'Mixed Nuts', 'Almonds, cashews, walnuts (30 g)', 190, 6, 4),
 (17, 1, 12, 5, 'breakfast', 'Smoothie Bowl', 'Banana, spinach, protein powder, granola', 410, 26, 1),
 (18, 1, 12, 5, 'lunch', 'Lentil Soup & Bread', 'Red lentil soup, sourdough slice', 460, 22, 2),
 (19, 1, 12, 5, 'dinner', 'Grilled Fish Tacos', 'White fish, corn tortillas, cabbage slaw', 580, 40, 3),
-(20, 1, 12, 5, 'snack', 'Cottage Cheese & Pineapple', 'Low-fat cottage cheese, pineapple chunks', 200, 20, 4),
+(20, 1, 12, 5, 'pre_workout', 'Cottage Cheese & Pineapple', 'Low-fat cottage cheese, pineapple chunks', 200, 20, 4),
 (21, 1, 12, 6, 'breakfast', 'Egg White Omelette', 'Egg whites, mushrooms, peppers, feta', 320, 28, 1),
 (22, 1, 12, 6, 'lunch', 'Quinoa Buddha Bowl', 'Quinoa, chickpeas, roasted veg, tahini', 550, 22, 2),
 (23, 1, 12, 6, 'dinner', 'Chicken & Sweet Potato', 'Roast chicken thigh, baked sweet potato, greens', 630, 45, 3),
-(24, 1, 12, 6, 'snack', 'Rice Cakes & Hummus', '2 rice cakes, 3 tbsp hummus', 180, 6, 4),
+(24, 1, 12, 6, 'pre_workout', 'Rice Cakes & Hummus', '2 rice cakes, 3 tbsp hummus', 180, 6, 4),
 (25, 1, 12, 7, 'breakfast', 'French Toast', 'Whole grain bread, egg, cinnamon, berries', 450, 20, 1),
 (26, 1, 12, 7, 'lunch', 'Chicken Caesar Wrap', 'Grilled chicken, romaine, light Caesar dressing', 530, 40, 2),
 (27, 1, 12, 7, 'dinner', 'Vegetable Stir-fry with Tofu', 'Firm tofu, mixed vegetables, brown rice', 540, 28, 3),
-(28, 1, 12, 7, 'snack', 'Dark Chocolate & Almonds', '20 g dark chocolate, 15 almonds', 210, 5, 4);
+(28, 1, 12, 7, 'pre_workout', 'Dark Chocolate & Almonds', '20 g dark chocolate, 15 almonds', 210, 5, 4);
 
 -- Two more options for every meal, so the member picks 1 of 3
 INSERT INTO `meal_plan_items` (`id`, `member_id`, `instructor_id`, `day_of_week`, `meal_type`, `name`, `description`, `calories`, `protein_g`, `sort_order`) VALUES
@@ -486,56 +490,56 @@ INSERT INTO `meal_plan_items` (`id`, `member_id`, `instructor_id`, `day_of_week`
 (32, 1, 12, 1, 'lunch', 'Lentil & Feta Salad', 'Green lentils, feta, rocket, lemon dressing', 490, 26, 2),
 (33, 1, 12, 1, 'dinner', 'Grilled Chicken & Vegetables', 'Chicken breast, roasted courgette, peppers', 540, 46, 3),
 (34, 1, 12, 1, 'dinner', 'Salmon Teriyaki Bowl', 'Salmon, teriyaki glaze, rice, edamame', 630, 38, 3),
-(35, 1, 12, 1, 'snack', 'Boiled Eggs', '2 hard-boiled eggs, pinch of salt', 150, 12, 4),
-(36, 1, 12, 1, 'snack', 'Banana & Almonds', '1 banana, 15 almonds', 210, 5, 4),
+(35, 1, 12, 1, 'post_workout', 'Boiled Eggs', '2 hard-boiled eggs, pinch of salt', 150, 12, 4),
+(36, 1, 12, 1, 'post_workout', 'Banana & Almonds', '1 banana, 15 almonds', 210, 5, 4),
 (37, 1, 12, 2, 'breakfast', 'Overnight Oats', 'Oats, chia seeds, milk, apple, cinnamon', 390, 15, 1),
 (38, 1, 12, 2, 'breakfast', 'Peanut Butter Toast', 'Whole grain toast, peanut butter, banana', 420, 14, 1),
 (39, 1, 12, 2, 'lunch', 'Chicken Noodle Soup', 'Chicken, egg noodles, carrots, celery', 450, 32, 2),
 (40, 1, 12, 2, 'lunch', 'Falafel Pita', 'Baked falafel, pita, salad, yogurt sauce', 530, 20, 2),
 (41, 1, 12, 2, 'dinner', 'Beef & Bean Chilli', 'Lean beef mince, kidney beans, brown rice', 620, 42, 3),
 (42, 1, 12, 2, 'dinner', 'Baked Cod & Potatoes', 'Cod fillet, baby potatoes, green beans', 520, 40, 3),
-(43, 1, 12, 2, 'snack', 'Protein Bar', 'Low-sugar protein bar', 220, 20, 4),
-(44, 1, 12, 2, 'snack', 'Carrot Sticks & Hummus', 'Carrot sticks, 3 tbsp hummus', 170, 5, 4),
+(43, 1, 12, 2, 'post_workout', 'Protein Bar', 'Low-sugar protein bar', 220, 20, 4),
+(44, 1, 12, 2, 'post_workout', 'Carrot Sticks & Hummus', 'Carrot sticks, 3 tbsp hummus', 170, 5, 4),
 (45, 1, 12, 3, 'breakfast', 'Berry Protein Smoothie', 'Whey protein, mixed berries, oat milk', 330, 28, 1),
 (46, 1, 12, 3, 'breakfast', 'Egg & Spinach Muffins', '3 baked egg muffins with spinach and cheese', 360, 26, 1),
 (47, 1, 12, 3, 'lunch', 'Tuna Poke Bowl', 'Tuna, sushi rice, avocado, cucumber, soy', 560, 40, 2),
 (48, 1, 12, 3, 'lunch', 'Chickpea Buddha Bowl', 'Chickpeas, quinoa, roasted veg, tahini', 530, 20, 2),
 (49, 1, 12, 3, 'dinner', 'Turkey Meatballs & Pasta', 'Turkey meatballs, wholewheat spaghetti, tomato sauce', 640, 44, 3),
 (50, 1, 12, 3, 'dinner', 'Chicken Fajitas', 'Chicken strips, peppers, onion, 2 tortillas', 600, 42, 3),
-(51, 1, 12, 3, 'snack', 'Cottage Cheese & Honey', 'Low-fat cottage cheese, drizzle of honey', 190, 22, 4),
-(52, 1, 12, 3, 'snack', 'Trail Mix', 'Nuts, seeds, raisins (30 g)', 200, 6, 4),
+(51, 1, 12, 3, 'post_workout', 'Cottage Cheese & Honey', 'Low-fat cottage cheese, drizzle of honey', 190, 22, 4),
+(52, 1, 12, 3, 'post_workout', 'Trail Mix', 'Nuts, seeds, raisins (30 g)', 200, 6, 4),
 (53, 1, 12, 4, 'breakfast', 'Breakfast Burrito', 'Scrambled eggs, black beans, salsa, wrap', 450, 26, 1),
 (54, 1, 12, 4, 'breakfast', 'Muesli with Milk', 'Unsweetened muesli, low-fat milk, banana', 380, 14, 1),
 (55, 1, 12, 4, 'lunch', 'Chicken Pesto Pasta Salad', 'Chicken, pasta, pesto, cherry tomatoes', 560, 40, 2),
 (56, 1, 12, 4, 'lunch', 'Egg Fried Rice', 'Brown rice, egg, peas, carrots, soy', 500, 20, 2),
 (57, 1, 12, 4, 'dinner', 'Lamb Kofta & Couscous', 'Lean lamb kofta, couscous, cucumber salad', 640, 38, 3),
 (58, 1, 12, 4, 'dinner', 'Vegetable Lasagne', 'Spinach, ricotta, courgette lasagne', 560, 26, 3),
-(59, 1, 12, 4, 'snack', 'Greek Yogurt & Walnuts', 'Greek yogurt, walnuts, cinnamon', 210, 15, 4),
-(60, 1, 12, 4, 'snack', 'Edamame', 'Steamed edamame, sea salt', 190, 17, 4),
+(59, 1, 12, 4, 'post_workout', 'Greek Yogurt & Walnuts', 'Greek yogurt, walnuts, cinnamon', 210, 15, 4),
+(60, 1, 12, 4, 'post_workout', 'Edamame', 'Steamed edamame, sea salt', 190, 17, 4),
 (61, 1, 12, 5, 'breakfast', 'Cottage Cheese Toast', 'Whole grain toast, cottage cheese, tomato', 340, 24, 1),
 (62, 1, 12, 5, 'breakfast', 'Banana Oat Pancakes', 'Banana, oats, egg, berries', 400, 18, 1),
 (63, 1, 12, 5, 'lunch', 'Chicken Burrito Bowl', 'Chicken, rice, black beans, corn, salsa', 580, 44, 2),
 (64, 1, 12, 5, 'lunch', 'Salmon Salad', 'Smoked salmon, leafy greens, new potatoes', 480, 32, 2),
 (65, 1, 12, 5, 'dinner', 'Steak & Sweet Potato Fries', 'Sirloin steak, sweet potato fries, salad', 650, 46, 3),
 (66, 1, 12, 5, 'dinner', 'Prawn Stir-fry', 'Prawns, noodles, pak choi, ginger', 540, 36, 3),
-(67, 1, 12, 5, 'snack', 'Protein Shake', 'Whey protein, water or milk', 160, 25, 4),
-(68, 1, 12, 5, 'snack', 'Apple & Cheese', '1 apple, 30 g cheddar', 200, 8, 4),
+(67, 1, 12, 5, 'post_workout', 'Protein Shake', 'Whey protein, water or milk', 160, 25, 4),
+(68, 1, 12, 5, 'post_workout', 'Apple & Cheese', '1 apple, 30 g cheddar', 200, 8, 4),
 (69, 1, 12, 6, 'breakfast', 'Shakshuka', '2 eggs baked in tomato and pepper sauce, toast', 400, 22, 1),
 (70, 1, 12, 6, 'breakfast', 'Acai Bowl', 'Acai, banana, granola, coconut flakes', 420, 10, 1),
 (71, 1, 12, 6, 'lunch', 'Grilled Halloumi Wrap', 'Halloumi, roasted peppers, rocket, wrap', 560, 26, 2),
 (72, 1, 12, 6, 'lunch', 'Chicken & Avocado Salad', 'Chicken, avocado, mixed greens, lime', 520, 42, 2),
 (73, 1, 12, 6, 'dinner', 'Homemade Chicken Pizza', 'Wholemeal base, chicken, peppers, mozzarella', 660, 42, 3),
 (74, 1, 12, 6, 'dinner', 'Pork Tenderloin & Rice', 'Pork tenderloin, rice, steamed greens', 600, 44, 3),
-(75, 1, 12, 6, 'snack', 'Popcorn', 'Air-popped popcorn (30 g)', 120, 4, 4),
-(76, 1, 12, 6, 'snack', 'Chocolate Milk', '300 ml low-fat chocolate milk', 200, 10, 4),
+(75, 1, 12, 6, 'post_workout', 'Popcorn', 'Air-popped popcorn (30 g)', 120, 4, 4),
+(76, 1, 12, 6, 'post_workout', 'Chocolate Milk', '300 ml low-fat chocolate milk', 200, 10, 4),
 (77, 1, 12, 7, 'breakfast', 'Full English (Lighter)', 'Eggs, turkey bacon, beans, mushrooms, toast', 520, 34, 1),
 (78, 1, 12, 7, 'breakfast', 'Chia Pudding', 'Chia seeds, coconut milk, mango', 350, 10, 1),
 (79, 1, 12, 7, 'lunch', 'Roast Chicken Sandwich', 'Roast chicken, whole grain bread, salad', 500, 38, 2),
 (80, 1, 12, 7, 'lunch', 'Minestrone & Bread', 'Vegetable minestrone, sourdough slice', 420, 16, 2),
 (81, 1, 12, 7, 'dinner', 'Sunday Roast Beef', 'Lean roast beef, potatoes, carrots, peas', 650, 46, 3),
 (82, 1, 12, 7, 'dinner', 'Baked Salmon & Asparagus', 'Salmon fillet, asparagus, new potatoes', 580, 40, 3),
-(83, 1, 12, 7, 'snack', 'Frozen Yogurt', 'Low-fat frozen yogurt, berries', 180, 8, 4),
-(84, 1, 12, 7, 'snack', 'Oat Energy Balls', '2 oat, date and peanut butter balls', 220, 6, 4);
+(83, 1, 12, 7, 'post_workout', 'Frozen Yogurt', 'Low-fat frozen yogurt, berries', 180, 8, 4),
+(84, 1, 12, 7, 'post_workout', 'Oat Energy Balls', '2 oat, date and peanut butter balls', 220, 6, 4);
 
 INSERT INTO `meal_logs` (`member_id`, `meal_item_id`, `log_date`) VALUES
 (1, 1, '2026-09-21'), (1, 2, '2026-09-21'), (1, 3, '2026-09-21'), (1, 4, '2026-09-21'),
@@ -631,6 +635,15 @@ INSERT INTO `messages` (`id`, `sender_id`, `receiver_id`, `message`, `is_read`, 
 (5, 1, 12, 'Should I skip pressing today?', 0, '2026-09-27 08:41:00'),
 (6, 11, 12, 'Is the group class still on this Thursday?', 1, '2026-09-25 10:15:00'),
 (7, 12, 11, 'Yes, same time in Studio A. See you there!', 1, '2026-09-25 11:02:00');
+
+--
+-- Meal plan requests: members 16–18 (not instructor 12's clients) ask instructor 12; one asks Maya (13).
+--
+INSERT INTO `meal_plan_requests` (`id`, `member_id`, `instructor_id`, `goal`, `notes`, `status`, `requested_at`) VALUES
+(1, 16, 12, 'Muscle gain', 'Vegetarian. Trains at 6 PM on weekdays.', 'pending', '2026-09-27 19:05:00'),
+(2, 17, 12, 'Fat loss', 'Lactose intolerant. Prefers rice over bread.', 'pending', '2026-09-26 08:40:00'),
+(3, 18, 12, 'Endurance', 'Training for the Colombo marathon. No seafood.', 'pending', '2026-09-24 21:15:00'),
+(4, 16, 13, 'Muscle gain', 'Asked Maya as well for a second opinion.', 'pending', '2026-09-27 19:10:00');
 
 COMMIT;
 

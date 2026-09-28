@@ -2,14 +2,46 @@
 
 /**
  * Manager: leave request tickets (planned / immediate) and their processing result.
- * Not linked from the navigation yet — open them by URL:
- *   /leave-requests/review?id=1   the ticket, until it's decided
- *   /leave-requests/result?id=3   the outcome, once approved / rejected / cancelled
+ *   /portal/leave-requests              every request
+ *   /portal/leave-requests/review?id=1  the ticket, until it's decided
+ *   /portal/leave-requests/result?id=3  the outcome, once approved / rejected / cancelled
  */
 class LeaveRequestController extends Controller
 {
-    // The Leave Management list isn't built yet; "Back to Leave Management" points here.
-    private const LEAVE_MANAGEMENT_URL = '/leave-management';
+    // "Back to Leave Management" on the review and result screens
+    private const LEAVE_MANAGEMENT_URL = '/portal/leave-requests';
+
+    public function index(): void
+    {
+        $requests = (new LeaveRequest())->all();
+        $tones = ['pending' => 'warning', 'approved' => 'success', 'rejected' => 'danger', 'cancelled' => 'neutral'];
+        $pending = count(array_filter($requests, fn($r) => $r['status'] === 'pending'));
+
+        $this->render('staff/preview-screen', 'staff-layout', [
+            'pageTitle' => 'Leave Requests',
+            'subtitle'  => 'Planned holidays and immediate leave from instructors.',
+            'isSample'  => false,
+            'actions'   => [
+                ['label' => 'Staff availability', 'href' => '/portal/staff-availability', 'permission' => 'manage_schedule'],
+            ],
+            'stats' => [
+                ['label' => 'Waiting for a decision', 'value' => $pending, 'alert' => $pending > 0],
+                ['label' => 'All requests', 'value' => count($requests)],
+            ],
+            'table' => [
+                'columns' => ['Instructor', 'Type', 'Dates', 'Submitted', 'Status'],
+                'rows'    => array_map(fn($r) => [
+                    ['text' => $r['first_name'] . ' ' . $r['last_name'], 'sub' => $r['reason']],
+                    LeaveRequestService::TYPES[$r['leave_type']] ?? ucfirst($r['leave_type']),
+                    date('M j', strtotime($r['start_date'])) . ($r['end_date'] !== $r['start_date'] ? ' – ' . date('M j, Y', strtotime($r['end_date'])) : ', ' . date('Y', strtotime($r['start_date']))),
+                    date('M j, g:i A', strtotime($r['submitted_at'])),
+                    ['tag' => ucfirst($r['status']), 'tone' => $tones[$r['status']] ?? 'neutral'],
+                ], $requests),
+                'links' => array_map(fn($r) => '/portal/leave-requests/' . ($r['status'] === 'pending' ? 'review' : 'result') . '?id=' . (int) $r['id'], $requests),
+                'empty' => 'No leave requests yet.',
+            ],
+        ]);
+    }
 
     public function review(): void
     {
@@ -25,7 +57,7 @@ class LeaveRequestController extends Controller
 
         // A decided request has nothing left to review
         if ($data['request']['status'] !== 'pending') {
-            $this->redirect('/leave-requests/result?id=' . $id);
+            $this->redirect('/portal/leave-requests/result?id=' . $id);
         }
 
         $immediate = $data['request']['leave_type'] === 'immediate';
@@ -51,7 +83,7 @@ class LeaveRequestController extends Controller
         }
 
         if ($data['request']['status'] === 'pending') {
-            $this->redirect('/leave-requests/review?id=' . $id);
+            $this->redirect('/portal/leave-requests/review?id=' . $id);
         }
 
         $this->render('work_schedule_module/leave/result', 'staff-layout', $data + [
@@ -87,9 +119,9 @@ class LeaveRequestController extends Controller
         try {
             $action(new LeaveRequestService(), $id, (int) $_SESSION['user_id']);
         } catch (InvalidArgumentException $e) {
-            $this->redirect("/leave-requests/{$errorPage}?id={$id}&error=" . urlencode($e->getMessage()));
+            $this->redirect("/portal/leave-requests/{$errorPage}?id={$id}&error=" . urlencode($e->getMessage()));
         }
 
-        $this->redirect('/leave-requests/result?id=' . $id);
+        $this->redirect('/portal/leave-requests/result?id=' . $id);
     }
 }

@@ -743,6 +743,7 @@ CREATE TABLE `workout_logs` (
 -- picks the one they ate, which is logged in `meal_logs`.
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `meal_plan_requests`;
 DROP TABLE IF EXISTS `meal_logs`;
 DROP TABLE IF EXISTS `meal_plan_items`;
 
@@ -754,7 +755,7 @@ CREATE TABLE `meal_plan_items` (
   `member_id` int(11) NOT NULL,
   `instructor_id` int(11) DEFAULT NULL,
   `day_of_week` tinyint(3) UNSIGNED NOT NULL,
-  `meal_type` enum('breakfast','lunch','dinner','snack') NOT NULL,
+  `meal_type` enum('breakfast','lunch','dinner','pre_workout','post_workout') NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `calories` smallint(5) UNSIGNED DEFAULT NULL,
@@ -782,6 +783,27 @@ CREATE TABLE `meal_logs` (
   KEY `fk_ml_meal_item` (`meal_item_id`),
   CONSTRAINT `fk_ml_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_ml_meal_item` FOREIGN KEY (`meal_item_id`) REFERENCES `meal_plan_items` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Table structure for table `meal_plan_requests` (a member asking a specific instructor for a meal plan)
+-- The instructor doesn't have to be the member's assigned instructor. Completing a
+-- request writes the plan into `meal_plan_items`.
+--
+CREATE TABLE `meal_plan_requests` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) NOT NULL,
+  `instructor_id` int(11) NOT NULL,
+  `goal` varchar(100) NOT NULL,
+  `notes` varchar(500) DEFAULT NULL,
+  `status` enum('pending','completed') NOT NULL DEFAULT 'pending',
+  `requested_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `completed_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_mpr_instructor_status` (`instructor_id`,`status`,`requested_at`),
+  KEY `fk_mpr_member` (`member_id`),
+  CONSTRAINT `fk_mpr_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_mpr_instructor` FOREIGN KEY (`instructor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

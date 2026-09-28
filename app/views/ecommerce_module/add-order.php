@@ -435,7 +435,7 @@
     }
 </style>
 
-<form method="POST" action="/portal/orders/add-order" id="order-form">
+<form method="POST" action="/portal/orders/create" id="order-form">
 
     <div class="add-order-view">
         <header class="view-header">
@@ -635,7 +635,7 @@
             }
 
             memberDebounce = setTimeout(() => {
-                fetch('/portal/members/search?q=' + encodeURIComponent(term))
+                fetch('/api/members/search?q=' + encodeURIComponent(term))
                     .then(r => r.json())
                     .then(data => {
                         memberResults.innerHTML = '';
@@ -684,7 +684,7 @@
             }
 
             productDebounce = setTimeout(() => {
-                fetch('/portal/products/search?q=' + encodeURIComponent(term))
+                fetch('/api/products/search?q=' + encodeURIComponent(term))
                     .then(r => r.json())
                     .then(data => {
                         productResults.innerHTML = '';

@@ -149,19 +149,19 @@
     </header>
 
     <section class="menu-card">
-        <a href="/member/member-profile/personal-details" class="menu-item">
+        <a href="/member/profile/personal-details" class="menu-item">
             <span class="menu-text">Personal Details</span>
             <svg class="chevron-icon" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
-        <a href="/member/member-profile/order-history" class="menu-item">
+        <a href="/member/profile/orders" class="menu-item">
             <span class="menu-text">Your Orders</span>
             <svg class="chevron-icon" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
-        <a href="/member/member-profile/payment-history" class="menu-item">
+        <a href="/member/profile/payments" class="menu-item">
             <span class="menu-text">Payment History</span>
             <svg class="chevron-icon" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -170,7 +170,7 @@
     </section>
 
     <section class="menu-card">
-        <a href="/member/member-profile/notification-settings" class="menu-item">
+        <a href="/member/profile/notification-settings" class="menu-item">
             <div class="menu-label">
                 <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -182,7 +182,19 @@
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
-        <a href="/member/member-profile/privacy-data" class="menu-item">
+        <a href="/reset-password" class="menu-item">
+            <div class="menu-label">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span class="menu-text">Change Password</span>
+            </div>
+            <svg class="chevron-icon" width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+        <a href="/member/profile/privacy" class="menu-item">
             <div class="menu-label">
                 <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -193,7 +205,7 @@
                 <path d="M1.5 9L6 5L1.5 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </a>
-        <a href="/communication/user-support-ticket" class="menu-item">
+        <a href="/member/support" class="menu-item">
             <div class="menu-label">
                 <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>

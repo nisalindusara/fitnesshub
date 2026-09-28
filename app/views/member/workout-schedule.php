@@ -356,7 +356,7 @@ $describe = function (array $exercise): string {
         });
 
         try {
-          const response = await fetch('/member/membership/workout-schedule/done', { method: 'POST', body });
+          const response = await fetch('/api/member/workouts/done', { method: 'POST', body });
           const result = await response.json();
           if (!response.ok) throw new Error(result.error || 'Could not save.');
           showProgress(result.completed, result.total);

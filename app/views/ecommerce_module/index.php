@@ -12,7 +12,7 @@
     <!-- Toolbar -->
     <div class="toolbar">
         <div class="toolbar-actions">
-            <a class="icon-btn add-list-item-button" href="/portal/orders/add-order">
+            <a class="icon-btn add-list-item-button" href="/portal/orders/create">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2">
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -86,11 +86,13 @@
                                     </svg>
                                 </a>
 
-                                <!-- Delete -->
-                                <form action="delete_order.php" method="POST" style="margin: 0; display: inline-flex;" onsubmit="return confirm('Are you sure you want to delete Order #<?= htmlspecialchars($order['order_number']) ?>?');">
-                                    <input type="hidden" name="order_id" value="<?= htmlspecialchars($order['order_number']) ?>">
+                                <!-- Cancel (orders are cancelled, never deleted) -->
+                                <form action="/portal/orders/cancel" method="POST" style="margin: 0; display: inline-flex;" onsubmit="return confirm('Cancel order #<?= htmlspecialchars($order['order_number']) ?>?');">
+                                    <input type="hidden" name="order_id" value="<?= (int) $order['id'] ?>">
+                                    <input type="hidden" name="reason" value="Cancelled from the order list">
                                     <button type="submit"
-                                        title="Delete order"
+                                        title="Cancel order"
+                                        aria-label="Cancel order #<?= htmlspecialchars($order['order_number']) ?>"
                                         style="display: inline-flex; border: none; background: none; padding: 0; cursor: pointer; color: #dc2626;">
                                         <svg xmlns="http://w3.org" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <polyline points="3 6 5 6 21 6"></polyline>

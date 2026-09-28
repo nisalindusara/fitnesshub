@@ -16,7 +16,7 @@ class CommunicationController extends Controller
         $name = 'Coach Marcus';
         $role = 'PERSONAL INSTRUCTOR';
         $avatar = '/uploads/profiles/profile_1.jpg';
-        $profile_url = '/instructor/profile/marcus';
+        $profile_url = '/member/instructors/marcus';
         $user_name = $_SESSION['user_name'] ?? 'Member';
         $messages = [
             ['type' => 'incoming', 'text' => "That's totally normal! DOMS usually peaks around 24–48 hours post–workout.", 'time' => '10:48 AM'],
@@ -31,7 +31,7 @@ class CommunicationController extends Controller
         $name = 'Sarah Miller';
         $role = 'NUTRITIONIST';
         $avatar = '/uploads/profiles/profile_2.jpg';
-        $profile_url = '/instructor/profile/sarah';
+        $profile_url = '/member/instructors/sarah';
         $user_name = $_SESSION['user_name'] ?? 'Member';
         $messages = [
             ['type' => 'incoming', 'text' => "Hey! How is your protein intake looking this week?", 'time' => 'Yesterday'],
@@ -63,7 +63,7 @@ class CommunicationController extends Controller
         $name = 'Coach Elena';
         $role = 'MEAL PLAN INSTRUCTOR';
         $avatar = '/uploads/profiles/profile_5.jpg';
-        $profile_url = '/instructor/profile/elena';
+        $profile_url = '/member/instructors/elena';
         $user_name = $_SESSION['user_name'] ?? 'Member';
 
         $messages = [
@@ -83,7 +83,7 @@ class CommunicationController extends Controller
             'title' => 'Senior Fitness Instructor',
             'experience' => '8 years experience',
             'avatar' => '/uploads/profiles/profile_1.jpg',
-            'chat_route' => '/communication/chat-marcus',
+            'chat_route' => '/member/messages/marcus',
             'tags' => [
                 ['name' => 'Yoga', 'color' => 'tag-purple'],
                 ['name' => 'Strength Training', 'color' => 'tag-orange'],
@@ -108,7 +108,7 @@ class CommunicationController extends Controller
             'title' => 'Clinical Nutritionist & Trainer',
             'experience' => '6 years experience',
             'avatar' => '/uploads/profiles/profile_2.jpg',
-            'chat_route' => '/communication/chat-sarah',
+            'chat_route' => '/member/messages/sarah',
             'tags' => [
                 ['name' => 'Diet Planning', 'color' => 'tag-green'],
                 ['name' => 'Strength Training', 'color' => 'tag-orange'],
@@ -130,7 +130,7 @@ class CommunicationController extends Controller
             'title' => 'Clinical Nutritionist & Trainer',
             'experience' => '6 years experience',
             'avatar' => '/uploads/profiles/profile_3.jpg',
-            'chat_route' => '/communication/chat-sarah',
+            'chat_route' => '/member/messages/sarah',
             'tags' => [
                 ['name' => 'Diet Planning', 'color' => 'tag-green'],
                 ['name' => 'Strength Training', 'color' => 'tag-orange'],
@@ -159,7 +159,7 @@ class CommunicationController extends Controller
             'title' => 'Certified Nutrition & Meal Plan Specialist',
             'experience' => '6 years experience',
             'avatar' => '/uploads/profiles/profile_5.jpg',
-            'chat_route' => '/communication/chat-elena',
+            'chat_route' => '/member/messages/elena',
             'tags' => [
                 ['name' => 'Meal Planning', 'color' => 'tag-green'],
                 ['name' => 'Sports Nutrition', 'color' => 'tag-orange'],
@@ -185,8 +185,8 @@ class CommunicationController extends Controller
                 'title' => 'Personal Instructor',
                 'experience' => '8 years exp',
                 'avatar' => '/uploads/profiles/profile_1.jpg',
-                'profile_url' => '/instructor/profile/marcus',
-                'chat_url' => '/communication/chat-marcus',
+                'profile_url' => '/member/instructors/marcus',
+                'chat_url' => '/member/messages/marcus',
                 'tags' => ['Strength Training', 'Personal Training', 'HIIT']
             ],
             [
@@ -194,8 +194,8 @@ class CommunicationController extends Controller
                 'title' => 'Clinical Nutritionist & Trainer',
                 'experience' => '6 years exp',
                 'avatar' => '/uploads/profiles/profile_2.jpg',
-                'profile_url' => '/instructor/profile/sarah',
-                'chat_url' => '/communication/chat-sarah',
+                'profile_url' => '/member/instructors/sarah',
+                'chat_url' => '/member/messages/sarah',
                 'tags' => ['Meal Planning', 'Habit Coaching', 'Weight Loss']
             ],
             [
@@ -203,8 +203,8 @@ class CommunicationController extends Controller
                 'title' => 'Senior Fitness Instructor',
                 'experience' => '8 years exp',
                 'avatar' => '/uploads/profiles/profile_3.jpg',
-                'profile_url' => '/instructor/profile/kavindu',
-                'chat_url' => '/communication/chat-marcus', // links to active chat
+                'profile_url' => '/member/instructors/kavindu',
+                'chat_url' => '/member/messages/marcus', // links to active chat
                 'tags' => ['Yoga', 'Cardio', 'Mobility']
             ]
         ];
@@ -224,7 +224,15 @@ class CommunicationController extends Controller
 
     public function UserSupportTickets()
     {
-        $this->render('communication_module/user_submit_ticket', 'member-layout');
+        $this->render('communication_module/user_submit_ticket', 'member-layout', [
+            'submitted' => isset($_GET['submitted']),
+        ]);
+    }
+
+    // POST /member/support — tickets aren't stored yet; confirm and show the ticket list
+    public function submitSupportTicket(): void
+    {
+        $this->redirect('/member/support?submitted=1');
     }
     public function InstructorTickets()
     {
@@ -278,7 +286,7 @@ class CommunicationController extends Controller
         exit;
     }
 
-    // GET /api/conversations  (READ: sidebar list with unread counts)
+    // GET /api/messages/conversations  (READ: sidebar list with unread counts)
     public function listConversations(): void
     {
         $userId = $this->currentUserId();

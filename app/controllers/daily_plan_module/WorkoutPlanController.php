@@ -13,7 +13,7 @@ class WorkoutPlanController extends Controller
         try {
             $editor = (new WorkoutPlanService())->getEditorData((int) $_SESSION['user_id'], $memberId);
         } catch (InvalidArgumentException $e) {
-            $this->redirect('/my-clients?error=' . urlencode($e->getMessage()));
+            $this->redirect('/portal/clients?error=' . urlencode($e->getMessage()));
         }
 
         // After a failed save, reopen with what the instructor had typed rather than the stored plan
@@ -22,7 +22,7 @@ class WorkoutPlanController extends Controller
 
         $this->render('daily_plan_module/workout-plan', 'staff-layout', $editor + [
             'pageTitle'        => $editor['isEdit'] ? 'Edit workout plan' : 'Create workout plan',
-            'activeNavRoute'   => '/my-clients',
+            'activeNavRoute'   => '/portal/clients',
             'memberId'         => $memberId,
             'unsaved'          => $unsaved,
             'goals'            => WorkoutPlanService::GOALS,
@@ -40,7 +40,7 @@ class WorkoutPlanController extends Controller
     {
         $memberId = (int) ($_POST['member_id'] ?? 0);
         $publish = ($_POST['intent'] ?? '') === 'publish';
-        $back = '/my-clients/client?member=' . $memberId;
+        $back = '/portal/clients/workout-plan?member=' . $memberId;
 
         try {
             (new WorkoutPlanService())->save(
@@ -66,10 +66,10 @@ class WorkoutPlanController extends Controller
         try {
             (new WorkoutPlanService())->delete((int) $_SESSION['user_id'], $memberId);
         } catch (InvalidArgumentException $e) {
-            $this->redirect('/my-clients/client?member=' . $memberId . '&error=' . urlencode($e->getMessage()));
+            $this->redirect('/portal/clients/workout-plan?member=' . $memberId . '&error=' . urlencode($e->getMessage()));
         }
 
-        $this->redirect('/my-clients?deleted=1');
+        $this->redirect('/portal/clients?deleted=1');
     }
 
     /** JSON for "Copy last week". */

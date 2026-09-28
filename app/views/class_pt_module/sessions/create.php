@@ -320,7 +320,7 @@
                 <button
                     type="button"
                     class="cs-btn"
-                    onclick="window.location.href='/classes/sessions'"
+                    onclick="window.location.href='/portal/classes/sessions'"
                 >
                     Cancel
                 </button>
@@ -329,7 +329,7 @@
                 <button
                     type="button"
                     class="cs-btn cs-primary"
-                    onclick="window.location.href='/classes/sessions'"
+                    onclick="window.location.href='/portal/classes/sessions'"
                 >
                     Schedule Session
                 </button>

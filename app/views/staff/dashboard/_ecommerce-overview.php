@@ -637,13 +637,13 @@
     <div class="ecom-heading-row">
         <div class="ecom-section-heading">Order Pipeline</div>
         <div class="ecom-heading-actions">
-            <button type="button" class="ecom-btn ecom-btn-outline">Add category</button>
-            <button type="button" class="ecom-btn">Add product</button>
+            <button type="button" class="ecom-btn ecom-btn-outline" onclick="window.location.href='/portal/categories'">Add category</button>
+            <button type="button" class="ecom-btn" onclick="window.location.href='/portal/products/create'">Add product</button>
         </div>
     </div>
 
     <div class="ecom-pipeline">
-        <a href="#" class="ecom-stage">
+        <a href="/portal/orders" class="ecom-stage">
             <span class="ecom-stage-name">Pending</span>
             <span class="ecom-stage-count ecom-count-pending">3</span>
             <span class="ecom-stage-hint">Waiting for payment</span>
@@ -651,7 +651,7 @@
         <div class="ecom-stage-link" aria-hidden="true">
             <div class="ecom-stage-link-line"></div>
         </div>
-        <a href="#" class="ecom-stage">
+        <a href="/portal/orders" class="ecom-stage">
             <span class="ecom-stage-name">Confirmed</span>
             <span class="ecom-stage-count ecom-count-confirmed">5</span>
             <span class="ecom-stage-hint">Paid, ready to dispatch</span>
@@ -659,7 +659,7 @@
         <div class="ecom-stage-link" aria-hidden="true">
             <div class="ecom-stage-link-line"></div>
         </div>
-        <a href="#" class="ecom-stage">
+        <a href="/portal/orders" class="ecom-stage">
             <span class="ecom-stage-name">Dispatched</span>
             <span class="ecom-stage-count ecom-count-dispatched">8</span>
             <span class="ecom-stage-hint">With the courier</span>
@@ -667,7 +667,7 @@
         <div class="ecom-stage-link" aria-hidden="true">
             <div class="ecom-stage-link-line"></div>
         </div>
-        <a href="#" class="ecom-stage">
+        <a href="/portal/orders" class="ecom-stage">
             <span class="ecom-stage-name">Completed</span>
             <span class="ecom-stage-count ecom-count-completed">142</span>
             <span class="ecom-stage-hint">This month</span>
@@ -680,7 +680,7 @@
 <div class="ecom-table-section">
     <div class="ecom-heading-row">
         <div class="ecom-section-heading">Ready to Dispatch</div>
-        <a href="#" class="ecom-link">View all orders</a>
+        <a href="/portal/orders" class="ecom-link">View all orders</a>
     </div>
 
     <div class="ecom-table-head">
@@ -794,7 +794,7 @@
     <div class="ecom-panel-right">
         <div class="ecom-heading-row">
             <div class="ecom-section-heading">Running Low on Stock</div>
-            <a href="#" class="ecom-link">Inventory</a>
+            <a href="/portal/products" class="ecom-link">Inventory</a>
         </div>
 
         <div class="ecom-list">

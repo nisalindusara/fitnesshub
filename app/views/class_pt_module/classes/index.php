@@ -186,9 +186,14 @@
             <p>Manage available group fitness classes.</p>
         </div>
 
-        <a href="/classes/create" class="cls-btn cls-btn-primary">
-            + Add Class
-        </a>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <a href="/portal/classes/sessions" class="cls-btn">
+                View Sessions
+            </a>
+            <a href="/portal/classes/create" class="cls-btn cls-btn-primary">
+                + Add Class
+            </a>
+        </div>
     </div>
 
     <div class="cls-toolbar">
@@ -253,14 +258,14 @@
                     <td class="cls-actions">
 
                         <a
-                            href="/classes/show?id=<?= (int)$class['id'] ?>"
+                            href="/portal/classes/show?id=<?= (int)$class['id'] ?>"
                             class="cls-view"
                         >
                             View
                         </a>
 
                         <a
-                            href="/classes/create?id=<?= (int)$class['id'] ?>"
+                            href="/portal/classes/create?id=<?= (int)$class['id'] ?>"
                             class="cls-edit"
                         >
                             Edit

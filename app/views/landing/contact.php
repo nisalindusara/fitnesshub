@@ -82,7 +82,11 @@
     <div class="form-col">
         <h2 class="form-title">Send Us A Message</h2>
 
-        <form action="/contact-submit" method="POST" class="form-grid">
+        <?php if (!empty($sent)): ?>
+            <p class="form-sent" role="status">Thanks! We got your message and will get back to you within one working day.</p>
+        <?php endif; ?>
+
+        <form action="/contact" method="POST" class="form-grid">
             <div class="form-group">
                 <label class="form-label">Your Name</label>
                 <input type="text" name="name" class="form-control" placeholder="Kasun Perera" required>
@@ -344,6 +348,16 @@
         text-transform: uppercase;
         letter-spacing: -0.6px;
         margin-bottom: 24px;
+    }
+
+    .form-sent {
+        margin: -8px 0 20px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: #ecfdf3;
+        border: 1px solid #c6f0d6;
+        color: #146c3a;
+        font-size: 14px;
     }
 
     .form-grid {

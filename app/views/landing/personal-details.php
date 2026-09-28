@@ -286,7 +286,7 @@
     <main class="register-screen reset-all">
         <!-- Left Side: Hero Image (fixed) -->
         <section class="hero-section reset-all">
-            <button type="button" class="back-btn btn-reset reset-all" onclick="window.location.href='/onboarding/view-store';">
+            <button type="button" class="back-btn btn-reset reset-all" onclick="window.location.href='/onboarding/store';">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="reset-all">
                     <line x1="19" y1="12" x2="5" y2="12" class="reset-all"></line>
                     <polyline points="12 19 5 12 12 5" class="reset-all"></polyline>

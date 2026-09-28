@@ -522,7 +522,7 @@
     <div class="sys-table-panel">
         <div class="sys-heading-row">
             <div class="sys-panel-heading">Bank Slips to Verify</div>
-            <a href="#" class="sys-link">View all</a>
+            <a href="/portal/payments/bank-slips" class="sys-link">View all</a>
         </div>
 
         <div class="sys-list">
@@ -565,7 +565,7 @@
     <div class="sys-table-panel">
         <div class="sys-heading-row">
             <div class="sys-panel-heading">Open Support Tickets</div>
-            <a href="#" class="sys-link">View all</a>
+            <a href="/portal/support-tickets" class="sys-link">View all</a>
         </div>
 
         <div class="sys-list">
@@ -659,7 +659,7 @@
     <div class="sys-table-panel sys-panel-narrow">
         <div class="sys-heading-row">
             <div class="sys-panel-heading">New Feedback</div>
-            <a href="#" class="sys-link">View all</a>
+            <a href="/portal/support-tickets" class="sys-link">View all</a>
         </div>
 
         <div class="sys-list">

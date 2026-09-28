@@ -225,7 +225,7 @@
 
     <div class="messages-chat-list">
       <!-- Item 1: Marcus -->
-      <a href="/communication/chat-marcus" class="chat-list-item chat-item-active">
+      <a href="/member/messages/marcus" class="chat-list-item chat-item-active">
         <div class="chat-avatar-wrapper">
           <img src="/uploads/profiles/profile_1.jpg" alt="Coach Marcus" class="chat-avatar-img" />
           <span class="chat-status-dot chat-status-online"></span>
@@ -243,7 +243,7 @@
       </a>
 
       <!-- Item 2: Sarah -->
-      <a href="/communication/chat-sarah" class="chat-list-item">
+      <a href="/member/messages/sarah" class="chat-list-item">
         <div class="chat-avatar-wrapper">
           <img src="/uploads/profiles/profile_2.jpg" alt="Sarah Miller" class="chat-avatar-img" />
           <span class="chat-status-dot chat-status-offline"></span>
@@ -261,7 +261,7 @@
       </a>
 
       <!-- Item 3: Support -->
-      <a href="/communication/chat-support" class="chat-list-item">
+      <a href="/member/messages/support" class="chat-list-item">
         <div class="chat-avatar-wrapper">
           <img src="/uploads/Communication/SupportTeam.png" alt="FitnessHub Support" class="chat-avatar-img" />
           <span class="chat-status-dot chat-status-online"></span>

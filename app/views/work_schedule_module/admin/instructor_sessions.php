@@ -784,7 +784,7 @@ foreach ($sessions as $s) {
 }
 
 $weekLabel = $monday->format('M j') . ' – ' . ($monday->format('M') === $sunday->format('M') ? $sunday->format('j') : $sunday->format('M j')) . ', ' . $sunday->format('Y');
-$weekUrl = fn(DateTimeImmutable $d): string => '/instructor-sessions?week=' . $d->format('Y-m-d');
+$weekUrl = fn(DateTimeImmutable $d): string => '/portal/instructor-sessions?week=' . $d->format('Y-m-d');
 $clockSvg = '<svg class="is-repeat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>';
 $repeatSvg = '<svg class="is-repeat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>';
 ?>
@@ -836,7 +836,7 @@ $repeatSvg = '<svg class="is-repeat-icon" viewBox="0 0 24 24" fill="none" stroke
         <a class="is-tool" href="<?= $weekUrl($monday->modify('-7 days')) ?>" aria-label="Previous week" title="Previous week">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
         </a>
-        <a class="is-tool" href="/instructor-sessions">Today</a>
+        <a class="is-tool" href="/portal/instructor-sessions">Today</a>
         <a class="is-tool" href="<?= $weekUrl($monday->modify('+7 days')) ?>" aria-label="Next week" title="Next week">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
         </a>
@@ -1293,8 +1293,8 @@ $repeatSvg = '<svg class="is-repeat-icon" viewBox="0 0 24 24" fill="none" stroke
             saveBtn.disabled = true;
             error.hidden = true;
             try {
-                const result = await send('/instructor-sessions/save', data);
-                location.href = `/instructor-sessions?week=${result.week}`;
+                const result = await send('/api/instructor-sessions/save', data);
+                location.href = `/portal/instructor-sessions?week=${result.week}`;
             } catch (err) {
                 showError(err.message);
                 saveBtn.disabled = false;
@@ -1322,7 +1322,7 @@ $repeatSvg = '<svg class="is-repeat-icon" viewBox="0 0 24 24" fill="none" stroke
             data.append('id', current.id);
             data.append('scope', form.elements.scope.value);
             try {
-                await send('/instructor-sessions/delete', data);
+                await send('/api/instructor-sessions/delete', data);
                 location.reload();
             } catch (err) {
                 showError(err.message);

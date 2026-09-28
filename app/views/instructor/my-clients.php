@@ -489,21 +489,6 @@ $listUrl = function (array $changes) use ($search, $filter, $sort): string {
 $adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%' : ($c['status'] === 'new' ? 'New' : '—');
 ?>
 
-<div class="page-header">
-    <button class="icon-btn" type="button" aria-label="Toggle sidebar">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="9" y1="3" x2="9" y2="21"></line>
-        </svg>
-    </button>
-    <button class="icon-btn" type="button" aria-label="Add to favorites">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1C1C1C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-        </svg>
-    </button>
-    <span class="page-title">My Clients</span>
-</div>
-
 <div class="mc-view" data-view="table" id="mc-view">
     <?php if ($flash): ?>
         <div class="mc-flash mc-flash--<?= $flash['type'] ?>" role="<?= $flash['type'] === 'error' ? 'alert' : 'status' ?>">
@@ -523,6 +508,7 @@ $adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%
                 <?php endif; ?>
             </p>
         </div>
+        <a class="mc-btn" href="/portal/clients/export<?= htmlspecialchars($listUrl([])) ?>">Export CSV</a>
     </div>
 
     <section class="mc-stats">
@@ -550,7 +536,7 @@ $adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%
 
     <section class="mc-panel">
         <div class="mc-toolbar">
-            <form class="mc-search" method="get" action="/my-clients" role="search" id="mc-search-form">
+            <form class="mc-search" method="get" action="/portal/clients" role="search" id="mc-search-form">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(28,28,28,0.4)" stroke-width="2" stroke-linecap="round">
                     <circle cx="11" cy="11" r="7"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -561,7 +547,7 @@ $adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%
             </form>
 
             <?php foreach (ClientRosterService::FILTERS as $key => $label): ?>
-                <a href="/my-clients<?= htmlspecialchars($listUrl(['filter' => $key])) ?>" class="mc-chip <?= $filter === $key ? 'is-active' : '' ?>" <?= $filter === $key ? 'aria-current="true"' : '' ?>>
+                <a href="/portal/clients<?= htmlspecialchars($listUrl(['filter' => $key])) ?>" class="mc-chip <?= $filter === $key ? 'is-active' : '' ?>" <?= $filter === $key ? 'aria-current="true"' : '' ?>>
                     <?= htmlspecialchars($label) ?>
                     <span class="mc-chip__count"><?= (int) $filterCounts[$key] ?></span>
                 </a>
@@ -572,7 +558,7 @@ $adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%
                     <button type="button" class="mc-btn" id="mc-sort-btn" aria-haspopup="true" aria-expanded="false">Sort: <?= htmlspecialchars(ClientRosterService::SORTS[$sort]) ?></button>
                     <div class="mc-sort__menu" id="mc-sort-menu" hidden>
                         <?php foreach (ClientRosterService::SORTS as $key => $label): ?>
-                            <a href="/my-clients<?= htmlspecialchars($listUrl(['sort' => $key])) ?>" <?= $sort === $key ? 'aria-current="true"' : '' ?>><?= htmlspecialchars($label) ?></a>
+                            <a href="/portal/clients<?= htmlspecialchars($listUrl(['sort' => $key])) ?>" <?= $sort === $key ? 'aria-current="true"' : '' ?>><?= htmlspecialchars($label) ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -612,7 +598,7 @@ $adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%
                         <?php foreach ($clients as $client): ?>
                             <?php
                             [$statusLabel, $statusClass] = $statusTags[$client['status']];
-                            $href = '/my-clients/client?member=' . (int) $client['member_id'];
+                            $href = '/portal/clients/workout-plan?member=' . (int) $client['member_id'];
                             ?>
                             <tr data-href="<?= htmlspecialchars($href) ?>">
                                 <td>
@@ -653,7 +639,7 @@ $adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%
             <div class="mc-cards">
                 <?php foreach ($clients as $client): ?>
                     <?php [$statusLabel, $statusClass] = $statusTags[$client['status']]; ?>
-                    <a class="mc-card" href="/my-clients/client?member=<?= (int) $client['member_id'] ?>">
+                    <a class="mc-card" href="/portal/clients/workout-plan?member=<?= (int) $client['member_id'] ?>">
                         <div class="mc-client">
                             <span class="mc-avatar"><?= htmlspecialchars($initials($client['name'])) ?></span>
                             <div>
@@ -688,8 +674,8 @@ $adherenceText = fn(array $c) => $c['adherence'] !== null ? $c['adherence'] . '%
                 <?php if ($pages > 1): ?>· page <?= (int) $page ?> of <?= (int) $pages ?><?php endif; ?>
             </span>
             <div class="mc-pager">
-                <a class="mc-btn" href="/my-clients<?= htmlspecialchars($listUrl(['page' => $page - 1])) ?>" <?= $page <= 1 ? 'aria-disabled="true" tabindex="-1"' : '' ?>>Previous</a>
-                <a class="mc-btn" href="/my-clients<?= htmlspecialchars($listUrl(['page' => $page + 1])) ?>" <?= $page >= $pages ? 'aria-disabled="true" tabindex="-1"' : '' ?>>Next</a>
+                <a class="mc-btn" href="/portal/clients<?= htmlspecialchars($listUrl(['page' => $page - 1])) ?>" <?= $page <= 1 ? 'aria-disabled="true" tabindex="-1"' : '' ?>>Previous</a>
+                <a class="mc-btn" href="/portal/clients<?= htmlspecialchars($listUrl(['page' => $page + 1])) ?>" <?= $page >= $pages ? 'aria-disabled="true" tabindex="-1"' : '' ?>>Next</a>
             </div>
         </div>
     </section>

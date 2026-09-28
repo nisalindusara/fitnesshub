@@ -81,10 +81,10 @@ class MyClientsController extends Controller
         try {
             (new ClientRosterService())->addClient((int) $_SESSION['user_id'], $memberId, (string) ($_POST['client_type'] ?? ''));
         } catch (InvalidArgumentException $e) {
-            $this->redirect('/my-clients?error=' . urlencode($e->getMessage()));
+            $this->redirect('/portal/clients?error=' . urlencode($e->getMessage()));
         }
 
-        $this->redirect('/my-clients/client?member=' . $memberId . '&added=1');
+        $this->redirect('/portal/clients/workout-plan?member=' . $memberId . '&added=1');
     }
 
     // ------------------------------------------------------------------

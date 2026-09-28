@@ -45,7 +45,7 @@ class MembershipPlanController extends Controller
 
         if ($result['success']) {
             $_SESSION['flash_success'] = 'Membership plan created successfully.';
-            $this->redirect('/membership-plans/show?id=' . (int) $result['plan_id']);
+            $this->redirect('/portal/membership-plans/show?id=' . (int) $result['plan_id']);
         }
 
         $this->render('account_module/membership_plans/create', 'staff-layout', [
@@ -62,7 +62,7 @@ class MembershipPlanController extends Controller
 
         if (!$details) {
             $_SESSION['flash_error'] = 'Membership plan not found.';
-            $this->redirect('/membership-plans');
+            $this->redirect('/portal/membership-plans');
         }
 
         $this->render('account_module/membership_plans/show', 'staff-layout', [
@@ -81,7 +81,7 @@ class MembershipPlanController extends Controller
 
         if (!$details) {
             $_SESSION['flash_error'] = 'Membership plan not found.';
-            $this->redirect('/membership-plans');
+            $this->redirect('/portal/membership-plans');
         }
 
         $plan = $details['plan'];
@@ -110,7 +110,7 @@ class MembershipPlanController extends Controller
 
         if ($result['success']) {
             $_SESSION['flash_success'] = 'Membership plan updated successfully.';
-            $this->redirect('/membership-plans/show?id=' . $planId);
+            $this->redirect('/portal/membership-plans/show?id=' . $planId);
         }
 
         $old = $_POST;
@@ -129,11 +129,11 @@ class MembershipPlanController extends Controller
 
         if ($this->service->deactivate($planId)) {
             $_SESSION['flash_success'] = 'Membership plan deactivated successfully.';
-            $this->redirect('/membership-plans/show?id=' . $planId);
+            $this->redirect('/portal/membership-plans/show?id=' . $planId);
         }
 
         $_SESSION['flash_error'] = 'Unable to deactivate the membership plan.';
-        $this->redirect('/membership-plans');
+        $this->redirect('/portal/membership-plans');
     }
 
     private function pullFlash(): ?array

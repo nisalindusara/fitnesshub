@@ -235,7 +235,7 @@
 
         <div class="cs-actions">
 
-            <a href="#" class="cs-btn">
+            <a href="/portal/classes/sessions/create?id=<?= (int) $session['id'] ?>" class="cs-btn">
                 Edit Session
             </a>
 

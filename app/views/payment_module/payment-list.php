@@ -127,7 +127,7 @@
 
         <div class="toolbar">
             <div class="toolbar-actions">
-                <button id="payments-record-btn">+ Record Payment</button>
+                <button id="payments-record-btn" onclick="window.location.href='/portal/payments/record'">+ Record Payment</button>
                 <button id="payments-filter-btn">&#9707; Filter</button>
                 <button id="payments-sort-btn">&#8645; Sort</button>
             </div>

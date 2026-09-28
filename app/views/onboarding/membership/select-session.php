@@ -154,6 +154,11 @@
         border-color: rgba(255, 255, 255, 0.3);
     }
 
+    .select-session-slot-btn[aria-pressed="true"] {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: #ffffff;
+    }
+
     .select-session-time-text {
         font-family: 'Barlow Condensed', sans-serif;
         font-weight: 900;
@@ -245,7 +250,7 @@
 
 <div class="select-session-layout">
     <div class="select-session-left-panel">
-        <button class="back-btn" onclick="window.location.href='/';">
+        <button class="back-btn" onclick="window.location.href='/onboarding/membership/want-session';">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -294,10 +299,10 @@
             </div>
 
             <div class="select-session-actions-container">
-                <button class="select-session-confirm-btn" disabled>
+                <button class="select-session-confirm-btn" disabled onclick="window.location.href='/register';">
                     <span class="select-session-confirm-text">Confirm PT Session</span>
                 </button>
-                <button class="select-session-later-btn">
+                <button class="select-session-later-btn" onclick="window.location.href='/register';">
                     <span class="select-session-later-text">Do it later</span>
                 </button>
             </div>
@@ -305,3 +310,11 @@
         </div>
     </div>
 </div>
+<script>
+    // Pick one slot, then "Confirm PT Session" becomes available
+    const slotButtons = document.querySelectorAll('.select-session-slot-btn');
+    slotButtons.forEach(btn => btn.addEventListener('click', () => {
+        slotButtons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+        document.querySelector('.select-session-confirm-btn').disabled = false;
+    }));
+</script>

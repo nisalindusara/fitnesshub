@@ -351,7 +351,7 @@
 
                 <!-- Add New Dialog (Now with a Form) -->
                 <dialog id="categoryDialog">
-                    <form action="/portal/ecom/categories/add-category" method="post">
+                    <form action="/portal/categories/create" method="post">
                         <div class="dialog-header">
                             <h2 class="dialog-title">New Category</h2>
                             <p class="dialog-subtitle">Add a category to organize your store products.</p>
@@ -419,7 +419,7 @@
 
             <!-- Edit Category Dialog -->
             <dialog id="edit-dialog">
-                <form action="/portal/ecom/categories" method="post">
+                <form action="/portal/categories/update" method="post">
                     <div class="dialog-header">
                         <h2 class="dialog-title">Edit Category</h2>
                         <p class="dialog-subtitle">Update the name of your category.</p>
@@ -441,7 +441,7 @@
 
             <!-- Delete Category Dialog (Now with a Form) -->
             <dialog id="delete-dialog">
-                <form action="/portal/ecom/categories/delete-category" method="post">
+                <form action="/portal/categories/delete" method="post">
                     <input type="hidden" name="category_id" id="delete-dialog-category-id">
 
                     <div class="dialog-header">

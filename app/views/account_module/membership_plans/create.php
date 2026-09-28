@@ -13,7 +13,7 @@
     <div class="mp-form-layout">
         <div class="mp-card">
             <div class="mp-card-head"><h2>Plan details</h2><p>Set the core details, pricing, and availability for this plan.</p></div>
-            <form method="post" action="/membership-plans/store" id="membershipPlanForm" novalidate>
+            <form method="post" action="/portal/membership-plans/store" id="membershipPlanForm" novalidate>
                 <div class="mp-field">
                     <label for="plan_name">Plan Name *</label>
                     <input class="<?= isset($errors['plan_name']) ? 'is-invalid' : '' ?>" id="plan_name" name="plan_name" type="text" value="<?= htmlspecialchars($old['plan_name'] ?? '') ?>" placeholder="e.g. Premium Monthly">
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="mp-form-actions">
-                    <a href="/membership-plans" class="mp-btn mp-btn--secondary">Cancel</a>
+                    <a href="/portal/membership-plans" class="mp-btn mp-btn--secondary">Cancel</a>
                     <button type="submit" class="mp-btn mp-btn--primary">Create Plan</button>
                 </div>
             </form>

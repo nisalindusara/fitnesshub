@@ -165,7 +165,7 @@
 <div class="ticket-page">
   <div class="ticket-card">
 
-    <form class="support-ticket-form" action="/communication/submit-ticket" method="POST" enctype="multipart/form-data">
+    <form class="support-ticket-form" action="/member/support" method="POST" enctype="multipart/form-data">
 
       <!-- Category Dropdown -->
       <div class="form-group">

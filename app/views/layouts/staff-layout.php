@@ -21,62 +21,66 @@ $role     = $_SESSION['role_name'] ?? '';
 $navItems = [
     // Instructor: only shown to users with view_own_clients ('requires'),
     // so managers with the same permissions don't get these links at the top.
-    ['section' => 'My Work', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/instructor', 'permission' => 'view_own_clients'],
-    ['section' => 'My Work', 'label' => 'My Clients', 'icon' => 'users', 'route' => '/my-clients', 'permission' => 'view_own_clients'],
-    ['section' => 'My Work', 'label' => 'My Schedule', 'icon' => 'calendar', 'route' => '/my-schedule', 'permission' => 'view_own_schedule', 'requires' => 'view_own_clients'],
+    ['section' => 'My Work', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/portal/instructor', 'permission' => 'view_own_clients'],
+    ['section' => 'My Work', 'label' => 'My Clients', 'icon' => 'users', 'route' => '/portal/clients', 'permission' => 'view_own_clients'],
+    ['section' => 'My Work', 'label' => 'My Schedule', 'icon' => 'calendar', 'route' => '/portal/schedule', 'permission' => 'view_own_schedule', 'requires' => 'view_own_clients'],
     ['section' => 'My Work', 'label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/portal/attendance', 'permission' => 'manage_attendance', 'requires' => 'view_own_clients'],
-    ['section' => 'My Work', 'label' => 'Adherence Tracking', 'icon' => 'activity', 'route' => '/adherence', 'permission' => 'view_adherence', 'requires' => 'view_own_clients'],
-    ['section' => 'My Work', 'label' => 'Messages', 'icon' => 'message-circle', 'route' => '/messages', 'permission' => 'manage_messages', 'requires' => 'view_own_clients'],
+    ['section' => 'My Work', 'label' => 'Adherence Tracking', 'icon' => 'activity', 'route' => '/portal/adherence', 'permission' => 'view_adherence', 'requires' => 'view_own_clients'],
+    ['section' => 'My Work', 'label' => 'Meal Plan Requests', 'icon' => 'clipboard-list', 'route' => '/portal/meal-plan-requests', 'permission' => 'manage_action_plans', 'requires' => 'view_own_clients'],
+    ['section' => 'My Work', 'label' => 'Messages', 'icon' => 'message-circle', 'route' => '/portal/messages', 'permission' => 'manage_messages', 'requires' => 'view_own_clients'],
 
     // Operations
-    // Any of these permissions shows it: staff overview, or the e-commerce admin's overview
-    ['section' => 'Operations', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/portal', 'permission' => ['view_overview', 'manage_orders', 'manage_inventory']],
+    // Same permissions as the /portal route: any one of the dashboard sections
+    ['section' => 'Operations', 'label' => 'Overview', 'icon' => 'pie-chart', 'route' => '/portal', 'permission' => ['view_daily_overview', 'view_ecommerce_overview', 'view_system_overview', 'view_manager_summary']],
 
     ['section' => 'Operations', 'label' => 'Members', 'icon' => 'users', 'children' => [
-        ['label' => 'Members', 'icon' => 'users', 'route' => '/members', 'permission' => 'manage_members'],
-        ['label' => 'Membership Plans', 'icon' => 'id-card', 'route' => '/membership-plans', 'permission' => 'manage_membership_plans'],
+        ['label' => 'Members', 'icon' => 'users', 'route' => '/portal/members', 'permission' => 'manage_members'],
+        ['label' => 'Membership Plans', 'icon' => 'id-card', 'route' => '/portal/membership-plans', 'permission' => 'manage_membership_plans'],
     ]],
 
     ['section' => 'Operations', 'label' => 'Scheduling', 'icon' => 'calendar', 'children' => [
-        ['label' => 'Classes', 'icon' => 'folder', 'route' => '/classes', 'permission' => 'manage_classes'],
-        ['label' => 'Personal Training', 'icon' => 'user-check', 'route' => '/personal-training', 'permission' => 'manage_personal_training'],
-        ['label' => 'Instructor Sessions', 'icon' => 'calendar', 'route' => '/instructor-sessions', 'permission' => 'manage_schedule'],
-        ['label' => 'Staff Availability', 'icon' => 'calendar', 'route' => '/staff-availability', 'permission' => 'manage_staff_schedule'],
-        ['label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/attendance', 'permission' => 'manage_attendance'],
+        ['label' => 'Classes', 'icon' => 'folder', 'route' => '/portal/classes', 'permission' => 'manage_classes'],
+        ['label' => 'Personal Training', 'icon' => 'user-check', 'route' => '/portal/personal-training', 'permission' => 'manage_personal_training'],
+        ['label' => 'Instructor Sessions', 'icon' => 'calendar', 'route' => '/portal/instructor-sessions', 'permission' => 'manage_schedule'],
+        ['label' => 'Staff Availability', 'icon' => 'calendar', 'route' => '/portal/staff-availability', 'permission' => 'manage_schedule'],
+        ['label' => 'Leave Requests', 'icon' => 'calendar', 'route' => '/portal/leave-requests', 'permission' => 'manage_leave_requests'],
+        ['label' => 'Attendance', 'icon' => 'clipboard-check', 'route' => '/portal/attendance', 'permission' => 'manage_attendance'],
     ]],
 
     ['section' => 'Operations', 'label' => 'Communication', 'icon' => 'message-circle', 'children' => [
-        ['label' => 'Messages', 'icon' => 'message-circle', 'route' => '/messages', 'permission' => 'manage_messages'],
-        ['label' => 'Notifications', 'icon' => 'bell', 'route' => '/notifications', 'permission' => 'manage_notifications'],
-        ['label' => 'Support', 'icon' => 'headset', 'route' => '/admin/support_tickets', 'permission' => 'handle_support_tickets'],
+        ['label' => 'Messages', 'icon' => 'message-circle', 'route' => '/portal/messages', 'permission' => 'manage_messages'],
+        ['label' => 'Notifications', 'icon' => 'bell', 'route' => '/portal/notifications', 'permission' => 'manage_notifications'],
+        ['label' => 'Support', 'icon' => 'headset', 'route' => '/portal/support-tickets', 'permission' => 'handle_support_tickets'],
+        ['label' => 'Staff Requests', 'icon' => 'headset', 'route' => '/portal/staff-requests', 'permission' => 'manage_leave_requests'],
     ]],
 
     ['section' => 'Operations', 'label' => 'Payments', 'icon' => 'credit-card', 'children' => [
-        ['label' => 'Transactions', 'icon' => 'bar-chart', 'route' => '/payments/transactions', 'permission' => 'view_payments_overview'],
-        ['label' => 'Bank Slip Verification', 'icon' => 'file-check', 'route' => '/payments/bank-slips', 'permission' => 'verify_bank_slips'],
-        ['label' => 'Payment Settings', 'icon' => 'settings', 'route' => '/payments/payment-settings', 'permission' => 'change_payment_settings'],
+        ['label' => 'Transactions', 'icon' => 'bar-chart', 'route' => '/portal/payments', 'permission' => 'view_payments_overview'],
+        ['label' => 'Record Payment', 'icon' => 'credit-card', 'route' => '/portal/payments/record', 'permission' => 'add_payment'],
+        ['label' => 'Bank Slip Verification', 'icon' => 'file-check', 'route' => '/portal/payments/bank-slips', 'permission' => 'verify_bank_slips'],
+        ['label' => 'Payment Settings', 'icon' => 'settings', 'route' => '/portal/payments/settings', 'permission' => 'change_payment_settings'],
     ]],
 
     ['section' => 'Operations', 'label' => 'Training', 'icon' => 'clipboard-list', 'children' => [
-        ['label' => 'Assigned Plans', 'icon' => 'clipboard-list', 'route' => '/action-plans', 'permission' => 'manage_action_plans'],
-        ['label' => 'Adherence Tracking', 'icon' => 'activity', 'route' => '/adherence', 'permission' => 'view_adherence'],
+        ['label' => 'Assigned Plans', 'icon' => 'clipboard-list', 'route' => '/portal/action-plans', 'permission' => 'manage_action_plans'],
+        ['label' => 'Adherence Tracking', 'icon' => 'activity', 'route' => '/portal/adherence', 'permission' => 'view_adherence'],
     ]],
 
     ['section' => 'Operations', 'label' => 'Facility', 'icon' => 'tool', 'children' => [
-        ['label' => 'Equipment', 'icon' => 'tool', 'route' => '/equipment', 'permission' => 'manage_equipment'],
-        ['label' => 'Facility Map', 'icon' => 'map', 'route' => '/facility-map', 'permission' => 'view_facility_map'],
+        ['label' => 'Equipment', 'icon' => 'tool', 'route' => '/portal/equipment', 'permission' => 'manage_equipment'],
+        ['label' => 'Facility Map', 'icon' => 'map', 'route' => '/portal/facility-map', 'permission' => 'view_facility_map'],
     ]],
 
     ['section' => 'Operations', 'label' => 'Insights', 'icon' => 'trending-up', 'children' => [
-        ['label' => 'Reports', 'icon' => 'trending-up', 'route' => '/reports', 'permission' => 'view_reports'],
-        ['label' => 'At-Risk Members', 'icon' => 'alert-triangle', 'route' => '/reports/at-risk', 'permission' => 'view_at_risk_members'],
+        ['label' => 'Reports', 'icon' => 'trending-up', 'route' => '/portal/reports', 'permission' => 'view_reports'],
+        ['label' => 'At-Risk Members', 'icon' => 'alert-triangle', 'route' => '/portal/reports/at-risk', 'permission' => 'view_at_risk_members'],
     ]],
 
     // eCommerce
     ['section' => 'eCommerce', 'label' => 'eCommerce', 'icon' => 'package', 'children' => [
         ['label' => 'Orders', 'icon' => 'package', 'route' => '/portal/orders', 'permission' => 'manage_orders'],
-        ['label' => 'Products', 'icon' => 'box', 'route' => '/portal/ecom/products', 'permission' => 'manage_inventory'],
-        ['label' => 'Categories', 'icon' => 'tag', 'route' => '/portal/ecom/categories', 'permission' => 'manage_inventory'],
+        ['label' => 'Products', 'icon' => 'box', 'route' => '/portal/products', 'permission' => 'manage_inventory'],
+        ['label' => 'Categories', 'icon' => 'tag', 'route' => '/portal/categories', 'permission' => 'manage_inventory'],
     ]],
 ];
 
@@ -130,9 +134,24 @@ foreach ($filtered as $item) {
     }
 }
 
-// Views can highlight a parent nav item for nested pages (e.g. /my-clients/...)
-$currentRoute   = $currentRoute ?? '';
-$activeNavRoute = $activeNavRoute ?? $currentRoute;
+// Highlight the nav item for the current page, or for its closest parent
+// (e.g. /portal/orders/view highlights Orders). Views can still pass $activeNavRoute.
+$currentRoute = $currentRoute ?? '';
+if (!isset($activeNavRoute)) {
+    $activeNavRoute = '';
+    foreach ($navItems as $item) {
+        foreach ($item['children'] ?? [$item] as $entry) {
+            $route = $entry['route'];
+            $matches = $currentRoute === $route || str_starts_with($currentRoute, $route . '/');
+            if ($matches && $route !== '/portal' && strlen($route) > strlen($activeNavRoute)) {
+                $activeNavRoute = $route;
+            }
+        }
+    }
+    if ($activeNavRoute === '' && $currentRoute === '/portal') {
+        $activeNavRoute = '/portal';
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -187,7 +206,7 @@ $activeNavRoute = $activeNavRoute ?? $currentRoute;
 
         <div class="sidebar-bottom">
             <div class="fh-account">
-                <a href="/portal/staff-profile" class="fh-account-top<?= $activeNavRoute === '/profile' ? ' fh-account-top--active' : '' ?>" aria-label="View your profile">
+                <a href="/portal/profile" class="fh-account-top<?= $currentRoute === '/portal/profile' ? ' fh-account-top--active' : '' ?>" aria-label="View your profile">
                     <?php if (!empty($avatar)): ?>
                         <img
                             src="<?= htmlspecialchars('/' . ltrim($avatar, '/')) ?>"

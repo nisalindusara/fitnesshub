@@ -55,10 +55,10 @@
             <!-- Repeat this block 6 times to preview the grid layout -->
             <div class="product-card">
                 <div class="product-image">
-                    <a href="/sample-product"><img src="https://images.unsplash.com/photo-1693996045300-521e9d08cabc?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Vanilla Whey Protein 2 lb" loading="lazy" width="400" height="500"></a>
+                    <a href="/store/product"><img src="https://images.unsplash.com/photo-1693996045300-521e9d08cabc?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Vanilla Whey Protein 2 lb" loading="lazy" width="400" height="500"></a>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-title"><a href="/sample-product">Vanilla Whey Protein 2 lb</a></h3>
+                    <h3 class="product-title"><a href="/store/product">Vanilla Whey Protein 2 lb</a></h3>
                     <div class="product-bottom">
                         <span class="product-price">Rs.14 500.00</span>
                         <button class="add-btn">
@@ -74,10 +74,10 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <a href="/sample-product"><img src="https://images.unsplash.com/photo-1704650311298-4d6915d34c64?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Creatine Monohydrate 300 g" loading="lazy" width="400" height="500"></a>
+                    <a href="/store/product"><img src="https://images.unsplash.com/photo-1704650311298-4d6915d34c64?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Creatine Monohydrate 300 g" loading="lazy" width="400" height="500"></a>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-title"><a href="/sample-product">Creatine Monohydrate 300 g</a></h3>
+                    <h3 class="product-title"><a href="/store/product">Creatine Monohydrate 300 g</a></h3>
                     <div class="product-bottom">
                         <span class="product-price">Rs.7 500.00</span>
                         <button class="add-btn">
@@ -92,10 +92,10 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <a href="/sample-product"><img src="https://images.unsplash.com/photo-1775199603318-7f8a9a63b40d?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Whey Protein &amp; Shaker Bundle" loading="lazy" width="400" height="500"></a>
+                    <a href="/store/product"><img src="https://images.unsplash.com/photo-1775199603318-7f8a9a63b40d?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Whey Protein &amp; Shaker Bundle" loading="lazy" width="400" height="500"></a>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-title"><a href="/sample-product">Whey Protein &amp; Shaker Bundle</a></h3>
+                    <h3 class="product-title"><a href="/store/product">Whey Protein &amp; Shaker Bundle</a></h3>
                     <div class="product-bottom">
                         <span class="product-price">Rs.16 900.00</span>
                         <button class="add-btn">
@@ -110,10 +110,10 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <a href="/sample-product"><img src="https://images.unsplash.com/photo-1603077492579-39ff927823db?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Rubber Hex Dumbbells 5 kg (Pair)" loading="lazy" width="400" height="500"></a>
+                    <a href="/store/product"><img src="https://images.unsplash.com/photo-1603077492579-39ff927823db?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Rubber Hex Dumbbells 5 kg (Pair)" loading="lazy" width="400" height="500"></a>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-title"><a href="/sample-product">Rubber Hex Dumbbells 5 kg (Pair)</a></h3>
+                    <h3 class="product-title"><a href="/store/product">Rubber Hex Dumbbells 5 kg (Pair)</a></h3>
                     <div class="product-bottom">
                         <span class="product-price">Rs.11 000.00</span>
                         <button class="add-btn">
@@ -128,10 +128,10 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <a href="/sample-product"><img src="https://images.unsplash.com/photo-1584827386916-b5351d3ba34b?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Mini Loop Resistance Band Set" loading="lazy" width="400" height="500"></a>
+                    <a href="/store/product"><img src="https://images.unsplash.com/photo-1584827386916-b5351d3ba34b?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Mini Loop Resistance Band Set" loading="lazy" width="400" height="500"></a>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-title"><a href="/sample-product">Mini Loop Resistance Band Set</a></h3>
+                    <h3 class="product-title"><a href="/store/product">Mini Loop Resistance Band Set</a></h3>
                     <div class="product-bottom">
                         <span class="product-price">Rs.2 950.00</span>
                         <button class="add-btn">
@@ -146,10 +146,10 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <a href="/sample-product"><img src="https://images.unsplash.com/photo-1767404890803-228d5390fcd4?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Pull-Up Assist Band Set" loading="lazy" width="400" height="500"></a>
+                    <a href="/store/product"><img src="https://images.unsplash.com/photo-1767404890803-228d5390fcd4?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Pull-Up Assist Band Set" loading="lazy" width="400" height="500"></a>
                 </div>
                 <div class="product-info">
-                    <h3 class="product-title"><a href="/sample-product">Pull-Up Assist Band Set</a></h3>
+                    <h3 class="product-title"><a href="/store/product">Pull-Up Assist Band Set</a></h3>
                     <div class="product-bottom">
                         <span class="product-price">Rs.6 500.00</span>
                         <button class="add-btn">

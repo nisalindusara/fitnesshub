@@ -50,7 +50,7 @@ fitnesshub/
 │   ├── controllers/        Request handling
 │   ├── core/               Framework internals (router, base classes, database)
 │   ├── models/             Data access
-│   ├── routes/             ROute registration
+│   ├── routes/             Route registration (URL naming rules in routes/README.md)
 │   ├── services/           Business rules
 │   └── views/              Templates, organised by actor
 │   └── bootstrap.php       Start-up story

@@ -210,11 +210,11 @@
         </div>
 
         <div class="cls-actions">
-            <a href="/classes/create?id=1" class="cls-btn">
+            <a href="/portal/classes/create?id=1" class="cls-btn">
                 Edit Class
             </a>
 
-            <a href="/classes/sessions/create" class="cls-btn cls-primary">
+            <a href="/portal/classes/sessions/create" class="cls-btn cls-primary">
                  Schedule Session
             </a>
         </div>
@@ -315,7 +315,7 @@
                     </td>
 
                     <td>
-                        <a href="#" class="cls-action-view">
+                        <a href="/portal/classes/sessions/show?id=1" class="cls-action-view">
                             View
                         </a>
 

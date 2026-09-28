@@ -2,6 +2,18 @@
 
 class LeaveRequest extends Model
 {
+    /** Every request with the instructor's name, pending first, newest first. */
+    public function all(): array
+    {
+        $query = "SELECT lr.id, lr.leave_type, lr.reason, lr.start_date, lr.end_date, lr.status, lr.submitted_at,
+                         i.first_name, i.last_name
+                  FROM leave_requests lr
+                  JOIN users i ON i.id = lr.instructor_id
+                  ORDER BY lr.status = 'pending' DESC, lr.submitted_at DESC, lr.id DESC";
+
+        return $this->db->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     /** The request with the names of the instructor and the staff who decided / cancelled it. */
     public function find(int $id): ?array
     {

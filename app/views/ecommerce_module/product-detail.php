@@ -402,7 +402,7 @@
             </div>
         </div>
         <div class="header-right">
-            <div class="action-btn-edit" onclick="location.href='http://fitnesshub.local/portal/ecom/products/edit-product';" style="cursor: pointer;">
+            <div class="action-btn-edit" onclick="location.href='/portal/products/edit';" style="cursor: pointer;">
                 <span class="btn-text-edit">Edit</span>
             </div>
             <div class="action-btn-delete">

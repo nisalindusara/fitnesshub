@@ -133,11 +133,11 @@ $active       = fn($route) => $currentRoute === $route ? ' is-active' : '';
                 <div>
                     <p class="site-footer__title">Resources</p>
                     <ul class="site-footer__list">
-                        <li><a href="#">Workout Library</a></li>
-                        <li><a href="#">Nutrition Guide</a></li>
-                        <li><a href="#">Member FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="/onboarding">Get Started</a></li>
+                        <li><a href="/login">Member Login</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions">Terms of Use</a></li>
                     </ul>
                 </div>
 

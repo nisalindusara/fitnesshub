@@ -298,7 +298,7 @@
     <div class="toolbar-wrapper">
         <div class="toolbar-left-actions">
             <!-- Add Button -->
-            <div class="action-icon-button" onclick="location.href='http://fitnesshub.local/portal/ecom/products/add-product';" style="cursor: pointer;">
+            <div class="action-icon-button" onclick="location.href='/portal/products/create';" style="cursor: pointer;">
                 <svg class="icon-svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 4V16M4 10H16" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round" />
                 </svg>
@@ -341,7 +341,7 @@
     <div class="product-grid">
 
         <!-- Card 1 -->
-        <div class="product-card" onclick="location.href='http://fitnesshub.local/portal/ecom/products/view-product';" style="cursor: pointer;">
+        <div class="product-card" onclick="location.href='/portal/products/view';" style="cursor: pointer;">
             <div class="card-image-wrapper">
                 <img class="image-placeholder bg-dark-gray" src="/uploads/products/performance_tee.jpg">
             </div>

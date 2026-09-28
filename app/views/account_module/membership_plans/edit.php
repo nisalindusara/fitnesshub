@@ -10,7 +10,7 @@
     <div class="mp-form-layout">
         <div class="mp-card">
             <div class="mp-card-head"><h2>Plan details</h2><p>Changes apply to future purchases. Existing memberships remain unchanged.</p></div>
-            <form method="post" action="/membership-plans/update" id="membershipPlanForm" novalidate>
+            <form method="post" action="/portal/membership-plans/update" id="membershipPlanForm" novalidate>
                 <input type="hidden" name="plan_id" value="<?= (int) ($old['plan_id'] ?? 0) ?>">
                 <div class="mp-field">
                     <label for="plan_name">Plan Name *</label>
@@ -27,7 +27,7 @@
                     <div class="mp-field"><label for="included_pt_sessions">Included PT Sessions</label><input class="<?= isset($errors['included_pt_sessions']) ? 'is-invalid' : '' ?>" id="included_pt_sessions" name="included_pt_sessions" type="number" min="0" value="<?= htmlspecialchars($old['included_pt_sessions'] ?? 0) ?>"><?php if (isset($errors['included_pt_sessions'])): ?><small class="mp-error"><?= htmlspecialchars($errors['included_pt_sessions']) ?></small><?php endif; ?></div>
                 </div>
                 <div class="mp-field"><label>Status</label><div class="mp-segmented"><label><input type="radio" name="status" value="ACTIVE" <?= strtoupper($old['status'] ?? 'ACTIVE') === 'ACTIVE' ? 'checked' : '' ?>><span>Active</span></label><label><input type="radio" name="status" value="INACTIVE" <?= strtoupper($old['status'] ?? '') === 'INACTIVE' ? 'checked' : '' ?>><span>Inactive</span></label></div></div>
-                <div class="mp-form-actions"><a href="/membership-plans/show?id=<?= (int) ($old['plan_id'] ?? 0) ?>" class="mp-btn mp-btn--secondary">Cancel</a><button type="submit" class="mp-btn mp-btn--primary">Save Changes</button></div>
+                <div class="mp-form-actions"><a href="/portal/membership-plans/show?id=<?= (int) ($old['plan_id'] ?? 0) ?>" class="mp-btn mp-btn--secondary">Cancel</a><button type="submit" class="mp-btn mp-btn--primary">Save Changes</button></div>
             </form>
         </div>
         <aside class="mp-card mp-summary-card">

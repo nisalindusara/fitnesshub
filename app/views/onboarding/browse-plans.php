@@ -29,14 +29,14 @@
                 <p class="description">A membership gives you unlimited access to the gym floor, all group classes, and personal coaching - everything you need to reach your goals faster.</p>
 
                 <div class="buttons-container-step1">
-                    <button class="btn btn-primary-step1" onclick="window.location.href='/#membership-plans';">
+                    <button class="btn btn-primary-step1" onclick="window.location.href='/onboarding/membership/select-goal';">
                         BROWSE PLANS
                         <svg class="icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
 
-                    <button class="btn btn-skip" onclick="window.location.href='/onboarding/view-classes';">SKIP FOR NOW</button>
+                    <button class="btn btn-skip" onclick="window.location.href='/onboarding/class';">SKIP FOR NOW</button>
                 </div>
             </div>
 

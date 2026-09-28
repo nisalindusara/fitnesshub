@@ -22,18 +22,18 @@ class CategoryController extends Controller
             $newName = trim($_POST['new_name'] ?? '');
 
             if ($categoryId <= 0 || $newName === '') {
-                $this->redirect('/portal/ecom/categories?error=invalid_input');
+                $this->redirect('/portal/categories?error=invalid_input');
                 return;
             }
 
             $result = $this->categoryModel->updateCategoryName($categoryId, $newName);
 
             if ($result === false) {
-                $this->redirect('/portal/ecom/categories?error=update_failed');
+                $this->redirect('/portal/categories?error=update_failed');
                 return;
             }
 
-            $this->redirect('/portal/ecom/categories?success=1');
+            $this->redirect('/portal/categories?success=1');
         }
     }
 
@@ -46,11 +46,11 @@ class CategoryController extends Controller
             $result = $this->categoryModel->addNewCategory($newCategoryName, $newCategoryDescription);
 
             if ($result == false) {
-                $this->redirect('/portal/ecom/categories?error=insertion_failed');
+                $this->redirect('/portal/categories?error=insertion_failed');
                 return;
             }
 
-            $this->redirect('/portal/ecom/categories?success=1');
+            $this->redirect('/portal/categories?success=1');
         }
     }
 
@@ -66,18 +66,18 @@ class CategoryController extends Controller
                 if ($itemCount > 0) {
                     // Optional: set a $_SESSION variable here to show an error banner to the user
 
-                    header('Location: /portal/ecom/categories?error=category_not_empty');
+                    header('Location: /portal/categories?error=category_not_empty');
                     exit;
                 }
 
                 $this->categoryModel->deleteCategory($categoryId);
 
                 // Optional: Set a success session messag
-                header('Location: /portal/ecom/categories?success=category_deleted');
+                header('Location: /portal/categories?success=category_deleted');
                 exit;
             }
 
-            header('Location: /portal/ecom/categories?error=invalid_id');
+            header('Location: /portal/categories?error=invalid_id');
             exit;
         }
     }
