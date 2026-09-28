@@ -48,7 +48,7 @@ $navItems = [
     ['section' => 'Operations', 'label' => 'Communication', 'icon' => 'message-circle', 'children' => [
         ['label' => 'Messages', 'icon' => 'message-circle', 'route' => '/messages', 'permission' => 'manage_messages'],
         ['label' => 'Notifications', 'icon' => 'bell', 'route' => '/notifications', 'permission' => 'manage_notifications'],
-        ['label' => 'Support', 'icon' => 'headset', 'route' => '/support', 'permission' => 'handle_support_tickets'],
+        ['label' => 'Support', 'icon' => 'headset', 'route' => '/admin/support_tickets', 'permission' => 'handle_support_tickets'],
     ]],
 
     ['section' => 'Operations', 'label' => 'Payments', 'icon' => 'credit-card', 'children' => [
