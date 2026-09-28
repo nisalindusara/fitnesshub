@@ -1405,6 +1405,44 @@ INSERT INTO `leave_request_sessions` (`leave_request_id`, `work_session_id`, `se
 (4, 33, '2026-09-21', '09:00:00', '10:00:00', 'class', 'Strength Foundations, Studio A', 13, NULL, 'kept', NULL),
 (4, 34, '2026-09-21', '14:00:00', '14:45:00', 'pt', 'Amelia Davis, mobility assessment', 13, NULL, 'kept', NULL);
 
+-- --------------------------------------------------------
+-- Communication module: one-to-one messages between an instructor and a member.
+-- Deleting a message sets `deleted_at` (soft delete); only the sender can delete.
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `messages`;
+
+--
+-- Table structure for table `messages`
+--
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender_id` int(11) NOT NULL,
+  `receiver_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `is_read` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_msg_thread` (`sender_id`,`receiver_id`,`created_at`),
+  KEY `idx_msg_inbox` (`receiver_id`,`is_read`),
+  CONSTRAINT `fk_msg_sender` FOREIGN KEY (`sender_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_msg_receiver` FOREIGN KEY (`receiver_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Messaging seed: Instructor One (12) chatting with clients 1 and 11. The last two messages from user 1 are unread.
+--
+INSERT INTO `messages` (`id`, `sender_id`, `receiver_id`, `message`, `is_read`, `created_at`) VALUES
+(1, 12, 1, 'Hi! I have published your Hypertrophy Block A plan. Take a look and let me know if you have questions.', 1, '2026-09-20 18:05:00'),
+(2, 1, 12, 'Thanks coach! Looks great. How heavy should I go on overhead press?', 1, '2026-09-20 19:12:00'),
+(3, 12, 1, 'Keep it under 12 reps and focus on form. We will check it together on Friday.', 1, '2026-09-20 19:30:00'),
+(4, 1, 12, 'My shoulder felt a bit tight after yesterday''s session.', 0, '2026-09-27 08:40:00'),
+(5, 1, 12, 'Should I skip pressing today?', 0, '2026-09-27 08:41:00'),
+(6, 11, 12, 'Is the group class still on this Thursday?', 1, '2026-09-25 10:15:00'),
+(7, 12, 11, 'Yes, same time in Studio A. See you there!', 1, '2026-09-25 11:02:00');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
