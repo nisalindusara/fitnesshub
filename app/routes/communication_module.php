@@ -20,6 +20,7 @@ $router->get('/communication/NonPT-messages', [CommunicationController::class, '
 $router->get('/communication/available-instructors', [CommunicationController::class, 'availableInstructors']);
 $router->get('/instructor/profile/kavindu', [CommunicationController::class, 'profileKavindu']);
 $router->get('/communication/Empty-support-tickets', [CommunicationController::class, 'EmptySupportTickets']);
+$router->get('/communication/user-support-ticket', [CommunicationController::class, 'UserSupportTickets']);
 $router->get('/communication/user-ticketForm', [CommunicationController::class, 'userTicketForm']);
 $router->get('/communication/instructor-tickets', [CommunicationController::class, 'InstructorTickets']);
 $router->get('/communication/instructor-messages', [CommunicationController::class, 'InstructorMessages']);

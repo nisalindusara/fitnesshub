@@ -61,7 +61,7 @@ $active       = fn($route) => $currentRoute === $route ? ' is-active' : '';
                     </a>
                 <?php else: ?>
                     <a href="/login" class="site-btn site-btn--outline site-nav__desktop">Login</a>
-                    <a href="/onboarding" class="site-btn site-nav__desktop">
+                    <a href="/register" class="site-btn site-nav__desktop">
                         Join Now
                         <svg viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
@@ -86,7 +86,7 @@ $active       = fn($route) => $currentRoute === $route ? ' is-active' : '';
             <?php if (!$isLoggedIn): ?>
                 <div class="site-nav__mobile-actions">
                     <a href="/login" class="site-btn site-btn--outline">Login</a>
-                    <a href="/onboarding" class="site-btn">
+                    <a href="/register" class="site-btn">
                         Join Now
                         <svg viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />
@@ -148,7 +148,7 @@ $active       = fn($route) => $currentRoute === $route ? ' is-active' : '';
                         <li><a href="tel:+94767788837">076 778 8837</a> (Lakmal)</li>
                         <li><a href="tel:+94767777773">076 777 7773</a></li>
                     </ul>
-                    <a href="/onboarding" class="site-btn site-btn--sm">
+                    <a href="/register" class="site-btn site-btn--sm">
                         Join Now
                         <svg viewBox="0 0 24 24">
                             <path d="M5 12h14M12 5l7 7-7 7" />

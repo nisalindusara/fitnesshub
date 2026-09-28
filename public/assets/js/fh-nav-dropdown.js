@@ -1,5 +1,5 @@
 /**
- * <fh-nav-dropdown label="Payments" icon="credit-card" current-route="payments.add">
+ * <fh-nav-dropdown label="Payments" icon="credit-card" current-route="/payments/bank-slips">
  *   <fh-nav-item slot="child" ...></fh-nav-item>
  *   <fh-nav-item slot="child" ...></fh-nav-item>
  * </fh-nav-dropdown>
@@ -12,9 +12,16 @@
  * INITIAL expand state is derived from current-route so a hard page load
  * on an active child route opens the dropdown correctly without a flash
  * of collapsed-then-expanding content.
+ *
+ * Accordion: expanding one dropdown collapses every other dropdown in the
+ * same <nav>, so only one group is open at a time.
  */
 class FhNavDropdown extends HTMLElement {
   connectedCallback() {
+    // Guard against rebuilding if the element is moved in the DOM.
+    if (this._initialized) return;
+    this._initialized = true;
+
     this.classList.add("fh-nav-dropdown");
 
     const label = this.getAttribute("label") ?? "";
@@ -51,13 +58,49 @@ class FhNavDropdown extends HTMLElement {
     childList.hidden = !hasActiveChild;
     children.forEach((child) => childList.appendChild(child));
 
+    this._trigger = trigger;
+    this._childList = childList;
+
     trigger.addEventListener("click", () => {
-      const expanded = trigger.getAttribute("aria-expanded") === "true";
-      trigger.setAttribute("aria-expanded", String(!expanded));
-      childList.hidden = expanded;
+      if (this.isExpanded) {
+        this.collapse();
+      } else {
+        this.collapseSiblings();
+        this.expand();
+      }
     });
 
     this.append(trigger, childList);
+  }
+
+  get isExpanded() {
+    return this._trigger?.getAttribute("aria-expanded") === "true";
+  }
+
+  expand() {
+    if (!this._trigger) return;
+    this._trigger.setAttribute("aria-expanded", "true");
+    this._childList.hidden = false;
+  }
+
+  collapse() {
+    if (!this._trigger) return;
+    this._trigger.setAttribute("aria-expanded", "false");
+    this._childList.hidden = true;
+  }
+
+  collapseSiblings() {
+    const scope = this.closest("nav") ?? document;
+    scope
+      .querySelectorAll('.fh-nav-dropdown__trigger[aria-expanded="true"]')
+      .forEach((openTrigger) => {
+        if (openTrigger === this._trigger) return;
+        openTrigger.setAttribute("aria-expanded", "false");
+        const list = openTrigger.nextElementSibling;
+        if (list && list.classList.contains("fh-nav-dropdown__children")) {
+          list.hidden = true;
+        }
+      });
   }
 }
 
