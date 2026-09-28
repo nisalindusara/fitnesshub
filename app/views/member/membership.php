@@ -1,207 +1,389 @@
 <style>
-  .membership-page {
-    width: min(92%, 760px);
+  /* Membership screen – page content (id/class selectors only)
+   Font (Plus Jakarta Sans), page background and chrome spacing come from member-layout
+   Colour meaning: green = active, red = expired (same as the other member screens) */
+
+  #membership-page {
+    --ink: #18181b;
+    --muted: #64748b;
+    --line: #ececef;
+    --card: #ffffff;
+
+    --green: #1e8e5a;
+    --green-dark: #17744a;
+    --green-soft: #e6f4ec;
+    --red: #c62828;
+
+    box-sizing: border-box;
+    width: min(100%, 960px);
     align-self: flex-start;
-    max-height: 100%;
-    overflow-y: auto;
-    padding: 32px 0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 48px;
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
   }
 
-  .membership-title {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    letter-spacing: -0.01em;
-    margin-bottom: 4px;
-  }
-
-  .plan-card {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    border-radius: 16px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
-
-  .plan-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .plan-name {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin-bottom: 4px;
-  }
-
-  .plan-expiry {
-    font-size: 13px;
-    color: var(--color-text-muted);
-  }
-
-  .status-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 9999px;
-    font-size: 11px;
+  /* ---------- Page heading ---------- */
+  .page-head__title {
+    margin: 0;
+    font-size: 1.75rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    background: #15803D;
-    white-space: nowrap;
+    letter-spacing: -0.02em;
   }
 
-  .status-badge.expired {
-    background: #B91C1C;
+  .page-head__subtitle {
+    margin: 6px 0 0;
+    font-size: 0.95rem;
+    color: var(--muted);
   }
 
-  .btn-outline {
-    align-self: flex-start;
+  /* ---------- Section block ---------- */
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .block__title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .block__caption {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Card ---------- */
+  .card {
+    box-sizing: border-box;
+    padding: 24px;
+    border-radius: 20px;
+    background: var(--card);
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+  }
+
+  /* ---------- Current plan ---------- */
+  .plan {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .plan__icon,
+  .action__icon {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--green-soft);
+  }
+
+  .plan__icon svg,
+  .action__icon svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .plan__text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .plan__name {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .plan__meta {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .plan__state {
+    font-weight: 700;
+  }
+
+  .plan__state--active {
+    color: var(--green);
+  }
+
+  .plan__state--expired {
+    color: var(--red);
+  }
+
+  /* ---------- Button ---------- */
+  .btn {
+    box-sizing: border-box;
+    flex: none;
     display: inline-flex;
     align-items: center;
-    padding: 10px 20px;
-    border: 1px solid #18181B;
-    border-radius: 10px;
-    background: transparent;
-    color: var(--color-text-primary);
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
+    justify-content: center;
+    height: 46px;
+    padding: 0 22px;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    font-weight: 600;
     text-decoration: none;
     transition: background-color 0.15s ease;
   }
 
-  .btn-outline:hover {
-    background: rgba(0, 0, 0, 0.04);
+  .btn--primary {
+    background: var(--green);
+    color: #fff;
   }
 
-  .quick-actions {
+  .btn--primary:hover {
+    background: var(--green-dark);
+  }
+
+  /* ---------- Included with your plan ---------- */
+  .actions {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
 
-  .action-card {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    border-radius: 16px;
-    padding: 24px 20px;
+  .action {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
+    align-items: flex-start;
+    gap: 18px;
     color: inherit;
-    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
   }
 
-  .action-card:hover {
-    box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+  .action:hover {
+    background: #fbfbfc;
   }
 
-  .action-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: #F1F2F5;
+  .action__text {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
   }
 
-  .action-icon svg {
+  .action__title {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .action__desc {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .action__arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--green);
+  }
+
+  .action__cta {
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .action__arrow svg {
     width: 18px;
     height: 18px;
-    fill: var(--color-text-primary);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 
-  .action-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin-bottom: 6px;
+  .action:hover .action__title {
+    color: var(--green-dark);
   }
 
-  .action-desc {
-    font-size: 13px;
-    color: var(--color-text-muted);
+  /* Keyboard focus */
+  .btn:focus-visible,
+  .action:focus-visible {
+    outline: 2.5px solid var(--green);
+    outline-offset: 3px;
   }
 
-  @media (max-width: 768px) {
-    .membership-page {
-      padding: 24px 0;
+  /* ---------- Mobile: plan stacks, actions become rows ---------- */
+  @media (max-width: 640px) {
+    #membership-page {
+      gap: 40px;
     }
 
-    .quick-actions {
+    .card {
+      padding: 18px 16px;
+      border-radius: 18px;
+    }
+
+    .plan {
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .plan__text {
+      flex-basis: calc(100% - 62px);
+    }
+
+    .plan .btn {
+      width: 100%;
+    }
+
+    .actions {
       grid-template-columns: 1fr;
       gap: 12px;
     }
 
-    .action-card {
-      padding: 18px;
+    .action {
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
     }
 
-    .action-icon {
-      margin-bottom: 14px;
+    .action__icon {
+      width: 42px;
+      height: 42px;
+    }
+
+    .action__desc {
+      font-size: 0.8rem;
+    }
+
+    .action__cta {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .btn,
+    .action {
+      transition: none;
     }
   }
 </style>
 
-<div class="membership-page">
-  <h1 class="membership-title">Membership</h1>
+<!-- Membership screen: page content only (header + bottom nav come from member-layout) -->
+<div id="membership-page" class="membership">
 
-  <section class="plan-card" aria-label="Current membership">
-    <div class="plan-card-top">
-      <div>
-        <h2 class="plan-name"><?= htmlspecialchars($membership['plan_name']) ?></h2>
-        <p class="plan-expiry">Expire On: <?= htmlspecialchars($membership['expires_on']) ?></p>
-      </div>
-      <span class="status-badge <?= $membership['is_active'] ? '' : 'expired' ?>">
-        <?= $membership['is_active'] ? 'Active' : 'Expired' ?>
-      </span>
+  <!-- Page heading -->
+  <header class="page-head">
+    <h1 class="page-head__title">Membership</h1>
+    <p class="page-head__subtitle">Your plan and everything that comes with it</p>
+  </header>
+
+  <!-- Current plan -->
+  <section class="block" aria-labelledby="plan-title">
+    <div class="block__head">
+      <h2 id="plan-title" class="block__title">Current plan</h2>
     </div>
 
-    <a href="/onboarding/membership" class="btn-outline">Upgrade Plan</a>
+    <div class="card plan">
+      <span class="plan__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+          <path d="M3 10h18M7 15h4"></path>
+        </svg>
+      </span>
+
+      <div class="plan__text">
+        <p class="plan__name"><?= htmlspecialchars($membership['plan_name']) ?></p>
+        <?php if ($membership['is_active']): ?>
+          <p class="plan__meta"><span class="plan__state plan__state--active">Active</span> until <?= htmlspecialchars($membership['expires_on']) ?></p>
+        <?php else: ?>
+          <p class="plan__meta"><span class="plan__state plan__state--expired">Expired</span> on <?= htmlspecialchars($membership['expires_on']) ?></p>
+        <?php endif; ?>
+      </div>
+
+      <a href="/onboarding/membership" class="btn btn--primary">
+        <?= $membership['is_active'] ? 'Upgrade plan' : 'Renew plan' ?>
+      </a>
+    </div>
   </section>
 
-  <section class="quick-actions" aria-label="Quick actions">
-    <a href="/member/membership/workout-schedule" class="action-card">
-      <span class="action-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M19 4H18V2H16V4H8V2H6V4H5C3.89 4 3.01 4.9 3.01 6L3 20C3 21.1 3.89 22 5 22H19C20.1 22 21 21.1 21 20V6C21 4.9 20.1 4 19 4ZM19 20H5V10H19V20ZM9 14H7V12H9V14ZM13 14H11V12H13V14ZM17 14H15V12H17V14ZM9 18H7V16H9V18ZM13 18H11V16H13V18ZM17 18H15V16H17V18Z" />
-        </svg>
-      </span>
-      <h3 class="action-title">Workout Schedule</h3>
-      <p class="action-desc">View your weekly training plan</p>
-    </a>
+  <!-- Included with your plan -->
+  <section class="block" aria-labelledby="included-title">
+    <div class="block__head">
+      <h2 id="included-title" class="block__title">Included with your plan</h2>
+      <p class="block__caption">Your training, meals and sessions in one place</p>
+    </div>
 
-    <a href="/member/membership/meal-plan" class="action-card">
-      <span class="action-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M11 9H9V2H7V9H5V2H3V9C3 11.12 4.66 12.84 6.75 12.97V22H9.25V12.97C11.34 12.84 13 11.12 13 9V2H11V9ZM16 6V14H18.5V22H21V2C18.24 2 16 4.24 16 6Z" />
-        </svg>
-      </span>
-      <h3 class="action-title">Meal Plan</h3>
-      <p class="action-desc">Track your nutrition plan</p>
-    </a>
+    <div class="actions">
+      <a href="/member/membership/workout-schedule" class="card action">
+        <span class="action__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"></path>
+          </svg>
+        </span>
+        <span class="action__text">
+          <span class="action__title">Workout schedule</span>
+          <span class="action__desc">See what to train each day and the exercises in every session</span>
+        </span>
+        <span class="action__arrow" aria-hidden="true">
+          <span class="action__cta">View schedule</span>
+          <svg viewBox="0 0 24 24">
+            <path d="M9 6l6 6-6 6"></path>
+          </svg>
+        </span>
+      </a>
 
-    <a href="#book-session" class="action-card">
-      <span class="action-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M15 12C17.21 12 19 10.21 19 8C19 5.79 17.21 4 15 4C12.79 4 11 5.79 11 8C11 10.21 12.79 12 15 12ZM6 10V7H4V10H1V12H4V15H6V12H9V10H6ZM15 14C12.33 14 7 15.34 7 18V20H23V18C23 15.34 17.67 14 15 14Z" />
-        </svg>
-      </span>
-      <h3 class="action-title">Book a Session</h3>
-      <p class="action-desc">Schedule time with an instructor</p>
-    </a>
+      <a href="/member/membership/meal-plan" class="card action">
+        <span class="action__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 3v8a3 3 0 0 0 3 3v7M7 3v8M10 3v8a3 3 0 0 1-3 3"></path>
+            <path d="M17 21V3c-2 1.5-3 4-3 7 0 2 1 3 3 3"></path>
+          </svg>
+        </span>
+        <span class="action__text">
+          <span class="action__title">Meal plan</span>
+          <span class="action__desc">Pick your breakfast, lunch and dinner from your plan</span>
+        </span>
+        <span class="action__arrow" aria-hidden="true">
+          <span class="action__cta">Pick meals</span>
+          <svg viewBox="0 0 24 24">
+            <path d="M9 6l6 6-6 6"></path>
+          </svg>
+        </span>
+      </a>
+
+      <!-- TODO: set the booking route -->
+      <a href="/member/membership/pt-sessions" class="card action">
+        <span class="action__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="9" cy="8" r="4"></circle>
+            <path d="M2 21c0-4 3-6 7-6s7 2 7 6"></path>
+            <path d="M19 8v6M16 11h6"></path>
+          </svg>
+        </span>
+        <span class="action__text">
+          <span class="action__title">Book a session</span>
+          <span class="action__desc">Schedule personal training with an instructor</span>
+        </span>
+        <span class="action__arrow" aria-hidden="true">
+          <span class="action__cta">Book a time</span>
+          <svg viewBox="0 0 24 24">
+            <path d="M9 6l6 6-6 6"></path>
+          </svg>
+        </span>
+      </a>
+    </div>
   </section>
+
 </div>

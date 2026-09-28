@@ -1,551 +1,1030 @@
 <style>
-/* Dashboard Main Container */
-#main-content-card {
+  /* Analytics screen – page content (id/class selectors only)
+   Font (Plus Jakarta Sans), page background and chrome spacing come from member-layout
+
+   Colour meaning (same as the dashboard)
+   green  #1E8E5A  done / logged / attended
+   amber  #D08A0B  partly done / below 80%
+   red    #C62828  missed / not logged
+   light grey      later today / other periods
+   dashed outline  rest day
+*/
+
+  #analytics-page {
+    --ink: #18181b;
+    --muted: #64748b;
+    --line: #ececef;
+    --card: #ffffff;
+    --track: #eef0f3;
+    --bar: #dfe2e7;
+
+    --green: #1e8e5a;
+    --green-dark: #17744a;
+    --green-soft: #e6f4ec;
+    --amber: #d08a0b;
+    --amber-text: #9a6406;
+    --amber-soft: #fdf1dc;
+    --red: #c62828;
+    --red-soft: #fdeaea;
+
+    box-sizing: border-box;
+    width: min(100%, 960px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 48px;
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+  }
 
-    width: min(92%, 720px);
-    max-height: 100%;
-    /* clamps to leftover space, never forces scroll */
-    padding: 56px 48px;
-    gap: 32px;
+  /* ---------- Page heading ---------- */
+  .page-head__title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
 
-    background: #fff;
-    border-radius: 28px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, .04);
+  .page-head__subtitle {
+    margin: 6px 0 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Section block ---------- */
+  .block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .block__head--row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .block__title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .block__caption {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Card ---------- */
+  .card {
     box-sizing: border-box;
+    padding: 24px;
+    border-radius: 20px;
+    background: var(--card);
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+  }
+
+  .card__summary {
+    margin: 24px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  /* ---------- Stat cards ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .stat__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .stat__label {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  .stat__icon {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--green-soft);
+  }
+
+  .stat__icon svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .stat__value {
+    margin: 0 0 16px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .mini-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--track);
     overflow: hidden;
   }
 
-/* Base Card Style */
-.card {
-  background: #FFFFFF;
-  border-radius: 16px;
-  box-sizing: border-box;
-}
+  .mini-bar--blank {
+    background: transparent;
+  }
 
-/* Top Stats Row */
-.top-cards-row {
-  display: flex;
-  width: 100%;
-  gap: 14px;
-  height: 140px;
-}
+  .mini-bar__fill {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+  }
 
-.stat-card {
-  flex: 1;
-  padding: 18px 22px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-}
+  .mini-bar__fill--good {
+    background: var(--green);
+  }
 
-/* Attendance Card Details */
-.attendance-card {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+  .mini-bar__fill--warn {
+    background: var(--amber);
+  }
 
-.card-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+  .stat__note {
+    margin: 10px 0 0;
+    font-size: 0.84rem;
+    color: var(--muted);
+  }
 
-.stat-header-text {
-  font-size: 13px;
-  font-weight: 500;
-  color: #333333;
-}
+  /* ---------- Monthly target ---------- */
+  .target__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
 
-.attendance-count-wrapper {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
+  .target__label {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
 
-.attendance-number {
-  font-size: 20px;
-  font-weight: 700;
-  color: #111111;
-}
+  .target__percent {
+    flex: none;
+    margin: 0;
+    white-space: nowrap;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--green);
+  }
 
-.attendance-unit {
-  font-size: 12px;
-  color: #555555;
-}
+  .target__of {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
 
-.badge-growth {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: #0c8a52;
-  font-size: 12px;
-  font-weight: 600;
-  margin-top: 6px;
-}
+  .target__track {
+    position: relative;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--track);
+    overflow: hidden;
+  }
 
-.watermark-icon-wrap {
-  position: absolute;
-  right: 12px;
-  bottom: 8px;
-  opacity: 0.5;
-  pointer-events: none;
-}
+  .target__fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--green);
+  }
 
-.watermark-icon {
-  width: 60px;
-  height: 60px;
-}
+  /* the missed session, shown after the done ones */
+  .target__miss {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: var(--red);
+    opacity: 0.35;
+  }
 
-/* Progress Stat Cards (Workout & Meal Plan) */
-.progress-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+  .target__note {
+    margin: 12px 0 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
 
-.progress-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+  /* ---------- Legend ---------- */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px 20px;
+    margin-bottom: 20px;
+  }
 
-.stat-title {
-  font-size: 13px;
-  font-weight: 500;
-  color: #444444;
-}
+  .legend__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
 
-.stat-subtitle {
-  font-size: 13px;
-  font-weight: 600;
-  color: #111111;
-}
+  .swatch {
+    box-sizing: border-box;
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+  }
 
-/* Conic Radial Progress Rings */
-.radial-progress-wrapper {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
+  .swatch--done {
+    background: var(--green);
+  }
 
-.radial-progress-wrapper::before {
-  content: "";
-  position: absolute;
-  width: 52px;
-  height: 52px;
-  background: #FFFFFF;
-  border-radius: 50%;
-}
+  .swatch--partial {
+    background: var(--amber);
+  }
 
-.ring-green {
-  background: conic-gradient(#108752 0% 85%, #E5E7EB 85% 100%);
-}
+  .swatch--missed {
+    background: var(--red-soft);
+    border: 1.5px solid #f3b9b9;
+  }
 
-.ring-orange {
-  background: conic-gradient(#BF7113 0% 62%, #E5E7EB 62% 100%);
-}
+  .swatch--upcoming {
+    background: var(--track);
+  }
 
-.radial-value {
-  position: relative;
-  z-index: 1;
-  font-size: 12px;
-  font-weight: 700;
-  color: #111111;
-}
+  .swatch--rest {
+    border: 1.5px dashed #c9cdd4;
+  }
 
-/* Goal Card */
-.goal-card {
-  width: 100%;
-  padding: 24px 20px;
-  display: flex;
-  align-items: center;
-}
+  /* ---------- Workout schedule ---------- */
+  .wk {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+  }
 
-.goal-text {
-  font-size: 14px;
-  font-weight: 600;
-  color: #222222;
-}
+  .wk__col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    text-align: center;
+  }
 
-/* Analytics Header & Week/Month Switcher */
-.toggle-radio-input {
-  display: none;
-}
+  .wk__day {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
 
-.analytics-header-row {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 6px;
-  padding: 0 4px;
-  box-sizing: border-box;
-}
+  .wk__day--today {
+    color: var(--ink);
+    font-weight: 700;
+  }
 
-.section-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #2b2b2b;
-}
+  .wk__track {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 52px;
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 14px;
+    background: var(--track);
+    overflow: hidden;
+  }
 
-.toggle-pill-container {
-  display: flex;
-  background: #FFFFFF;
-  border-radius: 20px;
-  padding: 3px;
-  gap: 2px;
-}
+  .wk__fill {
+    display: block;
+    width: 100%;
+  }
 
-.toggle-tab {
-  font-size: 12px;
-  padding: 5px 16px;
-  border-radius: 16px;
-  font-weight: 500;
-  color: #555555;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
+  .wk__fill--done {
+    background: var(--green);
+  }
 
-/* Interactive Pill Tab Highlights (CSS-only) */
-#view-week:checked ~ .analytics-header-row .tab-week-label {
-  background: #000000;
-  color: #FFFFFF;
-  font-weight: 600;
-}
+  .wk__fill--partial {
+    background: var(--amber);
+  }
 
-#view-month:checked ~ .analytics-header-row .tab-month-label {
-  background: #000000;
-  color: #FFFFFF;
-  font-weight: 600;
-}
+  .wk__col--missed .wk__track {
+    background: var(--red-soft);
+    border: 1.5px solid #f3b9b9;
+  }
 
-/* Chart Container & Elements */
-.chart-card {
-  width: 100%;
-  flex-grow: 1;
-  padding: 24px 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+  .wk__track--rest {
+    background: transparent;
+    border: 1.5px dashed #d6d9df;
+  }
 
-.chart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
+  .wk__session {
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.25;
+  }
 
-.chart-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #222222;
-}
+  .wk__session--rest {
+    font-weight: 500;
+    color: var(--muted);
+  }
 
-.chart-options-menu {
-  color: #666666;
-  font-size: 16px;
-  cursor: pointer;
-  letter-spacing: 1px;
-}
+  .wk__detail {
+    margin-top: -6px;
+    font-size: 0.76rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
 
-/* Chart Visual Area */
-.chart-visual-area {
-  position: relative;
-  width: 100%;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
+  .wk__col--partial .wk__detail {
+    color: var(--amber-text);
+    font-weight: 600;
+  }
 
-.chart-horizontal-gridlines {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  width: 100%;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  pointer-events: none;
-}
+  .wk__col--missed .wk__detail {
+    color: var(--red);
+    font-weight: 600;
+  }
 
-.gridline {
-  width: 100%;
-  border-bottom: 1px solid #F1F1F1;
-}
+  /* ---------- Meal plan ---------- */
+  .meals {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.chart-columns-container {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  height: 100%;
-  width: 100%;
-  border-bottom: 1px solid #EBEBEB;
-  padding-bottom: 8px;
-}
+  .meals__row {
+    display: grid;
+    grid-template-columns: 90px repeat(7, 1fr) 44px;
+    align-items: center;
+    gap: 10px;
+  }
 
-/* Pure CSS Tab Display Toggling */
-.view-week-content,
-.view-month-content {
-  display: none;
-}
+  .meals__meal {
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
 
-#view-week:checked ~ .chart-card .view-week-content {
-  display: flex;
-}
+  .meals__day {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-align: center;
+  }
 
-#view-month:checked ~ .chart-card .view-month-content {
-  display: flex;
-}
+  .meals__day--today {
+    color: var(--ink);
+    font-weight: 700;
+  }
 
-/* Chart Bars */
-.chart-bar-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 48px;
-  height: 100%;
-  justify-content: flex-end;
-}
+  .meals__cell {
+    box-sizing: border-box;
+    display: block;
+    height: 38px;
+    border-radius: 10px;
+  }
 
-.bar-group-month {
-  width: 32px;
-}
+  .meals__cell--done {
+    background: var(--green);
+  }
 
-.bar-track {
-  display: flex;
-  align-items: flex-end;
-  width: 100%;
-  height: 200px;
-}
+  .meals__cell--missed {
+    background: var(--red-soft);
+    border: 1.5px solid #f3b9b9;
+  }
 
-.chart-bar {
-  width: 100%;
-  border-radius: 6px;
-}
+  .meals__cell--upcoming {
+    background: var(--track);
+  }
 
-.bar-black {
-  background: #000000;
-}
+  .meals__total {
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-align: right;
+  }
 
-.bar-light-gray {
-  background: #E5E5E5;
-}
+  .meals__total--good {
+    color: var(--green);
+  }
 
-/* Relative Bar Heights */
-.bar-h-18 { height: 18%; }
-.bar-h-25 { height: 25%; }
-.bar-h-28 { height: 28%; }
-.bar-h-30 { height: 30%; }
-.bar-h-40 { height: 40%; }
-.bar-h-45 { height: 45%; }
-.bar-h-50 { height: 50%; }
-.bar-h-55 { height: 55%; }
-.bar-h-60 { height: 60%; }
-.bar-h-65 { height: 65%; }
-.bar-h-68 { height: 68%; }
-.bar-h-70 { height: 70%; }
-.bar-h-75 { height: 75%; }
-.bar-h-80 { height: 80%; }
-.bar-h-82 { height: 82%; }
-.bar-h-85 { height: 85%; }
-.bar-h-90 { height: 90%; }
+  .meals__total--warn {
+    color: var(--amber-text);
+  }
 
-.bar-day-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: #777777;
-}
+  /* ---------- Attendance ---------- */
+  .trend__radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .toggle {
+    flex: none;
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 999px;
+    background: var(--card);
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+  }
+
+  .toggle__tab {
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .toggle__tab:hover {
+    color: var(--ink);
+  }
+
+  #view-week:checked~.block__head .toggle__tab--week,
+  #view-month:checked~.block__head .toggle__tab--month {
+    background: var(--ink);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  #view-week:focus-visible~.block__head .toggle__tab--week,
+  #view-month:focus-visible~.block__head .toggle__tab--month {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
+
+  .trend__caption--month,
+  .trend__summary--month,
+  .chart--month {
+    display: none;
+  }
+
+  #view-month:checked~.block__head .trend__caption--week,
+  #view-month:checked~.card .chart--week,
+  #view-month:checked~.card .trend__summary--week {
+    display: none;
+  }
+
+  #view-month:checked~.block__head .trend__caption--month,
+  #view-month:checked~.card .chart--month,
+  #view-month:checked~.card .trend__summary--month {
+    display: block;
+  }
+
+  .chart {
+    position: relative;
+    height: 200px;
+    padding: 8px 0 28px 44px;
+  }
+
+  .grid {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    bottom: 28px;
+    left: 44px;
+    pointer-events: none;
+  }
+
+  .grid__line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 1px dashed var(--line);
+  }
+
+  .grid__value {
+    position: absolute;
+    right: calc(100% + 10px);
+    top: -8px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .bars {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .bar-col {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bar-track {
+    width: 100%;
+    max-width: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .bar {
+    width: 100%;
+    min-height: 4px;
+    border-radius: 8px 8px 4px 4px;
+    background: var(--bar);
+  }
+
+  .bar--empty {
+    background: var(--track);
+  }
+
+  .bar--visit,
+  .bar--current {
+    background: var(--green);
+  }
+
+  .bar__value {
+    margin-bottom: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  .bar__label {
+    position: absolute;
+    bottom: -26px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .bar__label--current {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 640px) {
+    #analytics-page {
+      gap: 40px;
+    }
+
+    .card {
+      padding: 18px 14px;
+      border-radius: 18px;
+    }
+
+    .stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stats .stat:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .stat__value {
+      font-size: 1.7rem;
+    }
+
+    .block__head--row {
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .legend {
+      justify-content: flex-start;
+      gap: 6px 14px;
+    }
+
+    .wk {
+      gap: 4px;
+    }
+
+    .wk__track {
+      height: 110px;
+      border-radius: 10px;
+    }
+
+    .wk__day {
+      font-size: 0.7rem;
+    }
+
+    .wk__session {
+      font-size: 0.66rem;
+    }
+
+    .wk__detail {
+      font-size: 0.6rem;
+    }
+
+    .meals__row {
+      grid-template-columns: 66px repeat(7, 1fr) 28px;
+      gap: 4px;
+    }
+
+    .meals__meal {
+      font-size: 0.72rem;
+    }
+
+    .meals__day {
+      font-size: 0.64rem;
+    }
+
+    .meals__cell {
+      height: 28px;
+      border-radius: 8px;
+    }
+
+    .meals__total {
+      font-size: 0.75rem;
+    }
+
+    .chart {
+      padding-left: 36px;
+    }
+
+    .grid {
+      left: 36px;
+    }
+
+    .bars {
+      gap: 4px;
+    }
+
+    .chart--month .bar__label {
+      font-size: 0.62rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .toggle__tab {
+      transition: none;
+    }
+  }
 </style>
 
-<div id="dashboard-container" class="dashboard-container">
-  
-  <!-- Top Stat Cards Section -->
-  <div class="top-cards-row">
-    <!-- Attendance Card -->
-    <div class="card stat-card attendance-card">
-      <div class="card-inner">
-        <div class="stat-header-text">Attendance</div>
-        <div class="attendance-count-wrapper">
-          <span class="attendance-number">12</span>
-          <span class="attendance-unit">visits</span>
+<!-- Analytics screen: page content only (header + bottom nav come from member-layout) -->
+<div id="analytics-page" class="analytics">
+
+  <!-- Page heading -->
+  <header class="page-head">
+    <h1 class="page-head__title">Analytics</h1>
+    <p class="page-head__subtitle">Your week at a glance, 21 to 27 September</p>
+  </header>
+
+  <!-- Summary -->
+  <section class="block" aria-label="Weekly summary">
+    <div class="stats">
+      <div class="card stat">
+        <div class="stat__top">
+          <p class="stat__label">Workouts done</p>
+          <span class="stat__icon"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"></path>
+            </svg></span>
         </div>
-        <div class="badge-growth">
-          <svg class="growth-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-            <polyline points="17 6 23 6 23 12"></polyline>
-          </svg>
-          <span class="badge-text">15% vs last week</span>
+        <p class="stat__value">80%</p>
+        <div class="mini-bar"><span class="mini-bar__fill mini-bar__fill--good" style="width:80%"></span></div>
+        <p class="stat__note">4 of 5 planned sessions</p>
+      </div>
+      <div class="card stat">
+        <div class="stat__top">
+          <p class="stat__label">Meals logged</p>
+          <span class="stat__icon"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 3v8a3 3 0 0 0 3 3v7M7 3v8M10 3v8a3 3 0 0 1-3 3"></path>
+              <path d="M17 21V3c-2 1.5-3 4-3 7 0 2 1 3 3 3"></path>
+            </svg></span>
+        </div>
+        <p class="stat__value">79%</p>
+        <div class="mini-bar"><span class="mini-bar__fill mini-bar__fill--warn" style="width:79%"></span></div>
+        <p class="stat__note">15 of 19 meals so far</p>
+      </div>
+      <div class="card stat">
+        <div class="stat__top">
+          <p class="stat__label">Gym visits</p>
+          <span class="stat__icon"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+              <path d="M16 3v4M8 3v4M3 10h18"></path>
+              <path d="M9 15l2 2 4-4"></path>
+            </svg></span>
+        </div>
+        <p class="stat__value">4</p>
+        <div class="mini-bar mini-bar--blank"></div>
+        <p class="stat__note">Up from 3 last week</p>
+      </div>
+    </div>
+
+    <div class="card target">
+      <div class="target__row">
+        <p class="target__label">September workout target</p>
+        <p class="target__percent">4 <span class="target__of">of 8 sessions</span></p>
+      </div>
+      <div class="target__track" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="September workout target">
+        <span class="target__fill" style="width:50%"></span>
+        <span class="target__miss" style="left:50%;width:12.5%"></span>
+      </div>
+      <p class="target__note">Halfway there with 3 sessions left this month. One session was missed.</p>
+    </div>
+  </section>
+
+  <!-- Workout schedule -->
+  <section class="block" aria-labelledby="workout-title">
+    <div class="block__head">
+      <h2 id="workout-title" class="block__title">Workout schedule</h2>
+      <p class="block__caption">Exercises completed in each planned session</p>
+    </div>
+
+    <div class="card">
+      <div class="legend"><span class="legend__item"><span class="swatch swatch--done"></span>All done</span><span class="legend__item"><span class="swatch swatch--partial"></span>Some skipped</span><span class="legend__item"><span class="swatch swatch--missed"></span>Missed</span><span class="legend__item"><span class="swatch swatch--rest"></span>Rest day</span></div>
+      <div class="wk">
+        <div class="wk__col wk__col--done" title="Mon Upper body: 6 of 6 exercises">
+          <span class="wk__day">Mon</span>
+          <div class="wk__track"><span class="wk__fill wk__fill--done" style="height:100%"></span></div>
+          <span class="wk__session">Upper body</span>
+          <span class="wk__detail">6 of 6</span>
+        </div>
+        <div class="wk__col wk__col--done" title="Tue Cardio: 1 of 1 exercises">
+          <span class="wk__day">Tue</span>
+          <div class="wk__track"><span class="wk__fill wk__fill--done" style="height:100%"></span></div>
+          <span class="wk__session">Cardio</span>
+          <span class="wk__detail">1 of 1</span>
+        </div>
+        <div class="wk__col wk__col--missed" title="Wed Lower body: 0 of 5 exercises">
+          <span class="wk__day">Wed</span>
+          <div class="wk__track"></div>
+          <span class="wk__session">Lower body</span>
+          <span class="wk__detail">Missed</span>
+        </div>
+        <div class="wk__col" title="Thu: rest day">
+          <span class="wk__day">Thu</span>
+          <div class="wk__track wk__track--rest"></div>
+          <span class="wk__session wk__session--rest">Rest</span>
+          <span class="wk__detail">&nbsp;</span>
+        </div>
+        <div class="wk__col wk__col--partial" title="Fri Full body: 5 of 6 exercises">
+          <span class="wk__day">Fri</span>
+          <div class="wk__track"><span class="wk__fill wk__fill--partial" style="height:83%"></span></div>
+          <span class="wk__session">Full body</span>
+          <span class="wk__detail">5 of 6</span>
+        </div>
+        <div class="wk__col wk__col--done" title="Sat Mobility: 4 of 4 exercises">
+          <span class="wk__day">Sat</span>
+          <div class="wk__track"><span class="wk__fill wk__fill--done" style="height:100%"></span></div>
+          <span class="wk__session">Mobility</span>
+          <span class="wk__detail">4 of 4</span>
+        </div>
+        <div class="wk__col" title="Sun: rest day">
+          <span class="wk__day wk__day--today">Today</span>
+          <div class="wk__track wk__track--rest"></div>
+          <span class="wk__session wk__session--rest">Rest</span>
+          <span class="wk__detail">&nbsp;</span>
         </div>
       </div>
-      <!-- Background Calendar Icon Decoration -->
-      <div class="watermark-icon-wrap">
-        <svg class="watermark-icon" viewBox="0 0 24 24" fill="none" stroke="#d5d5d5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="16" y1="2" x2="16" y2="6"></line>
-          <line x1="8" y1="2" x2="8" y2="6"></line>
-          <line x1="3" y1="10" x2="21" y2="10"></line>
-          <polyline points="9 16 11 18 15 14"></polyline>
-        </svg>
+      <p class="card__summary">You missed Wednesday's lower body session and skipped 1 exercise on Friday. Everything else was completed.</p>
+    </div>
+  </section>
+
+  <!-- Meal plan -->
+  <section class="block" aria-labelledby="meal-title">
+    <div class="block__head">
+      <h2 id="meal-title" class="block__title">Meal plan</h2>
+      <p class="block__caption">Meals you picked from your plan each day</p>
+    </div>
+
+    <div class="card">
+      <div class="legend"><span class="legend__item"><span class="swatch swatch--done"></span>Logged</span><span class="legend__item"><span class="swatch swatch--missed"></span>Not logged</span><span class="legend__item"><span class="swatch swatch--upcoming"></span>Later today</span></div>
+      <div class="meals">
+        <div class="meals__row meals__row--head">
+          <span class="meals__meal"></span>
+          <span class="meals__day">Mon</span><span class="meals__day">Tue</span><span class="meals__day">Wed</span><span class="meals__day">Thu</span><span class="meals__day">Fri</span><span class="meals__day">Sat</span><span class="meals__day meals__day--today">Today</span>
+          <span class="meals__total"></span>
+        </div>
+        <div class="meals__row">
+          <span class="meals__meal">Breakfast</span>
+          <span class="meals__cell meals__cell--done" title="Mon breakfast: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Tue breakfast: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Wed breakfast: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Thu breakfast: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Fri breakfast: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Sat breakfast: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Sun breakfast: logged"></span>
+          <span class="meals__total meals__total--good">7/7</span>
+        </div>
+        <div class="meals__row">
+          <span class="meals__meal">Lunch</span>
+          <span class="meals__cell meals__cell--done" title="Mon lunch: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Tue lunch: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Wed lunch: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Thu lunch: logged"></span>
+          <span class="meals__cell meals__cell--missed" title="Fri lunch: not logged"></span>
+          <span class="meals__cell meals__cell--missed" title="Sat lunch: not logged"></span>
+          <span class="meals__cell meals__cell--upcoming" title="Sun lunch: later today"></span>
+          <span class="meals__total meals__total--warn">4/6</span>
+        </div>
+        <div class="meals__row">
+          <span class="meals__meal">Dinner</span>
+          <span class="meals__cell meals__cell--done" title="Mon dinner: logged"></span>
+          <span class="meals__cell meals__cell--done" title="Tue dinner: logged"></span>
+          <span class="meals__cell meals__cell--missed" title="Wed dinner: not logged"></span>
+          <span class="meals__cell meals__cell--done" title="Thu dinner: logged"></span>
+          <span class="meals__cell meals__cell--missed" title="Fri dinner: not logged"></span>
+          <span class="meals__cell meals__cell--done" title="Sat dinner: logged"></span>
+          <span class="meals__cell meals__cell--upcoming" title="Sun dinner: later today"></span>
+          <span class="meals__total meals__total--warn">4/6</span>
+        </div>
+      </div>
+      <p class="card__summary">Breakfast every day so far. Lunch was skipped on Friday and Saturday, dinner on Wednesday and Friday. Friday was the hardest day, with breakfast only.</p>
+    </div>
+  </section>
+
+  <!-- Attendance trend -->
+  <section class="block trend" aria-labelledby="trend-title">
+    <input type="radio" id="view-week" class="trend__radio" name="trend-period" checked>
+    <input type="radio" id="view-month" class="trend__radio" name="trend-period">
+
+    <div class="block__head block__head--row">
+      <div>
+        <h2 id="trend-title" class="block__title">Attendance</h2>
+        <p class="block__caption trend__caption--week">Minutes in the gym on the days you visited</p>
+        <p class="block__caption trend__caption--month">Gym visits per month over the last year</p>
+      </div>
+      <div class="toggle" role="group" aria-label="Period">
+        <label for="view-week" class="toggle__tab toggle__tab--week">Week</label>
+        <label for="view-month" class="toggle__tab toggle__tab--month">Year</label>
       </div>
     </div>
 
-    <!-- Workout Completion Card -->
-    <div class="card stat-card progress-card">
-      <div class="progress-info">
-        <div class="stat-title">Workout</div>
-        <div class="stat-subtitle">Completion</div>
+    <div class="card">
+      <div class="chart chart--week">
+        <div class="grid">
+          <div class="grid__line" style="bottom:0%"><span class="grid__value">0</span></div>
+          <div class="grid__line" style="bottom:33%"><span class="grid__value">30</span></div>
+          <div class="grid__line" style="bottom:67%"><span class="grid__value">60</span></div>
+          <div class="grid__line" style="bottom:100%"><span class="grid__value">90 min</span></div>
+        </div>
+        <div class="bars">
+          <div class="bar-col" title="Mon: 55 minutes">
+            <div class="bar-track">
+              <div class="bar bar--visit" style="height:61%"></div>
+            </div>
+            <span class="bar__label">Mon</span>
+          </div>
+          <div class="bar-col" title="Tue: 40 minutes">
+            <div class="bar-track">
+              <div class="bar bar--visit" style="height:44%"></div>
+            </div>
+            <span class="bar__label">Tue</span>
+          </div>
+          <div class="bar-col" title="Wed: 0 minutes">
+            <div class="bar-track">
+              <div class="bar bar--empty" style="height:0%"></div>
+            </div>
+            <span class="bar__label">Wed</span>
+          </div>
+          <div class="bar-col" title="Thu: 0 minutes">
+            <div class="bar-track">
+              <div class="bar bar--empty" style="height:0%"></div>
+            </div>
+            <span class="bar__label">Thu</span>
+          </div>
+          <div class="bar-col" title="Fri: 60 minutes">
+            <div class="bar-track">
+              <div class="bar bar--visit" style="height:67%"></div>
+            </div>
+            <span class="bar__label">Fri</span>
+          </div>
+          <div class="bar-col" title="Sat: 35 minutes">
+            <div class="bar-track">
+              <div class="bar bar--visit" style="height:39%"></div>
+            </div>
+            <span class="bar__label">Sat</span>
+          </div>
+          <div class="bar-col" title="Sun: 0 minutes">
+            <div class="bar-track">
+              <div class="bar bar--empty" style="height:0%"></div>
+            </div>
+            <span class="bar__label bar__label--current">Today</span>
+          </div>
+        </div>
       </div>
-      <div class="radial-progress-wrapper ring-green">
-        <span class="radial-value">85%</span>
+
+      <div class="chart chart--month">
+        <div class="grid">
+          <div class="grid__line" style="bottom:0%"><span class="grid__value">0</span></div>
+          <div class="grid__line" style="bottom:25%"><span class="grid__value">5</span></div>
+          <div class="grid__line" style="bottom:50%"><span class="grid__value">10</span></div>
+          <div class="grid__line" style="bottom:75%"><span class="grid__value">15</span></div>
+          <div class="grid__line" style="bottom:100%"><span class="grid__value">20</span></div>
+        </div>
+        <div class="bars">
+          <div class="bar-col" title="Oct: 10 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:50%"></div>
+            </div>
+            <span class="bar__label">Oct</span>
+          </div>
+          <div class="bar-col" title="Nov: 8 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:40%"></div>
+            </div>
+            <span class="bar__label">Nov</span>
+          </div>
+          <div class="bar-col" title="Dec: 14 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:70%"></div>
+            </div>
+            <span class="bar__label">Dec</span>
+          </div>
+          <div class="bar-col" title="Jan: 12 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:60%"></div>
+            </div>
+            <span class="bar__label">Jan</span>
+          </div>
+          <div class="bar-col" title="Feb: 15 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:75%"></div>
+            </div>
+            <span class="bar__label">Feb</span>
+          </div>
+          <div class="bar-col" title="Mar: 9 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:45%"></div>
+            </div>
+            <span class="bar__label">Mar</span>
+          </div>
+          <div class="bar-col" title="Apr: 13 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:65%"></div>
+            </div>
+            <span class="bar__label">Apr</span>
+          </div>
+          <div class="bar-col" title="May: 16 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:80%"></div>
+            </div>
+            <span class="bar__label">May</span>
+          </div>
+          <div class="bar-col" title="Jun: 11 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:55%"></div>
+            </div>
+            <span class="bar__label">Jun</span>
+          </div>
+          <div class="bar-col" title="Jul: 14 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:70%"></div>
+            </div>
+            <span class="bar__label">Jul</span>
+          </div>
+          <div class="bar-col" title="Aug: 9 visits">
+            <div class="bar-track">
+              <div class="bar" style="height:45%"></div>
+            </div>
+            <span class="bar__label">Aug</span>
+          </div>
+          <div class="bar-col" title="Sep: 12 visits">
+            <div class="bar-track">
+              <span class="bar__value">12</span>
+              <div class="bar bar--current" style="height:60%"></div>
+            </div>
+            <span class="bar__label bar__label--current">Sep</span>
+          </div>
+        </div>
       </div>
+
+      <p class="card__summary trend__summary--week">190 minutes over 4 visits. Your longest session was Friday at 60 minutes.</p>
+      <p class="card__summary trend__summary--month">12 visits so far in September, in green. Your best month was May with 16.</p>
     </div>
-
-    <!-- Meal Plan Completion Card -->
-    <div class="card stat-card progress-card">
-      <div class="progress-info">
-        <div class="stat-title">Meal Plan</div>
-        <div class="stat-subtitle">Completion</div>
-      </div>
-      <div class="radial-progress-wrapper ring-orange">
-        <span class="radial-value">62%</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Goal Banner -->
-  <div class="card goal-card">
-    <span class="goal-text">Goal: Lose 5kg by Nov</span>
-  </div>
-
-  <!-- Hidden Radio Controls for View Toggling (Pure CSS Tab Switching) -->
-  <input type="radio" id="view-week" class="toggle-radio-input" name="period-filter" checked>
-  <input type="radio" id="view-month" class="toggle-radio-input" name="period-filter">
-
-  <!-- Analytics Header & Toggle Filter -->
-  <div class="analytics-header-row">
-    <div class="section-title">Analytics</div>
-    <div class="toggle-pill-container">
-      <label for="view-week" class="toggle-tab tab-week-label">Week</label>
-      <label for="view-month" class="toggle-tab tab-month-label">Month</label>
-    </div>
-  </div>
-
-  <!-- Bar Chart Card -->
-  <div class="card chart-card">
-    <div class="chart-header">
-      <span class="chart-title">Attendance Trend</span>
-      <div class="chart-options-menu">•••</div>
-    </div>
-
-    <!-- Chart Visual Area -->
-    <div class="chart-visual-area">
-      <div class="chart-horizontal-gridlines">
-        <div class="gridline"></div>
-        <div class="gridline"></div>
-      </div>
-
-      <!-- 1. Week View Columns (Mon - Sun) -->
-      <div class="chart-columns-container view-week-content">
-        <div class="chart-bar-group">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-50"></div></div>
-          <span class="bar-day-label">Mon</span>
-        </div>
-        <div class="chart-bar-group">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-68"></div></div>
-          <span class="bar-day-label">Tue</span>
-        </div>
-        <div class="chart-bar-group">
-          <div class="bar-track"><div class="chart-bar bar-light-gray bar-h-18"></div></div>
-          <span class="bar-day-label">Wed</span>
-        </div>
-        <div class="chart-bar-group">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-82"></div></div>
-          <span class="bar-day-label">Thu</span>
-        </div>
-        <div class="chart-bar-group">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-45"></div></div>
-          <span class="bar-day-label">Fri</span>
-        </div>
-        <div class="chart-bar-group">
-          <div class="bar-track"><div class="chart-bar bar-light-gray bar-h-28"></div></div>
-          <span class="bar-day-label">Sat</span>
-        </div>
-        <div class="chart-bar-group">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-65"></div></div>
-          <span class="bar-day-label">Sun</span>
-        </div>
-      </div>
-
-      <!-- 2. Month View Columns (Jan - Dec) -->
-      <div class="chart-columns-container view-month-content">
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-40"></div></div>
-          <span class="bar-day-label">Jan</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-55"></div></div>
-          <span class="bar-day-label">Feb</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-70"></div></div>
-          <span class="bar-day-label">Mar</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-light-gray bar-h-25"></div></div>
-          <span class="bar-day-label">Apr</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-60"></div></div>
-          <span class="bar-day-label">May</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-85"></div></div>
-          <span class="bar-day-label">Jun</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-75"></div></div>
-          <span class="bar-day-label">Jul</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-90"></div></div>
-          <span class="bar-day-label">Aug</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-light-gray bar-h-30"></div></div>
-          <span class="bar-day-label">Sep</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-65"></div></div>
-          <span class="bar-day-label">Oct</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-50"></div></div>
-          <span class="bar-day-label">Nov</span>
-        </div>
-        <div class="chart-bar-group bar-group-month">
-          <div class="bar-track"><div class="chart-bar bar-black bar-h-80"></div></div>
-          <span class="bar-day-label">Dec</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
+  </section>
 
 </div>

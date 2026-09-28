@@ -1,7 +1,7 @@
 <?php
 // Public marketing pages
 
-$router->get('/', [LandingController::class, 'index']);
+$router->get('/', [LandingController::class, 'showLandingHomeScreen']);
 $router->get('/classes', [LandingController::class, 'class']);
 $router->get('/contact', [LandingController::class, 'contact']);
 $router->get('/about', [LandingController::class, 'about']);

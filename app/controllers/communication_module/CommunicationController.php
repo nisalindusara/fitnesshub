@@ -7,7 +7,7 @@ class CommunicationController extends Controller
         // Adjust the view helper function to match your project's view-loading convention:
         $this->render('communication_module/user_messages', 'member-layout');
     }
-    public function PTMemberMessages(): void
+    public function showMemberMessageScreen(): void
     {
         $this->render('communication_module/Member_withPT_messages', 'member-layout');
     }

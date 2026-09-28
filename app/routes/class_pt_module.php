@@ -1,9 +1,7 @@
 <?php
 
-/** @var Router $router */
-
 $router->get(
-    '/classes',
+    '/portal/classes',
     [ClassDemoController::class, 'index'],
     'manage_classes'
 );

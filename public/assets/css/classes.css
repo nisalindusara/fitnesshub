@@ -1,0 +1,673 @@
+/* ==========================================================
+   FitnessHub – Classes / schedule page
+   Place at: /assets/css/classes.css
+   Requires: /assets/css/tokens.css (loaded first)
+   ========================================================== */
+
+.cs {
+  font-family: var(--fh-font-body);
+  color: var(--fh-text);
+  background: var(--fh-white);
+}
+
+.cs *,
+.cs *::before,
+.cs *::after {
+  box-sizing: border-box;
+}
+
+.cs img {
+  display: block;
+  max-width: 100%;
+}
+
+.cs :focus-visible {
+  outline: 2px solid var(--fh-red);
+  outline-offset: 3px;
+}
+
+.cs-container {
+  width: 100%;
+  max-width: var(--fh-container);
+  margin-inline: auto;
+  padding-inline: var(--fh-gutter);
+}
+
+.cs-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.cs svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ─── Hero ─── */
+.cs-hero {
+  position: relative;
+  isolation: isolate;
+  color: var(--fh-white);
+  background: var(--fh-black);
+}
+
+.cs-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.cs-hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--fh-hero-shade);
+}
+
+.cs-hero__inner {
+  padding-block: clamp(2.5rem, 7vw, 4.5rem);
+}
+
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: var(--fh-fs-sm);
+  font-weight: 600;
+  color: var(--fh-on-dark-70);
+  text-decoration: none;
+  transition: color var(--fh-fast);
+}
+.cs-back:hover {
+  color: var(--fh-white);
+}
+
+.cs-hero__title {
+  font-family: var(--fh-font-display);
+  font-weight: 900;
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  line-height: var(--fh-lh-tight);
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.cs-hero__text {
+  max-width: 32rem;
+  margin: 0;
+  font-size: var(--fh-fs-lg);
+  line-height: var(--fh-lh-body);
+  color: var(--fh-on-dark-90);
+}
+
+/* ─── Day tabs ─── */
+.cs-days {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 20;
+  background: var(--fh-white);
+  border-bottom: 1px solid var(--fh-line-light);
+}
+
+.cs-days__list {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(4.5rem, 1fr));
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cs-days__list::-webkit-scrollbar {
+  display: none;
+}
+
+.cs-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.9rem 0.5rem 1rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  color: var(--fh-muted);
+  font-family: var(--fh-font-body);
+  transition:
+    color var(--fh-fast),
+    border-color var(--fh-fast),
+    background-color var(--fh-fast);
+}
+.cs-day:hover {
+  color: var(--fh-text);
+  background: var(--fh-grey-bg);
+}
+
+.cs-day__name {
+  font-family: var(--fh-font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cs-day__date {
+  font-family: var(--fh-font-display);
+  font-weight: 900;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.cs-day__today {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--fh-red);
+  font-size: 0;
+}
+
+.cs-day.is-active {
+  color: var(--fh-red);
+  border-bottom-color: var(--fh-red);
+}
+
+/* ─── Filters ─── */
+.cs-filters {
+  background: var(--fh-grey-bg);
+  border-bottom: 1px solid var(--fh-line-light);
+}
+
+.cs-filters__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fh-gap-sm);
+  padding-block: 1rem;
+}
+
+.cs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cs-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  background: var(--fh-white);
+  border: 1px solid var(--fh-line-light);
+  border-radius: var(--fh-radius);
+  color: var(--fh-text-body);
+  font-family: var(--fh-font-body);
+  font-size: var(--fh-fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color var(--fh-fast),
+    color var(--fh-fast),
+    background-color var(--fh-fast);
+}
+.cs-chip:hover {
+  border-color: var(--fh-text);
+  color: var(--fh-text);
+}
+.cs-chip.is-active {
+  background: var(--fh-black);
+  border-color: var(--fh-black);
+  color: var(--fh-white);
+}
+
+.cs-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+}
+.cs-dot--hiit {
+  background: var(--fh-tag-hiit);
+}
+.cs-dot--strength {
+  background: var(--fh-tag-strength);
+}
+.cs-dot--cardio {
+  background: var(--fh-tag-cardio);
+}
+.cs-dot--flex {
+  background: var(--fh-tag-flex);
+}
+
+.cs-select select {
+  appearance: none;
+  min-width: 12rem;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  background: var(--fh-white)
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>")
+    no-repeat right 0.9rem center;
+  border: 1px solid var(--fh-line-light);
+  border-radius: var(--fh-radius);
+  color: var(--fh-text);
+  font-family: var(--fh-font-body);
+  font-size: var(--fh-fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+.cs-select select:hover {
+  border-color: var(--fh-text);
+}
+
+/* ─── Schedule ─── */
+.cs-schedule {
+  padding-block: clamp(2.5rem, 6vw, 4rem) var(--fh-section-y);
+}
+
+.cs-schedule__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fh-gap-sm);
+  margin-bottom: 1.75rem;
+}
+
+.cs-schedule__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0;
+  font-family: var(--fh-font-display);
+  font-weight: 900;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.cs-schedule__count {
+  font-family: var(--fh-font-body);
+  font-size: var(--fh-fs-base);
+  font-weight: 600;
+  text-transform: none;
+  color: var(--fh-muted);
+}
+
+.cs-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--fh-line-light);
+}
+
+/* Class row */
+.cs-card {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr) minmax(15rem, 20rem) 10rem;
+  grid-template-areas: "time info meta action";
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--fh-line-light);
+  transition: background-color var(--fh-fast);
+}
+.cs-card:hover {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--fh-grey-bg) 8%,
+    var(--fh-grey-bg) 92%,
+    transparent
+  );
+}
+.cs-card[hidden] {
+  display: none;
+}
+
+.cs-card__time {
+  grid-area: time;
+}
+.cs-card__time strong {
+  display: block;
+  font-family: var(--fh-font-display);
+  font-weight: 900;
+  font-size: 1.9rem;
+  line-height: 1;
+}
+.cs-card__time span {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: var(--fh-fs-xs);
+  font-weight: 600;
+  color: var(--fh-muted);
+}
+
+.cs-card__info {
+  grid-area: info;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+.cs-card__info img {
+  width: 4.5rem;
+  height: 4.5rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  background: var(--fh-line-light);
+}
+.cs-card__info h3 {
+  margin: 0.35rem 0 0.15rem;
+  font-family: var(--fh-font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.cs-card__info p {
+  margin: 0;
+  font-size: var(--fh-fs-sm);
+  color: var(--fh-muted);
+}
+
+.cs-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: var(--fh-fs-2xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fh-white);
+}
+.cs-tag--hiit {
+  background: var(--fh-tag-hiit);
+}
+.cs-tag--strength {
+  background: var(--fh-tag-strength);
+}
+.cs-tag--cardio {
+  background: var(--fh-tag-cardio);
+}
+.cs-tag--flex {
+  background: var(--fh-tag-flex);
+}
+
+.cs-card__meta {
+  grid-area: meta;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 0;
+}
+.cs-card__meta dt {
+  font-size: var(--fh-fs-xs);
+  font-weight: 600;
+  color: var(--fh-muted);
+  margin-bottom: 0.25rem;
+}
+.cs-card__meta dd {
+  margin: 0;
+  font-size: var(--fh-fs-base);
+  font-weight: 600;
+}
+
+.cs-spots {
+  font-family: var(--fh-font-display);
+  font-weight: 900;
+  font-size: 1.4rem !important;
+  line-height: 1;
+}
+.cs-spots small {
+  font-family: var(--fh-font-body);
+  font-size: var(--fh-fs-xs);
+  font-weight: 600;
+  color: var(--fh-muted);
+}
+.cs-spots.is-low {
+  color: var(--fh-red);
+}
+.cs-spots.is-full {
+  color: var(--fh-muted);
+}
+
+.cs-bar {
+  display: block;
+  height: 3px;
+  margin-top: 0.5rem;
+  background: var(--fh-line-light);
+  overflow: hidden;
+}
+.cs-bar span {
+  display: block;
+  height: 100%;
+  background: var(--fh-text);
+}
+.cs-spots.is-low + .cs-bar span {
+  background: var(--fh-red);
+}
+.cs-spots.is-full + .cs-bar span {
+  background: var(--fh-muted);
+}
+
+.cs-card__action {
+  grid-area: action;
+}
+.cs-card__action form {
+  margin: 0;
+}
+
+.cs-book {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--fh-red);
+  border: 1px solid var(--fh-red);
+  border-radius: var(--fh-radius);
+  color: var(--fh-white);
+  font-family: var(--fh-font-body);
+  font-size: var(--fh-fs-sm);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--fh-fast),
+    border-color var(--fh-fast);
+}
+.cs-book:hover {
+  background: var(--fh-red-dark);
+  border-color: var(--fh-red-dark);
+}
+.cs-book.is-disabled {
+  background: transparent;
+  border-color: var(--fh-line-light);
+  color: var(--fh-muted);
+  cursor: not-allowed;
+}
+
+.cs-card.is-full .cs-card__info img {
+  filter: grayscale(1);
+  opacity: 0.6;
+}
+.cs-card.is-full .cs-card__time strong,
+.cs-card.is-full .cs-card__info h3 {
+  color: var(--fh-muted);
+}
+
+/* Empty state */
+.cs-empty {
+  padding: 3.5rem 1rem;
+  text-align: center;
+  color: var(--fh-muted);
+}
+.cs-empty p {
+  margin: 0 0 0.75rem;
+  font-size: var(--fh-fs-lg);
+}
+
+.cs-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--fh-red);
+  font-family: var(--fh-font-body);
+  font-size: var(--fh-fs-sm);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* ─── Buttons (split style, matches landing) ─── */
+.cs-btn {
+  display: inline-flex;
+  gap: var(--fh-btn-split);
+  text-decoration: none;
+  font-size: var(--fh-fs-sm);
+  font-weight: 700;
+}
+.cs-btn__label,
+.cs-btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fh-red);
+  color: var(--fh-white);
+  border-radius: var(--fh-radius);
+  transition: background-color var(--fh-fast);
+}
+.cs-btn__label {
+  padding: var(--fh-btn-pad);
+}
+.cs-btn__icon {
+  width: var(--fh-btn-icon);
+}
+.cs-btn:hover .cs-btn__label,
+.cs-btn:hover .cs-btn__icon {
+  background: var(--fh-red-dark);
+}
+
+/* ─── CTA ─── */
+.cs-cta {
+  background: var(--fh-dark);
+  color: var(--fh-white);
+}
+.cs-cta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  padding-block: clamp(3rem, 7vw, 4.5rem);
+}
+.cs-cta h2 {
+  margin: 0 0 0.5rem;
+  font-family: var(--fh-font-display);
+  font-weight: 900;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+.cs-cta p {
+  margin: 0;
+  color: var(--fh-on-dark-70);
+}
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+@media (max-width: 1024px) {
+  .cs-card {
+    grid-template-columns: 5rem minmax(0, 1fr) 9rem;
+    grid-template-areas:
+      "time info action"
+      ".    meta meta";
+    row-gap: 1rem;
+  }
+  .cs-card__meta {
+    max-width: 22rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-days__list {
+    grid-template-columns: repeat(7, 4.25rem);
+  }
+
+  .cs-filters__inner {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+  .cs-chips {
+    min-width: 0;
+  }
+  .cs-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-inline: calc(var(--fh-gutter) * -1);
+    padding-inline: var(--fh-gutter);
+  }
+  .cs-chips::-webkit-scrollbar {
+    display: none;
+  }
+  .cs-select select {
+    width: 100%;
+  }
+
+  .cs-schedule__head .cs-btn {
+    display: none;
+  } /* CTA at the bottom covers it */
+
+  .cs-card {
+    grid-template-columns: 4rem minmax(0, 1fr);
+    grid-template-areas:
+      "time info"
+      "meta meta"
+      "action action";
+    column-gap: 1rem;
+    padding: 1.25rem 0;
+  }
+  .cs-card:hover {
+    background: none;
+  }
+  .cs-card__time strong {
+    font-size: 1.5rem;
+  }
+  .cs-card__info img {
+    display: none;
+  }
+  .cs-card__meta {
+    max-width: none;
+    padding-left: 5rem;
+  }
+
+  .cs-cta .cs-btn {
+    width: 100%;
+  }
+  .cs-cta .cs-btn__label {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cs *,
+  .cs *::before,
+  .cs *::after {
+    transition: none !important;
+  }
+}
