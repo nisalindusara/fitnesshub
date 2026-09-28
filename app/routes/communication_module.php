@@ -23,28 +23,18 @@ $router->get('/communication/Empty-support-tickets', [CommunicationController::c
 $router->get('/communication/user-support-ticket', [CommunicationController::class, 'UserSupportTickets']);
 $router->get('/communication/user-ticketForm', [CommunicationController::class, 'userTicketForm']);
 $router->get('/communication/instructor-tickets', [CommunicationController::class, 'InstructorTickets']);
-$router->get('/communication/instructor-messages', [CommunicationController::class, 'InstructorMessages']);
-$router->get('/messages', [CommunicationController::class, 'InstructorMessages']);
+// Instructor messaging screen + its JSON API (CRUD). Also registered under the
+// Apache subfolder paths (/fitnesshub/public/...).
+foreach (['', '/fitnesshub/public'] as $prefix) {
+    $router->get($prefix . '/communication/instructor-messages', [CommunicationController::class, 'InstructorMessages'], 'manage_messages');
+    $router->get($prefix . '/messages', [CommunicationController::class, 'InstructorMessages'], 'manage_messages');
 
-// Also register Apache subfolder paths (/fitnesshub/public/...)
-$router->get('/fitnesshub/public/messages', [CommunicationController::class, 'InstructorMessages']);
-$router->get('/fitnesshub/public/communication/instructor-messages', [CommunicationController::class, 'InstructorMessages']);
-
-// API endpoints for chat (Root and Apache subfolder)
-$router->get('/api/conversations', [CommunicationController::class, 'listConversations']);
-$router->get('/fitnesshub/public/api/conversations', [CommunicationController::class, 'listConversations']);
-
-$router->get('/api/messages',      [CommunicationController::class, 'listMessages']);
-$router->get('/fitnesshub/public/api/messages', [CommunicationController::class, 'listMessages']);
-
-$router->post('/api/messages/read', [CommunicationController::class, 'markRead']);
-$router->post('/fitnesshub/public/api/messages/read', [CommunicationController::class, 'markRead']);
-
-$router->post('/api/messages/send', [CommunicationController::class, 'send']);
-$router->post('/fitnesshub/public/api/messages/send', [CommunicationController::class, 'send']);
-
-$router->post('/api/messages/delete', [CommunicationController::class, 'delete']);
-$router->post('/fitnesshub/public/api/messages/delete', [CommunicationController::class, 'delete']);
+    $router->get($prefix . '/api/conversations', [CommunicationController::class, 'listConversations'], 'manage_messages');
+    $router->get($prefix . '/api/messages', [CommunicationController::class, 'listMessages'], 'manage_messages');
+    $router->post($prefix . '/api/messages/send', [CommunicationController::class, 'send'], 'manage_messages');
+    $router->post($prefix . '/api/messages/read', [CommunicationController::class, 'markRead'], 'manage_messages');
+    $router->post($prefix . '/api/messages/delete', [CommunicationController::class, 'delete'], 'manage_messages');
+}
 
 //instructor view member's profile
 $router->get('/member/profile/nisal', [CommunicationController::class, 'profileNisal']);

@@ -1,6 +1,8 @@
 // =========================================================
 // public/assets/js/instructor-messages.js
 // Instructor Messaging Module - Full CRUD & Reactive UI
+//   Create: send a message        Read:   conversations + thread
+//   Update: mark thread as read   Delete: remove own message
 // =========================================================
 
 const basePath = window.location.pathname.includes('/fitnesshub/public') ? '/fitnesshub/public' : '';
@@ -18,30 +20,42 @@ let activeContactId = null;
 let conversations = [];
 let currentFilter = 'all';
 let isInitialLoad = true;
+let isSending = false;
 let pendingDeleteId = null;
 let pendingDeleteElement = null;
 
 // 2. Select HTML elements
 const el = {
+    panel: document.getElementById('msgPanel'),
     list: document.getElementById('conversationList'),
     placeholder: document.getElementById('chatPlaceholder'),
     chatWindow: document.getElementById('chatWindow'),
     chatName: document.getElementById('chatName'),
     chatAvatar: document.getElementById('chatAvatar'),
     chatAvatarImg: document.getElementById('chatAvatarImg'),
-    activityUserName: document.getElementById('activityUserName'),
+    backBtn: document.getElementById('backToListBtn'),
     messageList: document.getElementById('messageList'),
+    messageError: document.getElementById('messageError'),
     sendForm: document.getElementById('sendForm'),
+    sendBtn: document.getElementById('sendBtn'),
     messageInput: document.getElementById('messageInput'),
     searchInput: document.getElementById('searchInput'),
     totalUnreadBadge: document.getElementById('totalUnreadBadge'),
     deleteModal: document.getElementById('deleteModal'),
     cancelDeleteBtn: document.getElementById('cancelDeleteBtn'),
     confirmDeleteBtn: document.getElementById('confirmDeleteBtn'),
-    activitiesSidebar: document.getElementById('activitiesSidebar'),
-    toggleActivitiesBtn: document.getElementById('toggleActivitiesBtn'),
-    closeActivitiesBtn: document.getElementById('closeActivitiesBtn'),
 };
+
+// Inline error above the composer (replaces browser alert() popups)
+function showError(message) {
+    if (!el.messageError) return;
+    el.messageError.textContent = message;
+    el.messageError.hidden = false;
+}
+
+function clearError() {
+    if (el.messageError) el.messageError.hidden = true;
+}
 
 // 3. Helper to make AJAX fetch requests
 async function api(action, { method = null, params = {}, body = null } = {}) {
@@ -52,17 +66,21 @@ async function api(action, { method = null, params = {}, body = null } = {}) {
     const query = new URLSearchParams(params).toString();
     const url = query ? `${config.url}?${query}` : config.url;
 
-    const options = {
+    const res = await fetch(url, {
         method: httpMethod,
         headers: {
             'Accept': 'application/json',
             ...(body ? { 'Content-Type': 'application/json' } : {})
         },
         body: body ? JSON.stringify(body) : undefined,
-    };
+    });
 
-    const res = await fetch(url, options);
-    const json = await res.json();
+    let json;
+    try {
+        json = await res.json();
+    } catch (e) {
+        throw new Error(`Unexpected server response (${res.status})`);
+    }
     if (!json.success) {
         throw new Error(json.error || 'Request failed');
     }
@@ -70,42 +88,39 @@ async function api(action, { method = null, params = {}, body = null } = {}) {
 }
 
 // 4. Time Formatting Helpers
+function parseSqlDate(sqlDatetime) {
+    if (!sqlDatetime) return null;
+    const date = new Date(String(sqlDatetime).replace(' ', 'T'));
+    return isNaN(date.getTime()) ? null : date;
+}
+
 function formatConversationTime(sqlDatetime) {
-    if (!sqlDatetime) return '';
-    const date = new Date(sqlDatetime.replace(' ', 'T'));
-    if (isNaN(date.getTime())) return '';
+    const date = parseSqlDate(sqlDatetime);
+    if (!date) return '';
 
     const now = new Date();
-    const isToday = date.toDateString() === now.toDateString();
-
-    const yesterday = new Date(now);
-    yesterday.setDate(now.getDate() - 1);
-    const isYesterday = date.toDateString() === yesterday.toDateString();
-
-    if (isToday) {
+    if (date.toDateString() === now.toDateString()) {
         return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
-    if (isYesterday) {
+    const yesterday = new Date(now);
+    yesterday.setDate(now.getDate() - 1);
+    if (date.toDateString() === yesterday.toDateString()) {
         return 'Yesterday';
     }
-    const sameYear = date.getFullYear() === now.getFullYear();
-    if (sameYear) {
+    if (date.getFullYear() === now.getFullYear()) {
         return date.toLocaleDateString([], { month: 'short', day: 'numeric' });
     }
     return date.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
 function formatMessageTime(sqlDatetime) {
-    if (!sqlDatetime) return '';
-    const date = new Date(sqlDatetime.replace(' ', 'T'));
-    if (isNaN(date.getTime())) return '';
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const date = parseSqlDate(sqlDatetime);
+    return date ? date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
 }
 
 function formatDayDivider(sqlDatetime) {
-    if (!sqlDatetime) return 'Today';
-    const date = new Date(sqlDatetime.replace(' ', 'T'));
-    if (isNaN(date.getTime())) return 'Today';
+    const date = parseSqlDate(sqlDatetime);
+    if (!date) return 'Today';
 
     const now = new Date();
     if (date.toDateString() === now.toDateString()) {
@@ -126,31 +141,55 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
-// 5. Load and Render Conversations
-async function loadConversations(autoSelectFirst = false) {
+// Avatar helpers
+function initialsOf(name) {
+    return (name || 'U')
+        .split(' ')
+        .filter(Boolean)
+        .map(w => w[0])
+        .slice(0, 2)
+        .join('')
+        .toUpperCase() || 'U';
+}
+
+function imageUrl(path) {
+    return `${basePath}/${String(path).replace(/^\/+/, '')}`;
+}
+
+// 5. Load and Render Conversations (READ)
+// No conversation is opened automatically: opening one marks it as read, so the
+// instructor would never get to see the unread counts.
+async function loadConversations() {
     try {
         const data = await api('conversations');
-        conversations = data || [];
-        updateUnreadCountBadge();
+        conversations = (data && data.conversations) || [];
+        conversations.forEach(c => { c.id = parseInt(c.id, 10); });
+        updateUnreadCountBadge(data ? data.unread_total : null);
         renderConversationList();
-
-        // On first load, automatically select the first contact (matching UI mockup)
-        if (autoSelectFirst && !activeContactId && conversations.length > 0) {
-            const first = conversations[0];
-            openConversation(first.id, first);
-        }
     } catch (err) {
         console.error('Failed to load conversations:', err);
+        if (isInitialLoad && el.list) {
+            el.list.innerHTML = '<li class="empty-state">Could not load conversations</li>';
+        }
+    } finally {
+        isInitialLoad = false;
     }
 }
 
-// Update the badge next to the 'Unread' tab
-function updateUnreadCountBadge() {
-    const totalUnread = conversations.reduce((acc, c) => acc + parseInt(c.unread_count || 0, 10), 0);
+// Update the count on the 'Unread' filter chip
+function updateUnreadCountBadge(total = null) {
+    const totalUnread = total !== null && total !== undefined
+        ? parseInt(total, 10) || 0
+        : conversations.reduce((acc, c) => acc + (parseInt(c.unread_count, 10) || 0), 0);
     if (el.totalUnreadBadge) {
         el.totalUnreadBadge.textContent = totalUnread;
-        el.totalUnreadBadge.style.display = totalUnread > 0 ? 'inline-block' : 'none';
     }
+}
+
+function avatarHtml(contact) {
+    return contact.profile_image
+        ? `<img class="msg-avatar" src="${escapeHtml(imageUrl(contact.profile_image))}" alt="">`
+        : `<span class="msg-avatar" aria-hidden="true">${escapeHtml(initialsOf(contact.name))}</span>`;
 }
 
 // Render conversation list items in sidebar
@@ -160,137 +199,105 @@ function renderConversationList() {
     const query = (el.searchInput ? el.searchInput.value : '').trim().toLowerCase();
     let filtered = conversations.filter(c => (c.name || '').toLowerCase().includes(query));
 
-    // Handle 'Unread' tab filter (keep active contact visible so it doesn't jump)
+    // Handle 'Unread' filter (keep active contact visible so it doesn't jump)
     if (currentFilter === 'unread') {
         filtered = filtered.filter(c => parseInt(c.unread_count || 0, 10) > 0 || c.id === activeContactId);
     }
 
     if (filtered.length === 0) {
-        el.list.innerHTML = `<li class="empty-state">${query ? 'No matching contacts' : (currentFilter === 'unread' ? 'No unread messages' : 'No conversations yet')}</li>`;
+        el.list.innerHTML = `<li class="empty-state">${query ? 'No matching clients' : (currentFilter === 'unread' ? 'No unread messages' : 'No conversations yet')}</li>`;
         return;
     }
 
     el.list.innerHTML = '';
     filtered.forEach(c => {
-        const li = document.createElement('li');
-        li.className = 'conversation-item' + (c.id === activeContactId ? ' active' : '');
-        li.dataset.id = c.id;
-
-        const initials = (c.name || 'User')
-            .split(' ')
-            .filter(Boolean)
-            .map(w => w[0])
-            .slice(0, 2)
-            .join('')
-            .toUpperCase() || 'U';
-
         const unreadCount = parseInt(c.unread_count || 0, 10);
         const hasUnread = unreadCount > 0;
-        const color = c.avatar_color || '#4A90D9';
-        const formattedTime = formatConversationTime(c.last_time);
-        const lastSnippet = c.last_message ? escapeHtml(c.last_message) : 'No messages yet';
 
-        // Avatar: Image if available, else styled colored initials circle
-        let avatarHtml = '';
-        if (c.profile_image) {
-            avatarHtml = `<img class="avatar-circle-img" src="/${c.profile_image.replace(/^\/+/, '')}" alt="${escapeHtml(c.name)}">`;
-        } else {
-            avatarHtml = `<span class="avatar-circle" style="background:${color}">${initials}</span>`;
+        const li = document.createElement('li');
+        li.className = 'conversation-item'
+            + (c.id === activeContactId ? ' active' : '')
+            + (hasUnread ? ' has-unread' : '');
+        li.dataset.id = c.id;
+        li.tabIndex = 0;
+        li.setAttribute('role', 'button');
+        li.setAttribute('aria-label', `${c.name}${hasUnread ? `, ${unreadCount} unread` : ''}`);
+
+        let lastSnippet = 'No messages yet';
+        if (c.last_message) {
+            const prefix = parseInt(c.last_sender_id, 10) === CURRENT_USER_ID ? 'You: ' : '';
+            lastSnippet = escapeHtml(prefix + c.last_message);
         }
 
         li.innerHTML = `
-            <div class="avatar-container">
-                ${avatarHtml}
-            </div>
+            ${avatarHtml(c)}
             <div class="conv-meta-wrap">
                 <div class="conv-top-row">
                     <span class="contact-name-txt">${escapeHtml(c.name)}</span>
-                    <span class="conv-time-txt">${formattedTime}</span>
+                    <span class="conv-time-txt">${formatConversationTime(c.last_time)}</span>
                 </div>
                 <div class="conv-bottom-row">
                     <span class="conv-last-msg">${lastSnippet}</span>
-                    ${hasUnread ? `<span class="unread-dot" title="${unreadCount} unread"></span>` : ''}
+                    ${hasUnread ? `<span class="msg-count">${unreadCount}</span>` : ''}
                 </div>
             </div>
         `;
 
-        li.addEventListener('click', () => openConversation(c.id, c));
+        li.addEventListener('click', () => openConversation(c.id));
+        li.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openConversation(c.id);
+            }
+        });
         el.list.appendChild(li);
     });
 }
 
-// 6. Open a conversation thread (READ & UPDATE unread count)
-async function openConversation(contactId, contactData = null) {
+// 6. Open a conversation thread (READ + UPDATE unread count)
+async function openConversation(contactId) {
     contactId = parseInt(contactId, 10);
     activeContactId = contactId;
 
-    // Retrieve or find contact record
-    const contact = contactData || conversations.find(c => c.id === contactId) || { id: contactId, name: 'User' };
+    const contact = conversations.find(c => c.id === contactId) || { id: contactId, name: 'User' };
 
-    // Update UI headers
-    if (el.placeholder) el.placeholder.style.display = 'none';
-    if (el.chatWindow) el.chatWindow.style.display = 'flex';
+    if (el.placeholder) el.placeholder.hidden = true;
+    if (el.chatWindow) el.chatWindow.hidden = false;
+    if (el.panel) el.panel.classList.add('is-chat-open');
     if (el.chatName) el.chatName.textContent = contact.name || 'Chat';
+    clearError();
 
-    // Update right activities sidebar user title
-    if (el.activityUserName) {
-        const firstName = (contact.name || 'User').split(' ')[0];
-        el.activityUserName.textContent = firstName;
-    }
-
-    // Update Chat Header Avatar
-    const initials = (contact.name || 'U')
-        .split(' ')
-        .filter(Boolean)
-        .map(w => w[0])
-        .slice(0, 2)
-        .join('')
-        .toUpperCase();
-
+    // Chat header avatar: photo if there is one, otherwise initials
     if (contact.profile_image && el.chatAvatarImg) {
-        el.chatAvatarImg.src = `/${contact.profile_image.replace(/^\/+/, '')}`;
-        el.chatAvatarImg.style.display = 'block';
-        if (el.chatAvatar) el.chatAvatar.style.display = 'none';
+        el.chatAvatarImg.src = imageUrl(contact.profile_image);
+        el.chatAvatarImg.hidden = false;
+        if (el.chatAvatar) el.chatAvatar.hidden = true;
     } else if (el.chatAvatar) {
-        el.chatAvatar.textContent = initials;
-        el.chatAvatar.style.background = contact.avatar_color || '#4A90D9';
-        el.chatAvatar.style.display = 'flex';
-        if (el.chatAvatarImg) el.chatAvatarImg.style.display = 'none';
+        el.chatAvatar.textContent = initialsOf(contact.name);
+        el.chatAvatar.hidden = false;
+        if (el.chatAvatarImg) el.chatAvatarImg.hidden = true;
     }
 
     highlightActive(contactId);
+    if (el.messageList) el.messageList.innerHTML = '';
 
-    // Optimistically clear unread count for this conversation in UI
-    const convIndex = conversations.findIndex(c => c.id === contactId);
-    let hadUnread = false;
-    if (convIndex !== -1 && parseInt(conversations[convIndex].unread_count || 0, 10) > 0) {
-        conversations[convIndex].unread_count = 0;
-        hadUnread = true;
-        updateUnreadCountBadge();
-        // Remove unread dot in list item immediately
-        const activeLi = document.querySelector(`.conversation-item[data-id="${contactId}"]`);
-        if (activeLi) {
-            const dot = activeLi.querySelector('.unread-dot');
-            if (dot) dot.remove();
-        }
-    }
-
-    // Load message stream
+    // loadMessages also marks the thread as read in the database
     await loadMessages(contactId);
 
-    // Focus composer input
-    if (el.messageInput) {
-        el.messageInput.focus();
-    }
+    if (el.messageInput) el.messageInput.focus();
+}
 
-    // UPDATE: Mark messages as read in database
-    if (hadUnread) {
-        try {
-            await api('read', { body: { contact_id: contactId } });
-        } catch (err) {
-            console.warn('Could not mark as read on server:', err);
-        }
-    }
+// Small screens: go back from the chat to the conversation list
+function closeConversation() {
+    activeContactId = null;
+    if (el.panel) el.panel.classList.remove('is-chat-open');
+    if (el.chatWindow) el.chatWindow.hidden = true;
+    if (el.placeholder) el.placeholder.hidden = false;
+    renderConversationList();
+}
+
+if (el.backBtn) {
+    el.backBtn.addEventListener('click', closeConversation);
 }
 
 function highlightActive(contactId) {
@@ -302,11 +309,38 @@ function highlightActive(contactId) {
 // 7. Load and Render Messages for Active Contact (READ)
 async function loadMessages(contactId, retainScroll = false) {
     try {
-        const messages = await api('messages', { params: { contact_id: contactId } });
-        renderMessages(messages || [], retainScroll);
+        const messages = (await api('messages', { params: { contact_id: contactId } })) || [];
+        // The user may have switched to another conversation while this was loading
+        if (contactId !== activeContactId) return;
+        renderMessages(messages, retainScroll);
+
+        const hasUnread = messages.some(m =>
+            parseInt(m.receiver_id, 10) === CURRENT_USER_ID && !parseInt(m.is_read, 10));
+        if (hasUnread) {
+            await markConversationRead(contactId);
+        }
     } catch (err) {
         console.error('Failed to load messages:', err);
     }
+}
+
+// UPDATE: mark every message from this contact as read, then refresh the unread counts
+async function markConversationRead(contactId) {
+    try {
+        const result = await api('read', { body: { contact_id: contactId } });
+        const conv = conversations.find(c => c.id === contactId);
+        if (conv) conv.unread_count = 0;
+        updateUnreadCountBadge(result ? result.unread_total : null);
+        renderConversationList();
+    } catch (err) {
+        console.warn('Could not mark as read on server:', err);
+    }
+}
+
+function emptyThreadHtml() {
+    return `
+        <p class="empty-thread">No messages yet. Send a message below to start the conversation.</p>
+    `;
 }
 
 function renderMessages(messages, retainScroll = false) {
@@ -319,11 +353,7 @@ function renderMessages(messages, retainScroll = false) {
     el.messageList.innerHTML = '';
 
     if (messages.length === 0) {
-        el.messageList.innerHTML = `
-            <div style="text-align: center; color: #94a3b8; font-size: 13px; margin: auto 0;">
-                No messages yet. Send a message below to start the conversation!
-            </div>
-        `;
+        el.messageList.innerHTML = emptyThreadHtml();
         return;
     }
 
@@ -351,6 +381,7 @@ function renderMessages(messages, retainScroll = false) {
 // 8. Build Message Bubble (with DELETE button for own sent messages)
 function buildBubble(m) {
     const isMine = parseInt(m.sender_id, 10) === CURRENT_USER_ID;
+    const isRead = !!parseInt(m.is_read, 10);
     const row = document.createElement('div');
     row.className = 'bubble-wrap ' + (isMine ? 'sent' : 'received');
     row.dataset.id = m.id;
@@ -369,7 +400,10 @@ function buildBubble(m) {
         </button>
     ` : '';
 
-    const readReceiptHtml = isMine ? `<span class="read-check" title="${m.is_read ? 'Read' : 'Sent'}">✓✓</span>` : '';
+    // One tick = sent, two ticks = read by the member
+    const readReceiptHtml = isMine
+        ? `<span class="read-check${isRead ? ' is-read' : ''}" title="${isRead ? 'Read' : 'Sent'}">${isRead ? '✓✓' : '✓'}</span>`
+        : '';
 
     row.innerHTML = `
         <div class="bubble-content-row">
@@ -382,7 +416,6 @@ function buildBubble(m) {
         </div>
     `;
 
-    // Attach click handler to delete button
     if (isMine) {
         const btn = row.querySelector('.msg-delete-btn');
         if (btn) {
@@ -401,44 +434,28 @@ if (el.sendForm) {
     el.sendForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const text = (el.messageInput ? el.messageInput.value : '').trim();
-        if (!text || !activeContactId) return;
+        if (!text || !activeContactId || isSending) return;
 
+        const contactId = activeContactId;
+        const sendBtn = el.sendBtn;
+        isSending = true;
+        clearError();
+        if (sendBtn) sendBtn.disabled = true;
         el.messageInput.value = '';
 
         try {
-            const saved = await api('send', {
-                body: { receiver_id: activeContactId, message: text },
-            });
+            await api('send', { body: { receiver_id: contactId, message: text } });
 
-            // If empty placeholder text exists, clear it
-            if (el.messageList && el.messageList.querySelector('.day-divider') === null) {
-                el.messageList.innerHTML = '';
-            }
-
-            // Append today divider if not present
-            const nowDayKey = new Date().toISOString().substring(0, 10);
-            const dividers = el.messageList.querySelectorAll('.day-divider');
-            let hasToday = false;
-            if (dividers.length > 0) {
-                const lastDiv = dividers[dividers.length - 1];
-                if (lastDiv.textContent === 'Today') hasToday = true;
-            }
-            if (!hasToday) {
-                const divider = document.createElement('div');
-                divider.className = 'day-divider';
-                divider.textContent = 'Today';
-                el.messageList.appendChild(divider);
-            }
-
-            el.messageList.appendChild(buildBubble(saved));
-            el.messageList.scrollTop = el.messageList.scrollHeight;
-
-            // Refresh conversations so the left sidebar moves active contact to top
-            await loadConversations();
+            // Re-read the thread and sidebar from the database so both stay in sync
+            await Promise.all([loadMessages(contactId), loadConversations()]);
             highlightActive(activeContactId);
         } catch (err) {
-            alert('Failed to send message: ' + err.message);
+            showError('Message not sent: ' + err.message);
             el.messageInput.value = text;
+        } finally {
+            isSending = false;
+            if (sendBtn) sendBtn.disabled = false;
+            el.messageInput.focus();
         }
     });
 }
@@ -475,40 +492,37 @@ if (el.confirmDeleteBtn) {
         if (!pendingDeleteId) return;
         const msgId = pendingDeleteId;
         const targetElement = pendingDeleteElement;
+        const contactId = activeContactId;
         closeDeleteModal();
 
+        clearError();
         try {
             await api('delete', { body: { id: msgId } });
 
             if (targetElement) {
                 targetElement.classList.add('deleting');
-                setTimeout(() => {
-                    targetElement.remove();
-                    // If no more bubbles left in messageList
-                    if (el.messageList && el.messageList.querySelectorAll('.bubble-wrap').length === 0) {
-                        el.messageList.innerHTML = `
-                            <div style="text-align: center; color: #94a3b8; font-size: 13px; margin: auto 0;">
-                                No messages yet. Send a message below to start the conversation!
-                            </div>
-                        `;
-                    }
-                }, 220);
             }
-
-            // Update conversations sidebar (to update preview if this was the latest message)
-            await loadConversations();
-            highlightActive(activeContactId);
+            // Let the fade-out play, then re-render from the database (keeps day dividers and previews right)
+            setTimeout(async () => {
+                if (contactId === activeContactId) {
+                    await loadMessages(contactId, true);
+                }
+                await loadConversations();
+                highlightActive(activeContactId);
+            }, 220);
         } catch (err) {
-            alert('Could not delete message: ' + err.message);
+            showError('Could not delete message: ' + err.message);
         }
     });
 }
 
-// 11. Filter tabs ("All" vs "Unread")
+// 11. Filter chips ("All" vs "Unread")
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.toggle('is-active', b === btn);
+            b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
         currentFilter = btn.dataset.filter;
         renderConversationList();
     });
@@ -516,41 +530,30 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 // 12. Search input filtering
 if (el.searchInput) {
-    el.searchInput.addEventListener('input', () => {
-        renderConversationList();
-    });
+    el.searchInput.addEventListener('input', renderConversationList);
 }
 
-// 13. Activities sidebar drawer toggle for reduced screen sizes
-if (el.toggleActivitiesBtn && el.activitiesSidebar) {
-    el.toggleActivitiesBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        el.activitiesSidebar.classList.toggle('force-open');
-    });
-}
-
-if (el.closeActivitiesBtn && el.activitiesSidebar) {
-    el.closeActivitiesBtn.addEventListener('click', () => {
-        el.activitiesSidebar.classList.remove('force-open');
-    });
-}
-
-// Close drawer if user clicks outside of activities sidebar when open
-document.addEventListener('click', (e) => {
-    if (el.activitiesSidebar && el.activitiesSidebar.classList.contains('force-open')) {
-        if (!el.activitiesSidebar.contains(e.target) && (!el.toggleActivitiesBtn || !el.toggleActivitiesBtn.contains(e.target))) {
-            el.activitiesSidebar.classList.remove('force-open');
-        }
+// 13. Close the delete dialog with Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && el.deleteModal && el.deleteModal.classList.contains('open')) {
+        closeDeleteModal();
     }
 });
 
 // 14. Initialize on page load
-loadConversations(true);
+loadConversations();
 
-// 15. Background polling for live sync (every 6 seconds)
-setInterval(() => {
-    loadConversations(false);
-    if (activeContactId) {
-        loadMessages(activeContactId, true);
+// 15. Background polling for live sync (every 6 seconds; skipped while a request is in flight or the tab is hidden)
+let isPolling = false;
+setInterval(async () => {
+    if (isPolling || isSending || document.hidden) return;
+    isPolling = true;
+    try {
+        await loadConversations();
+        if (activeContactId) {
+            await loadMessages(activeContactId, true);
+        }
+    } finally {
+        isPolling = false;
     }
 }, 6000);

@@ -618,6 +618,20 @@ INSERT INTO `leave_request_sessions` (`leave_request_id`, `work_session_id`, `se
 (4, 33, '2026-09-21', '09:00:00', '10:00:00', 'class', 'Strength Foundations, Studio A', 13, NULL, 'kept', NULL),
 (4, 34, '2026-09-21', '14:00:00', '14:45:00', 'pt', 'Amelia Davis, mobility assessment', 13, NULL, 'kept', NULL);
 
+DELETE FROM `messages`;
+
+--
+-- Messaging seed: Instructor One (12) chatting with clients 1 and 11. The last two messages from user 1 are unread.
+--
+INSERT INTO `messages` (`id`, `sender_id`, `receiver_id`, `message`, `is_read`, `created_at`) VALUES
+(1, 12, 1, 'Hi! I have published your Hypertrophy Block A plan. Take a look and let me know if you have questions.', 1, '2026-09-20 18:05:00'),
+(2, 1, 12, 'Thanks coach! Looks great. How heavy should I go on overhead press?', 1, '2026-09-20 19:12:00'),
+(3, 12, 1, 'Keep it under 12 reps and focus on form. We will check it together on Friday.', 1, '2026-09-20 19:30:00'),
+(4, 1, 12, 'My shoulder felt a bit tight after yesterday''s session.', 0, '2026-09-27 08:40:00'),
+(5, 1, 12, 'Should I skip pressing today?', 0, '2026-09-27 08:41:00'),
+(6, 11, 12, 'Is the group class still on this Thursday?', 1, '2026-09-25 10:15:00'),
+(7, 12, 11, 'Yes, same time in Studio A. See you there!', 1, '2026-09-25 11:02:00');
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
