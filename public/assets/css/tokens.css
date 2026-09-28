@@ -1,72 +1,114 @@
-/* shared values */
+/* ==========================================================
+   FitnessHub – Design tokens
+   Place at: /assets/css/tokens.css  (load BEFORE landing.css)
+   Change values here; landing.css only references them.
+   ========================================================== */
+
+/* Fonts are loaded once in the layout <head>. */
+
 :root {
-  /* Colors */
-  --color-primary: #e31837;
-  --color-primary-hover: #c21430;
-  --color-bg-dark: #0a0a0a;
+  /* ─── Brand ─── */
+  --fh-red: #e31837;
+  --fh-red-dark: #c21430;
+  --fh-star: #f59e0b;
 
-  --color-white: #ffffff;
-  --color-text-title: #ffffff;
-  --color-text-body: rgba(255, 255, 255, 0.5);
-  --color-text-muted: rgba(255, 255, 255, 0.4);
-  --color-text-faint: rgba(255, 255, 255, 0.3);
-  --color-text-subtle: rgba(255, 255, 255, 0.2);
+  /* ─── Neutrals ─── */
+  --fh-black: #000000;
+  --fh-dark: #151515; /* dark section background */
+  --fh-panel: #1f1f1f; /* pricing card */
+  --fh-panel-2: #2a2a2a; /* pricing feature box */
+  --fh-white: #ffffff;
+  --fh-grey-bg: #f4f4f4; /* light grey section */
+  --fh-btn-light-hover: #e9e9e9;
 
-  --color-border-light: rgba(255, 255, 255, 0.1);
-  --color-border-medium: rgba(255, 255, 255, 0.2);
-  --color-border-highlight: rgba(227, 24, 55, 0.5);
+  /* ─── Text on light ─── */
+  --fh-text: #1a1a1a;
+  --fh-text-strong: #2b2b2b;
+  --fh-text-body: #4b5563;
+  --fh-text-list: #374151;
+  --fh-muted: #6b7280;
 
-  --color-bg-light: rgba(255, 255, 255, 0.05);
-  --color-bg-transparent: transparent;
+  /* ─── Text on dark ─── */
+  --fh-on-dark-90: rgba(255, 255, 255, 0.85);
+  --fh-on-dark-80: rgba(255, 255, 255, 0.8);
+  --fh-on-dark-70: rgba(255, 255, 255, 0.7);
+  --fh-on-dark-60: rgba(255, 255, 255, 0.6);
+  --fh-on-dark-50: rgba(255, 255, 255, 0.5);
+  --fh-on-dark-35: rgba(255, 255, 255, 0.35);
 
-  /* Gradients */
-  --gradient-overlay-x: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.65)
+  /* ─── Lines ─── */
+  --fh-line-dark: rgba(255, 255, 255, 0.12);
+  --fh-line-light: #e5e7eb;
+  --fh-line-control: #cfcfcf; /* slider arrow border */
+
+  /* ─── Overlays ─── */
+  --fh-hero-shade:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.55) 45%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
+  --fh-hero-shade-mobile: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.55) 55%,
+    rgba(0, 0, 0, 0.35) 100%
   );
-  --gradient-overlay-y: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.8),
-    transparent,
-    rgba(0, 0, 0, 0.2)
-  );
 
-  /* Typography */
-  --font-family-primary: "Barlow", sans-serif;
-  --font-family-condensed: "Barlow Condensed", sans-serif;
+  /* ─── Typography ─── */
+  --fh-font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --fh-font-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fh-font-quote: Georgia, serif;
 
-  /* Spacing (matching tailwind utilities approx) */
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-3: 0.75rem;
-  --spacing-4: 1rem;
-  --spacing-5: 1.25rem;
-  --spacing-6: 1.5rem;
-  --spacing-8: 2rem;
-  --spacing-10: 2.5rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
+  --fh-fs-hero: clamp(3.25rem, 9vw, 7.5rem);
+  --fh-fs-h2: clamp(2.25rem, 5vw, 3.75rem);
+  --fh-fs-price: clamp(2.25rem, 4vw, 2.75rem);
+  --fh-fs-program: clamp(1.25rem, 2.6vw, 1.75rem);
+  --fh-fs-quote: clamp(1.25rem, 2.4vw, 1.75rem);
+  --fh-fs-banner: clamp(1.05rem, 2vw, 1.3rem);
+  --fh-fs-stat: 2.5rem;
+  --fh-fs-h3: 1.35rem;
+  --fh-fs-lg: 1.0625rem;
+  --fh-fs-base: 1rem;
+  --fh-fs-sm: 0.875rem;
+  --fh-fs-xs: 0.78rem;
+  --fh-fs-2xs: 0.7rem;
 
-  /* Transition Speeds */
-  --transition-fast: 0.22s;
-  --transition-slow: 0.5s;
+  --fh-lh-tight: 0.9;
+  --fh-lh-body: 1.6;
 
-  --neutral-gray: rgba(28, 28, 28, 0.4);
-  --success-green: #1a9c5c;
-  --warning-amber: #b8720a;
-  --brand-red: #e31837; /* matches --color-primary, reuse if you'd rather alias it */
-}
+  /* ─── Layout & spacing ─── */
+  --nav-height: 72px; /* nav bar height; main is offset by this */
+  --fh-nav-h: var(--nav-height);
+  --fh-container: 1240px;
+  --fh-gutter: clamp(1.25rem, 4vw, 3rem);
+  --fh-section-y: clamp(4rem, 9vw, 7rem);
+  --fh-gap-sm: 1rem;
+  --fh-gap: 1.5rem;
+  --fh-gap-lg: clamp(2rem, 5vw, 4rem);
+  --fh-heading-gap: clamp(2.5rem, 5vw, 4rem);
+  --fh-accordion-indent: clamp(3rem, 12vw, 8rem);
 
-/* landing.css */
-:root {
-  --nav-height: 4rem;
-}
+  /* ─── Class type colours (schedule tags) ─── */
+  --fh-tag-hiit: #e31837;
+  --fh-tag-strength: #111827;
+  --fh-tag-cardio: #d9480f;
+  --fh-tag-flex: #7c3aed;
 
-/* member.css */
-:root {
-}
+  /* ─── Components ─── */
+  --fh-btn-pad: 0.95rem 1.75rem;
+  --fh-btn-icon: 3rem;
+  --fh-btn-split: 3px; /* gap between label and arrow square */
+  --fh-circle: 3rem; /* slider arrow size */
+  --fh-radius: 0; /* set e.g. 4px to round cards/buttons */
 
-/* admin.css */
-:root {
+  /* ─── Motion ─── */
+  --fh-fast: 0.2s;
+  --fh-medium: 0.35s;
+  --fh-slow: 0.5s;
+
+  /* Breakpoints (reference only — CSS vars can't be used in @media):
+     1024px tablet landscape, 860px tablet, 600px phone */
 }

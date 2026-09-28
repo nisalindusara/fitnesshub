@@ -2,7 +2,7 @@
 // E-Commerce: public storefront
 
 $router->get('/store', [StoreController::class, 'showStoreLandingPageScreen']);
-$router->get('/store/catalog', [StoreController::class, 'showStoreCatalogScreen']);
+$router->get('/store/catalog', [StoreController::class, 'ecommerceCshowStoreCatalogScreenatalogue']);
 $router->get('/store/cart', [StoreController::class, 'showCartScreen']);
 $router->get('/store/checkout', [StoreController::class, 'showStoreCheckoutScreen']);
 

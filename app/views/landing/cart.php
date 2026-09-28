@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-img">
                     <div class="img-placeholder">
-                        <!-- <img src="..." alt="Product"> -->
+                        <img class="img-contain" src="https://www.muscletech.com/cdn/shop/files/MuscleTech-NitroTech-2lb-chocolate.jpg?v=1764974667&amp;width=200" alt="NITROTECH Whey Protein" width="64" height="64">
                     </div>
                 </div>
                 <div class="col-product">NITROTECH Whey Protein</div>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-img">
                     <div class="img-placeholder">
-                        <!-- <img src="..." alt="Product"> -->
+                        <img src="https://images.unsplash.com/photo-1584827386916-b5351d3ba34b?q=80&amp;w=200&amp;h=200&amp;fit=crop&amp;auto=format" alt="Stretching Band" width="64" height="64">
                     </div>
                 </div>
                 <div class="col-product">Stretching Band</div>
@@ -94,7 +94,7 @@
                     <span class="summary-value">Rs 18 000</span>
                 </div>
             </div>
-            <button class="checkout-btn"><a href="store-checkout">Proceed To Checkout</a></button>
+            <a href="/store/checkout" class="checkout-btn">Proceed To Checkout</a>
         </div>
 
     </section>
@@ -108,11 +108,13 @@
         <div class="products-grid">
             <!-- Card 1 -->
             <div class="product-card">
-                <div class="product-image img-placeholder"></div>
+                <a href="/sample-product" class="product-image img-placeholder">
+                    <img src="https://images.unsplash.com/photo-1704650311298-4d6915d34c64?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Creatine Monohydrate 300 g" loading="lazy" width="400" height="500">
+                </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title">NITROTECH Whey Protein</h3>
+                    <h3 class="product-card-title"><a href="/sample-product">Creatine Monohydrate 300 g</a></h3>
                     <div class="product-bottom">
-                        <span class="product-card-price">Rs 12 000</span>
+                        <span class="product-card-price">Rs 7 500</span>
                         <button class="add-btn">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -125,11 +127,13 @@
 
             <!-- Card 2 -->
             <div class="product-card">
-                <div class="product-image img-placeholder"></div>
+                <a href="/sample-product" class="product-image img-placeholder">
+                    <img src="https://images.unsplash.com/photo-1775199603318-7f8a9a63b40d?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Whey Protein &amp; Shaker Bundle" loading="lazy" width="400" height="500">
+                </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title">NITROTECH Whey Protein</h3>
+                    <h3 class="product-card-title"><a href="/sample-product">Whey Protein &amp; Shaker Bundle</a></h3>
                     <div class="product-bottom">
-                        <span class="product-card-price">Rs 12 000</span>
+                        <span class="product-card-price">Rs 16 900</span>
                         <button class="add-btn">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -142,11 +146,13 @@
 
             <!-- Card 3 -->
             <div class="product-card">
-                <div class="product-image img-placeholder"></div>
+                <a href="/sample-product" class="product-image img-placeholder">
+                    <img src="https://images.unsplash.com/photo-1603077492579-39ff927823db?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Rubber Hex Dumbbells 5 kg (Pair)" loading="lazy" width="400" height="500">
+                </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title">NITROTECH Whey Protein</h3>
+                    <h3 class="product-card-title"><a href="/sample-product">Rubber Hex Dumbbells 5 kg (Pair)</a></h3>
                     <div class="product-bottom">
-                        <span class="product-card-price">Rs 12 000</span>
+                        <span class="product-card-price">Rs 11 000</span>
                         <button class="add-btn">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -159,11 +165,13 @@
 
             <!-- Card 4 -->
             <div class="product-card">
-                <div class="product-image img-placeholder"></div>
+                <a href="/sample-product" class="product-image img-placeholder">
+                    <img src="https://images.unsplash.com/photo-1767404890803-228d5390fcd4?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Pull-Up Assist Band Set" loading="lazy" width="400" height="500">
+                </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title">NITROTECH Whey Protein</h3>
+                    <h3 class="product-card-title"><a href="/sample-product">Pull-Up Assist Band Set</a></h3>
                     <div class="product-bottom">
-                        <span class="product-card-price">Rs 12 000</span>
+                        <span class="product-card-price">Rs 6 500</span>
                         <button class="add-btn">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -211,6 +219,12 @@
         height: 100%;
         object-fit: cover;
         display: block;
+    }
+
+    /* Product packshots: show the whole tub on white instead of cropping */
+    .img-placeholder img.img-contain {
+        object-fit: contain;
+        background: #FFFFFF;
     }
 
     /* --- Cart Layout --- */
@@ -276,6 +290,7 @@
         width: 64px;
         height: 64px;
         border-radius: 8px;
+        border: 1px solid #E5E7EB;
     }
 
     .col-product {
@@ -381,6 +396,7 @@
     }
 
     .checkout-btn {
+        display: block;
         width: 100%;
         background-color: #0A0A0A;
         color: #FFFFFF;
@@ -389,12 +405,15 @@
         font-family: 'Barlow', sans-serif;
         font-size: 16px;
         font-weight: 700;
+        text-align: center;
+        text-decoration: none;
         cursor: pointer;
         transition: background 0.2s;
     }
 
     .checkout-btn:hover {
         background-color: #E31837;
+        color: #FFFFFF;
     }
 
     /* --- Similar Products Section --- */
@@ -430,7 +449,7 @@
 
     .products-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 24px;
     }
 
@@ -438,12 +457,21 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        min-width: 0;
     }
 
     .product-image {
+        position: relative;
+        display: block;
         width: 100%;
         aspect-ratio: 4 / 5;
         border-radius: 12px;
+    }
+
+    /* Image always fills the fixed 4:5 box, so it can't change the card size */
+    .product-image img {
+        position: absolute;
+        inset: 0;
     }
 
     .product-card-info {
@@ -457,6 +485,16 @@
         font-weight: 500;
         font-size: 16px;
         color: #4A5565;
+    }
+
+    .product-card-title a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .product-card-title a:hover {
+        color: #E31837;
     }
 
     .product-bottom {

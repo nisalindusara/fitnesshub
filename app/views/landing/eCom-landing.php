@@ -27,9 +27,9 @@
                 <img src="/assets/images/landing/featured_item_1.jpg">
             </div>
             <div class="product-info">
-                <h3 class="product-title">Hit Fitness Power Band</h3>
+                <h3 class="product-title">Whey Protein Vanilla</h3>
                 <div class="product-bottom">
-                    <span class="product-price">$200.00</span>
+                    <span class="product-price">LKR 20000.00</span>
                     <button class="add-btn">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -46,9 +46,9 @@
                 <img src="/assets/images/landing/featured_item_2.jpg">
             </div>
             <div class="product-info">
-                <h3 class="product-title">Hit Fitness Power Band</h3>
+                <h3 class="product-title">Power Shaker bottle</h3>
                 <div class="product-bottom">
-                    <span class="product-price">$200.00</span>
+                    <span class="product-price">LKR 3500.00</span>
                     <button class="add-btn">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -67,7 +67,7 @@
             <div class="product-info">
                 <h3 class="product-title">WHEY Protein Powder</h3>
                 <div class="product-bottom">
-                    <span class="product-price">$200.00</span>
+                    <span class="product-price">LKR 7000.00</span>
                     <button class="add-btn">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -86,7 +86,7 @@
             <div class="product-info">
                 <h3 class="product-title">Hit Fitness Power Band</h3>
                 <div class="product-bottom">
-                    <span class="product-price">$200.00</span>
+                    <span class="product-price">LKR 1200.00</span>
                     <button class="add-btn">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -105,7 +105,7 @@
         <div class="about-content">
             <h2 class="about-title">Explore the Full Catalogue</h2>
             <p class="about-desc">Unlike general marketplaces, everything in our store is selected specifically for training, recovery, and performance. If it's not something we'd recommend to our own members, it's not on these shelves.</p>
-            <a href="/catalog" class="about-btn">
+            <a href="/store/catalog" class="about-btn">
                 Explore Catalogue
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>

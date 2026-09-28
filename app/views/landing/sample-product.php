@@ -10,15 +10,21 @@
 
     <!-- Product Top Section -->
     <main class="product-main">
-        <!-- Left: Image Gallery -->
+        <!-- Left: Image Gallery (click a thumbnail to swap it with the main image) -->
         <div class="product-gallery">
             <div class="gallery-thumbnails">
-                <div class="thumbnail img-placeholder active"></div>
-                <div class="thumbnail img-placeholder"></div>
-                <div class="thumbnail img-placeholder"></div>
+                <button type="button" class="thumbnail img-placeholder" aria-label="Show benefits image">
+                    <img src="https://www.muscletech.com/cdn/shop/files/MuscleTech-NitroTech-WheyProtein-2000x2000-01-V2-new.jpg?v=1764974667&amp;width=1000" alt="NITROTECH Whey Protein, benefits">
+                </button>
+                <button type="button" class="thumbnail img-placeholder" aria-label="Show formula image">
+                    <img src="https://www.muscletech.com/cdn/shop/files/MuscleTech-NitroTech-WheyProtein-2000x2000-02-V3_new.jpg?v=1764974667&amp;width=1000" alt="NITROTECH Whey Protein, formula">
+                </button>
+                <button type="button" class="thumbnail img-placeholder" aria-label="Show nutrition image">
+                    <img src="https://www.muscletech.com/cdn/shop/files/MuscleTech-NitroTech-WheyProtein-2000x2000-03-V2_new.jpg?v=1764974667&amp;width=1000" alt="NITROTECH Whey Protein, nutrition">
+                </button>
             </div>
             <div class="gallery-main img-placeholder">
-                <!-- <img src="actual-product-image.jpg" alt="Nitrotech"> -->
+                <img id="gallery-main-img" src="https://www.muscletech.com/cdn/shop/files/MuscleTech-NitroTech-2lb-chocolate.jpg?v=1764974667&amp;width=1000" alt="NITROTECH Whey Protein 2 lb, Milk Chocolate">
             </div>
         </div>
 
@@ -77,7 +83,7 @@
                         <span>1</span>
                         <button class="qty-btn">+</button>
                     </div>
-                    <button class="btn btn-primary"><a href="/cart">Add to Cart</a></button>
+                    <a href="/store/cart" class="btn btn-primary">Add to Cart</a>
                 </div>
                 <button class="btn btn-outline">Buy Now</button>
             </div>
@@ -134,11 +140,13 @@
 
             <!-- Card 1 -->
             <div class="product-card">
-                <div class="product-image img-placeholder"></div>
+                <a href="/sample-product" class="product-image img-placeholder">
+                    <img src="https://images.unsplash.com/photo-1693996045300-521e9d08cabc?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Vanilla Whey Protein 2 lb" loading="lazy" width="400" height="500">
+                </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title">NITROTECH Whey Protein</h3>
+                    <h3 class="product-card-title"><a href="/sample-product">Vanilla Whey Protein 2 lb</a></h3>
                     <div class="product-bottom">
-                        <span class="product-card-price">Rs 12 000</span>
+                        <span class="product-card-price">Rs 14 500</span>
                         <button class="add-btn">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -151,11 +159,13 @@
 
             <!-- Card 2 -->
             <div class="product-card">
-                <div class="product-image img-placeholder"></div>
+                <a href="/sample-product" class="product-image img-placeholder">
+                    <img src="https://images.unsplash.com/photo-1704650311298-4d6915d34c64?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Creatine Monohydrate 300 g" loading="lazy" width="400" height="500">
+                </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title">NITROTECH Whey Protein</h3>
+                    <h3 class="product-card-title"><a href="/sample-product">Creatine Monohydrate 300 g</a></h3>
                     <div class="product-bottom">
-                        <span class="product-card-price">Rs 12 000</span>
+                        <span class="product-card-price">Rs 7 500</span>
                         <button class="add-btn">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -168,11 +178,13 @@
 
             <!-- Card 3 -->
             <div class="product-card">
-                <div class="product-image img-placeholder"></div>
+                <a href="/sample-product" class="product-image img-placeholder">
+                    <img src="https://images.unsplash.com/photo-1775199603318-7f8a9a63b40d?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Whey Protein &amp; Shaker Bundle" loading="lazy" width="400" height="500">
+                </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title">NITROTECH Whey Protein</h3>
+                    <h3 class="product-card-title"><a href="/sample-product">Whey Protein &amp; Shaker Bundle</a></h3>
                     <div class="product-bottom">
-                        <span class="product-card-price">Rs 12 000</span>
+                        <span class="product-card-price">Rs 16 900</span>
                         <button class="add-btn">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -185,11 +197,13 @@
 
             <!-- Card 4 -->
             <div class="product-card">
-                <div class="product-image img-placeholder"></div>
+                <a href="/sample-product" class="product-image img-placeholder">
+                    <img src="https://images.unsplash.com/photo-1767404890803-228d5390fcd4?q=80&amp;w=600&amp;h=750&amp;fit=crop&amp;auto=format" alt="Pull-Up Assist Band Set" loading="lazy" width="400" height="500">
+                </a>
                 <div class="product-card-info">
-                    <h3 class="product-card-title">NITROTECH Whey Protein</h3>
+                    <h3 class="product-card-title"><a href="/sample-product">Pull-Up Assist Band Set</a></h3>
                     <div class="product-bottom">
-                        <span class="product-card-price">Rs 12 000</span>
+                        <span class="product-card-price">Rs 6 500</span>
                         <button class="add-btn">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -269,7 +283,7 @@
     /* --- Product Top Section --- */
     .product-main {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 64px;
         margin-bottom: 80px;
     }
@@ -286,14 +300,23 @@
         flex-direction: column;
         gap: 16px;
         width: 120px;
+        flex-shrink: 0;
     }
 
     .thumbnail {
+        position: relative;
         width: 100%;
         height: 150px;
+        padding: 0;
         cursor: pointer;
         border: 2px solid transparent;
         transition: border-color 0.2s;
+    }
+
+    .thumbnail:hover,
+    .thumbnail:focus-visible {
+        border-color: #0A0A0A;
+        outline: none;
     }
 
     .thumbnail.active {
@@ -301,8 +324,27 @@
     }
 
     .gallery-main {
+        position: relative;
         flex-grow: 1;
+        min-width: 0;
         height: 100%;
+    }
+
+    /* Product photos: fill the box, show the whole tub (no cropping) */
+    .thumbnail img,
+    .gallery-main img {
+        position: absolute;
+        inset: 0;
+        object-fit: contain;
+        background: #FFFFFF;
+    }
+
+    .gallery-main img {
+        transition: opacity 0.2s;
+    }
+
+    .gallery-main img.is-swapping {
+        opacity: 0;
     }
 
     /* Info */
@@ -442,6 +484,7 @@
         transition: all 0.2s;
         text-transform: uppercase;
         letter-spacing: 1px;
+        text-decoration: none;
     }
 
     .btn-primary {
@@ -557,7 +600,7 @@
 
     .products-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 24px;
     }
 
@@ -565,11 +608,19 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        min-width: 0;
     }
 
     .product-image {
+        position: relative;
+        display: block;
         width: 100%;
         aspect-ratio: 4 / 5;
+    }
+
+    .product-image img {
+        position: absolute;
+        inset: 0;
     }
 
     .product-card-info {
@@ -583,6 +634,16 @@
         font-weight: 500;
         font-size: 16px;
         color: #4A5565;
+    }
+
+    .product-card-title a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .product-card-title a:hover {
+        color: #E31837;
     }
 
     .product-bottom {
@@ -617,3 +678,30 @@
         color: #FFFFFF;
     }
 </style>
+
+<script>
+    // Gallery: clicking a thumbnail swaps its image with the main image
+    (function() {
+        var mainImg = document.getElementById('gallery-main-img');
+        var thumbs = document.querySelectorAll('.gallery-thumbnails .thumbnail');
+        if (!mainImg || !thumbs.length) return;
+
+        thumbs.forEach(function(thumb) {
+            thumb.addEventListener('click', function() {
+                var thumbImg = thumb.querySelector('img');
+                var mainSrc = mainImg.src,
+                    mainAlt = mainImg.alt;
+
+                mainImg.classList.add('is-swapping');
+                setTimeout(function() {
+                    mainImg.src = thumbImg.src;
+                    mainImg.alt = thumbImg.alt;
+                    thumbImg.src = mainSrc;
+                    thumbImg.alt = mainAlt;
+                    thumb.setAttribute('aria-label', 'Show ' + mainAlt.split(', ').pop() + ' image');
+                    mainImg.classList.remove('is-swapping');
+                }, 150);
+            });
+        });
+    })();
+</script>

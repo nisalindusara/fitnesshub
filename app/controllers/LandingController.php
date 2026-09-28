@@ -2,7 +2,7 @@
 
 class LandingController extends Controller
 {
-    public function index(): void
+    public function showLandingHomeScreen(): void
     {
         $data['isLoggedIn'] = isset($_SESSION['user_id']);
         $this->render('landing/home', 'landing-layout', $data);
