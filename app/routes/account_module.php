@@ -15,3 +15,11 @@ $router->get('/portal/attendance', [AttendanceController::class, 'showAttendance
 $router->get('/portal/attendance/member-status', [AttendanceController::class, 'memberStatus'], 'manage_attendance');
 $router->post('/portal/attendance/check-in', [AttendanceController::class, 'checkIn'], 'manage_attendance');
 $router->post('/portal/attendance/check-out', [AttendanceController::class, 'checkOut'], 'manage_attendance');
+
+$router->get('/portal/staff-profile', [StaffProfileController::class, 'showStaffProfileScreen'], [
+    'view_daily_overview',
+    'view_ecommerce_overview',
+    'view_system_overview',
+    'view_manager_summary',
+    'view_own_clients'
+]);
