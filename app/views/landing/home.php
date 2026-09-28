@@ -25,7 +25,7 @@
                     A well-equipped gym floor, a dedicated cardio section, and friendly coaches who plan your training and diet with you. Now with online booking and membership.
                 </p>
                 <div class="fh-btn-row">
-                    <a href="/personal-details" class="fh-btn">
+                    <a href="/register" class="fh-btn">
                         <span class="fh-btn__label">Get started</span>
                         <span class="fh-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
                                 <path d="M7 17 17 7M8 7h9v9" />

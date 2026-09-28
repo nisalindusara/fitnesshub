@@ -37,17 +37,22 @@
     .register-screen {
         display: flex;
         width: 100%;
-        min-height: 100vh;
+        height: 100vh;
+        height: 100dvh;
+        /* accounts for mobile browser bars */
+        overflow: hidden;
+        /* page itself never scrolls */
         background: #0A0A0A;
     }
 
-    /* --- Hero Section (Left) --- */
+    /* --- Hero Section (Left, fixed) --- */
     .hero-section {
         flex: 1 1 50%;
+        height: 100%;
         background:
             linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%),
             linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%),
-            url('/assets/images/landing/register_hero.png') center/cover no-repeat;
+            url('/assets/images/landing/login_hero.png') center/cover no-repeat;
         position: relative;
     }
 
@@ -71,13 +76,15 @@
         color: #FFFFFF;
     }
 
-    /* --- Form Section (Right) --- */
+    /* --- Form Section (Right, scrollable) --- */
     .form-section {
         flex: 1 1 50%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        height: 100%;
+        overflow-y: auto;
+        /* only this side scrolls */
         padding: 40px 20px;
     }
 
@@ -86,6 +93,8 @@
         flex-direction: column;
         width: 100%;
         max-width: 423.2px;
+        margin: auto 0;
+        /* centers vertically without clipping the top when content overflows */
     }
 
     /* Typography */
@@ -181,6 +190,13 @@
         min-height: 14px;
     }
 
+    .form-error {
+        color: #E31837;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 12px;
+    }
+
     .password-wrapper {
         position: relative;
         display: flex;
@@ -268,7 +284,7 @@
 
 <div class="main-wrapper reset-all">
     <main class="register-screen reset-all">
-        <!-- Left Side: Hero Image -->
+        <!-- Left Side: Hero Image (fixed) -->
         <section class="hero-section reset-all">
             <button type="button" class="back-btn btn-reset reset-all" onclick="window.location.href='/onboarding/view-store';">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="reset-all">
@@ -279,7 +295,7 @@
             </button>
         </section>
 
-        <!-- Right Side: Form Content -->
+        <!-- Right Side: Form Content (scrollable) -->
         <section class="form-section reset-all">
             <div class="form-container reset-all">
                 <span class="welcome-text reset-all">Get Started</span>
@@ -292,16 +308,19 @@
                         <div class="input-group reset-all">
                             <label for="firstName" class="input-label reset-all">First Name</label>
                             <input type="text" id="firstName" name="first_name" class="text-input input-reset reset-all" placeholder="Kasun" required>
+                            <p class="field-error reset-all" id="firstNameError"></p>
                         </div>
                         <div class="input-group reset-all">
                             <label for="lastName" class="input-label reset-all">Last Name</label>
                             <input type="text" id="lastName" name="last_name" class="text-input input-reset reset-all" placeholder="Perera" required>
+                            <p class="field-error reset-all" id="lastNameError"></p>
                         </div>
                     </div>
 
                     <div class="input-group reset-all">
                         <label for="email" class="input-label reset-all">Email Address</label>
-                        <input type="email" id="email" name="email" class="text-input input-reset reset-all" placeholder="kasun@example.com" required>
+                        <input type="email" id="email" name="email" class="text-input input-reset reset-all" placeholder="kasun@example.com" required autocomplete="email" inputmode="email">
+                        <p class="field-error reset-all" id="emailError"></p>
                     </div>
 
                     <div class="input-group reset-all">
@@ -320,6 +339,7 @@
                                 </svg>
                             </button>
                         </div>
+                        <p class="field-error reset-all" id="passwordError"></p>
                     </div>
 
                     <div class="input-group reset-all">
@@ -336,9 +356,10 @@
                         <p class="field-error reset-all" id="confirmPasswordError"></p>
                     </div>
 
-                    <p><? if (isset($_SESSION['error'])) {
-                            echo $_SESSION['error'];
-                        } ?></p>
+                    <?php if (isset($_SESSION['error'])): ?>
+                        <p class="form-error"><?= htmlspecialchars($_SESSION['error']) ?></p>
+                        <?php unset($_SESSION['error']); ?>
+                    <?php endif; ?>
 
                     <button type="submit" class="submit-btn btn-reset reset-all">
                         Create Account
@@ -379,9 +400,30 @@
         });
 
         var form = document.getElementById('registerForm');
+        var email = document.getElementById('email');
+        var emailError = document.getElementById('emailError');
         var password = document.getElementById('password');
         var confirmPassword = document.getElementById('confirmPassword');
         var confirmError = document.getElementById('confirmPasswordError');
+
+        var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+        function validateEmail(showEmpty) {
+            var value = email.value.trim();
+            if (value === '') {
+                emailError.textContent = showEmpty ? 'Email is required.' : '';
+                email.classList.toggle('input-error', !!showEmpty);
+                return false;
+            }
+            if (!EMAIL_RE.test(value)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                email.classList.add('input-error');
+                return false;
+            }
+            emailError.textContent = '';
+            email.classList.remove('input-error');
+            return true;
+        }
 
         function validateMatch() {
             if (confirmPassword.value.length === 0) {
@@ -399,13 +441,80 @@
             return true;
         }
 
+        var firstName = document.getElementById('firstName');
+        var lastName = document.getElementById('lastName');
+
+        function validateRequired(input, label) {
+            var err = document.getElementById(input.id + 'Error');
+            if (input.value.trim() === '') {
+                err.textContent = label + ' is required.';
+                input.classList.add('input-error');
+                return false;
+            }
+            err.textContent = '';
+            input.classList.remove('input-error');
+            return true;
+        }
+
+        function validatePassword() {
+            var err = document.getElementById('passwordError');
+            if (password.value.length < 8) {
+                err.textContent = 'Password must be at least 8 characters.';
+                password.classList.add('input-error');
+                return false;
+            }
+            err.textContent = '';
+            password.classList.remove('input-error');
+            return true;
+        }
+
+        function validateConfirm() {
+            if (confirmPassword.value === '') {
+                confirmError.textContent = 'Please confirm your password.';
+                confirmPassword.classList.add('input-error');
+                return false;
+            }
+            return validateMatch();
+        }
+
+        [firstName, lastName].forEach(function(input) {
+            input.addEventListener('input', function() {
+                if (input.classList.contains('input-error')) {
+                    validateRequired(input, input === firstName ? 'First name' : 'Last name');
+                }
+            });
+        });
+
+        password.addEventListener('input', function() {
+            if (password.classList.contains('input-error')) validatePassword();
+        });
+
+        email.addEventListener('blur', function() {
+            if (email.value.trim() !== '') validateEmail(false);
+        });
+        email.addEventListener('input', function() {
+            if (email.classList.contains('input-error')) validateEmail(false);
+        });
+
         password.addEventListener('input', validateMatch);
         confirmPassword.addEventListener('input', validateMatch);
 
         form.addEventListener('submit', function(e) {
-            if (!validateMatch()) {
+            // Run every check so all errors show at once, in form order
+            var checks = [
+                [firstName, validateRequired(firstName, 'First name')],
+                [lastName, validateRequired(lastName, 'Last name')],
+                [email, validateEmail(true)],
+                [password, validatePassword()],
+                [confirmPassword, validateConfirm()]
+            ];
+
+            var firstInvalid = checks.filter(function(c) {
+                return !c[1];
+            })[0];
+            if (firstInvalid) {
                 e.preventDefault();
-                confirmPassword.focus();
+                firstInvalid[0].focus();
             }
         });
     })();
