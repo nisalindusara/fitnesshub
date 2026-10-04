@@ -1,3 +1,4 @@
+<?php $pageStyles = ['landing/onboarding/_onboarding']; ?>
 <div class="onboarding-container">
     <div class="hero-section">
         <button class="back-btn" onclick="window.location.href='/';">
@@ -41,18 +42,6 @@
 
 <style>
     /* Main Layout Container */
-    .onboarding-container {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        margin: 0 auto;
-        background-color: #0A0A0A;
-        color: #FFFFFF;
-        font-family: 'Barlow', sans-serif;
-        height: 100vh;
-        overflow: hidden;
-    }
 
     /* Left Hero Section */
     .hero-section {
@@ -241,13 +230,6 @@
 
     /* Responsive Design */
     @media (max-width: 992px) {
-        .onboarding-container {
-            flex-direction: column;
-            /* Restore normal document flow so mobile can scroll */
-            height: auto;
-            min-height: 100vh;
-            overflow: visible;
-        }
 
         .hero-section {
             min-height: 400px;

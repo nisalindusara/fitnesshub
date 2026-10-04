@@ -426,10 +426,6 @@
         transition: background 0.2s;
     }
 
-    .submit-btn:hover {
-        background: #c21430;
-    }
-
     /* --- Map Section --- */
     .map-wrapper {
         background: #F9FAFB;

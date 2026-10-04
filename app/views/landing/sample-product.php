@@ -1,3 +1,4 @@
+<?php $pageStyles = ['landing/landing/_store']; ?>
 <div class="container">
     <!-- Breadcrumb -->
     <div class="breadcrumb">
@@ -241,18 +242,6 @@
     }
 
     /* --- Shared Utilities --- */
-    .img-placeholder {
-        background: repeating-conic-gradient(#E5E7EB 0% 25%, #F9FAFB 0% 50%) 50% / 20px 20px;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .img-placeholder img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
 
     /* --- Breadcrumb --- */
     .breadcrumb {
@@ -467,10 +456,6 @@
         color: #4A5565;
     }
 
-    .qty-btn:hover {
-        color: #0A0A0A;
-    }
-
     .btn {
         display: flex;
         justify-content: center;
@@ -494,20 +479,11 @@
         border: 1px solid #0A0A0A;
     }
 
-    .btn-primary:hover {
-        background-color: #E31837;
-        border-color: #E31837;
-    }
-
     .btn-outline {
         width: 100%;
         background-color: #FFFFFF;
         color: #0A0A0A;
         border: 1px solid #0A0A0A;
-    }
-
-    .btn-outline:hover {
-        background-color: #F9FAFB;
     }
 
     /* Shipping Info */
@@ -623,19 +599,6 @@
         inset: 0;
     }
 
-    .product-card-info {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .product-card-title {
-        font-family: 'Barlow', sans-serif;
-        font-weight: 500;
-        font-size: 16px;
-        color: #4A5565;
-    }
-
     .product-card-title a {
         color: inherit;
         text-decoration: none;
@@ -650,32 +613,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    .product-card-price {
-        font-weight: 900;
-        font-size: 14px;
-        color: #0A0A0A;
-    }
-
-    .add-btn {
-        background: none;
-        border: 1.5px solid #0A0A0A;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: #0A0A0A;
-        transition: all 0.2s;
-    }
-
-    .add-btn:hover {
-        background: #E31837;
-        border-color: #E31837;
-        color: #FFFFFF;
     }
 </style>
 

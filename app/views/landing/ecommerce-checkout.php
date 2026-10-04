@@ -1,3 +1,4 @@
+<?php $pageStyles = ['landing/landing/_store']; ?>
 <div class="container">
     <div class="checkout-wrapper">
 
@@ -322,15 +323,6 @@
         text-align: right;
     }
 
-    .summary-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 16px;
-        color: #0A0A0A;
-        font-weight: 500;
-    }
-
     .summary-row .value {
         color: #99A1AF;
     }
@@ -428,20 +420,10 @@
         border: 1px solid #0A0A0A;
     }
 
-    .btn-primary:hover {
-        background-color: #E31837;
-        /* FitnessHub Accent Red */
-        border-color: #E31837;
-    }
-
     .btn-outline {
         background-color: #FFFFFF;
         color: #0A0A0A;
         border: 1px solid #0A0A0A;
-    }
-
-    .btn-outline:hover {
-        background-color: #F9FAFB;
     }
 
     /* Responsive Breakpoint */

@@ -1,14 +1,7 @@
+<?php $pageStyles = ['landing/landing/_auth-form']; ?>
 <style>
     /* globals & resets via classes */
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Barlow:wght@500;600;700&display=swap');
-
-    .reset-all,
-    .reset-all::before,
-    .reset-all::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
 
     .main-wrapper {
         font-family: 'Barlow', sans-serif;
@@ -20,29 +13,7 @@
         width: 100%;
     }
 
-    .btn-reset {
-        cursor: pointer;
-        border: none;
-        background: none;
-        font-family: inherit;
-    }
-
-    .link-reset {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    .input-reset {
-        font-family: inherit;
-    }
-
     /* LoginScreen specific styles */
-    .login-screen {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        background: #0A0A0A;
-    }
 
     /* --- Hero Section (Left) --- */
     .hero-section {
@@ -55,22 +26,6 @@
             url('/assets/images/landing/login_hero.png') center/cover no-repeat;
         position: relative;
         /* Added back so the absolute back button stays inside the image */
-    }
-
-    .back-btn {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        position: absolute;
-        top: 32px;
-        left: 32px;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.6);
-        transition: color 0.2s ease;
     }
 
     .back-btn:hover {
@@ -97,109 +52,8 @@
     }
 
     /* Typography */
-    .welcome-text {
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 3.6px;
-        text-transform: uppercase;
-        color: #E31837;
-    }
-
-    .heading {
-        font-family: 'Barlow Condensed', sans-serif;
-        font-weight: 900;
-        font-size: 48px;
-        line-height: 43px;
-        letter-spacing: -1.2px;
-        text-transform: uppercase;
-        margin-top: 12px;
-    }
-
-    .subtitle {
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 20px;
-        color: rgba(255, 255, 255, 0.4);
-        margin-top: 8px;
-    }
 
     /* Form Elements */
-    .login-form {
-        display: flex;
-        flex-direction: column;
-        margin-top: 40px;
-    }
-
-    .input-group {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
-
-    .input-label {
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.5);
-        margin-bottom: 8px;
-    }
-
-    .text-input {
-        width: 100%;
-        height: 49.6px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 0.8px solid rgba(255, 255, 255, 0.1);
-        padding: 14px 16px;
-        font-size: 14px;
-        color: #FFFFFF;
-        outline: none;
-        transition: border-color 0.2s ease;
-    }
-
-    .text-input::placeholder {
-        color: rgba(255, 255, 255, 0.2);
-    }
-
-    .text-input:focus {
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .password-wrapper {
-        position: relative;
-        display: flex;
-        align-items: center;
-    }
-
-    .password-input {
-        padding-right: 48px;
-    }
-
-    .eye-btn {
-        position: absolute;
-        right: 16px;
-        width: 18px;
-        height: 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .forgot-password {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: -8px;
-    }
-
-    .forgot-password-link {
-        font-weight: 600;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 0.3px;
-        color: #E31837;
-    }
 
     .submit-btn {
         display: flex;
@@ -220,29 +74,7 @@
         transition: background 0.2s ease;
     }
 
-    .submit-btn:hover {
-        background: #c5142f;
-    }
-
     /* Footer / Signup Prompt */
-    .signup-prompt {
-        margin-top: 32px;
-        text-align: center;
-        font-weight: 500;
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.3);
-    }
-
-    .signup-text {
-        margin: 0;
-    }
-
-    .signup-link {
-        font-weight: 700;
-        color: #E31837;
-        letter-spacing: 0.35px;
-        margin-left: 4px;
-    }
 </style>
 
 <div class="main-wrapper reset-all">

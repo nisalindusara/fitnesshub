@@ -1,3 +1,4 @@
+<?php $pageStyles = ['landing/landing/_store']; ?>
 <div class="shop-container">
     <!-- Sidebar -->
     <aside class="sidebar">
@@ -310,35 +311,9 @@
         transition: all 0.2s;
     }
 
-    .search-input::placeholder {
-        color: #99A1AF;
-    }
-
     .search-input:focus {
         border-color: #E31837;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .search-btn {
-        position: absolute;
-        right: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        background: #0A0A0A;
-        border: none;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: #FFFFFF;
-        transition: background 0.2s;
-    }
-
-    .search-btn:hover {
-        background: #E31837;
     }
 
     /* --- Results Header --- */
@@ -418,26 +393,6 @@
         font-weight: 900;
         font-size: 14px;
         color: #0A0A0A;
-    }
-
-    .add-btn {
-        background: none;
-        border: 1.5px solid #0A0A0A;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: #0A0A0A;
-        transition: all 0.2s;
-    }
-
-    .add-btn:hover {
-        background: #E31837;
-        border-color: #E31837;
-        color: #FFFFFF;
     }
 
     /* --- Load More Section --- */

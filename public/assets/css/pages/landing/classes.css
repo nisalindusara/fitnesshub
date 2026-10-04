@@ -1,8 +1,4 @@
-/* ==========================================================
-   FitnessHub – Classes / schedule page
-   Place at: /assets/css/classes.css
-   Requires: /assets/css/tokens.css (loaded first)
-   ========================================================== */
+/* Classes / weekly schedule page. Everything is scoped under .cs, the page root. */
 
 .cs {
   font-family: var(--fh-font-body);
@@ -175,7 +171,7 @@
   right: 0.5rem;
   width: 0.4rem;
   height: 0.4rem;
-  border-radius: 50%;
+  border-radius: var(--fh-radius-circle);
   background: var(--fh-red);
   font-size: 0;
 }
@@ -238,7 +234,7 @@
 .cs-dot {
   width: 0.55rem;
   height: 0.55rem;
-  border-radius: 50%;
+  border-radius: var(--fh-radius-circle);
 }
 .cs-dot--hiit {
   background: var(--fh-tag-hiit);

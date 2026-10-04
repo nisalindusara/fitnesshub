@@ -1,0 +1,171 @@
+/* Dark sign-in form shared by the login, password-reset and sign-up details pages.
+   Used by: login, personal-details, reset-password. */
+
+.reset-all,
+.reset-all::before,
+.reset-all::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-reset {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.link-reset {
+  text-decoration: none;
+  color: inherit;
+}
+
+.input-reset {
+  font-family: inherit;
+}
+
+.login-screen {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: var(--fh-neutral-950);
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--fh-white-a60);
+  transition: color 0.2s ease;
+}
+
+.welcome-text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 3.6px;
+  text-transform: uppercase;
+  color: var(--fh-red-590);
+}
+
+.heading {
+  font-family: var(--fh-font-barlow-condensed);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 43px;
+  letter-spacing: -1.2px;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+.subtitle {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--fh-white-a40);
+  margin-top: 8px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-label {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--fh-white-a50);
+  margin-bottom: 8px;
+}
+
+.text-input {
+  width: 100%;
+  height: 49.6px;
+  background: var(--fh-white-a05);
+  border: 0.8px solid var(--fh-white-a10);
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--fh-white);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.text-input::placeholder {
+  color: var(--fh-white-a20);
+}
+
+.text-input:focus {
+  border-color: var(--fh-white-a30);
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input {
+  padding-right: 48px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 16px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forgot-password {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -8px;
+}
+
+.forgot-password-link {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.3px;
+  color: var(--fh-red-590);
+}
+
+.signup-prompt {
+  margin-top: 32px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--fh-white-a30);
+}
+
+.signup-text {
+  margin: 0;
+}
+
+.signup-link {
+  font-weight: 700;
+  color: var(--fh-red-590);
+  letter-spacing: 0.35px;
+  margin-left: 4px;
+}

@@ -1,3 +1,4 @@
+<?php $pageStyles = ['landing/landing/_store']; ?>
 <div class="container">
     <!-- Main Cart Area -->
     <section class="cart-section">
@@ -208,18 +209,6 @@
     }
 
     /* --- Shared Utilities --- */
-    .img-placeholder {
-        background: repeating-conic-gradient(#E5E7EB 0% 25%, #F9FAFB 0% 50%) 50% / 20px 20px;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .img-placeholder img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
 
     /* Product packshots: show the whole tub on white instead of cropping */
     .img-placeholder img.img-contain {
@@ -330,10 +319,6 @@
         transition: color 0.2s;
     }
 
-    .qty-btn:hover {
-        color: #0A0A0A;
-    }
-
     .col-total {
         color: #99A1AF;
         font-size: 16px;
@@ -369,15 +354,6 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
-    }
-
-    .summary-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 16px;
-        color: #0A0A0A;
-        font-weight: 500;
     }
 
     .summary-row.total-row {
@@ -474,58 +450,9 @@
         inset: 0;
     }
 
-    .product-card-info {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .product-card-title {
-        font-family: 'Barlow', sans-serif;
-        font-weight: 500;
-        font-size: 16px;
-        color: #4A5565;
-    }
-
-    .product-card-title a {
-        color: inherit;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .product-card-title a:hover {
-        color: #E31837;
-    }
-
     .product-bottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    .product-card-price {
-        font-weight: 900;
-        font-size: 14px;
-        color: #0A0A0A;
-    }
-
-    .add-btn {
-        background: none;
-        border: 1.5px solid #0A0A0A;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: #0A0A0A;
-        transition: all 0.2s;
-    }
-
-    .add-btn:hover {
-        background: #E31837;
-        border-color: #E31837;
-        color: #FFFFFF;
     }
 </style>

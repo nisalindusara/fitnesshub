@@ -1,9 +1,7 @@
 <?php
 // Default home page view for FitnessHub
-// Styles: /assets/css/tokens.css + /assets/css/landing.css (move this link into your layout <head> if you prefer)
+$pageStyles = ['landing/home'];
 ?>
-<link rel="stylesheet" href="/assets/css/tokens.css">
-<link rel="stylesheet" href="/assets/css/landing.css">
 
 <main class="fh">
 

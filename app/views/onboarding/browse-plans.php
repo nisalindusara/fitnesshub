@@ -1,3 +1,4 @@
+<?php $pageStyles = ['landing/onboarding/_onboarding']; ?>
 <div class="onboarding-container">
     <div class="hero-section-step1">
         <button class="back-btn" onclick="window.location.href='/onboarding';">
@@ -46,21 +47,6 @@
 
 <style>
     /* Main Layout Container */
-    .onboarding-container {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        margin: 0 auto;
-
-        background-color: #0A0A0A;
-        color: #FFFFFF;
-        font-family: 'Barlow', sans-serif;
-
-        /* Lock to exactly 100vh on desktop */
-        height: 100vh;
-        overflow: hidden;
-    }
 
     /* Left Hero Section */
     .hero-section-step1 {
@@ -101,10 +87,6 @@
         color: #FFFFFF;
     }
 
-    .icon-svg {
-        display: block;
-    }
-
     /* Right Content Section */
     .content-section {
         box-sizing: border-box;
@@ -128,72 +110,8 @@
     }
 
     /* Progress Indicator */
-    .progress-container {
-        box-sizing: border-box;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        margin: 0 0 48px 0;
-    }
-
-    .progress-header {
-        box-sizing: border-box;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 0 0 12px 0;
-    }
-
-    .step-text {
-        box-sizing: border-box;
-        font-family: 'Barlow', sans-serif;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 16px;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.3);
-    }
-
-    .percentage-text {
-        box-sizing: border-box;
-        font-family: 'Barlow Condensed', sans-serif;
-        font-weight: 900;
-        font-size: 14px;
-        line-height: 20px;
-        color: #E31837;
-    }
-
-    .progress-bars {
-        box-sizing: border-box;
-        display: flex;
-        gap: 8px;
-        width: 100%;
-    }
-
-    .progress-bar {
-        box-sizing: border-box;
-        flex: 1;
-        height: 4px;
-        border-radius: 20px;
-    }
-
-    .bar-active {
-        background: #E31837;
-    }
-
-    .bar-inactive {
-        background: rgba(255, 255, 255, 0.08);
-    }
 
     /* Typography & Content */
-    .main-content-area {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        max-width: 384px;
-    }
 
     .heading-step1 {
         box-sizing: border-box;
@@ -269,18 +187,8 @@
         text-transform: uppercase;
     }
 
-    .btn-skip:hover {
-        color: rgba(255, 255, 255, 0.6);
-    }
-
     /* Responsive Design */
     @media (max-width: 992px) {
-        .onboarding-container {
-            flex-direction: column;
-            height: auto;
-            min-height: 100vh;
-            overflow: visible;
-        }
 
         .hero-section-step1 {
             min-height: 400px;
