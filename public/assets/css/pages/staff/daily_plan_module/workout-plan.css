@@ -1,0 +1,909 @@
+/* Scoped under .page-daily-plan-module-workout-plan (the layout's <main> on this page). */
+
+:where(.page-daily-plan-module-workout-plan) .wp-view {
+    font-family: var(--fh-font-inter);
+    color: var(--fh-neutral-870);
+    padding: 24px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-view *,
+:where(.page-daily-plan-module-workout-plan) .wp-view *::before,
+:where(.page-daily-plan-module-workout-plan) .wp-view *::after {
+    box-sizing: border-box;
+}
+
+:where(.page-daily-plan-module-workout-plan) .crumb-link {
+    font-size: 14px;
+    color: var(--fh-neutral-870-a40);
+    text-decoration: none;
+}
+
+:where(.page-daily-plan-module-workout-plan) a.crumb-link:hover {
+    color: var(--fh-neutral-870);
+}
+
+/* Heading */
+:where(.page-daily-plan-module-workout-plan) .wp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-subtitle {
+    font-size: 14px;
+    color: var(--fh-neutral-870-a55);
+    margin: 4px 0 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: var(--fh-radius-8);
+    border: 1px solid var(--fh-neutral-870-a12);
+    background: var(--fh-white);
+    color: var(--fh-neutral-870);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn:hover {
+    background: var(--fh-gray-50);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn--primary {
+    background: var(--fh-neutral-870);
+    border-color: var(--fh-neutral-870);
+    color: var(--fh-white);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn--primary:hover {
+    background: var(--fh-neutral-750);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn--sm {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 13px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn--icon {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: var(--fh-radius-6);
+    flex-shrink: 0;
+}
+
+/* Layout */
+:where(.page-daily-plan-module-workout-plan) .wp-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 20px;
+    align-items: start;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-panel {
+    border: 1px solid var(--fh-neutral-870-a10);
+    border-radius: var(--fh-radius-12);
+    padding: 18px;
+    background: var(--fh-white);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-panel__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-panel__title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-panel__meta {
+    font-size: 13px;
+    color: var(--fh-neutral-870-a50);
+}
+
+/* Form fields */
+:where(.page-daily-plan-module-workout-plan) .wp-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 14px 14px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-field--wide {
+    grid-column: span 2;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-label {
+    font-size: 12px;
+    color: var(--fh-neutral-870-a50);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-input {
+    height: 38px;
+    width: 100%;
+    padding: 0 12px;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-white);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--fh-neutral-870);
+    outline: none;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-input:focus {
+    border-color: var(--fh-neutral-870);
+}
+
+:where(.page-daily-plan-module-workout-plan) select.wp-input {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 32px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231c1c1c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    cursor: pointer;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-segment {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-segment button {
+    height: 38px;
+    padding: 0 14px;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-white);
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--fh-neutral-870-a75);
+    cursor: pointer;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-segment button.is-active {
+    background: var(--fh-neutral-870);
+    border-color: var(--fh-neutral-870);
+    color: var(--fh-white);
+    font-weight: 500;
+}
+
+/* Day tabs */
+:where(.page-daily-plan-module-workout-plan) .wp-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--fh-neutral-870-a10);
+    border-radius: var(--fh-radius-10);
+    margin-bottom: 18px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 4px;
+    border: 1px solid transparent;
+    border-radius: var(--fh-radius-8);
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+    min-width: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-day__short {
+    font-size: 12px;
+    color: var(--fh-neutral-870-a45);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-day__focus {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fh-neutral-870);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-day.is-active {
+    background: var(--fh-gray-50);
+    border-color: var(--fh-neutral-870-a12);
+    box-shadow: 0 1px 2px var(--fh-black-a04);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-day--empty .wp-day__focus {
+    color: var(--fh-neutral-870-a40);
+    font-weight: 500;
+}
+
+/* Day panel */
+:where(.page-daily-plan-module-workout-plan) .wp-dayhead {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--fh-radius-circle);
+    background: var(--fh-red-520);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-dayhead__title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 4px 0 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: var(--fh-radius-6);
+    background: var(--fh-neutral-870-a06);
+    color: var(--fh-neutral-870-a60);
+    white-space: nowrap;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-dayhead__hint {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--fh-neutral-870-a45);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-rows {
+    --wp-cols: 20px minmax(180px, 1fr) 72px 72px 90px 80px 28px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-row {
+    display: grid;
+    grid-template-columns: var(--wp-cols);
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--fh-neutral-870-a06);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-row--head {
+    font-size: 12px;
+    color: var(--fh-neutral-870-a50);
+    padding: 8px 0;
+    border-bottom-color: var(--fh-neutral-870-a10);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-row.is-dragging {
+    opacity: 0.4;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-handle {
+    cursor: grab;
+    color: var(--fh-neutral-870-a30);
+    display: flex;
+    justify-content: center;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-exercise {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-exercise__name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-cell {
+    height: 34px;
+    width: 100%;
+    padding: 0 6px;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    text-align: center;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--fh-neutral-870);
+    outline: none;
+    -moz-appearance: textfield;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-cell::-webkit-outer-spin-button,
+:where(.page-daily-plan-module-workout-plan) .wp-cell::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-cell:focus {
+    border-color: var(--fh-neutral-870);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-rest {
+    text-align: center;
+    padding: 40px 16px;
+    font-size: 14px;
+    color: var(--fh-neutral-870-a50);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-rest strong {
+    display: block;
+    color: var(--fh-neutral-870);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-daybtns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+/* Side: client */
+:where(.page-daily-plan-module-workout-plan) .wp-client {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: var(--fh-radius-circle);
+    background: var(--fh-neutral-130);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-neutral-870-a45);
+    flex-shrink: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-client__name {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-client__meta {
+    font-size: 13px;
+    color: var(--fh-neutral-870-a50);
+    margin: 2px 0 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-client .wp-btn--icon {
+    margin-left: auto;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-adherence {
+    margin-top: 16px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-adherence__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--fh-neutral-870-a60);
+    margin-bottom: 8px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-adherence__row strong {
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-bar {
+    height: 5px;
+    border-radius: var(--fh-radius-pill);
+    background: var(--fh-neutral-870-a07);
+    overflow: hidden;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-bar__fill {
+    height: 100%;
+    background: var(--fh-neutral-870);
+    border-radius: var(--fh-radius-pill);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-bar__fill--low {
+    background: var(--fh-red-520);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+/* Side: summary */
+:where(.page-daily-plan-module-workout-plan) .wp-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-stat__value {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-stat__label {
+    font-size: 12px;
+    color: var(--fh-neutral-870-a50);
+    margin: 2px 0 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-chart {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    align-items: end;
+    height: 64px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-chart__bar {
+    min-height: 4px;
+    border-radius: var(--fh-radius-3);
+    background: var(--fh-gray-280);
+    transition: background-color 0.15s ease;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-chart__bar.is-active {
+    background: var(--fh-neutral-870);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-chart__labels {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--fh-neutral-870-a45);
+    text-align: center;
+}
+
+/* Side: library */
+:where(.page-daily-plan-module-workout-plan) .wp-lib-filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 12px 0 8px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-filters button {
+    height: 30px;
+    padding: 0 12px;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-white);
+    font-family: inherit;
+    font-size: 12px;
+    color: var(--fh-neutral-870);
+    cursor: pointer;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-filters button.is-active {
+    background: var(--fh-neutral-870);
+    border-color: var(--fh-neutral-870);
+    color: var(--fh-white);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--fh-neutral-870-a06);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-item:last-child {
+    border-bottom: none;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-thumb {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-neutral-130);
+    flex-shrink: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-meta {
+    font-size: 12px;
+    color: var(--fh-neutral-870-a50);
+    margin: 1px 0 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-item .wp-btn--icon {
+    margin-left: auto;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-new {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: 1px solid var(--fh-neutral-870-a10);
+    border-radius: var(--fh-radius-10);
+    background: var(--fh-gray-50);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-new[hidden] {
+    display: none;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-new__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-new__error {
+    font-size: 13px;
+    color: var(--fh-red-710);
+    margin: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-empty {
+    font-size: 13px;
+    color: var(--fh-neutral-870-a50);
+    padding: 12px 0;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    :where(.page-daily-plan-module-workout-plan) .wp-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    :where(.page-daily-plan-module-workout-plan) .wp-fields {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    :where(.page-daily-plan-module-workout-plan) .wp-days {
+        overflow-x: auto;
+        grid-template-columns: repeat(7, minmax(84px, 1fr));
+    }
+
+    :where(.page-daily-plan-module-workout-plan) .wp-rows {
+        overflow-x: auto;
+    }
+
+    :where(.page-daily-plan-module-workout-plan) .wp-row {
+        min-width: 620px;
+    }
+}
+
+@media (max-width: 600px) {
+    :where(.page-daily-plan-module-workout-plan) .wp-view {
+        padding: 20px 16px;
+    }
+
+    :where(.page-daily-plan-module-workout-plan) .wp-fields {
+        grid-template-columns: 1fr;
+    }
+
+    :where(.page-daily-plan-module-workout-plan) .wp-field--wide {
+        grid-column: auto;
+    }
+}
+
+/* Status, flash, danger button */
+:where(.page-daily-plan-module-workout-plan) .wp-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-status {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: var(--fh-radius-pill);
+    background: var(--fh-neutral-870-a06);
+    color: var(--fh-neutral-870-a70);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-status--published {
+    background: var(--fh-green-60);
+    color: var(--fh-green-770);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-status--draft {
+    background: var(--fh-orange-60);
+    color: var(--fh-yellow-730);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-flash {
+    padding: 12px 16px;
+    border-radius: var(--fh-radius-10);
+    font-size: 14px;
+    border: 1px solid transparent;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-flash--success {
+    background: var(--fh-green-60);
+    border-color: var(--fh-emerald-180);
+    color: var(--fh-green-770);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-flash--error {
+    background: var(--fh-red-60);
+    border-color: var(--fh-red-170);
+    color: var(--fh-red-710);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn--danger {
+    color: var(--fh-red-710);
+    border-color: var(--fh-red-220);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn--danger:hover {
+    background: var(--fh-red-60);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn--danger-solid {
+    background: var(--fh-red-710);
+    border-color: var(--fh-red-710);
+    color: var(--fh-white);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn--danger-solid:hover {
+    background: var(--fh-red-820);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Day focus + note */
+:where(.page-daily-plan-module-workout-plan) .wp-focus-input {
+    border: 1px solid transparent;
+    border-radius: var(--fh-radius-6);
+    padding: 2px 6px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-neutral-870);
+    background: transparent;
+    width: 160px;
+    outline: none;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-focus-input:hover {
+    border-color: var(--fh-neutral-870-a12);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-focus-input:focus {
+    border-color: var(--fh-neutral-870);
+    background: var(--fh-white);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-focus-input::placeholder {
+    color: var(--fh-neutral-870-a35);
+    font-weight: 500;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-note {
+    width: 100%;
+    min-height: 64px;
+    margin: 6px 0 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--fh-neutral-870);
+    resize: vertical;
+    outline: none;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-note:focus {
+    border-color: var(--fh-neutral-870);
+}
+
+/* Supersets */
+:where(.page-daily-plan-module-workout-plan) .wp-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 6px 0 10px;
+    padding: 10px 12px;
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-indigo-50);
+    color: var(--fh-blue-700);
+    font-size: 13px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-banner button {
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: inherit;
+    cursor: pointer;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-row.is-superset {
+    box-shadow: inset 3px 0 0 var(--fh-indigo-500);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-tag--superset {
+    background: var(--fh-indigo-50);
+    color: var(--fh-indigo-700);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-lib-item.is-hidden {
+    display: none;
+}
+
+:where(.page-daily-plan-module-workout-plan) #wp-lib-list {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+/* Dialogs + toast */
+:where(.page-daily-plan-module-workout-plan) .wp-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: var(--fh-neutral-930-a40);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-modal[hidden] {
+    display: none;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-modal__box {
+    width: min(440px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 22px;
+    border-radius: var(--fh-radius-14);
+    background: var(--fh-white);
+    box-shadow: 0 24px 48px -12px var(--fh-black-a25);
+    box-sizing: border-box;
+    font-family: var(--fh-font-inter);
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-modal__box--wide {
+    width: min(640px, 100%);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-modal__title {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-modal__text {
+    font-size: 14px;
+    color: var(--fh-neutral-870-a60);
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-modal__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-preview-day {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--fh-neutral-870-a06);
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-preview-day:last-child {
+    border-bottom: none;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-preview-day h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-preview-day p,
+:where(.page-daily-plan-module-workout-plan) .wp-preview-day li {
+    font-size: 13px;
+    color: var(--fh-neutral-870-a65);
+    margin: 0;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-preview-day ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+:where(.page-daily-plan-module-workout-plan) .wp-toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 60;
+    padding: 12px 16px;
+    border-radius: var(--fh-radius-10);
+    background: var(--fh-neutral-870);
+    color: var(--fh-white);
+    font-family: var(--fh-font-inter);
+    font-size: 14px;
+    box-shadow: 0 10px 24px -8px var(--fh-black-a30);
+}
