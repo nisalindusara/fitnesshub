@@ -26,6 +26,10 @@ anti-aliased glyph edges, where the text blends with the background, a few
 pixels differ by 4 units. Seen on `landing/sample-product`. Accepted for
 now; revisit with the grey convergence.
 
+The same happens with `#344054` (Untitled UI gray-700), merged into
+`--fh-gray-700` (`#374151`): 12 edge pixels at 4 units on
+`class_pt_module/classes/create` (390px). Also accepted.
+
 The agreed design-system values are defined but not yet used:
 `--fh-brand-red` (#ED1C24), `--fh-ink-black` (#171717),
 `--fh-status-{active,suspended,inactive}-{bg,fg}`, `--fh-radius-card` (16px)
