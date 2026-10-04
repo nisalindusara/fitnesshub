@@ -1,0 +1,39 @@
+/* Conversation list shared by the two member message inboxes.
+   Used by: Member_withPT_messages, NonPT_messages. */
+
+#messages-body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 140px);
+  padding: 24px 16px;
+  box-sizing: border-box;
+  font-family: var(--fh-font-system);
+}
+
+.messages-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fh-neutral-930);
+  margin: 0;
+}
+
+.chat-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--fh-radius-circle);
+  object-fit: cover;
+  display: block;
+}
+
+.chat-status-online {
+  background-color: var(--fh-emerald-500);
+}
+
+.chat-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

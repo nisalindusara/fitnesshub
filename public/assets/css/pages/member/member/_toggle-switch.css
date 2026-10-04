@@ -1,0 +1,49 @@
+/* On/off switch shared by the notification and privacy settings pages.
+   Used by: notification-settings, privacy-data. */
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--fh-gray-300);
+  border-radius: var(--fh-radius-pill);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-track::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--fh-white);
+  border-radius: var(--fh-radius-circle);
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px var(--fh-black-a15);
+}
+
+.toggle-switch input:checked+.toggle-track {
+  background-color: var(--fh-red-620);
+}
+
+.toggle-switch input:checked+.toggle-track::before {
+  transform: translateX(18px);
+}

@@ -1,16 +1,6 @@
+<?php $pageStyles = ['member/communication_module/_message-list']; ?>
 <style>
 /* Outer Body Container - Centers the middle card */
-#messages-body-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: calc(100vh - 140px);
-  padding: 24px 16px;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
 
 /* Middle Content Card - matching Figma frame proportions */
 #messages-middle-card {
@@ -32,13 +22,6 @@
   align-items: center;
   padding: 24px 32px 18px 32px;
   border-bottom: 1px solid #f0f0f0;
-}
-
-.messages-card-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #111111;
-  margin: 0;
 }
 
 /* Scroll Area */
@@ -86,14 +69,6 @@
   background-color: #f3f4f6;
 }
 
-.chat-avatar-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
 .chat-status-dot {
   position: absolute;
   bottom: 1px;
@@ -103,10 +78,6 @@
   border-radius: 50%;
   border: 2px solid #ffffff;
   z-index: 2;
-}
-
-.chat-status-online {
-  background-color: #10b981;
 }
 
 /* Chat Item Details */
@@ -125,12 +96,6 @@
   flex-grow: 1;
   gap: 2px;
   min-width: 0;
-}
-
-.chat-item-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .chat-item-name {

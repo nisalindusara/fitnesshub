@@ -1,0 +1,11 @@
+/* Green primary button shared by the dashboard, membership and PT-session pages.
+   Used by: dashboard, membership, pt-session. */
+
+.btn--primary {
+  background: var(--green);
+  color: var(--fh-white);
+}
+
+.btn--primary:hover {
+  background: var(--green-dark);
+}

@@ -1,3 +1,4 @@
+<?php $pageStyles = ['member/member/_order-status']; ?>
 <style>
     .order-detail-page {
         width: 100%;
@@ -84,10 +85,6 @@
     .order-detail-status {
         font-size: 13.5px;
         font-weight: 700;
-    }
-
-    .order-status-delivered {
-        color: #16A34A;
     }
 
     /* Progress tracker */

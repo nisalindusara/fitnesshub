@@ -1,16 +1,5 @@
+<?php $pageStyles = ['member/communication_module/_message-list']; ?>
 <style>
-#messages-body-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: calc(100vh - 140px);
-  padding: 24px 16px;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
 #messages-middle-card {
   display: flex;
   flex-direction: column;
@@ -38,13 +27,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.messages-card-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #111111;
-  margin: 0;
 }
 
 .messages-badge {
@@ -112,14 +94,6 @@
   background-color: #f3f4f6;
 }
 
-.chat-avatar-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
 .chat-status-dot {
   position: absolute;
   bottom: 0px;
@@ -129,10 +103,6 @@
   border-radius: 50%;
   border: 2px solid #ffffff;
   z-index: 2;
-}
-
-.chat-status-online {
-  background-color: #10b981;
 }
 
 .chat-status-offline {
@@ -145,12 +115,6 @@
   flex-grow: 1;
   gap: 4px;
   min-width: 0;
-}
-
-.chat-item-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .chat-item-name {

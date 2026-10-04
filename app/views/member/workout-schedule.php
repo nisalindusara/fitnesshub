@@ -1,3 +1,4 @@
+<?php $pageStyles = ['member/member/_plan-header']; ?>
 <style>
   .schedule-page {
     width: min(92%, 760px);
@@ -8,40 +9,6 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-  }
-
-  .page-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .back-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-primary);
-    transition: background-color 0.15s ease;
-  }
-
-  .back-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-  }
-
-  .back-btn svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
-
-  .page-title {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    letter-spacing: -0.01em;
   }
 
   .page-subtitle {

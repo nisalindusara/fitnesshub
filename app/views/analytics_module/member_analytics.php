@@ -37,12 +37,6 @@
   }
 
   /* ---------- Page heading ---------- */
-  .page-head__title {
-    margin: 0;
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
 
   .page-head__subtitle {
     margin: 6px 0 0;
@@ -62,19 +56,6 @@
     align-items: flex-end;
     justify-content: space-between;
     gap: 16px;
-  }
-
-  .block__title {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-
-  .block__caption {
-    margin: 4px 0 0;
-    font-size: 0.9rem;
-    color: var(--muted);
   }
 
   /* ---------- Card ---------- */
@@ -156,40 +137,7 @@
     background: transparent;
   }
 
-  .mini-bar__fill {
-    display: block;
-    height: 100%;
-    border-radius: inherit;
-  }
-
-  .mini-bar__fill--good {
-    background: var(--green);
-  }
-
-  .mini-bar__fill--warn {
-    background: var(--amber);
-  }
-
-  .stat__note {
-    margin: 10px 0 0;
-    font-size: 0.84rem;
-    color: var(--muted);
-  }
-
   /* ---------- Monthly target ---------- */
-  .target__row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-
-  .target__label {
-    margin: 0;
-    font-size: 0.95rem;
-    font-weight: 600;
-  }
 
   .target__percent {
     flex: none;
@@ -606,10 +554,6 @@
     .stats {
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-    }
-
-    .stats .stat:last-child {
-      grid-column: 1 / -1;
     }
 
     .stat__value {

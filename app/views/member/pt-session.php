@@ -1,3 +1,4 @@
+<?php $pageStyles = ['member/member/_primary-button']; ?>
 <style>
     /* Book a session – page content (id/class selectors only)
    Font (Plus Jakarta Sans), page background and chrome spacing come from member-layout
@@ -70,13 +71,6 @@
         stroke-linejoin: round;
     }
 
-    .page-head__title {
-        margin: 0;
-        font-size: 1.75rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-    }
-
     .page-head__subtitle {
         margin: 4px 0 0;
         font-size: 0.95rem;
@@ -94,19 +88,6 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-    }
-
-    .block__title {
-        margin: 0;
-        font-size: 1.2rem;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-    }
-
-    .block__caption {
-        margin: 4px 0 0;
-        font-size: 0.9rem;
-        color: var(--muted);
     }
 
     .card {
@@ -402,15 +383,6 @@
         font: 600 0.95rem "Plus Jakarta Sans", system-ui, sans-serif;
         cursor: pointer;
         transition: background-color 0.15s ease;
-    }
-
-    .btn--primary {
-        background: var(--green);
-        color: #fff;
-    }
-
-    .btn--primary:hover {
-        background: var(--green-dark);
     }
 
     .btn:focus-visible,

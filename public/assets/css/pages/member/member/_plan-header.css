@@ -1,0 +1,36 @@
+/* Back-button page header shared by the meal-plan and workout-schedule pages.
+   Used by: meal-plan, workout-schedule. */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--fh-radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  transition: background-color 0.15s ease;
+}
+
+.back-btn:hover {
+  background: var(--fh-black-a05);
+}
+
+.back-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}

@@ -1,3 +1,4 @@
+<?php $pageStyles = ['member/member/_primary-button']; ?>
 <style>
   /* Member dashboard – page content (id/class selectors only)
    Font (Plus Jakarta Sans), page background and chrome spacing come from member-layout
@@ -100,19 +101,6 @@
     align-items: flex-end;
     justify-content: space-between;
     gap: 16px;
-  }
-
-  .block__title {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-
-  .block__caption {
-    margin: 4px 0 0;
-    font-size: 0.9rem;
-    color: var(--muted);
   }
 
   .link {
@@ -485,15 +473,6 @@
     transition: background-color 0.15s ease;
   }
 
-  .btn--primary {
-    background: var(--green);
-    color: #fff;
-  }
-
-  .btn--primary:hover {
-    background: var(--green-dark);
-  }
-
   .btn:focus-visible,
   .link:focus-visible {
     outline: 2.5px solid var(--green);
@@ -540,40 +519,7 @@
     background: transparent;
   }
 
-  .mini-bar__fill {
-    display: block;
-    height: 100%;
-    border-radius: inherit;
-  }
-
-  .mini-bar__fill--good {
-    background: var(--green);
-  }
-
-  .mini-bar__fill--warn {
-    background: var(--amber);
-  }
-
-  .stat__note {
-    margin: 10px 0 0;
-    font-size: 0.84rem;
-    color: var(--muted);
-  }
-
   /* ---------- Target ---------- */
-  .target__row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-
-  .target__label {
-    margin: 0;
-    font-size: 0.95rem;
-    font-weight: 600;
-  }
 
   .target__percent {
     margin: 0;
@@ -762,10 +708,6 @@
     .stats {
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-    }
-
-    .stats .stat:last-child {
-      grid-column: 1 / -1;
     }
 
     .activity {

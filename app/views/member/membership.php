@@ -1,3 +1,4 @@
+<?php $pageStyles = ['member/member/_primary-button']; ?>
 <style>
   /* Membership screen – page content (id/class selectors only)
    Font (Plus Jakarta Sans), page background and chrome spacing come from member-layout
@@ -25,12 +26,6 @@
   }
 
   /* ---------- Page heading ---------- */
-  .page-head__title {
-    margin: 0;
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
 
   .page-head__subtitle {
     margin: 6px 0 0;
@@ -43,19 +38,6 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-  }
-
-  .block__title {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-
-  .block__caption {
-    margin: 4px 0 0;
-    font-size: 0.9rem;
-    color: var(--muted);
   }
 
   /* ---------- Card ---------- */
@@ -139,15 +121,6 @@
     font-weight: 600;
     text-decoration: none;
     transition: background-color 0.15s ease;
-  }
-
-  .btn--primary {
-    background: var(--green);
-    color: #fff;
-  }
-
-  .btn--primary:hover {
-    background: var(--green-dark);
   }
 
   /* ---------- Included with your plan ---------- */

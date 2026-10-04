@@ -1,3 +1,4 @@
+<?php $pageStyles = ['member/member/_toggle-switch']; ?>
 <style>
     .notifications-page {
         width: 100%;
@@ -78,52 +79,6 @@
     }
 
     /* Toggle switch */
-    .toggle-switch {
-        position: relative;
-        display: inline-block;
-        width: 44px;
-        height: 26px;
-        flex-shrink: 0;
-    }
-
-    .toggle-switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .toggle-track {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #D1D5DB;
-        border-radius: 9999px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-    }
-
-    .toggle-track::before {
-        content: "";
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        left: 3px;
-        bottom: 3px;
-        background-color: #fff;
-        border-radius: 50%;
-        transition: transform 0.2s ease;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    }
-
-    .toggle-switch input:checked+.toggle-track {
-        background-color: #D3272C;
-    }
-
-    .toggle-switch input:checked+.toggle-track::before {
-        transform: translateX(18px);
-    }
 </style>
 
 <div class="notifications-page">
