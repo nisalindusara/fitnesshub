@@ -19,6 +19,13 @@ Counts are declarations across view `<style>` blocks and the shared CSS
 files, measured before the restructure. "Files" counts views and shared
 stylesheets.
 
+**Accepted merge with a visible edge.** `#99a1af` (Tailwind v4 gray-400,
+25 uses, mostly landing store text) was merged into `--fh-gray-400`
+(`#9ca3af`). The colours are 3 units apart at full coverage, but on
+anti-aliased glyph edges, where the text blends with the background, a few
+pixels differ by 4 units. Seen on `landing/sample-product`. Accepted for
+now; revisit with the grey convergence.
+
 The agreed design-system values are defined but not yet used:
 `--fh-brand-red` (#ED1C24), `--fh-ink-black` (#171717),
 `--fh-status-{active,suspended,inactive}-{bg,fg}`, `--fh-radius-card` (16px)

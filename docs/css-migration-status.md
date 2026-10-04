@@ -1,0 +1,63 @@
+# CSS migration status
+
+Tracks the `refactor/css-structure` work: moving inline `<style>` blocks into
+`public/assets/css/`. Updated with every commit on that branch.
+
+## Done
+
+- **Landing (landing-layout.php, minimal.php)**: migrated. 26 of 26 views have no inline `<style>`.
+- **Member (member-layout.php)**: shared files built (Phase 3); page CSS still inline. 0 of 25 views have no inline `<style>`.
+- **Staff (staff-layout.php)**: shared files built (Phase 3); page CSS still inline. 10 of 49 views have no inline `<style>`.
+
+## Views that still have a `<style>` block
+
+### Member (member-layout.php): 25 views
+
+- `analytics_module/`: member_analytics, user_analytics
+- `communication_module/`: Instructor_profile_view, Member_withPT_messages, NonPT_messages, available_instructors, chat_conversation, empty_user_submit_ticket, user_messages, user_submit_ticket, user_ticketForm
+- `member/`: classes, dashboard, meal-plan, member-profile, membership, notification-settings, notifications, order-detail, order-history, payment-history, personal-details, privacy-data, pt-session, workout-schedule
+
+### Staff (staff-layout.php): 39 views
+
+- `account_module/`: mark-attendance, staff-profile
+- `analytics_module/`: member_performance
+- `class_pt_module/classes/`: create, index, show
+- `class_pt_module/sessions/`: create, index, show
+- `communication_module/`: admin_tickets, admin_tickets_details, instructor_messages, instructor_ticket, manager_tickets, member_profile_view
+- `daily_plan_module/`: meal-plan, workout-plan
+- `ecommerce_module/`: add-order, add-product, category_screen, product-detail, product-detail-edit, product-grid, show
+- `instructor/`: instructor-overview, my-clients
+- `payment_module/`: add-cash-payment, payment-list, payment-setting, review-bank-transfers
+- `staff/`: preview-screen
+- `staff/dashboard/`: _daily-overview, _ecommerce-overview, _manager-summary, _system-overview, index
+- `work_schedule_module/admin/`: instructor_sessions
+- `work_schedule_module/leave/`: result, review_immediate
+
+Layouts with a `<style>` block: none.
+Views that link a stylesheet from `<body>`: `work_schedule_module/instructor/my_schedule`.
+
+## Conventions
+
+- **Load order.** `partials/_stylesheets.php` links `tokens.css`, then the surface file
+  (`landing.css`, `member.css` or `staff.css`), then each entry in the view's `$pageStyles`
+  in order: kits first, the page file last. Every URL gets `?v=<filemtime>`.
+- **`tokens.css`** holds raw values only (`--fh-` prefix). Surface files add meaning on top.
+  Colours, radii and font families always use `var(--fh-…)`. Sizes, spacing and shadow
+  geometry stay literal in page files.
+- **Rule of two.** A rule used identically by 2+ pages goes to the surface file, or to a
+  module kit `pages/<surface>/<module>/_<kit>.css` when every user is in that module folder.
+- **Page files** live at `pages/<surface>/<view path>.css`, mirroring `app/views/`, and hold
+  only what is unique to that page.
+- **Scoping.** `Controller::render()` sets `$pageClass` from the view path (`landing/cart` →
+  `page-landing-cart`) and layouts put it on `<main>`. Page rules use
+  `:where(.page-…) selector`, so specificity is unchanged.
+- **`$bodyClass`.** Rules that also style the layout chrome, `<body>` or `<html>` are scoped
+  under `body.page-…--global`, which the view sets in `$bodyClass`. They are listed in
+  `docs/css-followups.md`.
+- **Partials** append to `$pageStyles` (`$pageStyles[] = …`) and never reassign it.
+- **No visual changes** in this branch. Anything that would change rendering goes to
+  `docs/css-followups.md`.
+
+## Next step
+
+Phase 4, member surface: move each member view's `<style>` into `pages/member/…` and print `$pageClass`/`$bodyClass` in member-layout.php. Then the staff surface. Phase 5 after that: remove dead CSS and unused files, and update `public/README.md`.
