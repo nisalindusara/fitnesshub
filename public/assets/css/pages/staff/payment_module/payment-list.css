@@ -1,6 +1,6 @@
 /* Scoped under .page-payment-module-payment-list (the layout's <main> on this page). */
 
-/* Customer cell (not covered by portals.css) */
+/* Customer cell (not covered by staff.css) */
 :where(.page-payment-module-payment-list) .payments-customer {
     display: flex;
     align-items: center;
@@ -26,7 +26,7 @@
     border-radius: var(--fh-radius-16);
 }
 
-/* Toolbar buttons — no button styling exists in portals.css yet */
+/* Toolbar buttons — no button styling exists in staff.css yet */
 :where(.page-payment-module-payment-list) #payments-record-btn {
     background: var(--fh-neutral-870);
     color: var(--fh-white);
@@ -49,7 +49,7 @@
     cursor: pointer;
 }
 
-/* Footer / pagination — page-specific, not in portals.css */
+/* Footer / pagination — page-specific, not in staff.css */
 :where(.page-payment-module-payment-list) #payments-footer {
     display: flex;
     justify-content: space-between;
