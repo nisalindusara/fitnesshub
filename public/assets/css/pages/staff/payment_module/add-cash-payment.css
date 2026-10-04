@@ -1,0 +1,258 @@
+/* Scoped under .page-payment-module-add-cash-payment (the layout's <main> on this page). */
+
+:where(.page-payment-module-add-cash-payment) .form-group {
+    margin-bottom: 20px;
+}
+
+:where(.page-payment-module-add-cash-payment) .form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+:where(.page-payment-module-add-cash-payment) .form-group-flex {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Category selector */
+:where(.page-payment-module-add-cash-payment) .category-selector {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+:where(.page-payment-module-add-cash-payment) .category-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 8px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-10);
+    font-size: 13px;
+    color: var(--fh-neutral-870-a60);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-add-cash-payment) .category-icon {
+    font-size: 18px;
+}
+
+:where(.page-payment-module-add-cash-payment) .category-option-active {
+    border-color: var(--fh-blue-600);
+    background: var(--fh-indigo-50);
+    color: var(--fh-blue-600);
+}
+
+/* Generic form inputs */
+:where(.page-payment-module-add-cash-payment) .form-search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-gray-50);
+}
+
+:where(.page-payment-module-add-cash-payment) .form-search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-payment-module-add-cash-payment) .form-input,
+:where(.page-payment-module-add-cash-payment) .form-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    font-size: 14px;
+    color: var(--fh-neutral-870);
+    background: var(--fh-white);
+    box-sizing: border-box;
+}
+
+:where(.page-payment-module-add-cash-payment) .form-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px 12px;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    font-size: 14px;
+    color: var(--fh-neutral-870);
+    background: var(--fh-gray-50);
+    resize: vertical;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/* Amount input */
+:where(.page-payment-module-add-cash-payment) .amount-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    overflow: hidden;
+    background: var(--fh-gray-50);
+}
+
+:where(.page-payment-module-add-cash-payment) .amount-prefix {
+    padding: 10px 12px;
+    background: var(--fh-neutral-870-a06);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fh-neutral-870-a60);
+}
+
+:where(.page-payment-module-add-cash-payment) .amount-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 10px 8px;
+    font-size: 14px;
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-payment-module-add-cash-payment) .amount-hint {
+    padding-right: 12px;
+    font-size: 12px;
+    color: var(--fh-neutral-870-a30);
+    white-space: nowrap;
+}
+
+/* Payment method selector */
+:where(.page-payment-module-add-cash-payment) .payment-method-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+:where(.page-payment-module-add-cash-payment) .payment-method-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    font-size: 14px;
+    color: var(--fh-neutral-870-a60);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-add-cash-payment) .payment-method-option-active {
+    border-color: var(--fh-blue-600);
+    background: var(--fh-indigo-50);
+    color: var(--fh-blue-600);
+}
+
+/* Footer */
+:where(.page-payment-module-add-cash-payment) .form-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--fh-neutral-870-a08);
+}
+
+:where(.page-payment-module-add-cash-payment) .btn-discard {
+    padding: 8px 18px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-870-a15);
+    border-radius: var(--fh-radius-8);
+    font-size: 14px;
+    color: var(--fh-neutral-870);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-add-cash-payment) .btn-save {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: var(--fh-neutral-870);
+    border: none;
+    border-radius: var(--fh-radius-8);
+    font-size: 14px;
+    color: var(--fh-white);
+    cursor: pointer;
+}
+
+/* Icon base style, shared by every inline SVG on this page */
+:where(.page-payment-module-add-cash-payment) .icon-svg,
+:where(.page-payment-module-add-cash-payment) .category-icon-svg,
+:where(.page-payment-module-add-cash-payment) .field-icon-svg,
+:where(.page-payment-module-add-cash-payment) .method-icon-svg,
+:where(.page-payment-module-add-cash-payment) .btn-icon-svg {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+:where(.page-payment-module-add-cash-payment) .icon-svg {
+    width: 18px;
+    height: 18px;
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-payment-module-add-cash-payment) .category-icon-svg {
+    width: 20px;
+    height: 20px;
+    color: currentColor;
+}
+
+:where(.page-payment-module-add-cash-payment) .field-icon-svg {
+    width: 16px;
+    height: 16px;
+    color: var(--fh-neutral-870-a40);
+    flex-shrink: 0;
+}
+
+:where(.page-payment-module-add-cash-payment) .method-icon-svg {
+    width: 18px;
+    height: 18px;
+    color: currentColor;
+}
+
+:where(.page-payment-module-add-cash-payment) .btn-icon-svg {
+    width: 14px;
+    height: 14px;
+    color: var(--fh-white);
+}
+
+/* Payment method selector now only has 2 options (Bank Transfer auto-records) */
+:where(.page-payment-module-add-cash-payment) .payment-method-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+:where(.page-payment-module-add-cash-payment) .payment-method-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    font-size: 14px;
+    color: var(--fh-neutral-870-a60);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-add-cash-payment) .payment-method-option-active {
+    border-color: var(--fh-blue-600);
+    background: var(--fh-indigo-50);
+    color: var(--fh-blue-600);
+}
