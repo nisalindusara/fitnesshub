@@ -232,6 +232,10 @@ and `--fh-font-ui` (Inter).
   Windows, but form controls may differ by a pixel on macOS, where
   `sans-serif` isn't Arial. Check on a Mac, or give each original stack its
   own token.
+- **Invalid selector.** `communication_module/admin_tickets_details` has a rule
+  for `[cite: 1] .avatar`, which looks like pasted citation text. The
+  selector is invalid, so the rule has never applied. Removal is planned
+  for Phase 5 dead-CSS cleanup.
 - **Inline `style=""` attributes.** About 300 in total, mostly in
   `landing/about.php` (101), `analytics_module/member_analytics.php` (36) and
   `staff/dashboard/_manager-summary.php` (34).

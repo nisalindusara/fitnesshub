@@ -1,0 +1,330 @@
+/* Scoped under .page-communication-module-admin-tickets-details (the layout's <main> on this page). */
+
+:where(.page-communication-module-admin-tickets-details) #ticket-detail-view {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 0px;
+  width: 100%;
+  height: 832px;
+  background: var(--fh-white);
+  font-family: var(--fh-font-system);
+  overflow: hidden;
+}
+
+/* Header & Breadcrumb */
+:where(.page-communication-module-admin-tickets-details) .detail-header-bar {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--fh-gray-100);
+}
+
+:where(.page-communication-module-admin-tickets-details) .breadcrumb-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .nav-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--fh-gray-500);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+:where(.page-communication-module-admin-tickets-details) .nav-back-link:hover {
+  color: var(--fh-gray-800);
+}
+
+:where(.page-communication-module-admin-tickets-details) .back-arrow {
+  font-size: 15px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .breadcrumb-divider {
+  color: var(--fh-gray-300);
+  font-size: 13px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .detail-ticket-id {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fh-gray-900);
+}
+
+:where(.page-communication-module-admin-tickets-details) .header-action-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .btn-action-secondary {
+  background: var(--fh-white);
+  border: 1px solid var(--fh-gray-200);
+  border-radius: var(--fh-radius-6);
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fh-gray-700);
+  cursor: pointer;
+}
+
+:where(.page-communication-module-admin-tickets-details) .btn-action-secondary:hover {
+  background: var(--fh-gray-50);
+}
+
+:where(.page-communication-module-admin-tickets-details) .btn-action-primary {
+  background: var(--fh-gray-900);
+  border: 1px solid var(--fh-gray-900);
+  border-radius: var(--fh-radius-6);
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fh-white);
+  cursor: pointer;
+}
+
+:where(.page-communication-module-admin-tickets-details) .btn-action-primary:hover {
+  background: var(--fh-gray-800);
+}
+
+/* Two-column Layout */
+:where(.page-communication-module-admin-tickets-details) .detail-body-wrapper {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+:where(.page-communication-module-admin-tickets-details) .detail-main-content {
+  flex: 1;
+  box-sizing: border-box;
+  padding: 24px 32px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .detail-sidebar {
+  display: none;
+}
+
+/* Primary Content Header & Body */
+:where(.page-communication-module-admin-tickets-details) .ticket-header-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .status-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .badge-priority {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: var(--fh-radius-4);
+}
+
+:where(.page-communication-module-admin-tickets-details) .badge-status {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: var(--fh-radius-4);
+}
+
+:where(.page-communication-module-admin-tickets-details) .status-new {
+  background: var(--fh-violet-100);
+  color: var(--fh-violet-600);
+}
+
+:where(.page-communication-module-admin-tickets-details) .ticket-heading-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--fh-gray-900);
+  line-height: 1.3;
+}
+
+:where(.page-communication-module-admin-tickets-details) .ticket-metadata-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--fh-gray-500);
+}
+
+:where(.page-communication-module-admin-tickets-details) .user-inline-name {
+  font-weight: 600;
+  color: var(--fh-gray-700);
+}
+
+:where(.page-communication-module-admin-tickets-details) .ticket-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .section-heading {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fh-gray-700);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+:where(.page-communication-module-admin-tickets-details) .description-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fh-gray-600);
+  background: var(--fh-gray-50);
+  border: 1px solid var(--fh-gray-100);
+  border-radius: var(--fh-radius-8);
+  padding: 16px;
+}
+
+/* Discussion & Comments */
+:where(.page-communication-module-admin-tickets-details) .timeline-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .timeline-item {
+  background: var(--fh-white);
+  border: 1px solid var(--fh-gray-200);
+  border-radius: var(--fh-radius-8);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .comment-author-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+:where(.page-communication-module-admin-tickets-details) .user-inline-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .author-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fh-gray-700);
+}
+
+:where(.page-communication-module-admin-tickets-details) .comment-timestamp {
+  font-size: 11px;
+  color: var(--fh-gray-400);
+}
+
+:where(.page-communication-module-admin-tickets-details) .comment-body {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fh-gray-600);
+}
+
+:where(.page-communication-module-admin-tickets-details) .reply-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .reply-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 80px;
+  border: 1px solid var(--fh-gray-300);
+  border-radius: var(--fh-radius-6);
+  padding: 10px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+}
+
+:where(.page-communication-module-admin-tickets-details) .reply-textarea:focus {
+  border-color: var(--fh-blue-500);
+}
+
+:where(.page-communication-module-admin-tickets-details) .reply-actions-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Sidebar Styling */
+:where(.page-communication-module-admin-tickets-details) .sidebar-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .sidebar-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--fh-gray-500);
+  letter-spacing: 0.04em;
+}
+
+:where(.page-communication-module-admin-tickets-details) .property-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .property-label {
+  color: var(--fh-gray-500);
+}
+
+:where(.page-communication-module-admin-tickets-details) .property-value {
+  color: var(--fh-gray-800);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+:where(.page-communication-module-admin-tickets-details) .sidebar-divider {
+  height: 1px;
+  background-color: var(--fh-gray-200);
+  margin: 4px 0;
+}
+
+:where(.page-communication-module-admin-tickets-details) .indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--fh-radius-circle);
+}
+
+:where(.page-communication-module-admin-tickets-details) [cite: 1] .avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--fh-radius-circle);
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
