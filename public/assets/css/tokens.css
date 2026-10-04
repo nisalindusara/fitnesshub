@@ -1,66 +1,589 @@
 /* ==========================================================
-   FitnessHub – Design tokens
-   Place at: /assets/css/tokens.css  (load BEFORE landing.css)
-   Change values here; landing.css only references them.
+   FitnessHub – design tokens (all surfaces)
+
+   Raw values only. Meaning ("muted text", "card border") is
+   assigned in the surface files (landing.css, member.css,
+   staff.css), so a value can be re-pointed without touching
+   every page that uses it.
+
+   Load order is fixed by the layouts: tokens.css, then the
+   surface file, then page files. Nothing here may depend on
+   a surface file.
    ========================================================== */
 
-/* Fonts are loaded once in the layout <head>. */
-
 :root {
-  /* ─── Brand ─── */
-  --fh-red: #e31837;
-  --fh-red-dark: #c21430;
-  --fh-star: #f59e0b;
+  /* ─── Colour ───────────────────────────────────────────────
+     Names follow Tailwind's 50–950 scales because almost every
+     colour in the app was copied from one of them (or from
+     Chakra / Untitled UI, whose values sit between Tailwind
+     steps).
 
-  /* ─── Neutrals ─── */
-  --fh-black: #000000;
-  --fh-dark: #151515; /* dark section background */
-  --fh-panel: #1f1f1f; /* pricing card */
-  --fh-panel-2: #2a2a2a; /* pricing feature box */
+     Steps that are a multiple of 100, or exactly 50 or 950, are
+     the real Tailwind value. Any other step (e.g. red-520) is a
+     drifted value placed where it falls by lightness, so the
+     drift stays visible until we decide to converge it:
+     converging is a one-line change here, e.g.
+       --fh-red-520: var(--fh-red-500);
+
+     Values that differed by 3 or fewer RGB units per channel
+     were merged into one token (invisible on screen). */
+
   --fh-white: #ffffff;
-  --fh-grey-bg: #f4f4f4; /* light grey section */
-  --fh-btn-light-hover: #e9e9e9;
+  --fh-black: #000000;
 
-  /* ─── Text on light ─── */
-  --fh-text: #1a1a1a;
-  --fh-text-strong: #2b2b2b;
-  --fh-text-body: #4b5563;
-  --fh-text-list: #374151;
-  --fh-muted: #6b7280;
+  --fh-gray-50: #f9fafb;
+  --fh-gray-100: #f3f4f6;
+  --fh-gray-160: #eaecf0;
+  --fh-gray-200: #e5e7eb;
+  --fh-gray-230: #dfe2e7;
+  --fh-gray-280: #d6d9df;
+  --fh-gray-300: #d1d5db;
+  --fh-gray-320: #c9cdd4;
+  --fh-gray-325: #c4cad3;
+  --fh-gray-330: #c3c7cf;
+  --fh-gray-350: #b8bdc6;
+  --fh-gray-390: #a3a9b4;
+  --fh-gray-400: #9ca3af;
+  --fh-gray-420: #929bab;
+  --fh-gray-430: #8b93a1;
+  --fh-gray-460: #7d8898;
+  --fh-gray-500: #6b7280;
+  --fh-gray-560: #536071;
+  --fh-gray-600: #4b5563;
+  --fh-gray-700: #374151;
+  --fh-gray-740: #2d3748;
+  --fh-gray-800: #1f2937;
+  --fh-gray-850: #1a202c;
+  --fh-gray-900: #111827;
+  --fh-gray-930: #0a0f1a;
 
-  /* ─── Text on dark ─── */
-  --fh-on-dark-90: rgba(255, 255, 255, 0.85);
-  --fh-on-dark-80: rgba(255, 255, 255, 0.8);
-  --fh-on-dark-70: rgba(255, 255, 255, 0.7);
-  --fh-on-dark-60: rgba(255, 255, 255, 0.6);
-  --fh-on-dark-50: rgba(255, 255, 255, 0.5);
-  --fh-on-dark-35: rgba(255, 255, 255, 0.35);
+  --fh-slate-90: #f4f6fb;
+  --fh-slate-120: #edf2f7;
+  --fh-slate-150: #e9eff7;
+  --fh-slate-180: #e6eaf0;
+  --fh-slate-200: #e2e8f0;
+  --fh-slate-220: #dfe4eb;
+  --fh-slate-300: #cbd5e1;
+  --fh-slate-310: #c7d2e0;
+  --fh-slate-340: #adc3d1;
+  --fh-slate-380: #a0aec0;
+  --fh-slate-400: #94a3b8;
+  --fh-slate-405: #98a2b3;
+  --fh-slate-420: #8c9bab;
+  --fh-slate-430: #8b95a7;
+  --fh-slate-470: #718096;
+  --fh-slate-475: #778397;
+  --fh-slate-500: #64748b;
+  --fh-slate-510: #667085;
+  --fh-slate-560: #526277;
+  --fh-slate-600: #475569;
+  --fh-slate-700: #334155;
+  --fh-slate-770: #273142;
+  --fh-slate-800: #1e293b;
+  --fh-slate-850: #172033;
 
-  /* ─── Lines ─── */
-  --fh-line-dark: rgba(255, 255, 255, 0.12);
-  --fh-line-light: #e5e7eb;
-  --fh-line-control: #cfcfcf; /* slider arrow border */
+  --fh-zinc-440: #8a8f98;
+  --fh-zinc-510: #6a6d75;
+  --fh-zinc-740: #33353b;
+  --fh-zinc-780: #292c33;
+  --fh-zinc-805: #24272d;
+  --fh-zinc-870: #1c1d21;
+  --fh-zinc-900: #18181b;
 
-  /* ─── Overlays ─── */
+  --fh-neutral-80: #f7f7f7;
+  --fh-neutral-120: #f1f1f1;
+  --fh-neutral-130: #f0f0f0;
+  --fh-neutral-170: #e9e9e9;
+  --fh-neutral-200: #e5e5e5;
+  --fh-neutral-220: #e2e2de;
+  --fh-neutral-250: #dddddd;
+  --fh-neutral-300: #d4d4d4;
+  --fh-neutral-310: #cfcfcf;
+  --fh-neutral-330: #c5c5c0;
+  --fh-neutral-370: #b0b0b0;
+  --fh-neutral-400: #a3a3a3;
+  --fh-neutral-420: #999999;
+  --fh-neutral-460: #888888;
+  --fh-neutral-490: #777777;
+  --fh-neutral-520: #6b6b6b;
+  --fh-neutral-540: #666666;
+  --fh-neutral-550: #616161;
+  --fh-neutral-590: #555555;
+  --fh-neutral-750: #333333;
+  --fh-neutral-780: #2b2b2b;
+  --fh-neutral-830: #222222;
+  --fh-neutral-870: #1c1c1c;
+  --fh-neutral-900: #171717;
+  --fh-neutral-910: #151515;
+  --fh-neutral-930: #111111;
+  --fh-neutral-950: #0a0a0a;
+
+  --fh-red-35: #fff6f6;
+  --fh-red-60: #fdf0f0;
+  --fh-red-70: #fdecec;
+  --fh-red-75: #fdecea;
+  --fh-red-100: #fee2e2;
+  --fh-red-150: #fbd8d9;
+  --fh-red-170: #f6d5d5;
+  --fh-red-220: #f1c7c7;
+  --fh-red-250: #ffb6ba;
+  --fh-red-260: #f3b9b9;
+  --fh-red-305: #f3a9ac;
+  --fh-red-400: #f87171;
+  --fh-red-430: #f56565;
+  --fh-red-490: #e65355;
+  --fh-red-500: #ef4444;
+  --fh-red-505: #e84d4f;
+  --fh-red-520: #e5484d;
+  --fh-red-525: #e24949;
+  --fh-red-540: #e53e3e;
+  --fh-red-545: #df4548;
+  --fh-red-550: #d74749;
+  --fh-red-560: #ed1c24;
+  --fh-red-565: #d74444;
+  --fh-red-585: #e0252e;
+  --fh-red-590: #e31837;
+  --fh-red-595: #e2231c;
+  --fh-red-600: #dc2626;
+  --fh-red-605: #d92d20;
+  --fh-red-610: #d32f2f;
+  --fh-red-620: #d3272c;
+  --fh-red-650: #c62828;
+  --fh-red-660: #c91c16;
+  --fh-red-670: #c0262d;
+  --fh-red-680: #c2122d;
+  --fh-red-690: #ba1f24;
+  --fh-red-700: #b91c1c;
+  --fh-red-710: #b42318;
+  --fh-red-740: #a82323;
+  --fh-red-770: #a11f25;
+  --fh-red-820: #912018;
+  --fh-red-960: #281715;
+
+  --fh-rose-600: #e11d48;
+  --fh-rose-620: #c63e40;
+
+  --fh-orange-60: #fff6e5;
+  --fh-orange-65: #fdf6ec;
+  --fh-orange-80: #fdf1dc;
+  --fh-orange-85: #fff1e6;
+  --fh-orange-90: #fbefe0;
+  --fh-orange-100: #ffedd5;
+  --fh-orange-280: #e8c988;
+  --fh-orange-580: #dd6b20;
+  --fh-orange-600: #ea580c;
+  --fh-orange-640: #c26138;
+  --fh-orange-650: #d9480f;
+  --fh-orange-670: #c05621;
+  --fh-orange-700: #c2410c;
+
+  --fh-amber-70: #fff7df;
+  --fh-amber-100: #fef3c7;
+  --fh-amber-370: #f2c75b;
+  --fh-amber-405: #f6c142;
+  --fh-amber-500: #f59e0b;
+  --fh-amber-600: #d97706;
+  --fh-amber-650: #c26a00;
+  --fh-amber-900: #78350f;
+
+  --fh-yellow-100: #fef9c3;
+  --fh-yellow-500: #eab308;
+  --fh-yellow-590: #d08a0b;
+  --fh-yellow-630: #c67a00;
+  --fh-yellow-660: #b76e00;
+  --fh-yellow-700: #a16207;
+  --fh-yellow-705: #9a6406;
+  --fh-yellow-710: #92660d;
+  --fh-yellow-730: #9a5b00;
+
+  --fh-green-60: #ecfdf3;
+  --fh-green-65: #f3fbf6;
+  --fh-green-100: #dcfce7;
+  --fh-green-130: #e6f4ea;
+  --fh-green-250: #b2f0b8;
+  --fh-green-260: #abefc6;
+  --fh-green-290: #b4e8c4;
+  --fh-green-320: #9ae6b4;
+  --fh-green-325: #a8e4ba;
+  --fh-green-500: #22c55e;
+  --fh-green-600: #16a34a;
+  --fh-green-620: #1a9c5c;
+  --fh-green-700: #15803d;
+  --fh-green-705: #158049;
+  --fh-green-710: #1e7e34;
+  --fh-green-720: #137a49;
+  --fh-green-740: #067647;
+  --fh-green-770: #146c3a;
+  --fh-green-900: #14532d;
+
+  --fh-emerald-80: #e8f7ef;
+  --fh-emerald-90: #e4f7ec;
+  --fh-emerald-100: #d1fae5;
+  --fh-emerald-130: #dff1e6;
+  --fh-emerald-180: #c6f0d6;
+  --fh-emerald-260: #97e9c4;
+  --fh-emerald-340: #80dab1;
+  --fh-emerald-360: #86d3b6;
+  --fh-emerald-500: #10b981;
+  --fh-emerald-510: #4fb08e;
+  --fh-emerald-520: #17b26a;
+  --fh-emerald-540: #4aa785;
+  --fh-emerald-560: #38a169;
+  --fh-emerald-595: #15966c;
+  --fh-emerald-600: #059669;
+  --fh-emerald-605: #15965b;
+  --fh-emerald-630: #1e8e5a;
+  --fh-emerald-640: #208b55;
+  --fh-emerald-650: #108752;
+  --fh-emerald-720: #17744a;
+
+  --fh-teal-100: #ccfbf1;
+  --fh-teal-600: #0d9488;
+
+  --fh-sky-90: #e6f3ff;
+  --fh-sky-100: #e0f2fe;
+  --fh-sky-220: #a7e4ff;
+  --fh-sky-310: #90cdf4;
+  --fh-sky-500: #0ea5e9;
+  --fh-sky-600: #0284c7;
+  --fh-sky-605: #3182ce;
+  --fh-sky-700: #0369a1;
+
+  --fh-blue-100: #dbeafe;
+  --fh-blue-260: #a9cdfc;
+  --fh-blue-500: #3b82f6;
+  --fh-blue-530: #2f7ce5;
+  --fh-blue-550: #5a6fe0;
+  --fh-blue-570: #3973c6;
+  --fh-blue-600: #2563eb;
+  --fh-blue-700: #1d4ed8;
+
+  --fh-indigo-50: #eef2ff;
+  --fh-indigo-60: #eaf1ff;
+  --fh-indigo-100: #e0e7ff;
+  --fh-indigo-120: #dbe4ff;
+  --fh-indigo-200: #c7d2fe;
+  --fh-indigo-240: #b8c7ff;
+  --fh-indigo-340: #90a4ff;
+  --fh-indigo-345: #95a4fc;
+  --fh-indigo-400: #818cf8;
+  --fh-indigo-410: #8a8cd9;
+  --fh-indigo-500: #6366f1;
+  --fh-indigo-600: #4f46e5;
+  --fh-indigo-700: #4338ca;
+
+  --fh-violet-100: #ede9fe;
+  --fh-violet-120: #ece4fb;
+  --fh-violet-500: #8b5cf6;
+  --fh-violet-550: #805ad5;
+  --fh-violet-600: #7c3aed;
+  --fh-violet-700: #6d28d9;
+
+  --fh-purple-100: #f3e8ff;
+  --fh-purple-600: #9333ea;
+
+  --fh-pink-100: #fce7f3;
+  --fh-pink-600: #db2777;
+
+  /* Translucent variants. Kept as separate rgba() values rather
+     than color-mix() so each one renders exactly as before. */
+
+  --fh-white-a03: rgba(255, 255, 255, 0.03);
+  --fh-white-a05: rgba(255, 255, 255, 0.05);
+  --fh-white-a08: rgba(255, 255, 255, 0.08);
+  --fh-white-a10: rgba(255, 255, 255, 0.1);
+  --fh-white-a12: rgba(255, 255, 255, 0.12);
+  --fh-white-a18: rgba(255, 255, 255, 0.18);
+  --fh-white-a20: rgba(255, 255, 255, 0.2);
+  --fh-white-a25: rgba(255, 255, 255, 0.25);
+  --fh-white-a30: rgba(255, 255, 255, 0.3);
+  --fh-white-a35: rgba(255, 255, 255, 0.35);
+  --fh-white-a40: rgba(255, 255, 255, 0.4);
+  --fh-white-a50: rgba(255, 255, 255, 0.5);
+  --fh-white-a60: rgba(255, 255, 255, 0.6);
+  --fh-white-a70: rgba(255, 255, 255, 0.7);
+  --fh-white-a80: rgba(255, 255, 255, 0.8);
+  --fh-white-a85: rgba(255, 255, 255, 0.85);
+
+  --fh-black-a00: rgba(0, 0, 0, 0);
+  --fh-black-a03: rgba(0, 0, 0, 0.03);
+  --fh-black-a04: rgba(0, 0, 0, 0.04);
+  --fh-black-a05: rgba(0, 0, 0, 0.05);
+  --fh-black-a06: rgba(0, 0, 0, 0.06);
+  --fh-black-a08: rgba(0, 0, 0, 0.08);
+  --fh-black-a10: rgba(0, 0, 0, 0.1);
+  --fh-black-a15: rgba(0, 0, 0, 0.15);
+  --fh-black-a20: rgba(0, 0, 0, 0.2);
+  --fh-black-a25: rgba(0, 0, 0, 0.25);
+  --fh-black-a30: rgba(0, 0, 0, 0.3);
+  --fh-black-a35: rgba(0, 0, 0, 0.35);
+  --fh-black-a40: rgba(0, 0, 0, 0.4);
+  --fh-black-a50: rgba(0, 0, 0, 0.5);
+  --fh-black-a55: rgba(0, 0, 0, 0.55);
+  --fh-black-a60: rgba(0, 0, 0, 0.6);
+  --fh-black-a85: rgba(0, 0, 0, 0.85);
+  --fh-black-a90: rgba(0, 0, 0, 0.9);
+
+  --fh-gray-900-a04: rgba(17, 24, 39, 0.04);
+  --fh-gray-900-a06: rgba(17, 24, 39, 0.06);
+  --fh-gray-900-a10: rgba(17, 24, 39, 0.1);
+  --fh-gray-900-a16: rgba(17, 24, 39, 0.16);
+  --fh-gray-900-a56: rgba(17, 24, 39, 0.56);
+
+  --fh-slate-510-a08: rgba(102, 112, 133, 0.08);
+
+  --fh-neutral-870-a04: rgba(28, 28, 28, 0.04);
+  --fh-neutral-870-a05: rgba(28, 28, 28, 0.05);
+  --fh-neutral-870-a06: rgba(28, 28, 28, 0.06);
+  --fh-neutral-870-a07: rgba(28, 28, 28, 0.07);
+  --fh-neutral-870-a08: rgba(28, 28, 28, 0.08);
+  --fh-neutral-870-a10: rgba(28, 28, 28, 0.1);
+  --fh-neutral-870-a12: rgba(28, 28, 28, 0.12);
+  --fh-neutral-870-a14: rgba(28, 28, 28, 0.14);
+  --fh-neutral-870-a15: rgba(28, 28, 28, 0.15);
+  --fh-neutral-870-a20: rgba(28, 28, 28, 0.2);
+  --fh-neutral-870-a25: rgba(28, 28, 28, 0.25);
+  --fh-neutral-870-a30: rgba(28, 28, 28, 0.3);
+  --fh-neutral-870-a35: rgba(28, 28, 28, 0.35);
+  --fh-neutral-870-a40: rgba(28, 28, 28, 0.4);
+  --fh-neutral-870-a45: rgba(28, 28, 28, 0.45);
+  --fh-neutral-870-a46: rgba(28, 28, 28, 0.46);
+  --fh-neutral-870-a48: rgba(28, 28, 28, 0.48);
+  --fh-neutral-870-a50: rgba(28, 28, 28, 0.5);
+  --fh-neutral-870-a55: rgba(28, 28, 28, 0.55);
+  --fh-neutral-870-a60: rgba(28, 28, 28, 0.6);
+  --fh-neutral-870-a62: rgba(28, 28, 28, 0.62);
+  --fh-neutral-870-a65: rgba(28, 28, 28, 0.65);
+  --fh-neutral-870-a70: rgba(28, 28, 28, 0.7);
+  --fh-neutral-870-a75: rgba(28, 28, 28, 0.75);
+
+  --fh-neutral-930-a12: rgba(17, 17, 17, 0.12);
+  --fh-neutral-930-a40: rgba(17, 17, 17, 0.4);
+
+  --fh-red-590-a05: rgba(227, 24, 55, 0.05);
+  --fh-red-590-a20: rgba(227, 24, 55, 0.2);
+  --fh-red-590-a25: rgba(227, 24, 55, 0.25);
+  --fh-red-590-a40: rgba(227, 24, 55, 0.4);
+  --fh-red-590-a50: rgba(227, 24, 55, 0.5);
+
+  --fh-red-600-a07: rgba(220, 38, 38, 0.07);
+  --fh-red-600-a25: rgba(220, 38, 38, 0.25);
+
+  --fh-blue-500-a10: rgba(59, 130, 246, 0.1);
+
+  /* ─── Design-system targets (agreed, not yet applied) ──────
+     The agreed brand palette. Most pages still render the older
+     values above (e.g. landing red is --fh-red-590, staff ink is
+     --fh-neutral-870). Pages switch to these in the convergence
+     pass; until then nothing should consume them. */
+  --fh-brand-red: var(--fh-red-560);        /* conversion & destructive actions only */
+  --fh-ink-black: var(--fh-neutral-900);    /* admin primary actions */
+  --fh-status-active-bg: var(--fh-green-130);
+  --fh-status-active-fg: var(--fh-green-710);
+  --fh-status-suspended-bg: var(--fh-red-75);
+  --fh-status-suspended-fg: var(--fh-red-650);
+  --fh-status-inactive-bg: var(--fh-neutral-120);
+  --fh-status-inactive-fg: var(--fh-neutral-550);
+  --fh-radius-card: var(--fh-radius-16);
+  --fh-font-ui: var(--fh-font-inter);
+
+  /* ─── Font families ────────────────────────────────────────
+     Stacks with the same primary font are merged; they differ
+     only if the web font fails to load. Fonts are loaded by the
+     layouts, not here. */
+  --fh-font-barlow: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fh-font-barlow-condensed: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --fh-font-inter: "Inter", Arial, sans-serif;
+  --fh-font-plus-jakarta: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --fh-font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* DM Sans and Arimo are referenced but never loaded, so these
+     render as the fallback. Kept so output doesn't change. */
+  --fh-font-dm-sans: "DM Sans", sans-serif;
+  --fh-font-arimo: "Arimo", sans-serif;
+  --fh-font-georgia: Georgia, serif;
+  --fh-font-mono: monospace;
+
+  /* ─── Type scale ───────────────────────────────────────────
+     Every size used on two or more pages, named by value: the
+     pages don't share a scale yet, so names describe what the
+     size is rather than a role it doesn't have. rem sizes stay
+     rem so they keep following the user's browser font size. */
+
+  --fh-fs-9: 9px;
+  --fh-fs-10: 10px;
+  --fh-fs-10-5: 10.5px;
+  --fh-fs-11: 11px;
+  --fh-fs-11-5: 11.5px;
+  --fh-fs-12: 12px;
+  --fh-fs-12-5: 12.5px;
+  --fh-fs-13: 13px;
+  --fh-fs-13-5: 13.5px;
+  --fh-fs-14: 14px;
+  --fh-fs-14-5: 14.5px;
+  --fh-fs-15: 15px;
+  --fh-fs-16: 16px;
+  --fh-fs-17: 17px;
+  --fh-fs-18: 18px;
+  --fh-fs-20: 20px;
+  --fh-fs-22: 22px;
+  --fh-fs-24: 24px;
+  --fh-fs-26: 26px;
+  --fh-fs-27: 27px;
+  --fh-fs-28: 28px;
+  --fh-fs-32: 32px;
+  --fh-fs-36: 36px;
+  --fh-fs-42: 42px;
+  --fh-fs-48: 48px;
+  --fh-fs-52-488: 52.488px;
+  --fh-fs-220: 220px;
+
+  --fh-fs-0-6rem: 0.6rem;
+  --fh-fs-0-7rem: 0.7rem;
+  --fh-fs-0-72rem: 0.72rem;
+  --fh-fs-0-75rem: 0.75rem;
+  --fh-fs-0-78rem: 0.78rem;
+  --fh-fs-0-8rem: 0.8rem;
+  --fh-fs-0-82rem: 0.82rem;
+  --fh-fs-0-84rem: 0.84rem;
+  --fh-fs-0-85rem: 0.85rem;
+  --fh-fs-0-88rem: 0.88rem;
+  --fh-fs-0-9rem: 0.9rem;
+  --fh-fs-0-92rem: 0.92rem;
+  --fh-fs-0-95rem: 0.95rem;
+  --fh-fs-1rem: 1rem;
+  --fh-fs-1-05rem: 1.05rem;
+  --fh-fs-1-1rem: 1.1rem;
+  --fh-fs-1-125rem: 1.125rem;
+  --fh-fs-1-2rem: 1.2rem;
+  --fh-fs-1-35rem: 1.35rem;
+  --fh-fs-1-4rem: 1.4rem;
+  --fh-fs-1-5rem: 1.5rem;
+  --fh-fs-1-75rem: 1.75rem;
+  --fh-fs-display-fluid: clamp(40px, 5vw, 58.32px);
+
+  /* ─── Spacing (padding, margin, gap) ───────────────────────
+     Every value used on two or more pages, named by pixels. */
+
+  --fh-space-2: 2px;
+  --fh-space-3: 3px;
+  --fh-space-4: 4px;
+  --fh-space-5: 5px;
+  --fh-space-6: 6px;
+  --fh-space-7: 7px;
+  --fh-space-8: 8px;
+  --fh-space-9: 9px;
+  --fh-space-10: 10px;
+  --fh-space-11: 11px;
+  --fh-space-12: 12px;
+  --fh-space-13: 13px;
+  --fh-space-14: 14px;
+  --fh-space-15: 15px;
+  --fh-space-16: 16px;
+  --fh-space-18: 18px;
+  --fh-space-20: 20px;
+  --fh-space-22: 22px;
+  --fh-space-24: 24px;
+  --fh-space-25: 25px;
+  --fh-space-26: 26px;
+  --fh-space-28: 28px;
+  --fh-space-30: 30px;
+  --fh-space-32: 32px;
+  --fh-space-36: 36px;
+  --fh-space-40: 40px;
+  --fh-space-44: 44px;
+  --fh-space-48: 48px;
+  --fh-space-56: 56px;
+  --fh-space-60: 60px;
+  --fh-space-64: 64px;
+  --fh-space-80: 80px;
+
+  /* ─── Radius ─────────────────────────────────────────────── */
+
+  --fh-radius-2: 2px;
+  --fh-radius-3: 3px;
+  --fh-radius-4: 4px;
+  --fh-radius-5: 5px;
+  --fh-radius-6: 6px;
+  --fh-radius-7: 7px;
+  --fh-radius-8: 8px;
+  --fh-radius-9: 9px;
+  --fh-radius-10: 10px;
+  --fh-radius-11: 11px;
+  --fh-radius-12: 12px;
+  --fh-radius-14: 14px;
+  --fh-radius-16: 16px;
+  --fh-radius-18: 18px;
+  --fh-radius-20: 20px;
+  --fh-radius-22: 22px;
+  --fh-radius-24: 24px;
+  --fh-radius-28: 28px;
+  --fh-radius-50: 50px;
+  /* 999px and 9999px were both used for pills; neither element is
+     ever that tall, so they render identically. */
+  --fh-radius-pill: 999px;
+  --fh-radius-circle: 50%;
+
+  /* ─── Shadows (used on two or more pages) ────────────────── */
+  --fh-shadow-y1-blur2-black-a03: 0 1px 2px var(--fh-black-a03);
+  --fh-shadow-y1-blur2-black-a04: 0 1px 2px var(--fh-black-a04);
+  --fh-shadow-y1-blur3-black-a15: 0 1px 3px var(--fh-black-a15);
+  --fh-shadow-y1-blur3-gray-900-a04: 0 1px 3px var(--fh-gray-900-a04);
+  --fh-shadow-y1-blur3-gray-900-a06: 0 1px 3px var(--fh-gray-900-a06);
+  --fh-shadow-y4-blur12-black-a05: 0 4px 12px var(--fh-black-a05);
+  --fh-shadow-y4-blur20-black-a04: 0 4px 20px var(--fh-black-a04);
+  --fh-shadow-y4-blur24-black-a04: 0 4px 24px var(--fh-black-a04);
+  --fh-shadow-y4-blur24-black-a05: 0 4px 24px var(--fh-black-a05);
+  --fh-shadow-y24-blur48-spread-12-black-a25: 0 24px 48px -12px var(--fh-black-a25);
+
+  /* ─── Motion ─────────────────────────────────────────────── */
+  --fh-fast: 0.2s;
+  --fh-medium: 0.35s;
+  --fh-slow: 0.5s;
+
+  /* Breakpoints can't be custom properties inside @media, so they
+     are listed for reference only. In use today: 520, 576, 600,
+     640, 700, 768, 860, 900, 968, 992, 1024, 1100, 1200px. */
+
+  /* ─── Landing semantic tokens ──────────────────────────────
+     Existing names, kept so landing.css / classes.css keep
+     working. They give meaning to raw values, so they move to
+     landing.css in Phase 3. */
+  /* --fh-black and --fh-white are defined once, above, as raw values. */
+  --fh-red: var(--fh-red-590);
+  --fh-red-dark: var(--fh-red-680);
+  --fh-star: var(--fh-amber-500);
+
+  --fh-dark: var(--fh-neutral-910);          /* dark section background */
+  --fh-panel: var(--fh-neutral-870);         /* pricing card */
+  --fh-panel-2: var(--fh-neutral-780);       /* pricing feature box */
+  --fh-grey-bg: var(--fh-gray-100);          /* light grey section */
+  --fh-btn-light-hover: var(--fh-neutral-170);
+
+  --fh-text: var(--fh-zinc-900);
+  --fh-text-strong: var(--fh-neutral-780);
+  --fh-text-body: var(--fh-gray-600);
+  --fh-text-list: var(--fh-gray-700);
+  --fh-muted: var(--fh-gray-500);
+
+  --fh-on-dark-90: var(--fh-white-a85);
+  --fh-on-dark-80: var(--fh-white-a80);
+  --fh-on-dark-70: var(--fh-white-a70);
+  --fh-on-dark-60: var(--fh-white-a60);
+  --fh-on-dark-50: var(--fh-white-a50);
+  --fh-on-dark-35: var(--fh-white-a35);
+
+  --fh-line-dark: var(--fh-white-a12);
+  --fh-line-light: var(--fh-gray-200);
+  --fh-line-control: var(--fh-neutral-310);  /* slider arrow border */
+
   --fh-hero-shade:
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(0, 0, 0, 0.55) 45%,
-      rgba(0, 0, 0, 0.1) 100%
-    ),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
-  --fh-hero-shade-mobile: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.55) 55%,
-    rgba(0, 0, 0, 0.35) 100%
-  );
+    linear-gradient(90deg, var(--fh-black-a85) 0%, var(--fh-black-a55) 45%, var(--fh-black-a10) 100%),
+    linear-gradient(0deg, var(--fh-black-a60) 0%, transparent 40%);
+  --fh-hero-shade-mobile: linear-gradient(0deg, var(--fh-black-a90) 0%, var(--fh-black-a55) 55%, var(--fh-black-a35) 100%);
 
-  /* ─── Typography ─── */
-  --fh-font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --fh-font-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --fh-font-quote: Georgia, serif;
+  --fh-font-display: var(--fh-font-barlow-condensed);
+  --fh-font-body: var(--fh-font-barlow);
+  --fh-font-quote: var(--fh-font-georgia);
 
   --fh-fs-hero: clamp(3.25rem, 9vw, 7.5rem);
   --fh-fs-h2: clamp(2.25rem, 5vw, 3.75rem);
@@ -79,7 +602,6 @@
   --fh-lh-tight: 0.9;
   --fh-lh-body: 1.6;
 
-  /* ─── Layout & spacing ─── */
   --nav-height: 72px; /* nav bar height; main is offset by this */
   --fh-nav-h: var(--nav-height);
   --fh-container: 1240px;
@@ -91,24 +613,14 @@
   --fh-heading-gap: clamp(2.5rem, 5vw, 4rem);
   --fh-accordion-indent: clamp(3rem, 12vw, 8rem);
 
-  /* ─── Class type colours (schedule tags) ─── */
-  --fh-tag-hiit: #e31837;
-  --fh-tag-strength: #111827;
-  --fh-tag-cardio: #d9480f;
-  --fh-tag-flex: #7c3aed;
+  --fh-tag-hiit: var(--fh-red-590);
+  --fh-tag-strength: var(--fh-gray-900);
+  --fh-tag-cardio: var(--fh-orange-650);
+  --fh-tag-flex: var(--fh-violet-600);
 
-  /* ─── Components ─── */
   --fh-btn-pad: 0.95rem 1.75rem;
   --fh-btn-icon: 3rem;
   --fh-btn-split: 3px; /* gap between label and arrow square */
   --fh-circle: 3rem; /* slider arrow size */
   --fh-radius: 0; /* set e.g. 4px to round cards/buttons */
-
-  /* ─── Motion ─── */
-  --fh-fast: 0.2s;
-  --fh-medium: 0.35s;
-  --fh-slow: 0.5s;
-
-  /* Breakpoints (reference only — CSS vars can't be used in @media):
-     1024px tablet landscape, 860px tablet, 600px phone */
 }
