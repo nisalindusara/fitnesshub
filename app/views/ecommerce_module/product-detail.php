@@ -1,3 +1,4 @@
+<?php $pageStyles = ['staff/ecommerce_module/_product-header']; ?>
 <style>
     .detail-container {
         display: flex;
@@ -22,13 +23,6 @@
         box-sizing: border-box;
     }
 
-    .header-left {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-    }
-
     .back-btn {
         display: flex;
         flex-direction: row;
@@ -40,35 +34,11 @@
         cursor: pointer;
     }
 
-    .icon-svg {
-        display: block;
-    }
-
-    .header-titles {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .breadcrumb-text {
-        font-weight: 400;
-        font-size: 11px;
-        line-height: 16px;
-        color: rgba(28, 28, 28, 0.4);
-    }
-
     .page-title-text {
         font-weight: 400;
         font-size: 14px;
         line-height: 21px;
         color: #1C1C1C;
-    }
-
-    .header-right {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
     }
 
     .action-btn-edit {
@@ -111,14 +81,6 @@
         line-height: 18px;
         text-align: center;
         color: #DC2626;
-    }
-
-    .content-body {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        width: 100%;
-        box-sizing: border-box;
     }
 
     .gallery-column {
@@ -235,13 +197,6 @@
         align-items: flex-start;
         gap: 4px;
         width: 100%;
-    }
-
-    .field-label {
-        font-weight: 400;
-        font-size: 11px;
-        line-height: 16px;
-        color: rgba(28, 28, 28, 0.4);
     }
 
     .field-value-large {

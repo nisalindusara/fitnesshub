@@ -1,3 +1,4 @@
+<?php $pageStyles = ['staff/payment_module/_payment-form']; ?>
 <style>
     .form-group {
         margin-bottom: 20px;
@@ -12,16 +13,6 @@
     .form-group-flex {
         flex: 1;
         margin-bottom: 0;
-    }
-
-    .form-label {
-        display: block;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        color: rgba(28, 28, 28, 0.4);
-        margin-bottom: 8px;
     }
 
     /* Category selector */

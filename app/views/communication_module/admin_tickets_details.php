@@ -1,3 +1,4 @@
+<?php $pageStyles = ['staff/communication_module/_tickets']; ?>
 <style>
 #ticket-detail-view {
   box-sizing: border-box;
@@ -140,11 +141,6 @@
   border-radius: 4px;
 }
 
-.priority-urgent {
-  background: #FEE2E2;
-  color: #DC2626;
-}
-
 .badge-status {
   font-size: 10px;
   font-weight: 600;
@@ -155,15 +151,6 @@
 .status-new {
   background: #EDE9FE;
   color: #7C3AED;
-}
-
-.category-tag {
-  background: #F3F4F6;
-  color: #6B7280;
-  font-size: 10px;
-  font-weight: 500;
-  padding: 2px 7px;
-  border-radius: 4px;
 }
 
 .ticket-heading-text {
@@ -331,7 +318,7 @@
   border-radius: 50%;
 }
 
-.dot-purple { background-color: #8B5CF6; }[cite: 1]
+[cite: 1]
 
 .avatar {
   width: 22px;
@@ -343,10 +330,6 @@
   align-items: center;
   justify-content: center;
 }
-
-.avatar-pink { background: #FCE7F3; color: #DB2777; }
-.avatar-blue { background: #DBEAFE; color: #2563EB; }
-.avatar-yellow { background: #FEF3C7; color: #D97706; }
 </style>
 
 <div id="ticket-detail-view" class="ticket-view-container">

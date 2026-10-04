@@ -1,3 +1,4 @@
+<?php $pageStyles = ['staff/ecommerce_module/_product-header']; ?>
 <style>
     .list-container {
         display: flex;
@@ -44,10 +45,6 @@
         border-radius: 8px;
         box-sizing: border-box;
         cursor: pointer;
-    }
-
-    .icon-svg {
-        display: block;
     }
 
     .segment-control {

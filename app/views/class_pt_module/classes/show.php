@@ -1,3 +1,4 @@
+<?php $pageStyles = ['staff/class_pt_module/classes/_classes']; ?>
 <style>
 .cls-page{
     padding:24px 28px 40px;
@@ -23,12 +24,6 @@
 .cls-head h1{
     margin:0;
     font-size:28px;
-}
-
-.cls-head p{
-    margin:6px 0 0;
-    color:#98a2b3;
-    font-size:13px;
 }
 
 .cls-actions{
@@ -122,28 +117,6 @@
 .cls-section-title{
     font-size:16px;
     margin:0 0 16px;
-}
-
-.cls-table-wrap{
-    background:#fff;
-    border:1px solid #e4e7ec;
-    border-radius:10px;
-    overflow:hidden;
-}
-
-.cls-table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:12px;
-}
-
-.cls-table th{
-    background:#f8fafc;
-    color:#667085;
-    text-transform:uppercase;
-    font-size:10px;
-    text-align:left;
-    padding:12px 16px;
 }
 
 .cls-table td{

@@ -1,23 +1,5 @@
+<?php $pageStyles = ['staff/class_pt_module/sessions/_sessions']; ?>
 <style>
-
-.cs-page{
-    padding:26px 28px 40px;
-    min-height:100vh;
-    background:#f7f9fb;
-    font-family:Inter,Arial,sans-serif;
-    color:#24272d;
-}
-
-.cs-breadcrumb{
-    margin-bottom:30px;
-    font-size:12px;
-    color:#98a2b3;
-}
-
-.cs-breadcrumb strong{
-    color:#344054;
-}
-
 .cs-title{
     margin:0;
     font-size:28px;
@@ -146,7 +128,6 @@
     border-color:#24272d;
     color:#fff;
 }
-
 </style>
 
 

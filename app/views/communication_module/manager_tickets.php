@@ -1,31 +1,6 @@
+<?php $pageStyles = ['staff/communication_module/_tickets']; ?>
 <style>
-#support-board {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 20px;
-  width: 100%;
-  height: 832px;
-  background: #FFFFFF;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  overflow: hidden;
-}
-
 /* Top Navigation Bar */
-.top-nav-bar {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 24px 32px 16px 32px;
-  border-bottom: 1px solid #F0F2F5;
-}
-
-.page-title-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 
 .icon-support {
   font-size: 18px;
@@ -34,153 +9,11 @@
   align-items: center;
 }
 
-.page-title-text {
-  font-size: 15px;
-  font-weight: 600;
-  color: #1F2937;
-}
-
 /* Filter / Actions Bar */
-.controls-bar {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 32px;
-}
-
-.filters-group {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.filter-btn {
-  background: transparent;
-  border: none;
-  border-radius: 6px;
-  padding: 5px 12px;
-  font-size: 12px;
-  font-weight: 500;
-  color: #6B7280;
-  cursor: pointer;
-}
-
-.filter-btn-active {
-  background: #E5E7EB;
-  color: #111827;
-  font-weight: 600;
-}
-
-.actions-group {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.stats-text {
-  font-size: 12px;
-  color: #9CA3AF;
-}
-
-.add-ticket-btn {
-  background: #E5E7EB;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #1F2937;
-  cursor: pointer;
-}
 
 /* Columns Section */
-.board-columns-wrapper {
-  box-sizing: border-box;
-  display: flex;
-  gap: 16px;
-  width: 100%;
-  height: 100%;
-  padding: 0 32px 32px 32px;
-  overflow-x: auto;
-}
-
-.ticket-column {
-  flex: 1;
-  min-width: 230px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  background: #F8F9FA;
-  border-radius: 10px;
-  padding: 14px 12px;
-}
-
-.column-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 4px;
-}
-
-.col-indicator {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-}
-
-.dot-purple { background-color: #8B5CF6; }
-.dot-blue { background-color: #3B82F6; }
-.dot-amber { background-color: #F59E0B; }
-.dot-green { background-color: #10B981; }
-
-.col-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #374151;
-}
-
-.col-badge {
-  background: #E5E7EB;
-  color: #6B7280;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 1px 7px;
-}
 
 /* Stack & Cards */
-.cards-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  overflow-y: auto;
-}
-
-.ticket-card {
-  box-sizing: border-box;
-  background: #FFFFFF;
-  border-radius: 8px;
-  padding: 12px;
-  border: 1px solid #E5E7EB;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.card-meta-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.ticket-id {
-  font-size: 11px;
-  color: #9CA3AF;
-  font-weight: 500;
-}
 
 .badge-priority {
   font-size: 10px;
@@ -189,60 +22,7 @@
   border-radius: 4px;
 }
 
-.priority-urgent {
-  background: #FEE2E2;
-  color: #DC2626;
-}
-
-.priority-high {
-  background: #FFEDD5;
-  color: #EA580C;
-}
-
-.priority-medium {
-  background: #FEF3C7;
-  color: #D97706;
-}
-
-.priority-low {
-  background: #F3F4F6;
-  color: #6B7280;
-}
-
-.card-title {
-  font-size: 12px;
-  line-height: 1.4;
-  font-weight: 600;
-  color: #1F2937;
-}
-
-.tag-row {
-  display: flex;
-  gap: 6px;
-}
-
-.category-tag {
-  background: #F3F4F6;
-  color: #6B7280;
-  font-size: 10px;
-  font-weight: 500;
-  padding: 2px 7px;
-  border-radius: 4px;
-}
-
 /* Footer / Users */
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 4px;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
 
 .avatar {
   width: 20px;
@@ -255,65 +35,9 @@
   justify-content: center;
 }
 
-.avatar-pink { background: #FCE7F3; color: #DB2777; }
-.avatar-teal { background: #CCFBF1; color: #0D9488; }
-.avatar-purple { background: #EDE9FE; color: #7C3AED; }
-.avatar-yellow { background: #FEF3C7; color: #D97706; }
-.avatar-indigo { background: #E0E7FF; color: #4F46E5; }
-.avatar-orange { background: #FFEDD5; color: #EA580C; }
-.avatar-red { background: #FEE2E2; color: #DC2626; }
-.avatar-blue { background: #DBEAFE; color: #2563EB; }
-.avatar-purple-light { background: #F3E8FF; color: #9333EA; }
-.avatar-mint { background: #D1FAE5; color: #059669; }
-
-.user-name {
-  font-size: 11px;
-  color: #4B5563;
-}
-
-.card-stats {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.comment-icon {
-  font-size: 10px;
-  opacity: 0.6;
-}
-
-.comment-count {
-  font-size: 11px;
-  color: #6B7280;
-}
-
-.time-ago {
-  font-size: 11px;
-  color: #9CA3AF;
-  margin-left: 3px;
-}
-
-.ticket-link {
-  color: #1F2937;
-  text-decoration: none;
-  cursor: pointer;
-  display: inline-block;
-}
-
 /* Subtle hover feedback */
-.ticket-link:hover {
-  color: #111827;
-  text-decoration: none;
-}
 
 /* Retains original capitalization */
-.card-title {
-  font-size: 12px;
-  line-height: 1.4;
-  font-weight: 600;
-  color: #1F2937;
-  text-transform: none;
-}
 
 /* Filter Controls Layout */
 .filter-controls-bar {
@@ -394,7 +118,6 @@
   font-weight: 500;
   cursor: pointer;
 }
-
 </style>
 
 <div id="support-board" class="board-container">

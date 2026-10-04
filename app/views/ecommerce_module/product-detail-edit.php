@@ -1,3 +1,4 @@
+<?php $pageStyles = ['staff/ecommerce_module/_product-header']; ?>
 <style>
     .edit-container {
         display: flex;
@@ -24,13 +25,6 @@
         background: #FFFFFF;
     }
 
-    .header-left {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
-    }
-
     .back-btn {
         display: flex;
         justify-content: center;
@@ -41,35 +35,11 @@
         cursor: pointer;
     }
 
-    .icon-svg {
-        display: block;
-    }
-
-    .header-titles {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .breadcrumb-text {
-        font-weight: 400;
-        font-size: 11px;
-        line-height: 16px;
-        color: rgba(28, 28, 28, 0.4);
-    }
-
     .page-title-text {
         font-weight: 500;
         font-size: 14px;
         line-height: 21px;
         color: #1C1C1C;
-    }
-
-    .header-right {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
     }
 
     .action-btn-cancel {
@@ -108,14 +78,6 @@
         font-size: 12px;
         line-height: 18px;
         color: #FFFFFF;
-    }
-
-    .content-body {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        width: 100%;
-        box-sizing: border-box;
     }
 
     /* Left Panel */
@@ -260,7 +222,6 @@
         cursor: pointer;
     }
 
-
     /* Right Panel */
     .right-panel {
         display: flex;
@@ -288,13 +249,6 @@
 
     .half-width {
         width: calc(50% - 12px);
-    }
-
-    .field-label {
-        font-weight: 400;
-        font-size: 11px;
-        line-height: 16px;
-        color: rgba(28, 28, 28, 0.4);
     }
 
     .input-field {

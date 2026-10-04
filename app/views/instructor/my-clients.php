@@ -15,11 +15,6 @@
         text-decoration: none;
     }
 
-    .crumb-sep {
-        font-size: 14px;
-        color: rgba(28, 28, 28, 0.2);
-    }
-
     .mc-head {
         display: flex;
         justify-content: space-between;
@@ -239,7 +234,6 @@
         text-decoration: none;
     }
 
-
     .mc-client {
         display: flex;
         align-items: center;
@@ -314,8 +308,6 @@
     .mc-bar__fill--low {
         background: #e5484d;
     }
-
-
 
     .mc-empty {
         text-align: center;

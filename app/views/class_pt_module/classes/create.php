@@ -1,3 +1,4 @@
+<?php $pageStyles = ['staff/class_pt_module/classes/_classes']; ?>
 <style>
 .cls-page{
     padding:24px 28px 40px;

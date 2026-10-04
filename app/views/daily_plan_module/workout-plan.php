@@ -25,11 +25,6 @@
         color: #1c1c1c;
     }
 
-    .crumb-sep {
-        font-size: 14px;
-        color: rgba(28, 28, 28, 0.2);
-    }
-
     /* Heading */
     .wp-head {
         display: flex;

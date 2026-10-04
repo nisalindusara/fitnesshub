@@ -1,23 +1,5 @@
+<?php $pageStyles = ['staff/class_pt_module/sessions/_sessions']; ?>
 <style>
-
-.cs-page{
-    padding:26px 28px 40px;
-    min-height:100vh;
-    background:#f7f9fb;
-    font-family:Inter,Arial,sans-serif;
-    color:#24272d;
-}
-
-.cs-breadcrumb{
-    margin-bottom:30px;
-    font-size:12px;
-    color:#98a2b3;
-}
-
-.cs-breadcrumb strong{
-    color:#344054;
-}
-
 .cs-head{
     display:flex;
     justify-content:space-between;
@@ -28,12 +10,6 @@
 .cs-head h1{
     margin:0;
     font-size:28px;
-}
-
-.cs-head p{
-    margin:7px 0 0;
-    color:#8b93a1;
-    font-size:13px;
 }
 
 .cs-actions{
@@ -125,28 +101,6 @@
     color:#667085;
 }
 
-.cs-table-wrap{
-    background:#fff;
-    border:1px solid #e4e7ec;
-    border-radius:10px;
-    overflow:hidden;
-}
-
-.cs-table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:12px;
-}
-
-.cs-table th{
-    padding:13px 15px;
-    text-align:left;
-    background:#f8fafc;
-    color:#667085;
-    text-transform:uppercase;
-    font-size:10px;
-}
-
 .cs-table td{
     padding:14px 15px;
     border-top:1px solid #eaecf0;
@@ -191,14 +145,6 @@
     background:#fff5e5;
     color:#c67a00;
 }
-
-.cs-footer{
-    padding:13px 15px;
-    font-size:11px;
-    color:#8b93a1;
-    border-top:1px solid #eaecf0;
-}
-
 </style>
 
 

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/assets/css/membership-plans.css">
+<?php $pageStyles = ['staff/account_module/membership_plans/_membership-plans']; ?>
 
 <section class="mp-page">
     <?php if (!empty($flash)): ?>
