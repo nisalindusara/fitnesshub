@@ -1,0 +1,626 @@
+/* Scoped under .page-instructor-instructor-overview (the layout's <main> on this page). */
+
+/* ---------- Page container ---------- */
+:where(.page-instructor-instructor-overview) .ins-dashboard {
+    padding: 32px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* ---------- Metrics ---------- */
+:where(.page-instructor-instructor-overview) .ins-metrics-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-metric-card {
+    flex: 1;
+    padding: 24px;
+    border-radius: var(--fh-radius-12);
+    box-sizing: border-box;
+}
+
+:where(.page-instructor-instructor-overview) .ins-bg-blue {
+    background-color: var(--fh-sky-90);
+}
+
+:where(.page-instructor-instructor-overview) .ins-bg-gray {
+    background-color: var(--fh-slate-120);
+}
+
+:where(.page-instructor-instructor-overview) .ins-metric-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fh-gray-740);
+    margin-bottom: 12px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-metric-val {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--fh-gray-850);
+}
+
+:where(.page-instructor-instructor-overview) .ins-metric-sub {
+    font-size: 12px;
+    color: var(--fh-slate-470);
+    margin-top: 6px;
+}
+
+/* ---------- Sections ---------- */
+:where(.page-instructor-instructor-overview) .ins-section {
+    background-color: var(--fh-gray-50);
+    border-radius: var(--fh-radius-16);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-row .ins-section {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-row .ins-wide {
+    flex: 3;
+}
+
+:where(.page-instructor-instructor-overview) .ins-row .ins-narrow {
+    flex: 2;
+}
+
+:where(.page-instructor-instructor-overview) .ins-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fh-gray-740);
+    margin-bottom: 24px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-heading-row .ins-section-title {
+    margin-bottom: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-heading-note {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+:where(.page-instructor-instructor-overview) .ins-subheading {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fh-slate-600);
+    margin-bottom: 14px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-divider {
+    height: 1px;
+    background-color: var(--fh-slate-120);
+    margin: 24px 0;
+}
+
+/* ---------- Buttons / links ---------- */
+:where(.page-instructor-instructor-overview) .ins-btn {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: var(--fh-radius-6);
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid var(--fh-gray-850);
+    background-color: var(--fh-gray-850);
+    color: var(--fh-white);
+}
+
+:where(.page-instructor-instructor-overview) .ins-btn:hover {
+    background-color: var(--fh-gray-740);
+    border-color: var(--fh-gray-740);
+}
+
+:where(.page-instructor-instructor-overview) .ins-btn-outline {
+    background-color: transparent;
+    color: var(--fh-gray-740);
+    border-color: var(--fh-slate-300);
+}
+
+:where(.page-instructor-instructor-overview) .ins-btn-outline:hover {
+    background-color: var(--fh-slate-120);
+    border-color: var(--fh-slate-300);
+}
+
+:where(.page-instructor-instructor-overview) .ins-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fh-slate-600);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+:where(.page-instructor-instructor-overview) .ins-link:hover {
+    text-decoration: underline;
+}
+
+:where(.page-instructor-instructor-overview) .ins-btn:focus-visible,
+:where(.page-instructor-instructor-overview) .ins-link:focus-visible,
+:where(.page-instructor-instructor-overview) .ins-msg:focus-visible {
+    outline: 2px solid var(--fh-sky-605);
+    outline-offset: 2px;
+}
+
+/* ---------- Text helpers ---------- */
+:where(.page-instructor-instructor-overview) .ins-text-dark {
+    color: var(--fh-gray-740);
+}
+
+:where(.page-instructor-instructor-overview) .ins-text-muted {
+    color: var(--fh-slate-380);
+}
+
+:where(.page-instructor-instructor-overview) .ins-text-soft {
+    color: var(--fh-slate-470);
+}
+
+:where(.page-instructor-instructor-overview) .ins-text-medium {
+    font-weight: 500;
+}
+
+:where(.page-instructor-instructor-overview) .ins-text-green {
+    color: var(--fh-emerald-560);
+    font-weight: 600;
+}
+
+:where(.page-instructor-instructor-overview) .ins-text-amber {
+    color: var(--fh-orange-580);
+    font-weight: 600;
+}
+
+:where(.page-instructor-instructor-overview) .ins-text-red {
+    color: var(--fh-red-540);
+    font-weight: 600;
+}
+
+/* ---------- Today's schedule ---------- */
+:where(.page-instructor-instructor-overview) .ins-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-time {
+    width: 72px;
+    flex-shrink: 0;
+    padding-top: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fh-slate-470);
+    text-align: right;
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-card {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--fh-white);
+    border-radius: var(--fh-radius-10);
+    padding: 12px 16px;
+    border-left: 4px solid var(--fh-slate-300);
+    min-width: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-card.is-done {
+    border-left-color: var(--fh-slate-200);
+    background-color: var(--fh-gray-50);
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-card.is-next {
+    border-left-color: var(--fh-emerald-560);
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-card.is-duty {
+    border-left-color: var(--fh-indigo-340);
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-gray-740);
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-card.is-done .ins-slot-title {
+    color: var(--fh-slate-380);
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-detail {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+:where(.page-instructor-instructor-overview) .ins-slot-status {
+    font-size: 12px;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+/* ---------- Generic list ---------- */
+:where(.page-instructor-instructor-overview) .ins-list {
+    display: flex;
+    flex-direction: column;
+}
+
+:where(.page-instructor-instructor-overview) .ins-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--fh-slate-120);
+}
+
+:where(.page-instructor-instructor-overview) .ins-list-item:first-child {
+    padding-top: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-list-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-list-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-list-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-gray-740);
+}
+
+:where(.page-instructor-instructor-overview) .ins-list-note {
+    font-size: 12px;
+    color: var(--fh-slate-600);
+}
+
+:where(.page-instructor-instructor-overview) .ins-list-detail {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+:where(.page-instructor-instructor-overview) .ins-list-side {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ---------- Alerts ---------- */
+:where(.page-instructor-instructor-overview) .ins-alert {
+    background-color: var(--fh-white);
+    border-radius: var(--fh-radius-10);
+    padding: 16px;
+    border-left: 4px solid var(--fh-red-540);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-alert+.ins-alert {
+    margin-top: 12px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-alert.is-warning {
+    border-left-color: var(--fh-orange-580);
+}
+
+:where(.page-instructor-instructor-overview) .ins-alert-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-alert-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-gray-740);
+}
+
+:where(.page-instructor-instructor-overview) .ins-alert-date {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+    white-space: nowrap;
+}
+
+:where(.page-instructor-instructor-overview) .ins-alert-reason {
+    font-size: 13px;
+    color: var(--fh-slate-600);
+    line-height: 1.45;
+}
+
+:where(.page-instructor-instructor-overview) .ins-alert-actions {
+    display: flex;
+    gap: 8px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-alert-footnote {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+    margin-top: 16px;
+    line-height: 1.45;
+}
+
+/* ---------- Clients table ---------- */
+:where(.page-instructor-instructor-overview) .ins-table-head {
+    display: flex;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--fh-slate-120);
+    font-size: 13px;
+    color: var(--fh-slate-380);
+    font-weight: 500;
+}
+
+:where(.page-instructor-instructor-overview) .ins-table-row {
+    display: flex;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--fh-slate-120);
+    font-size: 13px;
+    align-items: center;
+}
+
+:where(.page-instructor-instructor-overview) .ins-table-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-col-name {
+    width: 22%;
+}
+
+:where(.page-instructor-instructor-overview) .ins-col-plan {
+    width: 12%;
+}
+
+:where(.page-instructor-instructor-overview) .ins-col-goal {
+    width: 16%;
+}
+
+:where(.page-instructor-instructor-overview) .ins-col-visits {
+    width: 12%;
+}
+
+:where(.page-instructor-instructor-overview) .ins-col-workout {
+    width: 12%;
+}
+
+:where(.page-instructor-instructor-overview) .ins-col-meals {
+    width: 12%;
+}
+
+:where(.page-instructor-instructor-overview) .ins-col-last {
+    width: 14%;
+}
+
+/* ---------- Messages ---------- */
+:where(.page-instructor-instructor-overview) .ins-msg {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--fh-slate-120);
+    text-decoration: none;
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg:first-child {
+    padding-top: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--fh-radius-circle);
+    background-color: transparent;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg.is-unread .ins-msg-dot {
+    background-color: var(--fh-sky-605);
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fh-slate-600);
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg.is-unread .ins-msg-name {
+    font-weight: 700;
+    color: var(--fh-gray-850);
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg-time {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+    white-space: nowrap;
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg-preview {
+    font-size: 13px;
+    color: var(--fh-slate-470);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:where(.page-instructor-instructor-overview) .ins-msg.is-unread .ins-msg-preview {
+    color: var(--fh-gray-740);
+}
+
+/* ---------- Week availability ---------- */
+:where(.page-instructor-instructor-overview) .ins-week {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(96px, 1fr));
+    gap: 10px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-week-scroll {
+    overflow-x: auto;
+}
+
+:where(.page-instructor-instructor-overview) .ins-day {
+    background-color: var(--fh-white);
+    border-radius: var(--fh-radius-10);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+}
+
+:where(.page-instructor-instructor-overview) .ins-day.is-today {
+    border-color: var(--fh-emerald-560);
+}
+
+:where(.page-instructor-instructor-overview) .ins-day.is-off {
+    background-color: var(--fh-slate-120);
+}
+
+:where(.page-instructor-instructor-overview) .ins-day-name {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+:where(.page-instructor-instructor-overview) .ins-day-date {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--fh-gray-850);
+}
+
+:where(.page-instructor-instructor-overview) .ins-day.is-off .ins-day-date {
+    color: var(--fh-slate-380);
+}
+
+:where(.page-instructor-instructor-overview) .ins-day-shift {
+    font-size: 12px;
+    color: var(--fh-slate-600);
+    margin-top: 4px;
+}
+
+:where(.page-instructor-instructor-overview) .ins-day-pt {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fh-gray-740);
+}
+
+:where(.page-instructor-instructor-overview) .ins-day.is-off .ins-day-shift,
+:where(.page-instructor-instructor-overview) .ins-day.is-off .ins-day-pt {
+    color: var(--fh-slate-380);
+    font-weight: 400;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    :where(.page-instructor-instructor-overview) .ins-metrics-row {
+        flex-wrap: wrap;
+    }
+
+    :where(.page-instructor-instructor-overview) .ins-metric-card {
+        flex: 1 1 calc(50% - 8px);
+    }
+
+    :where(.page-instructor-instructor-overview) .ins-row {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    :where(.page-instructor-instructor-overview) .ins-dashboard {
+        padding: 16px;
+    }
+
+    :where(.page-instructor-instructor-overview) .ins-metric-card {
+        flex: 1 1 100%;
+    }
+
+    :where(.page-instructor-instructor-overview) .ins-slot {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    :where(.page-instructor-instructor-overview) .ins-slot-time {
+        width: auto;
+        padding-top: 0;
+        text-align: left;
+    }
+
+    :where(.page-instructor-instructor-overview) .ins-section.ins-scroll-x {
+        overflow-x: auto;
+    }
+
+    :where(.page-instructor-instructor-overview) .ins-scroll-x .ins-table-head,
+    :where(.page-instructor-instructor-overview) .ins-scroll-x .ins-table-row {
+        min-width: 680px;
+    }
+
+    :where(.page-instructor-instructor-overview) .ins-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    :where(.page-instructor-instructor-overview) .ins-heading-row {
+        flex-wrap: wrap;
+    }
+}
