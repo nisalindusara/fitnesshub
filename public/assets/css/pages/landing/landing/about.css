@@ -1,0 +1,204 @@
+/* Scoped under .page-landing-about (the layout's <main> on this page).
+   Rules that also styled the layout chrome, <body> or <html> when this CSS was
+   inline are scoped under body.page-landing-about--global instead, so they still do. */
+
+*:where(html:has(> body.page-landing-about--global), html:has(> body.page-landing-about--global) *) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body:where(.page-landing-about--global) {
+    background-color: var(--fh-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:where(body.page-landing-about--global) img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Layout Container */
+:where(.page-landing-about) .section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 32px;
+    width: 100%;
+}
+
+:where(.page-landing-about) .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1102.4px;
+}
+
+/* Header Section */
+:where(.page-landing-about) .header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+:where(.page-landing-about) .title-group {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+:where(.page-landing-about) .eyebrow {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 3.6px;
+    text-transform: uppercase;
+    color: var(--fh-red-590);
+    margin-bottom: 12px;
+}
+
+:where(.page-landing-about) .title {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 46.6px;
+    line-height: 0.93;
+    letter-spacing: -1.16px;
+    text-transform: uppercase;
+    color: var(--fh-neutral-950);
+}
+
+/* Gallery Base */
+:where(.page-landing-about) .gallery-item {
+    position: relative;
+    background: var(--fh-gray-100);
+    overflow: hidden;
+}
+
+:where(.page-landing-about) .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Specific Overlays */
+:where(.page-landing-about) .overlay-bottom {
+    background: linear-gradient(0deg, var(--fh-black-a50) 0%, var(--fh-black-a00) 50%, var(--fh-black-a00) 100%);
+}
+
+:where(.page-landing-about) .overlay-bottom-light {
+    background: linear-gradient(0deg, var(--fh-black-a40) 0%, var(--fh-black-a00) 100%);
+}
+
+:where(.page-landing-about) .overlay-left {
+    background: linear-gradient(90deg, var(--fh-black-a40) 0%, var(--fh-black-a00) 100%);
+}
+
+:where(.page-landing-about) .overlay-right {
+    background: linear-gradient(270deg, var(--fh-black-a40) 0%, var(--fh-black-a00) 100%);
+}
+
+:where(.page-landing-about) .overlay-flat {
+    background: var(--fh-black-a20);
+}
+
+/* Typography inside Images */
+:where(.page-landing-about) .badge {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    background: var(--fh-red-590);
+    padding: 4px 12px;
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: -0.45px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+}
+
+/* Top Grid Layout */
+:where(.page-landing-about) .gallery-top {
+    display: grid;
+    /* Using fractions based on Figma proportions (638 : 266 : 174) */
+    grid-template-columns: 3.67fr 1.53fr 1fr;
+    grid-template-rows: 314px 314px;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+:where(.page-landing-about) .item-large {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+
+/* Bottom Grid Layout */
+:where(.page-landing-about) .gallery-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 208px;
+    gap: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    :where(.page-landing-about) .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    :where(.page-landing-about) .description {
+        max-width: 100%;
+    }
+
+    :where(.page-landing-about) .gallery-top {
+        grid-template-columns: 2fr 1.5fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    :where(.page-landing-about) .item-large {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        height: 400px;
+    }
+
+    :where(.page-landing-about) .gallery-bottom {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 250px 250px;
+    }
+
+    /* Span the last item across the bottom on tablets */
+    :where(.page-landing-about) .gallery-bottom .gallery-item:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 640px) {
+    :where(.page-landing-about) .section-container {
+        padding: 40px 16px;
+    }
+
+    :where(.page-landing-about) .gallery-top,
+    :where(.page-landing-about) .gallery-bottom {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    :where(.page-landing-about) .item-large,
+    :where(.page-landing-about) .gallery-item {
+        height: 300px;
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+    }
+}

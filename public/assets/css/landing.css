@@ -473,3 +473,22 @@
 .submit-btn:hover {
   background: var(--fh-red-680);
 }
+
+/* ─── Minimal layout (minimal.php: sign-in, onboarding, error pages) ───
+   These used to be <style> blocks after the page content (one even after
+   </html>). No page CSS on these pages targets body or main, so loading them
+   first changes nothing; :where() keeps their original specificity. The
+   background-color: var(--color-background) they also set was never defined
+   and was overridden by the white below, so it is dropped. */
+body:where(.layout-minimal) {
+  padding: 0;
+}
+
+body:where(.layout-minimal),
+:where(body.layout-minimal) main {
+  width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  font-family: var(--fh-font-inter);
+  background-color: var(--fh-white);
+}

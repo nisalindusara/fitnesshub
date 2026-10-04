@@ -20,7 +20,7 @@ $active       = fn($route) => $currentRoute === $route ? ' is-active' : '';
     include __DIR__ . '/../partials/_stylesheets.php'; ?>
 </head>
 
-<body class="site">
+<body class="site<?= isset($bodyClass) ? ' ' . htmlspecialchars($bodyClass) : '' ?>">
 
     <!-- ─── Navigation ─── -->
     <nav class="site-nav" aria-label="Main">
@@ -94,7 +94,7 @@ $active       = fn($route) => $currentRoute === $route ? ' is-active' : '';
     </nav>
 
     <!-- ─── Page content ─── -->
-    <main class="site-main">
+    <main class="site-main <?= htmlspecialchars($pageClass ?? '') ?>">
         <?= $content ?>
     </main>
 

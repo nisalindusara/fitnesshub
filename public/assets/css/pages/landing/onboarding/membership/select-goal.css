@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Barlow:wght@400;700&display=swap');
+
+/* Scoped under .page-onboarding-membership-select-goal (the layout's <main> on this page). */
+
+:where(.page-onboarding-membership-select-goal) .select-goal {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: var(--fh-neutral-950);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:where(.page-onboarding-membership-select-goal) .image-container {
+    flex: 2;
+    min-width: 300px;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+}
+
+:where(.page-onboarding-membership-select-goal) .back-btn {
+    box-sizing: border-box;
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--fh-white-a60);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-select-goal) .right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 3;
+    height: 100%;
+    padding: 0px 8vw;
+    /* Responsive padding */
+    box-sizing: border-box;
+}
+
+:where(.page-onboarding-membership-select-goal) .content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 618px;
+    /* Based on Figma content width */
+}
+
+:where(.page-onboarding-membership-select-goal) .headline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 0px 0px;
+    margin-bottom: 16px;
+}
+
+:where(.page-onboarding-membership-select-goal) .headline-text-1,
+:where(.page-onboarding-membership-select-goal) .headline-text-2 {
+    font-family: var(--fh-font-barlow-condensed);
+    font-style: normal;
+    font-weight: 900;
+    font-size: 52.488px;
+    line-height: 46px;
+    letter-spacing: -1.3122px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-select-goal) .paragraph-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 384px;
+    margin-bottom: 32px;
+}
+
+:where(.page-onboarding-membership-select-goal) .paragraph-text {
+    font-family: var(--fh-font-barlow);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--fh-white-a50);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-select-goal) .goals-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+}
+
+:where(.page-onboarding-membership-select-goal) .goal-button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    gap: 12px;
+    height: 61.6px;
+    background: transparent;
+    border: 0.8px solid var(--fh-white-a10);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-select-goal) .goal-button:hover {
+    background: var(--fh-white-a05);
+    border-color: var(--fh-white-a30);
+}
+
+:where(.page-onboarding-membership-select-goal) .emoji {
+    font-family: var(--fh-font-barlow);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--fh-white);
+}
+
+:where(.page-onboarding-membership-select-goal) .goal-text {
+    font-family: var(--fh-font-barlow);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--fh-white-a60);
+}
+
+:where(.page-onboarding-membership-select-goal) .primary-btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 0px 0px;
+    width: 100%;
+}
+
+:where(.page-onboarding-membership-select-goal) .primary-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0px;
+    gap: 12px;
+    width: 100%;
+    max-width: 423px;
+    /* Based on Figma PrimaryBtn width */
+    height: 52px;
+    background: var(--fh-white-a10);
+    border: none;
+    font-family: var(--fh-font-barlow);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fh-white-a20);
+    cursor: not-allowed;
+}

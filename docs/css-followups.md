@@ -222,6 +222,14 @@ and `--fh-font-ui` (Inter).
 - **Inline `style=""` attributes.** About 300 in total, mostly in
   `landing/about.php` (101), `analytics_module/member_analytics.php` (36) and
   `staff/dashboard/_manager-summary.php` (34).
+- **Minimal layout font fallback.** `minimal.php` set `'Inter', sans-serif`
+  on `body`/`main`; it now uses `--fh-font-inter` (`"Inter", Arial,
+  sans-serif`). Inter isn't loaded there, so text falls back to Arial instead
+  of the generic sans-serif. That's identical on Windows and Android but may
+  differ on macOS (Helvetica).
+- **Onboarding images that never load.** The CSS for
+  `onboarding/membership/*` uses relative `url('image_xxxxxx.png')` paths.
+  No such files exist, so they failed before the restructure and still fail.
 - **JS that hardcodes colours.** `hero-slider.js` and `programs-accordian.js`
   hardcode `#E31837`.
 
@@ -234,3 +242,57 @@ and `--fh-font-ui` (Inter).
   header.
 - **Dead JS.** Nothing references `public/assets/js/hero-slider.js` or
   `public/assets/js/programs-accordian.js`.
+
+## 4. Pages whose CSS reaches outside their own content (`$bodyClass`)
+
+Page CSS is scoped under the page class on the layout's `<main>`
+(`:where(.page-…)`). Some rules styled the layout chrome, `<body>` or
+`<html>` when they were inline, for example `* { margin: 0 }` resets or an
+`img` rule that also hit the nav logo. To keep that effect, those rules are
+scoped under a body class instead, which the view sets in `$bodyClass`
+(`:where()` keeps the original specificity). Each one is a candidate for
+scoping down to the page once the chrome no longer depends on it.
+
+| Page | Rules scoped to `<body>` | Body class |
+|---|---|---|
+| landing/about | `*`, `body`, `img` (also the nav and footer logos) | `page-landing-about--global` |
+| landing/cart | `*`, `body` | `page-landing-cart--global` |
+| landing/contact | `*`, `body` | `page-landing-contact--global` |
+| landing/eCom-catalogue | `*`, `body` | `page-landing-ecom-catalogue--global` |
+| landing/eCom-landing | `*`, `body` | `page-landing-ecom-landing--global` |
+| landing/ecommerce-checkout | `*`, `body` | `page-landing-ecommerce-checkout--global` |
+| landing/sample-product | `*`, `body` | `page-landing-sample-product--global` |
+
+The minimal layout's own `body`/`main` rules (formerly the `<style>` blocks
+in `minimal.php`) sit in `landing.css` under `body.layout-minimal`, a fixed
+class on that layout.
+
+## 5. Pages that repeat a shared rule
+
+When rules repeated across pages moved into surface files and kits (see
+`refactor/css-structure`), these pages kept their own copy as well. Each
+page has an earlier rule of equal specificity that matches the same
+elements and sets an overlapping property. Loading the shared copy first
+would let that earlier rule win, so the page repeats the rule to keep the
+original order. Reorder or merge the page rules, then delete the copy.
+
+| Page | Repeated rule(s) | Shared file |
+|---|---|---|
+| landing/sample-product | `.product-card-title a`, `.product-card-title a:hover` | `landing/landing/_store` |
+| onboarding/browse-plans | `.btn-skip`, `.content-section` (base and media query) | `landing/onboarding/_onboarding` |
+| onboarding/start | `.content-section` (base and media query) | `landing/onboarding/_onboarding` |
+| onboarding/view-classes | `.btn-skip`, `.content-section` (base and media query) | `landing/onboarding/_onboarding` |
+| onboarding/view-store | `.btn-skip`, `.content-section` (base and media query) | `landing/onboarding/_onboarding` |
+| analytics_module/member_analytics | `.mini-bar--blank` | `member.css` |
+| member/dashboard | `.mini-bar--blank` | `member.css` |
+| class_pt_module/classes/create | `.cls-primary` | `staff/class_pt_module/classes/_classes` |
+| class_pt_module/classes/show | `.cls-primary` | `staff/class_pt_module/classes/_classes` |
+| class_pt_module/sessions/index | `.cs-footer` | `staff/class_pt_module/sessions/_sessions` |
+
+These two pages repeated a `portals.css` rule (now in `staff.css`) even
+before the restructure:
+
+| Page | Repeated rule | Shared file |
+|---|---|---|
+| payment_module/payment-setting | `.icon-btn:hover` | `staff.css` |
+| payment_module/review-bank-transfers | `.icon-btn:hover` | `staff.css` |

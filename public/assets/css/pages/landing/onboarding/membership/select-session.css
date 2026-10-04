@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Barlow:wght@400;700&display=swap');
+
+/* Scoped under .page-onboarding-membership-select-session (the layout's <main> on this page). */
+
+:where(.page-onboarding-membership-select-session) .select-session-layout {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background: var(--fh-neutral-950);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-left-panel {
+    flex: 2;
+    min-width: 300px;
+    height: 100%;
+    background: url('image_ee31c1.png') center/cover no-repeat;
+}
+
+:where(.page-onboarding-membership-select-session) .back-btn {
+    box-sizing: border-box;
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--fh-white-a60);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-right-panel {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8vw;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 618px;
+    /* Container width mapped from Figma 617.33px */
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-inner-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 585.33px;
+    /* Width matching the card and grid */
+    margin-bottom: 24px;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-coach-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    width: 100%;
+    background: var(--fh-red-590-a05);
+    border: 0.8px solid var(--fh-red-590-a40);
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-avatar {
+    width: 150px;
+    height: 150px;
+    /* Adding a placeholder profile image mapped to the avatar */
+    background: #1E2939 url('https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=200&auto=format&fit=crop') center/cover no-repeat;
+    flex-shrink: 0;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-coach-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-coach-name {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-coach-title {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--fh-red-590);
+    margin: 0 0 8px 0;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-coach-desc {
+    font-family: var(--fh-font-barlow);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--fh-white-a50);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+    margin-top: 16px;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-slot-btn {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+    height: 57.1px;
+    background: transparent;
+    border: 0.8px solid var(--fh-white-a10);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-slot-btn:hover {
+    background: var(--fh-white-a05);
+    border-color: var(--fh-white-a30);
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-slot-btn[aria-pressed="true"] {
+    background: var(--fh-white-a12);
+    border-color: var(--fh-white);
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-time-text {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.35px;
+    color: var(--fh-white-a60);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-status-text {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    color: var(--fh-white-a20);
+    margin: 2px 0 0 0;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 423.2px;
+    /* Mapped from Action buttons width */
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-confirm-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0px;
+    width: 100%;
+    height: 52px;
+    background: var(--fh-white-a10);
+    border: none;
+    cursor: not-allowed;
+    margin-bottom: 12px;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-confirm-text {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fh-white-a20);
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-later-btn {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0px;
+    width: 100%;
+    height: 53.6px;
+    background: transparent;
+    border: 0.8px solid var(--fh-white-a20);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-later-btn:hover {
+    background: var(--fh-white-a05);
+    border-color: var(--fh-white-a40);
+}
+
+:where(.page-onboarding-membership-select-session) .select-session-later-text {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+}

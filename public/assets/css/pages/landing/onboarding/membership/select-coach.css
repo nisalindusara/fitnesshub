@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Barlow:wght@400;700;900&display=swap');
+
+/* Scoped under .page-onboarding-membership-select-coach (the layout's <main> on this page). */
+
+:where(.page-onboarding-membership-select-coach) .select-coach-layout {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background: var(--fh-neutral-950);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Prevent body scroll, handle scroll in right panel */
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-left-panel {
+    flex: 2;
+    min-width: 300px;
+    height: 100vh;
+    background: url('image_ee39fb.png') center/cover no-repeat;
+}
+
+:where(.page-onboarding-membership-select-coach) .back-btn {
+    box-sizing: border-box;
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--fh-white-a60);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-right-panel {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 8vw;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow-y: auto;
+    /* Enables scrolling for overflowing content */
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 448px;
+    margin: auto 0;
+    /* Vertically center content if it is smaller than viewport, but allow scroll if larger */
+    padding-bottom: 40px;
+    /* Extra padding at the bottom for scrolling clearance */
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-tag {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 3.6px;
+    text-transform: uppercase;
+    color: var(--fh-red-590);
+    margin-bottom: 12px;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-headline-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-headline {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 52.488px;
+    line-height: 46px;
+    letter-spacing: -1.3122px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-body-text {
+    font-family: var(--fh-font-barlow);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: var(--fh-white-a50);
+    margin: 16px 0 24px 0;
+    width: 100%;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-highlight {
+    font-weight: 700;
+    color: var(--fh-white);
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 16px;
+    width: 100%;
+    border: 0.8px solid var(--fh-white-a10);
+    background: transparent;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-card:hover {
+    background: var(--fh-white-a03);
+    border-color: var(--fh-white-a30);
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-card.recommended {
+    background: var(--fh-red-590-a05);
+    border: 0.8px solid var(--fh-red-590-a50);
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-avatar {
+    width: 48px;
+    height: 48px;
+    background: #1E2939 url('https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=150&auto=format&fit=crop') center/cover no-repeat;
+    flex-shrink: 0;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-avatar-2 {
+    background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=150&auto=format&fit=crop');
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-avatar-3 {
+    background-image: url('https://images.unsplash.com/photo-1567598508481-65985588ce6b?q=80&w=150&auto=format&fit=crop');
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-avatar-4 {
+    background-image: url('https://images.unsplash.com/photo-1583468982228-19f19164aee2?q=80&w=150&auto=format&fit=crop');
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-name-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2px;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-name {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.4px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2px 8px;
+    background: var(--fh-red-590);
+    font-family: var(--fh-font-barlow);
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-title {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--fh-red-590);
+    margin: 0 0 4px 0;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-desc {
+    font-family: var(--fh-font-barlow);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--fh-white-a40);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 32px;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-btn-primary {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0px;
+    gap: 12px;
+    width: 100%;
+    height: 52px;
+    background: var(--fh-red-590);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 12px;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-btn-primary:hover {
+    background: var(--fh-red-680);
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-btn-text-primary {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-btn-skip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-btn-text-skip {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fh-white-a25);
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-select-coach) .select-coach-btn-skip:hover .select-coach-btn-text-skip {
+    color: var(--fh-white-a50);
+}

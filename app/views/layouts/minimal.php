@@ -13,29 +13,11 @@
     include __DIR__ . '/../partials/_stylesheets.php'; ?>
 </head>
 
-<body>
+<body class="layout-minimal<?= isset($bodyClass) ? ' ' . htmlspecialchars($bodyClass) : '' ?>">
     <!-- Page Content Container -->
-    <main>
+    <main class="<?= htmlspecialchars($pageClass ?? '') ?>">
         <?php echo $content; ?>
     </main>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--color-background);
-        }
-    </style>
 </body>
 
 </html>
-
-<style>
-    body,
-    main {
-        width: 100vw;
-        overflow-x: hidden;
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background-color: #FFFFFF;
-    }
-</style>
