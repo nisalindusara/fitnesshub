@@ -166,7 +166,7 @@ if (!isset($activeNavRoute)) {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body<?= isset($bodyClass) ? ' class="' . htmlspecialchars($bodyClass) . '"' : '' ?>>
 
     <?php include __DIR__ . '/../partials/_icon-sprite.php'; ?>
 
@@ -228,7 +228,7 @@ if (!isset($activeNavRoute)) {
         </div>
     </aside>
 
-    <main class="staff-shell__content">
+    <main class="staff-shell__content <?= htmlspecialchars($pageClass ?? '') ?>">
         <?= $content ?>
     </main>
 
