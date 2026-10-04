@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/_shared.php';
+$pageStyles[] = 'staff/work_schedule_module/leave/result';
 
 $status = $request['status'];
 $start = new DateTimeImmutable($request['start_date']);
@@ -51,110 +52,6 @@ $icons = [
 ];
 $icon = fn(string $name): string => '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . $icons[$name] . '</svg>';
 ?>
-<style>
-    .lv-stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-    }
-
-    .lv-stat {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        padding: 16px 18px;
-        border: 1px solid rgba(28, 28, 28, 0.1);
-        border-radius: 12px;
-        background: #fff;
-    }
-
-    .lv-stat__icon {
-        width: 38px;
-        height: 38px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-
-    .lv-stat__icon--blue {
-        background: #eaf1ff;
-        color: #1d4ed8;
-    }
-
-    .lv-stat__icon--green {
-        background: #e9f8ef;
-        color: #146c3a;
-    }
-
-    .lv-stat__icon--red {
-        background: #fdecec;
-        color: #c0262d;
-    }
-
-    .lv-stat__icon--orange {
-        background: #fff1e6;
-        color: #c2410c;
-    }
-
-    .lv-stat__icon--grey {
-        background: rgba(28, 28, 28, 0.06);
-        color: rgba(28, 28, 28, 0.6);
-    }
-
-    .lv-stat__label {
-        display: block;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        color: rgba(28, 28, 28, 0.45);
-    }
-
-    .lv-stat__value {
-        display: flex;
-        align-items: baseline;
-        gap: 8px;
-        margin-top: 2px;
-    }
-
-    .lv-stat__value strong {
-        font-size: 26px;
-        font-weight: 700;
-    }
-
-    .lv-stat__value span {
-        font-size: 12px;
-        color: rgba(28, 28, 28, 0.5);
-    }
-
-    .lv-decision {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        flex-wrap: wrap;
-        padding: 12px 18px;
-        border: 1px solid rgba(28, 28, 28, 0.1);
-        border-radius: 12px;
-        background: #fff;
-    }
-
-    .lv-decision__label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-    @media (max-width: 900px) {
-        .lv-stats {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
 
 <div class="page-header">
     <nav class="lv-crumbs" aria-label="Breadcrumb">

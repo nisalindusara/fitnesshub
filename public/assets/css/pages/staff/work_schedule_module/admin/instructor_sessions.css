@@ -1,0 +1,714 @@
+/* Scoped under .page-work-schedule-module-admin-instructor-sessions (the layout's <main> on this page). */
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-page,
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel {
+    --is-hour: 56px;
+    --is-ink: var(--fh-neutral-870);
+    --is-muted: var(--fh-neutral-870-a50);
+    --is-line: var(--fh-neutral-870-a08);
+    --is-accent: var(--fh-blue-600);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-page {
+    padding: 16px 24px 24px;
+    font-family: var(--fh-font-inter);
+    color: var(--is-ink);
+    box-sizing: border-box;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-page *,
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-page *::before,
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-page *::after,
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel,
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel * {
+    box-sizing: border-box;
+}
+
+/* Toolbar */
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: var(--fh-radius-12);
+    background: var(--fh-gray-50);
+    flex-wrap: wrap;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-tool {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 32px;
+    min-width: 32px;
+    padding: 0 8px;
+    border: none;
+    border-radius: var(--fh-radius-8);
+    background: none;
+    color: var(--is-ink);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-tool:hover,
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-tool[aria-expanded="true"] {
+    background: var(--fh-neutral-870-a06);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-tool svg {
+    width: 16px;
+    height: 16px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-tool__badge {
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: var(--fh-radius-pill);
+    background: var(--is-accent);
+    color: var(--fh-white);
+    font-size: 10px;
+    line-height: 16px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-week-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 4px;
+    white-space: nowrap;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-search {
+    position: relative;
+    margin-left: auto;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-search svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    color: var(--is-muted);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-search input {
+    width: 200px;
+    height: 32px;
+    padding: 0 10px 0 30px;
+    border: 1px solid var(--is-line);
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-white);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-search input:focus {
+    border-color: var(--is-ink);
+}
+
+/* Filter popover */
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-filter {
+    position: relative;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-filter__pop {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 30;
+    width: 240px;
+    padding: 14px;
+    border: 1px solid var(--is-line);
+    border-radius: var(--fh-radius-12);
+    background: var(--fh-white);
+    box-shadow: 0 12px 32px -12px var(--fh-black-a20);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-filter__pop[hidden] {
+    display: none;
+}
+
+/* Calendar */
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal {
+    border: 1px solid var(--is-line);
+    border-radius: var(--fh-radius-12);
+    overflow: hidden;
+    background: var(--fh-white);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__head,
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__grid {
+    display: grid;
+    grid-template-columns: 56px repeat(7, minmax(96px, 1fr));
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__head {
+    background: var(--fh-gray-100);
+    border-bottom: 1px solid var(--is-line);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 4px 8px;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--is-muted);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__day strong {
+    font-size: 15px;
+    letter-spacing: 0;
+    color: var(--is-ink);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__day.is-today {
+    background: var(--fh-gray-200);
+    box-shadow: inset 0 -3px 0 var(--is-ink);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__body {
+    max-height: calc(100vh - 240px);
+    min-height: 360px;
+    overflow: auto;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__times {
+    position: relative;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__time {
+    height: var(--is-hour);
+    padding: 0 8px;
+    font-size: 11px;
+    color: var(--is-muted);
+    text-align: right;
+    transform: translateY(-7px);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__col {
+    position: relative;
+    border-left: 1px solid var(--is-line);
+    background-image: linear-gradient(var(--is-line) 1px, transparent 1px);
+    background-size: 100% var(--is-hour);
+    cursor: copy;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-cal__col.is-today {
+    background-color: var(--fh-gray-50);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-now {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--fh-red-520);
+    z-index: 3;
+    pointer-events: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-now::before {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--fh-radius-circle);
+    background: var(--fh-red-520);
+}
+
+/* Session cards */
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 8px;
+    border: 1px solid transparent;
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-slate-200);
+    color: var(--is-ink);
+    font-family: inherit;
+    text-align: left;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event:hover,
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event.is-open {
+    box-shadow: 0 6px 16px -6px var(--fh-black-a25);
+    z-index: 4;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event.is-open {
+    border-color: var(--is-ink);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event:focus-visible {
+    outline: 2px solid var(--is-accent);
+    outline-offset: 1px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event[hidden] {
+    display: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event--class {
+    background: var(--fh-emerald-130);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event--pt {
+    background: var(--fh-violet-120);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event--orientation {
+    background: var(--fh-orange-100);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event--meeting {
+    background: var(--fh-gray-160);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event__title {
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event__time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--fh-neutral-870-a65);
+    white-space: nowrap;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event__who {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--fh-neutral-870-a70);
+    min-width: 0;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event__who span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event.is-short {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-event.is-short .is-event__who span {
+    display: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--fh-radius-circle);
+    flex-shrink: 0;
+    object-fit: cover;
+    background: var(--fh-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--is-muted);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-repeat-icon {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-empty-note {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--is-muted);
+    border-top: 1px solid var(--is-line);
+}
+
+/* Overlay panel */
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: var(--fh-neutral-930-a12);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-backdrop[hidden],
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel[hidden] {
+    display: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel {
+    position: fixed;
+    top: 12px;
+    bottom: 12px;
+    right: 12px;
+    z-index: 41;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--is-line);
+    border-radius: var(--fh-radius-14);
+    background: var(--fh-white);
+    box-shadow: 0 24px 48px -16px var(--fh-black-a30);
+    font-family: var(--fh-font-inter);
+    color: var(--is-ink);
+    animation: is-slide-left 0.2s ease;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel.from-left {
+    animation-name: is-slide-right;
+}
+
+@keyframes is-slide-left {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+}
+
+@keyframes is-slide-right {
+    from {
+        opacity: 0;
+        transform: translateX(-24px);
+    }
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--is-line);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel__title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel__body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-panel__foot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 14px 16px;
+    border-top: 1px solid var(--is-line);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-field[hidden] {
+    display: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--is-muted);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-label em {
+    font-style: normal;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-input {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid var(--fh-neutral-870-a14);
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-white);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--is-ink);
+    outline: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-input:focus {
+    border-color: var(--is-accent);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) select.is-input {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 32px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231c1c1c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 12px center;
+    cursor: pointer;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) textarea.is-input {
+    height: 84px;
+    padding: 10px 12px;
+    resize: vertical;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-time-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--is-muted);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-switch-row strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-switch-row small {
+    font-size: 12px;
+    color: var(--is-muted);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-switch {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border-radius: var(--fh-radius-pill);
+    background: var(--fh-gray-280);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-switch::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: var(--fh-radius-circle);
+    background: var(--fh-white);
+    box-shadow: 0 1px 2px var(--fh-black-a20);
+    transition: transform 0.15s ease;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-switch:checked {
+    background: var(--is-accent);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-switch:checked::after {
+    transform: translateX(18px);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-switch:focus-visible {
+    outline: 2px solid var(--is-accent);
+    outline-offset: 2px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-seg {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 6px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-seg button,
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-days button {
+    height: 34px;
+    border: 1px solid var(--fh-neutral-870-a14);
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-white);
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--is-ink);
+    cursor: pointer;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-seg button[aria-pressed="true"],
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-days button[aria-pressed="true"] {
+    background: var(--is-accent);
+    border-color: var(--is-accent);
+    color: var(--fh-white);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-days button {
+    height: 30px;
+    font-size: 11px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-repeat {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-repeat[hidden] {
+    display: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-info {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-indigo-50);
+    color: var(--fh-blue-700);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-info[hidden] {
+    display: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-error {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-red-60);
+    color: var(--fh-red-710);
+    font-size: 13px;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-error[hidden] {
+    display: none;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-btn {
+    height: 40px;
+    border: 1px solid var(--fh-neutral-870-a14);
+    border-radius: var(--fh-radius-10);
+    background: var(--fh-white);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--is-ink);
+    cursor: pointer;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-btn:hover {
+    background: var(--fh-gray-50);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-btn--primary {
+    background: var(--is-accent);
+    border-color: var(--is-accent);
+    color: var(--fh-white);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-btn--primary:hover {
+    background: var(--fh-blue-700);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-btn--danger {
+    color: var(--fh-red-520);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-btn--danger.is-confirming {
+    background: var(--fh-red-520);
+    border-color: var(--fh-red-520);
+    color: var(--fh-white);
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-close {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: var(--fh-radius-6);
+    background: none;
+    font-size: 18px;
+    line-height: 1;
+    color: var(--is-muted);
+    cursor: pointer;
+}
+
+:where(.page-work-schedule-module-admin-instructor-sessions) .is-close:hover {
+    background: var(--fh-neutral-870-a06);
+    color: var(--is-ink);
+}
+
+@media (max-width: 700px) {
+    :where(.page-work-schedule-module-admin-instructor-sessions) .is-page {
+        padding: 12px;
+    }
+
+    :where(.page-work-schedule-module-admin-instructor-sessions) .is-search {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    :where(.page-work-schedule-module-admin-instructor-sessions) .is-search input {
+        width: 100%;
+    }
+
+    :where(.page-work-schedule-module-admin-instructor-sessions) .is-panel {
+        left: 12px !important;
+        right: 12px;
+        width: auto;
+    }
+}

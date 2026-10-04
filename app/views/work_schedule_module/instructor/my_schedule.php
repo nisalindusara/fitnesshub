@@ -1,8 +1,4 @@
-<link
-    rel="stylesheet"
-    href="/assets/css/instructor-schedule.css"
->
-
+<?php $pageStyles = ['staff/work_schedule_module/instructor/my_schedule']; ?>
 <section class="ws-page">
 
 
