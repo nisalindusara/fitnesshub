@@ -1,39 +1,55 @@
 # CSS follow-ups
 
 Work deliberately left out of the CSS restructure (`refactor/css-structure`).
-That branch only changes how CSS is organised and loaded; everything here
-would change how a page looks or behaves, so each item needs its own decision
-and its own commit.
+That branch only changed how CSS is organised and loaded, without changing
+how any page looks. Every item below would change rendering or behaviour,
+so each needs its own decision and its own commit.
+
+1. [Colour convergence](#1-colour-convergence)
+2. [Fonts](#2-fonts)
+3. [Scoping debts](#3-scoping-debts)
+4. [Possibly unused CSS](#4-possibly-unused-css)
+5. [Other visual items](#5-other-visual-items)
+6. [Bugs outside CSS](#6-bugs-outside-css)
 
 ## 1. Colour convergence
 
-`public/assets/css/tokens.css` keeps every colour that renders today. Values
-within 3 RGB units per channel were merged during the restructure; the
-clusters below differ visibly and were not.
+`public/assets/css/tokens.css` keeps every colour that renders today.
+Values within 3 RGB units per channel were merged; the clusters below
+differ visibly and were not. Converging a token is a one-line change in
+`tokens.css`, e.g. `--fh-red-520: var(--fh-red-500);`. Once nothing uses
+the old name, delete it.
 
-Converging a token is a one-line change in `tokens.css`, for example
-`--fh-red-520: var(--fh-red-500);`. Once nothing references the old name,
-it can be deleted.
+**Decisions waiting:**
 
-Counts are declarations across view `<style>` blocks and the shared CSS
-files, measured before the restructure. "Files" counts views and shared
+- **Brand red.** Pick between the landing red `--fh-red-590` (`#e31837`,
+  80 uses) and the agreed `--fh-brand-red` (`#ED1C24`). Then collapse the
+  28 danger reds.
+- **Ink.** Pick between staff ink `--fh-neutral-870` (`#1c1c1c`, 169 uses),
+  landing ink `--fh-neutral-950` (`#0a0a0a`, 83) and the agreed
+  `--fh-ink-black` (`#171717`, 1 use).
+- **Greys.** Muted text, borders and backgrounds come from four grey scales:
+  Tailwind gray, slate (incl. Chakra), zinc/neutral, and Untitled UI.
+  Choose one scale, then also reduce staff's translucent-ink opacities:
+  14 for text and 10 for borders.
+- **Status colours.** The agreed `--fh-status-{active,suspended,inactive}-{bg,fg}`
+  aren't used yet. `staff.css` (formerly `portals.css`) styles status text
+  with `--brand-red`, `--success-green`, `--warning-amber` and
+  `--neutral-gray`, which are never defined, so that text renders in the
+  inherited colour. Point them at the status tokens.
+- **Card radius.** `--fh-radius-card` (16px) is defined but unused. Cards
+  use 8–28px today.
+
+**Accepted edge cases from the merges:**
+
+- `#99a1af` merged into `--fh-gray-400` (`#9ca3af`). This gives a few
+  4-unit pixels on anti-aliased text edges on `landing/sample-product`.
+- `#344054` merged into `--fh-gray-700` (`#374151`). This gives 12 such
+  pixels on `class_pt_module/classes/create` at 390px.
+
+Counts below are declarations across view `<style>` blocks and shared CSS,
+measured before the restructure. "Files" counts views and shared
 stylesheets.
-
-**Accepted merge with a visible edge.** `#99a1af` (Tailwind v4 gray-400,
-25 uses, mostly landing store text) was merged into `--fh-gray-400`
-(`#9ca3af`). The colours are 3 units apart at full coverage, but on
-anti-aliased glyph edges, where the text blends with the background, a few
-pixels differ by 4 units. Seen on `landing/sample-product`. Accepted for
-now; revisit with the grey convergence.
-
-The same happens with `#344054` (Untitled UI gray-700), merged into
-`--fh-gray-700` (`#374151`): 12 edge pixels at 4 units on
-`class_pt_module/classes/create` (390px). Also accepted.
-
-The agreed design-system values are defined but not yet used:
-`--fh-brand-red` (#ED1C24), `--fh-ink-black` (#171717),
-`--fh-status-{active,suspended,inactive}-{bg,fg}`, `--fh-radius-card` (16px)
-and `--fh-font-ui` (Inter).
 
 ### Brand reds — 3 tokens, 98 uses
 
@@ -213,58 +229,31 @@ and `--fh-font-ui` (Inter).
 | `--fh-neutral-120` | `#f1f1f1` | 1 | 1 | staff 1 | background |
 | `--fh-neutral-80` | `#f7f7f7` | 1 | 1 | staff 1 | background |
 
-## 2. Other visual differences found during the audit
+## 2. Fonts
 
-- **Undefined variables in `portals.css`.** `--brand-red`, `--success-green`,
-  `--warning-amber` and `--neutral-gray` are used for status text but never
-  defined, so that text renders in the inherited colour. Point them at the
-  status tokens once the status colours are agreed.
+- **Merged font stacks.** Stacks sharing a primary font were merged, e.g.
+  `'Barlow', sans-serif` into the longer Barlow stack, and
+  `'Inter', sans-serif` into `"Inter", Arial, sans-serif`. Chrome also uses
+  fallback fonts to size form-control line boxes, not just when the web
+  font fails. A bare `'Inter'` shifted a `<select>` by 1px, so it keeps its
+  own token, `--fh-font-inter-only`. The merged stacks render identically
+  in Chrome on Windows. On macOS, where `sans-serif` isn't Arial, form
+  controls may differ by a pixel. Check on a Mac, or split the tokens.
 - **Fonts used but not loaded.** Each renders as its fallback today:
   - The member layout sets `'DM Sans'` on `.main-content`, but only Plus
     Jakarta Sans is loaded.
-  - The staff layout loads Inter 400 and 500, but staff pages use 600 and
+  - The staff layout loads Inter 400 and 500 only; staff pages use 600 and
     700, so the browser fakes the bold.
-  - `minimal.php` sets `font-family: 'Inter'` but loads only Barlow.
+  - The minimal layout sets Inter but loads only Barlow. Its fallback is now
+    Arial instead of the generic `sans-serif`, which is identical on Windows
+    and Android and may differ on macOS (Helvetica).
   - One staff page uses `'Arimo'`, which is never loaded.
-- **Font stacks merged during the restructure.** Stacks that share a primary
-  font were merged, for example `'Barlow', sans-serif` into the longer
-  Barlow stack, and `'Inter', sans-serif` into `"Inter", Arial, sans-serif`.
-  Fallback fonts don't only matter when the web font fails: Chrome also uses
-  them to size form-control line boxes. A bare `'Inter'`, with no generic
-  family, shifted a `<select>` by 1px, so it has its own token,
-  `--fh-font-inter-only`. The merged stacks render identically in Chrome on
-  Windows, but form controls may differ by a pixel on macOS, where
-  `sans-serif` isn't Arial. Check on a Mac, or give each original stack its
-  own token.
-- **Invalid selector.** `communication_module/admin_tickets_details` has a rule
-  for `[cite: 1] .avatar`, which looks like pasted citation text. The
-  selector is invalid, so the rule has never applied. Removal is planned
-  for Phase 5 dead-CSS cleanup.
-- **Inline `style=""` attributes.** About 300 in total, mostly in
-  `landing/about.php` (101), `analytics_module/member_analytics.php` (36) and
-  `staff/dashboard/_manager-summary.php` (34).
-- **Minimal layout font fallback.** `minimal.php` set `'Inter', sans-serif`
-  on `body`/`main`; it now uses `--fh-font-inter` (`"Inter", Arial,
-  sans-serif`). Inter isn't loaded there, so text falls back to Arial instead
-  of the generic sans-serif. That's identical on Windows and Android but may
-  differ on macOS (Helvetica).
-- **Onboarding images that never load.** The CSS for
-  `onboarding/membership/*` uses relative `url('image_xxxxxx.png')` paths.
-  No such files exist, so they failed before the restructure and still fail.
-- **JS that hardcodes colours.** `hero-slider.js` and `programs-accordian.js`
-  hardcode `#E31837`.
+- **Inter isn't the agreed typeface everywhere.** Inter is only used on
+  staff pages; landing uses Barlow and member uses Plus Jakarta Sans.
 
-## 3. Bugs outside CSS
+## 3. Scoping debts
 
-- **Case-sensitive view path.** `communication_module/Instructor_profile_view.php`
-  is rendered as `instructor_profile_view`. It works only on case-insensitive
-  filesystems (Windows/macOS) and will fail on a Linux host.
-- **Stray markup.** `layouts/member-layout.php` has a stray `</form>` in the
-  header.
-- **Dead JS.** Nothing references `public/assets/js/hero-slider.js` or
-  `public/assets/js/programs-accordian.js`.
-
-## 4. Pages whose CSS reaches outside their own content (`$bodyClass`)
+### Pages whose CSS reaches outside their own content (`$bodyClass`)
 
 Page CSS is scoped under the page class on the layout's `<main>`
 (`:where(.page-…)`). Some rules styled the layout chrome, `<body>` or
@@ -291,7 +280,7 @@ The minimal layout's own `body`/`main` rules (formerly the `<style>` blocks
 in `minimal.php`) sit in `landing.css` under `body.layout-minimal`, a fixed
 class on that layout.
 
-## 5. Pages that repeat a shared rule
+### Pages that repeat a shared rule
 
 When rules repeated across pages moved into surface files and kits (see
 `refactor/css-structure`), these pages kept their own copy as well. Each
@@ -320,3 +309,50 @@ before the restructure:
 |---|---|---|
 | payment_module/payment-setting | `.icon-btn:hover` | `staff.css` |
 | payment_module/review-bank-transfers | `.icon-btn:hover` | `staff.css` |
+
+## 4. Possibly unused CSS
+
+These rules use a class or id that doesn't appear in the markup, PHP or JS
+of any view that loads the file, or in the layout. They were **not
+deleted**. Class names built at runtime, e.g. `'tag-' . $colour` in PHP or
+`el.classList.add(type)` in JS, can fool the search, and so can markup
+returned by API calls. Confirm each in the browser before removing it.
+
+| File (under `public/assets/css/`) | Rules |
+|---|---|
+| `member.css` | `.content-container` · `.welcome-heading` · `.welcome-heading strong` · `.content-container` · `.welcome-heading` |
+| `pages/landing/landing/about.css` | `.badge` · `.description` |
+| `pages/landing/onboarding/start.css` | `.back-icon` · `.btn-icon` · `.footer-link` · `.footer-link:hover` |
+| `pages/member/communication_module/Instructor_profile_view.css` | `.tag-purple` · `.tag-orange` · `.tag-pink` · `.tag-blue` · `.tag-green` |
+| `pages/member/communication_module/NonPT_messages.css` | `.chat-status-dot` |
+| `pages/staff/account_module/mark-attendance.css` | `.attendance-member-details` |
+| `pages/staff/ecommerce_module/add-order.css` | `.search-icon` |
+| `pages/staff/ecommerce_module/product-detail.css` | `.thumb-placeholder-1` · `.thumb-placeholder-2` · `.thumb-placeholder-3` |
+| `pages/staff/instructor/my-clients.css` | `.crumb-muted` · `.mc-btn--primary` · `.mc-btn--primary:hover` |
+| `pages/staff/payment_module/add-cash-payment.css` | `.category-icon` |
+| `pages/staff/staff/dashboard/_daily-overview.css` | `.lookup-result.is-expired` |
+| `pages/staff/work_schedule_module/instructor/my_schedule.css` | `.ws-breadcrumb` · `.ws-breadcrumb span` · `.ws-breadcrumb strong` |
+| `staff.css` | `.fh-account__chevron` · `.detail-grid` · `.detail-grid` |
+
+## 5. Other visual items
+
+- **Inline `style=""` attributes.** About 300 in total, mostly in
+  `landing/about.php` (101), `analytics_module/member_analytics.php` (36)
+  and `staff/dashboard/_manager-summary.php` (34).
+- **Onboarding images that never load.** The CSS for
+  `onboarding/membership/*` uses relative `url('image_xxxxxx.png')` paths
+  to files that don't exist. They failed before the restructure and still
+  do.
+- **JS that hardcodes colours.** `hero-slider.js` and
+  `programs-accordian.js` hardcode `#E31837`.
+
+## 6. Bugs outside CSS
+
+- **Case-sensitive view path.** `communication_module/Instructor_profile_view.php`
+  is rendered as `instructor_profile_view`. It works only on
+  case-insensitive filesystems (Windows/macOS) and will fail on a Linux
+  host.
+- **Stray markup.** `layouts/member-layout.php` has a stray `</form>` in the
+  header.
+- **Dead JS.** Nothing references `public/assets/js/hero-slider.js` or
+  `public/assets/js/programs-accordian.js`.

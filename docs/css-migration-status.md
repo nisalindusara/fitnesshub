@@ -8,7 +8,7 @@ Tracks the `refactor/css-structure` work: moving inline `<style>` blocks into
 - **Landing (landing-layout.php, minimal.php)**: migrated. 26 of 26 views have no inline `<style>`.
 - **Member (member-layout.php)**: migrated. 25 of 25 views have no inline `<style>`.
 - **Staff (staff-layout.php)**: migrated. 49 of 49 views have no inline `<style>`.
-- **Cleanup (Phase 5)**: in progress. Unreferenced CSS files are already gone, and the invalid `[cite: 1]` selector is removed. `public/README.md` and the follow-ups doc are next.
+- **Cleanup (Phase 5)**: done. Unreferenced CSS files are gone (the old `landing-layout.css`, `classes.css`, `sidebar.css`, `portals.css`, `membership-plans.css` and `instructor-schedule.css` were merged or moved; `member.css` is now the member surface file). The invalid `[cite: 1]` selector is removed. Every `$pageStyles` entry matches its file with exact letter case, and `public/README.md` describes the structure.
 - **Service worker / manifest**: none exist in the repo, so there was no precache list or cache version to update.
 
 ## Views that still have a `<style>` block
@@ -41,4 +41,4 @@ Views that link a stylesheet from `<body>`: none.
 
 ## Next step
 
-Finish Phase 5: describe the structure in `public/README.md` and tidy `docs/css-followups.md`.
+None. The migration is complete. Later work, which would change rendering and needs its own decisions, is listed in `docs/css-followups.md`.
