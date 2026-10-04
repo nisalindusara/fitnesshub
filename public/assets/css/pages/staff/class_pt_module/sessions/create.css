@@ -1,0 +1,130 @@
+/* Scoped under .page-class-pt-module-sessions-create (the layout's <main> on this page). */
+
+:where(.page-class-pt-module-sessions-create) .cs-title {
+    margin:0;
+    font-size:28px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-subtitle {
+    margin:7px 0 24px;
+    color:var(--fh-gray-430);
+    font-size:13px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-layout {
+    display:block;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-card {
+    background:var(--fh-white);
+    border:1px solid var(--fh-gray-200);
+    border-radius:var(--fh-radius-10);
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-card-head {
+    padding:18px 20px;
+    border-bottom:1px solid var(--fh-gray-160);
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-card-head h2 {
+    margin:0;
+    font-size:14px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-card-head p {
+    margin:5px 0 0;
+    font-size:11px;
+    color:var(--fh-gray-430);
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-form {
+    padding:20px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-field {
+    margin-bottom:16px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-field label {
+    display:block;
+    margin-bottom:7px;
+    font-size:11px;
+    font-weight:600;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-field input,
+:where(.page-class-pt-module-sessions-create) .cs-field select {
+    width:100%;
+    box-sizing:border-box;
+    height:38px;
+    border:1px solid var(--fh-gray-300);
+    border-radius:var(--fh-radius-6);
+    padding:0 11px;
+    background:var(--fh-white);
+    font-size:12px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-grid-3 {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-grid-2 {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-availability {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:40px;
+    padding:0 12px;
+    border:1px solid var(--fh-gray-300);
+    border-radius:var(--fh-radius-6);
+    font-size:11px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-badge {
+    display:inline-flex;
+    padding:4px 8px;
+    border-radius:var(--fh-radius-pill);
+    font-size:10px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-available {
+    background:var(--fh-emerald-80);
+    color:var(--fh-emerald-605);
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-conflict {
+    background:var(--fh-red-60);
+    color:var(--fh-red-605);
+    margin-left:6px;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-actions {
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    padding:14px 20px;
+    border-top:1px solid var(--fh-gray-160);
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-btn {
+    min-height:36px;
+    padding:0 15px;
+    border:1px solid var(--fh-gray-300);
+    border-radius:var(--fh-radius-7);
+    background:var(--fh-white);
+    font-size:12px;
+    cursor:pointer;
+}
+
+:where(.page-class-pt-module-sessions-create) .cs-primary {
+    background:var(--fh-zinc-805);
+    border-color:var(--fh-zinc-805);
+    color:var(--fh-white);
+}
