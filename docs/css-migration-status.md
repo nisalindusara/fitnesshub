@@ -7,13 +7,12 @@ Tracks the `refactor/css-structure` work: moving inline `<style>` blocks into
 
 - **Landing (landing-layout.php, minimal.php)**: migrated. 26 of 26 views have no inline `<style>`.
 - **Member (member-layout.php)**: migrated. 25 of 25 views have no inline `<style>`.
-- **Staff (staff-layout.php)**: shared files built (Phase 3); page CSS still inline. 41 of 49 views have no inline `<style>`.
+- **Staff (staff-layout.php)**: shared files built (Phase 3); page CSS still inline. 43 of 49 views have no inline `<style>`.
 
 ## Views that still have a `<style>` block
 
-### Staff (staff-layout.php): 8 views
+### Staff (staff-layout.php): 6 views
 
-- `account_module/`: mark-attendance, staff-profile
 - `class_pt_module/classes/`: create, index, show
 - `class_pt_module/sessions/`: create, index, show
 
@@ -44,4 +43,4 @@ Views that link a stylesheet from `<body>`: none.
 
 ## Next step
 
-Phase 4, staff surface, one commit per module folder. Still to migrate: `account_module`, `class_pt_module`. Then Phase 5: remove dead CSS and unused files, and update `public/README.md`.
+Phase 4, staff surface, one commit per module folder. Still to migrate: `class_pt_module`. Then Phase 5: remove dead CSS and unused files, and update `public/README.md`.
