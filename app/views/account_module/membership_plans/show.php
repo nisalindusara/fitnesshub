@@ -3,14 +3,14 @@
 <section class="mp-page">
     <?php if (!empty($flash)): ?><div class="mp-flash mp-flash--<?= htmlspecialchars($flash['type']) ?>"><?= htmlspecialchars($flash['message']) ?></div><?php endif; ?>
 <div class="mp-top-navigation">
-        <a href="/membership-plans" class="mp-back-link">
+        <a href="/portal/membership-plans" class="mp-back-link">
             <span class="mp-back-arrow">←</span>
             Back
         </a>
 </div>    <div class="mp-page-head">
         <div><h1><?= htmlspecialchars($plan['plan_name']) ?> Membership</h1><p>View plan details, performance and member usage.</p></div>
         <div class="mp-head-actions">
-            <a href="/membership-plans/edit?id=<?= (int) $plan['plan_id'] ?>" class="mp-btn mp-btn--secondary">Edit Plan</a>
+            <a href="/portal/membership-plans/edit?id=<?= (int) $plan['plan_id'] ?>" class="mp-btn mp-btn--secondary">Edit Plan</a>
             <?php if (strtoupper($plan['status']) === 'ACTIVE'): ?><button type="button" class="mp-btn mp-btn--danger" data-deactivate-open data-plan-id="<?= (int) $plan['plan_id'] ?>" data-plan-name="<?= htmlspecialchars($plan['plan_name'], ENT_QUOTES) ?>" data-plan-price="<?= htmlspecialchars(number_format((float) $plan['price'], 2), ENT_QUOTES) ?>" data-plan-duration="<?= (int) $plan['duration_days'] ?>" data-plan-pt="<?= (int) $plan['included_pt_sessions'] ?>">Deactivate Plan</button><?php endif; ?>
         </div>
     </div>
@@ -47,7 +47,7 @@
     </div>
 </section>
 
-<div class="mp-modal-backdrop" id="deactivateModal" hidden><div class="mp-modal" role="dialog" aria-modal="true"><div class="mp-warning-icon">!</div><h2>Deactivate Membership Plan?</h2><p><span id="modalPlanName"><?= htmlspecialchars($plan['plan_name']) ?></span> will no longer be available for new membership purchases. Existing memberships using this plan will not be affected.</p><div class="mp-modal-summary"><strong id="modalSummaryName"><?= htmlspecialchars($plan['plan_name']) ?></strong><span id="modalSummaryDuration"><?= (int) $plan['duration_days'] ?> Days</span><span id="modalSummaryPrice">LKR <?= number_format((float) $plan['price'], 2) ?></span><span id="modalSummaryPt"><?= (int) $plan['included_pt_sessions'] ?> PT Sessions</span></div><form method="post" action="/membership-plans/deactivate" class="mp-modal-actions"><input type="hidden" name="plan_id" id="modalPlanId" value="<?= (int) $plan['plan_id'] ?>"><button type="button" class="mp-btn mp-btn--secondary" data-deactivate-close>Cancel</button><button type="submit" class="mp-btn mp-btn--danger">Deactivate Plan</button></form></div></div>
+<div class="mp-modal-backdrop" id="deactivateModal" hidden><div class="mp-modal" role="dialog" aria-modal="true"><div class="mp-warning-icon">!</div><h2>Deactivate Membership Plan?</h2><p><span id="modalPlanName"><?= htmlspecialchars($plan['plan_name']) ?></span> will no longer be available for new membership purchases. Existing memberships using this plan will not be affected.</p><div class="mp-modal-summary"><strong id="modalSummaryName"><?= htmlspecialchars($plan['plan_name']) ?></strong><span id="modalSummaryDuration"><?= (int) $plan['duration_days'] ?> Days</span><span id="modalSummaryPrice">LKR <?= number_format((float) $plan['price'], 2) ?></span><span id="modalSummaryPt"><?= (int) $plan['included_pt_sessions'] ?> PT Sessions</span></div><form method="post" action="/portal/membership-plans/deactivate" class="mp-modal-actions"><input type="hidden" name="plan_id" id="modalPlanId" value="<?= (int) $plan['plan_id'] ?>"><button type="button" class="mp-btn mp-btn--secondary" data-deactivate-close>Cancel</button><button type="submit" class="mp-btn mp-btn--danger">Deactivate Plan</button></form></div></div>
 <script src="/assets/js/membership-plans.js"></script>
 
     <!-- rest of your details page -->

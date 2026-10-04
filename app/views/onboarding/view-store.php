@@ -1,6 +1,6 @@
 <div class="onboarding-container">
     <div class="hero-section-step3">
-        <button class="back-btn" onclick="window.location.href='/onboarding/view-classes';">
+        <button class="back-btn" onclick="window.location.href='/onboarding/class';">
             <svg class="icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -35,7 +35,7 @@
                             <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
-                    <button class="btn btn-skip" onclick="window.location.href='/personal-details';">SKIP FOR NOW</button>
+                    <button class="btn btn-skip" onclick="window.location.href='/register';">SKIP FOR NOW</button>
                 </div>
             </div>
 

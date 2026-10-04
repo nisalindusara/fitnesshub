@@ -272,6 +272,16 @@
       transition: none;
     }
   }
+
+  .support-submitted {
+    margin: 0 0 16px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    background: #ecfdf3;
+    border: 1px solid #c6f0d6;
+    color: #146c3a;
+    font-size: 14px;
+  }
 </style>
 
 <div id="help-support-container">
@@ -282,13 +292,17 @@
       <h1 class="support-main-title">Help &amp; Support</h1>
       <p class="support-subtitle">3 requests waiting on the team</p>
     </div>
-    <a href="/communication/user-ticketForm" class="support-new-request-btn">
+    <a href="/member/support/new" class="support-new-request-btn">
       <svg class="support-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M12 5v14M5 12h14"></path>
       </svg>
       New request
     </a>
   </header>
+
+  <?php if (!empty($submitted)): ?>
+    <p class="support-submitted" role="status">Your request was sent. The team usually replies within a day.</p>
+  <?php endif; ?>
 
   <!-- Requests -->
   <section class="support-card" aria-label="Your support requests">

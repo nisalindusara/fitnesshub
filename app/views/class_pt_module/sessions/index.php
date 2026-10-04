@@ -211,7 +211,7 @@
         </div>
 
         <a
-            href="/classes/sessions/create"
+            href="/portal/classes/sessions/create"
             class="cs-btn cs-btn-primary"
         >
             + Schedule Session
@@ -338,14 +338,14 @@
                     <td class="cs-actions">
 
                         <a
-                            href="/classes/sessions/show?id=<?= (int)$session['id'] ?>"
+                            href="/portal/classes/sessions/show?id=<?= (int)$session['id'] ?>"
                             class="cs-view"
                         >
                             View
                         </a>
 
 
-                        <a href="#" class="cs-edit">
+                        <a href="/portal/classes/sessions/create?id=<?= (int)$session['id'] ?>" class="cs-edit">
                             Edit
                         </a>
 

@@ -353,7 +353,7 @@
   <!-- Top Navigation / Breadcrumb Bar -->
   <div class="detail-header-bar">
     <div class="breadcrumb-group">
-      <a href="#" class="nav-back-link">
+      <a href="/portal/support-tickets" class="nav-back-link">
         <span class="back-arrow">&larr;</span>
         <span class="back-text">Back to Tickets</span>
       </a>

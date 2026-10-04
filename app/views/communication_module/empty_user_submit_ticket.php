@@ -111,7 +111,7 @@
     </p>
 
     <!-- Navigatable "New Request" Button -->
-    <a href="/communication/user-ticketForm" class="ticket-new-request-btn" title="Create New Support Request">
+    <a href="/member/support/new" class="ticket-new-request-btn" title="Create New Support Request">
       New Request
     </a>
 

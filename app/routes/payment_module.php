@@ -1,6 +1,6 @@
 <?php
 
-$router->get('/portal/payments', [PaymentController::class, 'showPaymentListScreen']);
-$router->get('/portal/payments/add-cash-payment', [PaymentController::class, 'showAddCashPaymentScreen']);
-$router->get('/portal/payments/payment-settings', [PaymentController::class, 'showPyamentSettingScreen']);
-$router->get('/portal/payments/review-bank-transfers', [PaymentController::class, 'showReviewBankTransferScreen']);
+$router->get('/portal/payments', [PaymentController::class, 'showPaymentListScreen'], 'view_payments_overview');
+$router->get('/portal/payments/record', [PaymentController::class, 'showAddCashPaymentScreen'], 'add_payment');
+$router->get('/portal/payments/bank-slips', [PaymentController::class, 'showReviewBankTransferScreen'], 'verify_bank_slips');
+$router->get('/portal/payments/settings', [PaymentController::class, 'showPyamentSettingScreen'], 'change_payment_settings');

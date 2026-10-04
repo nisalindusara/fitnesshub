@@ -5,15 +5,13 @@
 //   Update: mark thread as read   Delete: remove own message
 // =========================================================
 
-const basePath = window.location.pathname.includes('/fitnesshub/public') ? '/fitnesshub/public' : '';
-
-// 1. API Endpoints matching FitnessHub Router routes
+// 1. API endpoints (see app/routes/communication_module.php)
 const ENDPOINTS = {
-    conversations: { url: `${basePath}/api/conversations`, method: 'GET' },
-    messages:      { url: `${basePath}/api/messages`,      method: 'GET' },
-    read:          { url: `${basePath}/api/messages/read`,   method: 'POST' },
-    send:          { url: `${basePath}/api/messages/send`,   method: 'POST' },
-    delete:        { url: `${basePath}/api/messages/delete`, method: 'POST' },
+    conversations: { url: '/api/messages/conversations', method: 'GET' },
+    messages:      { url: '/api/messages',               method: 'GET' },
+    read:          { url: '/api/messages/read',          method: 'POST' },
+    send:          { url: '/api/messages/send',          method: 'POST' },
+    delete:        { url: '/api/messages/delete',        method: 'POST' },
 };
 
 let activeContactId = null;
@@ -153,7 +151,7 @@ function initialsOf(name) {
 }
 
 function imageUrl(path) {
-    return `${basePath}/${String(path).replace(/^\/+/, '')}`;
+    return '/' + String(path).replace(/^\/+/, '');
 }
 
 // 5. Load and Render Conversations (READ)
@@ -265,6 +263,8 @@ async function openConversation(contactId) {
     if (el.chatWindow) el.chatWindow.hidden = false;
     if (el.panel) el.panel.classList.add('is-chat-open');
     if (el.chatName) el.chatName.textContent = contact.name || 'Chat';
+    const profileLink = document.getElementById('chatProfileLink');
+    if (profileLink) profileLink.href = `/portal/clients/profile?member=${contactId}`;
     clearError();
 
     // Chat header avatar: photo if there is one, otherwise initials

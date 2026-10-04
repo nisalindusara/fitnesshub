@@ -43,6 +43,11 @@ class AuthController extends Controller
         }
     }
 
+    public function showResetPasswordScreen(): void
+    {
+        $this->render('landing/reset-password', 'minimal');
+    }
+
     public function showLoginScreen(): void
     {
         $data['error'] = $_SESSION['error'] ?? null;

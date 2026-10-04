@@ -285,7 +285,7 @@
                             <li class="is-off">Store discount</li>
                         </ul>
                     </div>
-                    <a href="/personal-details?plan=day" class="fh-btn fh-btn--light fh-btn--block">
+                    <a href="/onboarding/membership/pick-date" class="fh-btn fh-btn--light fh-btn--block">
                         <span class="fh-btn__label">Buy pass</span>
                         <span class="fh-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
                                 <path d="M7 17 17 7M8 7h9v9" />
@@ -308,7 +308,7 @@
                             <li class="is-off">Store discount</li>
                         </ul>
                     </div>
-                    <a href="/personal-details?plan=monthly" class="fh-btn fh-btn--block">
+                    <a href="/register?plan=monthly" class="fh-btn fh-btn--block">
                         <span class="fh-btn__label">Start now</span>
                         <span class="fh-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
                                 <path d="M7 17 17 7M8 7h9v9" />
@@ -330,7 +330,7 @@
                             <li>10% off store purchases</li>
                         </ul>
                     </div>
-                    <a href="/personal-details?plan=annual" class="fh-btn fh-btn--light fh-btn--block">
+                    <a href="/register?plan=annual" class="fh-btn fh-btn--light fh-btn--block">
                         <span class="fh-btn__label">Start now</span>
                         <span class="fh-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
                                 <path d="M7 17 17 7M8 7h9v9" />
@@ -431,7 +431,7 @@
                 <h2 class="fh-h2">Start your fitness<br>journey today</h2>
                 <div class="fh-cta__side">
                     <p>Walk in, meet the coaches, and start training in Anuradhapura. Book a day pass or call us to sign up.</p>
-                    <a href="/personal-details" class="fh-btn">
+                    <a href="/register" class="fh-btn">
                         <span class="fh-btn__label">Join now</span>
                         <span class="fh-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24">
                                 <path d="M7 17 17 7M8 7h9v9" />

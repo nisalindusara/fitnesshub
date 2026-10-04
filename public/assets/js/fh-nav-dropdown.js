@@ -1,5 +1,5 @@
 /**
- * <fh-nav-dropdown label="Payments" icon="credit-card" current-route="/payments/bank-slips">
+ * <fh-nav-dropdown label="Payments" icon="credit-card" current-route="/portal/payments/bank-slips">
  *   <fh-nav-item slot="child" ...></fh-nav-item>
  *   <fh-nav-item slot="child" ...></fh-nav-item>
  * </fh-nav-dropdown>

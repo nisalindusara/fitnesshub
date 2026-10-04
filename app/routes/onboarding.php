@@ -1,13 +1,12 @@
 <?php
-// Onboarding wizard
 
+// Onboarding wizard: /onboarding -> membership -> class -> store -> /register
 $router->get('/onboarding', [OnboardingController::class, 'start']);
 $router->get('/onboarding/membership', [OnboardingController::class, 'browsePlans']);
 $router->get('/onboarding/class', [OnboardingController::class, 'browseClasses']);
 $router->get('/onboarding/store', [OnboardingController::class, 'browseStore']);
-$router->get('/onboarding/payment-summary', [OnboardingController::class, 'showPaymentSummary']);
-$router->get('/onboarding/confirmation', [OnboardingController::class, 'showOnboardConfirmation']);
 
+// Membership set-up steps: goal -> coach -> first PT session
 $router->get('/onboarding/membership/select-goal', [MembershipOnboardingController::class, 'showSelectGoal']);
 $router->get('/onboarding/membership/coach-recommend', [MembershipOnboardingController::class, 'showCoachRecommend']);
 $router->get('/onboarding/membership/select-coach', [MembershipOnboardingController::class, 'showSelectCoach']);

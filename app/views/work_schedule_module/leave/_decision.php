@@ -25,7 +25,7 @@ $rejectText = $sessions
 </div>
 
 <div class="lv-modal" id="lv-approve-modal" hidden>
-    <form class="lv-modal__box" method="post" action="/leave-requests/approve" role="alertdialog" aria-modal="true" aria-labelledby="lv-approve-title">
+    <form class="lv-modal__box" method="post" action="/portal/leave-requests/approve" role="alertdialog" aria-modal="true" aria-labelledby="lv-approve-title">
         <input type="hidden" name="id" value="<?= (int) $request['id'] ?>">
         <h2 class="lv-modal__title" id="lv-approve-title">Approve this leave?</h2>
         <p class="lv-modal__text"><?= htmlspecialchars($approveText) ?></p>
@@ -37,7 +37,7 @@ $rejectText = $sessions
 </div>
 
 <div class="lv-modal" id="lv-reject-modal" hidden>
-    <form class="lv-modal__box" method="post" action="/leave-requests/reject" role="alertdialog" aria-modal="true" aria-labelledby="lv-reject-title">
+    <form class="lv-modal__box" method="post" action="/portal/leave-requests/reject" role="alertdialog" aria-modal="true" aria-labelledby="lv-reject-title">
         <input type="hidden" name="id" value="<?= (int) $request['id'] ?>">
         <h2 class="lv-modal__title" id="lv-reject-title">Reject this leave?</h2>
         <p class="lv-modal__text"><?= htmlspecialchars($rejectText) ?></p>

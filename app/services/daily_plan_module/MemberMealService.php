@@ -16,11 +16,13 @@
  */
 class MemberMealService
 {
+    // The five meals of every day, in the order members and instructors see them
     public const MEAL_TYPES = [
-        'breakfast' => 'Breakfast',
-        'lunch'     => 'Lunch',
-        'dinner'    => 'Dinner',
-        'snack'     => 'Snacks',
+        'breakfast'    => 'Breakfast',
+        'lunch'        => 'Lunch',
+        'dinner'       => 'Dinner',
+        'pre_workout'  => 'Pre-workout',
+        'post_workout' => 'Post-workout',
     ];
 
     private MealPlanItem $items;

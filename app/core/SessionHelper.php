@@ -16,7 +16,7 @@ class SessionHelper
             'ecommerce_admin'  => '/portal',
             'super_admin'      => '/portal',
             'manager'          => '/portal',
-            'instructor'       => '/instructor',
+            'instructor'       => '/portal/instructor',
         ];
 
         return $redirects[$_SESSION['role_name'] ?? ''] ?? '/member';

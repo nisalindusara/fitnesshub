@@ -285,7 +285,7 @@
                     </div>
 
                     <div class="forgot-password reset-all">
-                        <a href="#" class="forgot-password-link link-reset reset-all">Forgot password?</a>
+                        <a href="/reset-password" class="forgot-password-link link-reset reset-all">Forgot password?</a>
                     </div>
 
                     <p><? if (isset($_SESSION['error'])) {

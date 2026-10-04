@@ -21,7 +21,7 @@
             </div>
 
             <div class="buttons-container">
-                <a href="/onboarding/browse-plans">
+                <a href="/onboarding/membership">
                     <button class="btn btn-primary">
                         GET STARTED
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +33,7 @@
             </div>
 
             <p class="footer-text">
-                By continuing you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
+                By continuing you agree to our <a href="/terms-and-conditions">Terms of Use</a> and <a href="/privacy-policy">Privacy Policy</a>
             </p>
         </div>
     </div>

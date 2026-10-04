@@ -27,4 +27,10 @@ class StoreController extends Controller
         $data['isLoggedIn'] = isset($_SESSION['user_id']);
         $this->render('landing/ecommerce-checkout', 'landing-layout', $data);
     }
+
+    // POST /store/checkout — the page confirms in a dialog with JS; this is the no-JS fallback
+    public function placeOrder(): void
+    {
+        $this->redirect(!empty($_SESSION['user_id']) ? '/member/profile/orders' : '/store');
+    }
 }

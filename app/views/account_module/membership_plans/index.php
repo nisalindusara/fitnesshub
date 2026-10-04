@@ -11,7 +11,7 @@
         <div>
             <h1>Membership Plans</h1>
         </div>
-        <a href="/membership-plans/create" class="mp-btn mp-btn--primary">+ Add Membership Plan</a>
+        <a href="/portal/membership-plans/create" class="mp-btn mp-btn--primary">+ Add Membership Plan</a>
     </div>
 
     <div class="mp-stats">
@@ -22,7 +22,7 @@
     </div>
 
     <div class="mp-panel">
-        <form method="get" action="/membership-plans" class="mp-toolbar">
+        <form method="get" action="/portal/membership-plans" class="mp-toolbar">
             <input class="mp-search" type="search" name="search" value="<?= htmlspecialchars($search) ?>" placeholder="Search membership plans...">
             <select class="mp-select" name="status" onchange="this.form.submit()">
                 <option value="">All Statuses</option>
@@ -54,8 +54,8 @@
                                 <div class="mp-menu-wrap">
                                     <button type="button" class="mp-kebab" data-menu-button aria-label="Plan actions">•••</button>
                                     <div class="mp-menu" data-menu>
-                                        <a href="/membership-plans/show?id=<?= (int) $plan['plan_id'] ?>">View</a>
-                                        <a href="/membership-plans/edit?id=<?= (int) $plan['plan_id'] ?>">Edit</a>
+                                        <a href="/portal/membership-plans/show?id=<?= (int) $plan['plan_id'] ?>">View</a>
+                                        <a href="/portal/membership-plans/edit?id=<?= (int) $plan['plan_id'] ?>">Edit</a>
                                         <?php if (strtoupper($plan['status']) === 'ACTIVE'): ?>
                                             <button type="button" class="mp-menu-danger" data-deactivate-open data-plan-id="<?= (int) $plan['plan_id'] ?>" data-plan-name="<?= htmlspecialchars($plan['plan_name'], ENT_QUOTES) ?>" data-plan-price="<?= htmlspecialchars(number_format((float) $plan['price'], 2), ENT_QUOTES) ?>" data-plan-duration="<?= (int) $plan['duration_days'] ?>" data-plan-pt="<?= (int) $plan['included_pt_sessions'] ?>">Deactivate</button>
                                         <?php endif; ?>
@@ -83,7 +83,7 @@
             <span id="modalSummaryPrice">LKR 0.00</span>
             <span id="modalSummaryPt">0 PT Sessions</span>
         </div>
-        <form method="post" action="/membership-plans/deactivate" class="mp-modal-actions">
+        <form method="post" action="/portal/membership-plans/deactivate" class="mp-modal-actions">
             <input type="hidden" name="plan_id" id="modalPlanId" value="">
             <button type="button" class="mp-btn mp-btn--secondary" data-deactivate-close>Cancel</button>
             <button type="submit" class="mp-btn mp-btn--danger">Deactivate Plan</button>

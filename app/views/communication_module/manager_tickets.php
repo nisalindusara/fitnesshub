@@ -460,7 +460,7 @@
             <span class="badge-priority priority-urgent">Urgent</span>
           </div>
           <div class="card-title">
-            <a href="#" class="ticket-link">Sudden medical emergency - Class coverage neede for today</a>
+            <a href="/portal/leave-requests/review?id=2" class="ticket-link">Sudden medical emergency - Class coverage neede for today</a>
          </div>
           <div class="tag-row">
             <span class="category-tag">Immediate Leave</span>

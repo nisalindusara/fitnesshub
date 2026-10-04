@@ -320,7 +320,7 @@
 
             <div class="cls-actions">
 
-                <a href="/classes">
+                <a href="/portal/classes">
                     <button class="cls-btn" type="button">
                         Discard
                     </button>
@@ -329,7 +329,7 @@
                 <button
                     class="cls-btn cls-primary"
                     type="button"
-                    onclick="window.location.href='/classes'"
+                    onclick="window.location.href='/portal/classes'"
                 >
                     Save Class
                 </button>

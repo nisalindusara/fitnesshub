@@ -1009,7 +1009,7 @@ if ($hasDraft) {
         </svg>
     </button>
     <nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px;">
-        <a href="/my-clients" class="crumb-link">My Clients</a>
+        <a href="/portal/clients" class="crumb-link">My Clients</a>
         <span class="crumb-sep">/</span>
         <span class="crumb-link"><?= htmlspecialchars($memberName) ?></span>
         <span class="crumb-sep">/</span>
@@ -1017,7 +1017,7 @@ if ($hasDraft) {
     </nav>
 </div>
 
-<form class="wp-view" id="wp-form" method="post" action="/my-clients/workout-plan/save" novalidate>
+<form class="wp-view" id="wp-form" method="post" action="/portal/clients/workout-plan/save" novalidate>
     <input type="hidden" name="member_id" value="<?= (int) $memberId ?>">
     <input type="hidden" name="intent" id="wp-intent" value="draft">
     <input type="hidden" name="days_json" id="wp-days-json">
@@ -1154,7 +1154,7 @@ if ($hasDraft) {
                         <p class="wp-client__name"><?= htmlspecialchars($memberName) ?></p>
                         <p class="wp-client__meta"><?= htmlspecialchars($typeLabel) ?> · <?= htmlspecialchars($client['email']) ?></p>
                     </div>
-                    <a href="/messages" class="wp-btn wp-btn--icon" aria-label="Message <?= htmlspecialchars($memberName) ?>">
+                    <a href="/portal/messages" class="wp-btn wp-btn--icon" aria-label="Message <?= htmlspecialchars($memberName) ?>">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                         </svg>
@@ -1284,7 +1284,7 @@ if ($hasDraft) {
 </form>
 
 <?php if ($isEdit): ?>
-    <form method="post" action="/my-clients/workout-plan/delete" id="wp-delete-form">
+    <form method="post" action="/portal/clients/workout-plan/delete" id="wp-delete-form">
         <input type="hidden" name="member_id" value="<?= (int) $memberId ?>">
     </form>
 
@@ -1770,7 +1770,7 @@ if ($hasDraft) {
 
             newSave.disabled = true;
             try {
-                const response = await fetch('/my-clients/exercises', { method: 'POST', body });
+                const response = await fetch('/api/exercises', { method: 'POST', body });
                 const exercise = await response.json();
                 if (!response.ok) throw new Error(exercise.error || 'Could not save the exercise.');
 
@@ -1902,7 +1902,7 @@ if ($hasDraft) {
         copyBtn?.addEventListener('click', async () => {
             copyBtn.disabled = true;
             try {
-                const response = await fetch(`/my-clients/workout-plan/previous?member=${MEMBER_ID}`);
+                const response = await fetch(`/api/workout-plans/previous?member=${MEMBER_ID}`);
                 const previous = await response.json();
                 if (!response.ok) throw new Error(previous.error || 'Could not load the previous plan.');
 

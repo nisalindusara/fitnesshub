@@ -81,6 +81,9 @@
         border: 1px solid #1a202c;
         background-color: #1a202c;
         color: #ffffff;
+        display: inline-block;
+        line-height: normal;
+        text-decoration: none;
     }
 
     .sp-btn:hover {
@@ -207,7 +210,7 @@
             </div>
         </div>
         <div class="sp-actions">
-            <button type="button" class="sp-btn sp-btn-outline">Change password</button>
+            <a href="/reset-password" class="sp-btn sp-btn-outline">Change password</a>
             <button type="button" class="sp-btn">Edit profile</button>
         </div>
     </div>

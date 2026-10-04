@@ -326,7 +326,7 @@ $icon = fn(string $name): string => '<svg width="18" height="18" viewBox="0 0 24
 
 <?php if ($canCancel): ?>
     <div class="lv-modal" id="lv-cancel-modal" hidden>
-        <form class="lv-modal__box" method="post" action="/leave-requests/cancel" role="alertdialog" aria-modal="true" aria-labelledby="lv-cancel-title">
+        <form class="lv-modal__box" method="post" action="/portal/leave-requests/cancel" role="alertdialog" aria-modal="true" aria-labelledby="lv-cancel-title">
             <input type="hidden" name="id" value="<?= (int) $request['id'] ?>">
             <h2 class="lv-modal__title" id="lv-cancel-title">Cancel this approved leave?</h2>
             <p class="lv-modal__text">

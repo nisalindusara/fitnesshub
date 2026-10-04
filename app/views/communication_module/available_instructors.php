@@ -238,7 +238,7 @@
     
     <!-- Header with Back Button -->
     <div class="instructors-card-header">
-      <a href="/communication/user-messages" class="instructors-back-btn" title="Back to messages">
+      <a href="/member/messages/no-coach" class="instructors-back-btn" title="Back to messages">
         <svg class="instructors-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="19" y1="12" x2="5" y2="12"></line>
           <polyline points="12 19 5 12 12 5"></polyline>

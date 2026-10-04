@@ -128,7 +128,7 @@
 <div id="staff-payment-settings-container">
 
     <div class="page-header">
-        <button class="icon-btn" id="payment-settings-back-btn">
+        <button class="icon-btn" id="payment-settings-back-btn" aria-label="Back to payments" onclick="window.location.href='<?= Gate::allows('view_payments_overview') ? '/portal/payments' : '/portal' ?>'">
             <svg class="icon-svg" viewBox="0 0 24 24">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>

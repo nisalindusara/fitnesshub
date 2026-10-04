@@ -11,7 +11,7 @@
             </div>
 
             <!-- Form Fields -->
-            <form class="checkout-form" action="/checkout/billing" method="POST">
+            <form class="checkout-form" action="/store/checkout" method="POST">
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label">First Name*</label>
@@ -72,7 +72,11 @@
 
                     <div class="button-group">
                         <a href="/" class="btn btn-primary">Go to Homepage</a>
-                        <a href="/orders" class="btn btn-outline">Check Order Details</a>
+                        <?php if (!empty($_SESSION['user_id']) && empty($_SESSION['is_staff'])): ?>
+                            <a href="/member/profile/orders" class="btn btn-outline">Check Order Details</a>
+                        <?php else: ?>
+                            <a href="/store" class="btn btn-outline">Continue Shopping</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </dialog>

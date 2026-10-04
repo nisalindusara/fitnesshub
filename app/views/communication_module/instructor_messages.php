@@ -522,6 +522,14 @@
         background: #912018;
     }
 
+    .msg-btn--small {
+        height: 32px;
+        padding: 0 12px;
+        font-size: 13px;
+        margin-left: auto;
+        text-decoration: none;
+    }
+
     .msg-btn:disabled {
         opacity: 0.5;
         cursor: default;
@@ -657,6 +665,9 @@
                         <p id="chatName" class="chat-header__name"></p>
                         <p class="chat-header__meta">Client</p>
                     </div>
+                    <?php if (Gate::allows('view_own_clients')): ?>
+                        <a id="chatProfileLink" class="msg-btn msg-btn--small" href="/portal/clients/profile">View profile</a>
+                    <?php endif; ?>
                 </header>
 
                 <div id="messageList" class="message-stream" aria-live="polite"></div>
@@ -691,10 +702,7 @@
     </div>
 </div>
 
-<?php
-$assetPrefix = strpos($_SERVER['REQUEST_URI'] ?? '', '/fitnesshub/public') !== false ? '/fitnesshub/public' : '';
-?>
 <script>
     const CURRENT_USER_ID = <?= (int) $currentUserId ?>;
 </script>
-<script src="<?= $assetPrefix ?>/assets/js/instructor-messages.js?v=<?= filemtime(__DIR__ . '/../../../public/assets/js/instructor-messages.js') ?>"></script>
+<script src="/assets/js/instructor-messages.js?v=<?= filemtime(__DIR__ . '/../../../public/assets/js/instructor-messages.js') ?>"></script>

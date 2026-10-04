@@ -531,7 +531,7 @@ $describe = function (array $meal): string {
         });
 
         try {
-          const response = await fetch('/member/membership/meal-plan/done', { method: 'POST', body });
+          const response = await fetch('/api/member/meals/done', { method: 'POST', body });
           const result = await response.json();
           if (!response.ok) throw new Error(result.error || 'Could not save.');
         } catch (e) {

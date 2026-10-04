@@ -187,7 +187,7 @@
 
 <div class="select-goal">
     <div class="image-container">
-        <button class="back-btn" onclick="window.location.href='/';">
+        <button class="back-btn" onclick="window.location.href='/onboarding/membership';">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -233,7 +233,7 @@
             </div>
 
             <div class="primary-btn-container">
-                <button class="primary-btn">Continue</button>
+                <button class="primary-btn" onclick="window.location.href='/onboarding/membership/coach-recommend';">Continue</button>
             </div>
         </div>
     </div>

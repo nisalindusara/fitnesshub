@@ -1172,7 +1172,7 @@
     <div class="mgr-section mgr-narrow">
         <div class="mgr-heading-row">
             <div class="mgr-section-title">Flagged Members</div>
-            <a href="#" class="mgr-link">View all</a>
+            <a href="/portal/reports/at-risk" class="mgr-link">View all</a>
         </div>
 
         <div class="mgr-flag-boxes">
@@ -1492,7 +1492,7 @@
         <div class="mgr-ops-group">
             <div class="mgr-ops-head">
                 <span class="mgr-ops-title">Support</span>
-                <a href="#" class="mgr-link">Ticket history</a>
+                <a href="/portal/support-tickets" class="mgr-link">Ticket history</a>
             </div>
             <div class="mgr-ops-stats">
                 <div class="mgr-ops-stat">
@@ -1513,7 +1513,7 @@
         <div class="mgr-ops-group">
             <div class="mgr-ops-head">
                 <span class="mgr-ops-title">Store</span>
-                <a href="#" class="mgr-link">Store reports</a>
+                <a href="/portal/orders" class="mgr-link">Store reports</a>
             </div>
             <div class="mgr-ops-stats">
                 <div class="mgr-ops-stat">
@@ -1534,7 +1534,7 @@
         <div class="mgr-ops-group">
             <div class="mgr-ops-head">
                 <span class="mgr-ops-title">Equipment</span>
-                <a href="#" class="mgr-link">Facility map</a>
+                <a href="/portal/facility-map" class="mgr-link">Facility map</a>
             </div>
             <div class="mgr-ops-stats">
                 <div class="mgr-ops-stat">

@@ -288,7 +288,7 @@
 
 <div class="select-coach-layout">
     <div class="select-coach-left-panel">
-        <button class="back-btn" onclick="window.location.href='/';">
+        <button class="back-btn" onclick="window.location.href='/onboarding/membership/coach-recommend';">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -363,14 +363,14 @@
             </div>
 
             <div class="select-coach-actions">
-                <button class="select-coach-btn-primary">
+                <button class="select-coach-btn-primary" onclick="window.location.href='/onboarding/membership/want-session';">
                     <span class="select-coach-btn-text-primary">Yes, I'll Take a Coach</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.33337 8H12.6667" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M8 3.33337L12.6667 8.00004L8 12.6667" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </button>
-                <button class="select-coach-btn-skip">
+                <button class="select-coach-btn-skip" onclick="window.location.href='/register';">
                     <span class="select-coach-btn-text-skip">I'll decide later</span>
                 </button>
             </div>

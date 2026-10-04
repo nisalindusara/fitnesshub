@@ -553,7 +553,7 @@
 <div class="table-section">
     <div class="section-heading-row">
         <div class="section-heading">Today's Check-Ins</div>
-        <a href="#" class="section-link">View all</a>
+        <a href="/portal/attendance" class="section-link">View all</a>
     </div>
 
     <div class="table-header-row">
@@ -759,7 +759,7 @@
     <div class="panel-right">
         <div class="section-heading-row">
             <div class="section-heading">Memberships Expiring This Week</div>
-            <a href="#" class="section-link">View all</a>
+            <a href="/portal/members" class="section-link">View all</a>
         </div>
 
         <div class="item-list">

@@ -725,8 +725,8 @@
                 </div>
                 <div class="ins-alert-reason">Completed only 30% of her workout plan over the last 2 weeks.</div>
                 <div class="ins-alert-actions">
-                    <button type="button" class="ins-btn">Message</button>
-                    <button type="button" class="ins-btn ins-btn-outline">View progress</button>
+                    <button type="button" class="ins-btn" onclick="window.location.href='/portal/messages'">Message</button>
+                    <button type="button" class="ins-btn ins-btn-outline" onclick="window.location.href='/portal/adherence'">View progress</button>
                 </div>
             </div>
 
@@ -737,8 +737,8 @@
                 </div>
                 <div class="ins-alert-reason">Missed her last 3 booked sessions and hasn't visited since 25 Sep.</div>
                 <div class="ins-alert-actions">
-                    <button type="button" class="ins-btn">Message</button>
-                    <button type="button" class="ins-btn ins-btn-outline">View progress</button>
+                    <button type="button" class="ins-btn" onclick="window.location.href='/portal/messages'">Message</button>
+                    <button type="button" class="ins-btn ins-btn-outline" onclick="window.location.href='/portal/adherence'">View progress</button>
                 </div>
             </div>
 
@@ -752,8 +752,8 @@
         <div class="ins-heading-row">
             <div class="ins-section-title">My Clients</div>
             <div class="ins-list-side">
-                <a href="#" class="ins-link">View all 15</a>
-                <button type="button" class="ins-btn">Create workout plan</button>
+                <a href="/portal/clients" class="ins-link">View all 15</a>
+                <button type="button" class="ins-btn" onclick="window.location.href='/portal/clients'">Create workout plan</button>
             </div>
         </div>
 
@@ -831,11 +831,11 @@
         <div class="ins-section">
             <div class="ins-heading-row">
                 <div class="ins-section-title">Messages</div>
-                <a href="#" class="ins-link">Open messages</a>
+                <a href="/portal/messages" class="ins-link">Open messages</a>
             </div>
 
             <div class="ins-list">
-                <a href="#" class="ins-msg is-unread">
+                <a href="/portal/messages" class="ins-msg is-unread">
                     <span class="ins-msg-dot" aria-hidden="true"></span>
                     <span class="ins-msg-body">
                         <span class="ins-msg-top">
@@ -845,7 +845,7 @@
                         <span class="ins-msg-preview">Should I eat before our session at 12:30 or after?</span>
                     </span>
                 </a>
-                <a href="#" class="ins-msg is-unread">
+                <a href="/portal/messages" class="ins-msg is-unread">
                     <span class="ins-msg-dot" aria-hidden="true"></span>
                     <span class="ins-msg-body">
                         <span class="ins-msg-top">
@@ -855,7 +855,7 @@
                         <span class="ins-msg-preview">My knee felt a bit sore after squats yesterday. Can we swap them today?</span>
                     </span>
                 </a>
-                <a href="#" class="ins-msg is-unread">
+                <a href="/portal/messages" class="ins-msg is-unread">
                     <span class="ins-msg-dot" aria-hidden="true"></span>
                     <span class="ins-msg-body">
                         <span class="ins-msg-top">
@@ -865,7 +865,7 @@
                         <span class="ins-msg-preview">Thanks for this morning! Ticked off everything on today's plan.</span>
                     </span>
                 </a>
-                <a href="#" class="ins-msg">
+                <a href="/portal/messages" class="ins-msg">
                     <span class="ins-msg-dot" aria-hidden="true"></span>
                     <span class="ins-msg-body">
                         <span class="ins-msg-top">
@@ -889,7 +889,7 @@
                         <div class="ins-list-detail">Regular · Muscle gain · 26 Sep</div>
                     </div>
                     <div class="ins-list-side">
-                        <button type="button" class="ins-btn">Create workout plan</button>
+                        <button type="button" class="ins-btn" onclick="window.location.href='/portal/clients'">Create workout plan</button>
                     </div>
                 </div>
                 <div class="ins-list-item">
@@ -899,7 +899,7 @@
                         <div class="ins-list-detail">Day pass · Friday 2 Oct, 5:00 PM</div>
                     </div>
                     <div class="ins-list-side">
-                        <button type="button" class="ins-btn ins-btn-outline">View booking</button>
+                        <button type="button" class="ins-btn ins-btn-outline" onclick="window.location.href='/portal/schedule'">View booking</button>
                     </div>
                 </div>
             </div>
@@ -917,7 +917,7 @@
                         <div class="ins-list-detail">Requested today, 10:30 AM</div>
                     </div>
                     <div class="ins-list-side">
-                        <button type="button" class="ins-btn">Create meal plan</button>
+                        <button type="button" class="ins-btn" onclick="window.location.href='/portal/meal-plan-requests'">Create meal plan</button>
                     </div>
                 </div>
                 <div class="ins-list-item">
@@ -927,7 +927,7 @@
                         <div class="ins-list-detail">Requested 27 Sep</div>
                     </div>
                     <div class="ins-list-side">
-                        <button type="button" class="ins-btn ins-btn-outline">Edit meal plan</button>
+                        <button type="button" class="ins-btn ins-btn-outline" onclick="window.location.href='/portal/meal-plan-requests'">Edit meal plan</button>
                     </div>
                 </div>
             </div>
@@ -939,7 +939,7 @@
     <div class="ins-section">
         <div class="ins-heading-row">
             <div class="ins-section-title">My Week</div>
-            <button type="button" class="ins-btn ins-btn-outline">Manage schedule</button>
+            <button type="button" class="ins-btn ins-btn-outline" onclick="window.location.href='/portal/schedule'">Manage schedule</button>
         </div>
 
         <div class="ins-week-scroll">

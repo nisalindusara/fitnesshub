@@ -404,7 +404,7 @@
       </div>
     </div>
     <div class="profile-actions-column">
-      <a href="/messages" id="btn-message" class="primary-btn-action">
+      <a href="/portal/messages" id="btn-message" class="primary-btn-action">
         <span class="btn-icon">&#9993;</span>
         <span class="btn-text">Message</span>
     </a>

@@ -107,7 +107,7 @@
 
         <div class="order-list">
 
-            <a href="/member/member-profile/order-history/view" class="order-item">
+            <a href="/member/profile/orders/view" class="order-item">
                 <div class="order-info">
                     <div class="order-meta">Order #FH-10892 &middot; October 24, 2024</div>
                     <div class="order-name">FitnessHub Pro Hydro Flask (32oz)</div>
@@ -121,7 +121,7 @@
                 </svg>
             </a>
 
-            <a href="/member/member-profile/order-history/view" class="order-item">
+            <a href="/member/profile/orders/view" class="order-item">
                 <div class="order-info">
                     <div class="order-meta">Order #FH-10741 &middot; October 01, 2024</div>
                     <div class="order-name">Annual VIP All-Access Membership Renewal</div>
@@ -135,7 +135,7 @@
                 </svg>
             </a>
 
-            <a href="/member/member-profile/order-history/view" class="order-item">
+            <a href="/member/profile/orders/view" class="order-item">
                 <div class="order-info">
                     <div class="order-meta">Order #FH-10619 &middot; September 15, 2024</div>
                     <div class="order-name">Whey Isolate Protein (Chocolate, 2.2kg)</div>
@@ -149,7 +149,7 @@
                 </svg>
             </a>
 
-            <a href="/member/member-profile/order-history/view" class="order-item">
+            <a href="/member/profile/orders/view" class="order-item">
                 <div class="order-info">
                     <div class="order-meta">Order #FH-10502 &middot; August 28, 2024</div>
                     <div class="order-name">Personal Training 10-Session Pack</div>
