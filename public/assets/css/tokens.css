@@ -394,6 +394,10 @@
   --fh-font-barlow: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
   --fh-font-barlow-condensed: "Barlow Condensed", "Arial Narrow", sans-serif;
   --fh-font-inter: "Inter", Arial, sans-serif;
+  /* Same font with no fallback list: the browser default (a serif) is the
+     fallback, and Chrome sizes form-control line boxes from it, so this
+     renders differently from --fh-font-inter even when Inter loads. */
+  --fh-font-inter-only: "Inter";
   --fh-font-plus-jakarta: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --fh-font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   /* DM Sans and Arimo are referenced but never loaded, so these

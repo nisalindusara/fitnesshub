@@ -223,9 +223,15 @@ and `--fh-font-ui` (Inter).
   - `minimal.php` sets `font-family: 'Inter'` but loads only Barlow.
   - One staff page uses `'Arimo'`, which is never loaded.
 - **Font stacks merged during the restructure.** Stacks that share a primary
-  font were merged (for example `'Barlow', sans-serif` into the longer Barlow
-  stack). They differ only if the web font fails to load. Worth checking for
-  the offline PWA case.
+  font were merged, for example `'Barlow', sans-serif` into the longer
+  Barlow stack, and `'Inter', sans-serif` into `"Inter", Arial, sans-serif`.
+  Fallback fonts don't only matter when the web font fails: Chrome also uses
+  them to size form-control line boxes. A bare `'Inter'`, with no generic
+  family, shifted a `<select>` by 1px, so it has its own token,
+  `--fh-font-inter-only`. The merged stacks render identically in Chrome on
+  Windows, but form controls may differ by a pixel on macOS, where
+  `sans-serif` isn't Arial. Check on a Mac, or give each original stack its
+  own token.
 - **Inline `style=""` attributes.** About 300 in total, mostly in
   `landing/about.php` (101), `analytics_module/member_analytics.php` (36) and
   `staff/dashboard/_manager-summary.php` (34).
@@ -270,6 +276,8 @@ scoping down to the page once the chrome no longer depends on it.
 | landing/ecommerce-checkout | `*`, `body` | `page-landing-ecommerce-checkout--global` |
 | landing/sample-product | `*`, `body` | `page-landing-sample-product--global` |
 | member/member-profile | `.nav-icon` (also resizes the bottom-dock icons) | `page-member-member-profile--global` |
+| ecommerce_module/add-product | `:root` custom properties (`--accent…`) | `page-ecommerce-module-add-product--global` |
+| ecommerce_module/category_screen | `*`, `body`, `:root` custom properties; `.dropdown` (flagged conservatively: the layout code contains the string `dropdown`) | `page-ecommerce-module-category-screen--global` |
 
 The minimal layout's own `body`/`main` rules (formerly the `<style>` blocks
 in `minimal.php`) sit in `landing.css` under `body.layout-minimal`, a fixed
