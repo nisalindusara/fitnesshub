@@ -6,16 +6,10 @@ Tracks the `refactor/css-structure` work: moving inline `<style>` blocks into
 ## Done
 
 - **Landing (landing-layout.php, minimal.php)**: migrated. 26 of 26 views have no inline `<style>`.
-- **Member (member-layout.php)**: shared files built (Phase 3); page CSS still inline. 0 of 25 views have no inline `<style>`.
+- **Member (member-layout.php)**: migrated. 25 of 25 views have no inline `<style>`.
 - **Staff (staff-layout.php)**: shared files built (Phase 3); page CSS still inline. 10 of 49 views have no inline `<style>`.
 
 ## Views that still have a `<style>` block
-
-### Member (member-layout.php): 25 views
-
-- `analytics_module/`: member_analytics, user_analytics
-- `communication_module/`: Instructor_profile_view, Member_withPT_messages, NonPT_messages, available_instructors, chat_conversation, empty_user_submit_ticket, user_messages, user_submit_ticket, user_ticketForm
-- `member/`: classes, dashboard, meal-plan, member-profile, membership, notification-settings, notifications, order-detail, order-history, payment-history, personal-details, privacy-data, pt-session, workout-schedule
 
 ### Staff (staff-layout.php): 39 views
 
@@ -60,4 +54,4 @@ Views that link a stylesheet from `<body>`: `work_schedule_module/instructor/my_
 
 ## Next step
 
-Phase 4, member surface: move each member view's `<style>` into `pages/member/…` and print `$pageClass`/`$bodyClass` in member-layout.php. Then the staff surface. Phase 5 after that: remove dead CSS and unused files, and update `public/README.md`.
+Phase 4, staff surface: move each staff view's `<style>` into `pages/staff/…` (dashboard partials append theirs), move `instructor-schedule.css` from the `<body>` link of `my_schedule.php` into `$pageStyles`, and print `$pageClass`/`$bodyClass` in staff-layout.php. Phase 5 after that: remove dead CSS and unused files, and update `public/README.md`.

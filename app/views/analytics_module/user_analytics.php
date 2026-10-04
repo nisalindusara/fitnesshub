@@ -1,21 +1,4 @@
-<style>
-  .cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 10px 22px;
-    background-color: #D3272C;
-    border: none;
-    border-radius: 9999px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-  }
-
-  .cta-button:hover {
-    background-color: #BA1F24;
-  }
-</style>
+<?php $pageStyles = ['member/analytics_module/user_analytics']; ?>
 
 <div class="page-content">
   <div class="main-content-card">

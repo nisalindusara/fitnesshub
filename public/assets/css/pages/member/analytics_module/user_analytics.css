@@ -1,0 +1,18 @@
+/* Scoped under .page-analytics-module-user-analytics (the layout's <main> on this page). */
+
+:where(.page-analytics-module-user-analytics) .cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 22px;
+  background-color: var(--fh-red-620);
+  border: none;
+  border-radius: var(--fh-radius-pill);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+:where(.page-analytics-module-user-analytics) .cta-button:hover {
+  background-color: var(--fh-red-690);
+}

@@ -1,0 +1,163 @@
+/* Scoped under .page-communication-module-user-ticketform (the layout's <main> on this page). */
+
+:where(.page-communication-module-user-ticketform) .ticket-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: var(--fh-font-system);
+}
+
+:where(.page-communication-module-user-ticketform) .ticket-card {
+  width: min(94%, 720px);
+  padding: 40px 48px;
+  background: var(--fh-white);
+  border-radius: var(--fh-radius-28);
+  box-shadow: 0 4px 24px var(--fh-black-a04);
+  box-sizing: border-box;
+}
+
+:where(.page-communication-module-user-ticketform) .support-ticket-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 22px;
+}
+
+:where(.page-communication-module-user-ticketform) .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+:where(.page-communication-module-user-ticketform) .form-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--fh-gray-700);
+}
+
+:where(.page-communication-module-user-ticketform) .form-label-optional {
+  font-weight: 400;
+  color: var(--fh-gray-400);
+}
+
+/* Inputs & Select — matches the flat gray fields used across the rest of the app */
+:where(.page-communication-module-user-ticketform) .form-select,
+:where(.page-communication-module-user-ticketform) .form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: var(--fh-gray-100);
+  border: 1px solid transparent;
+  border-radius: var(--fh-radius-12);
+  font-size: 14px;
+  color: var(--fh-gray-900);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+:where(.page-communication-module-user-ticketform) .form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%236B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px 16px;
+  cursor: pointer;
+  color: var(--fh-gray-500);
+}
+
+:where(.page-communication-module-user-ticketform) .form-textarea {
+  width: 100%;
+  height: 140px;
+  padding: 14px 16px;
+  background-color: var(--fh-gray-100);
+  border: 1px solid transparent;
+  border-radius: var(--fh-radius-14);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--fh-gray-900);
+  outline: none;
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+:where(.page-communication-module-user-ticketform) .form-select:focus,
+:where(.page-communication-module-user-ticketform) .form-input:focus,
+:where(.page-communication-module-user-ticketform) .form-textarea:focus {
+  background-color: var(--fh-white);
+  border-color: var(--fh-gray-300);
+}
+
+/* File Upload Field */
+:where(.page-communication-module-user-ticketform) .file-upload-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--fh-gray-100);
+  border-radius: var(--fh-radius-12);
+  padding: 12px 16px;
+  box-sizing: border-box;
+  gap: 10px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+:where(.page-communication-module-user-ticketform) .file-upload-wrapper:hover {
+  background-color: var(--fh-gray-160);
+}
+
+:where(.page-communication-module-user-ticketform) .file-paperclip-icon {
+  width: 18px;
+  height: 18px;
+  stroke: var(--fh-gray-500);
+  flex-shrink: 0;
+}
+
+:where(.page-communication-module-user-ticketform) .file-placeholder-text {
+  font-size: 14px;
+  color: var(--fh-gray-500);
+}
+
+:where(.page-communication-module-user-ticketform) .file-native-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Submit Button */
+:where(.page-communication-module-user-ticketform) .ticket-submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+  background-color: var(--fh-neutral-870);
+  color: var(--fh-white);
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--fh-radius-pill);
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+:where(.page-communication-module-user-ticketform) .ticket-submit-btn:hover {
+  background-color: var(--fh-black);
+  transform: translateY(-1px);
+}
+
+:where(.page-communication-module-user-ticketform) .ticket-submit-btn:active {
+  transform: translateY(0);
+}

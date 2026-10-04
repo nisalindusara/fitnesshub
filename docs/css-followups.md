@@ -269,6 +269,7 @@ scoping down to the page once the chrome no longer depends on it.
 | landing/eCom-landing | `*`, `body` | `page-landing-ecom-landing--global` |
 | landing/ecommerce-checkout | `*`, `body` | `page-landing-ecommerce-checkout--global` |
 | landing/sample-product | `*`, `body` | `page-landing-sample-product--global` |
+| member/member-profile | `.nav-icon` (also resizes the bottom-dock icons) | `page-member-member-profile--global` |
 
 The minimal layout's own `body`/`main` rules (formerly the `<style>` blocks
 in `minimal.php`) sit in `landing.css` under `body.layout-minimal`, a fixed

@@ -1,0 +1,97 @@
+/* Scoped under .page-member-order-history (the layout's <main> on this page). */
+
+:where(.page-member-order-history) .orders-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: var(--fh-font-system);
+}
+
+:where(.page-member-order-history) .orders-card {
+    width: min(94%, 960px);
+    padding: 40px 48px;
+    background: var(--fh-white);
+    border-radius: var(--fh-radius-28);
+    box-shadow: 0 4px 24px var(--fh-black-a04);
+    box-sizing: border-box;
+}
+
+:where(.page-member-order-history) .orders-title {
+    margin: 0 0 24px 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fh-gray-900);
+    letter-spacing: -0.2px;
+}
+
+:where(.page-member-order-history) .order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+:where(.page-member-order-history) .order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 24px;
+    background-color: var(--fh-gray-100);
+    border-radius: var(--fh-radius-16);
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.15s ease;
+}
+
+:where(.page-member-order-history) .order-item:hover {
+    background-color: var(--fh-gray-160);
+}
+
+:where(.page-member-order-history) .order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+:where(.page-member-order-history) .order-meta {
+    font-size: 12.5px;
+    color: var(--fh-gray-400);
+}
+
+:where(.page-member-order-history) .order-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--fh-gray-900);
+    line-height: 1.4;
+}
+
+:where(.page-member-order-history) .order-status-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+:where(.page-member-order-history) .order-amount {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--fh-gray-900);
+}
+
+:where(.page-member-order-history) .order-status {
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+:where(.page-member-order-history) .order-status-completed {
+    color: var(--fh-blue-600);
+}
+
+:where(.page-member-order-history) .order-chevron {
+    flex-shrink: 0;
+}

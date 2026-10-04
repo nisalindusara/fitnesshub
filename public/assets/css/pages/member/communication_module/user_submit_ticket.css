@@ -1,0 +1,285 @@
+/* Scoped under .page-communication-module-user-submit-ticket (the layout's <main> on this page). */
+
+/* Help & Support – page content (id/class selectors only)
+ Font (Plus Jakarta Sans), page background and chrome come from member-layout.
+ Fills the space between the header and the dock with an equal gap above and below,
+ so the page never scrolls. Long lists scroll inside the card.
+
+ Icon = request category. Status colour is carried by the icon and the status text
+ green  resolved
+ amber  in progress
+ grey   open, waiting for the team */
+
+:where(.page-communication-module-user-submit-ticket) #help-support-container {
+  --ink: var(--fh-zinc-900);
+  --muted: var(--fh-slate-500);
+  --line: var(--fh-gray-160);
+  --card: var(--fh-white);
+  --track: var(--fh-gray-100);
+  --green: var(--fh-emerald-630);
+  --green-dark: var(--fh-emerald-720);
+  --green-soft: var(--fh-emerald-80);
+  --amber: var(--fh-yellow-590);
+  --amber-text: var(--fh-yellow-705);
+  --amber-soft: var(--fh-orange-80);
+
+  box-sizing: border-box;
+  width: min(100%, 960px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* member-layout padding is 108px top / 128px bottom; header 76px, dock ~76px */
+  height: calc(100vh - 200px);
+  height: calc(100dvh - 200px);
+  margin: -8px 0 -28px;
+  font-family: var(--fh-font-plus-jakarta);
+  color: var(--ink);
+}
+
+/* ---------- Heading ---------- */
+:where(.page-communication-module-user-submit-ticket) .support-list-header {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-main-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-new-request-btn {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 20px;
+  border-radius: var(--fh-radius-12);
+  background: var(--green);
+  color: var(--fh-white);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-new-request-btn:hover {
+  background: var(--green-dark);
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-new-request-btn:focus-visible {
+  outline: 2.5px solid var(--green);
+  outline-offset: 3px;
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-btn-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+/* ---------- Card (scrolls inside when long) ---------- */
+:where(.page-communication-module-user-submit-ticket) .support-card {
+  flex: 1;
+  min-height: 0;
+  padding: 8px 24px;
+  border-radius: var(--fh-radius-20);
+  background: var(--card);
+  box-shadow: 0 1px 3px var(--fh-gray-900-a04);
+  overflow-y: auto;
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-card::-webkit-scrollbar-thumb {
+  border-radius: var(--fh-radius-pill);
+  background: var(--fh-gray-280);
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-group-title {
+  margin: 18px 0 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-tickets-list {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---------- Ticket row ---------- */
+:where(.page-communication-module-user-submit-ticket) .support-ticket-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-tickets-list .support-ticket-item:last-child {
+  border-bottom: 0;
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-status-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--fh-radius-circle);
+  background: var(--track);
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-status-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-status-icon--resolved {
+  background: var(--green-soft);
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-status-icon--resolved svg {
+  stroke: var(--green);
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-status-icon--progress {
+  background: var(--amber-soft);
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-status-icon--progress svg {
+  stroke: var(--amber-text);
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-content-left {
+  flex: 1;
+  min-width: 0;
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-item-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-item-meta {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-status {
+  flex: none;
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: right;
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-status--resolved {
+  color: var(--green);
+}
+
+:where(.page-communication-module-user-submit-ticket) .ticket-status--progress {
+  color: var(--amber-text);
+}
+
+/* ---------- Mobile (member-layout header is 64px here) ---------- */
+@media (max-width: 768px) {
+  :where(.page-communication-module-user-submit-ticket) #help-support-container {
+    height: calc(100vh - 158px);
+    height: calc(100dvh - 158px);
+    margin: -28px 0 -50px;
+  }
+}
+
+@media (max-width: 520px) {
+  :where(.page-communication-module-user-submit-ticket) #help-support-container {
+    gap: 12px;
+    height: calc(100vh - 178px);
+    height: calc(100dvh - 178px);
+    margin: -28px 0 -30px;
+  }
+
+  :where(.page-communication-module-user-submit-ticket) .support-main-title {
+    font-size: 1.35rem;
+    white-space: nowrap;
+  }
+
+  :where(.page-communication-module-user-submit-ticket) .support-subtitle {
+    font-size: 0.85rem;
+  }
+
+  :where(.page-communication-module-user-submit-ticket) .support-new-request-btn {
+    height: 42px;
+    padding: 0 14px;
+    font-size: 0.85rem;
+  }
+
+  :where(.page-communication-module-user-submit-ticket) .support-card {
+    padding: 4px 16px;
+    border-radius: var(--fh-radius-18);
+  }
+
+  :where(.page-communication-module-user-submit-ticket) .support-ticket-item {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  :where(.page-communication-module-user-submit-ticket) .ticket-status-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  :where(.page-communication-module-user-submit-ticket) .ticket-content-left {
+    flex-basis: calc(100% - 50px);
+  }
+
+  :where(.page-communication-module-user-submit-ticket) .ticket-status {
+    width: 100%;
+    margin-top: -8px;
+    padding-left: 50px;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.page-communication-module-user-submit-ticket) .support-new-request-btn {
+    transition: none;
+  }
+}
+
+:where(.page-communication-module-user-submit-ticket) .support-submitted {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  border-radius: var(--fh-radius-14);
+  background: var(--fh-green-60);
+  border: 1px solid var(--fh-emerald-180);
+  color: var(--fh-green-770);
+  font-size: 14px;
+}

@@ -1,0 +1,137 @@
+/* Scoped under .page-member-member-profile (the layout's <main> on this page).
+   Rules that also styled the layout chrome, <body> or <html> when this CSS was
+   inline are scoped under body.page-member-member-profile--global instead, so they still do. */
+
+:where(.page-member-member-profile) .profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    padding: 32px 10px;
+    gap: 16px;
+    width: 100%;
+    max-width: 808px;
+    background: var(--fh-white);
+    border-radius: var(--fh-radius-24);
+}
+
+:where(.page-member-member-profile) .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+:where(.page-member-member-profile) .avatar-wrapper {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
+}
+
+:where(.page-member-member-profile) .avatar-image {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--fh-radius-circle);
+    object-fit: cover;
+}
+
+:where(.page-member-member-profile) .edit-avatar-badge {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 32px;
+    height: 32px;
+    background: var(--fh-red-595);
+    border: 2px solid var(--fh-white);
+    border-radius: var(--fh-radius-circle);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+:where(.page-member-member-profile) .profile-name {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--fh-black);
+    margin: 0 0 4px 0;
+}
+
+:where(.page-member-member-profile) .profile-subtitle {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--fh-black-a60);
+    margin: 0;
+}
+
+:where(.page-member-member-profile) .menu-card {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    background: var(--fh-gray-200);
+    border-radius: var(--fh-radius-22);
+    padding: 8px 20px;
+    box-sizing: border-box;
+}
+
+:where(.page-member-member-profile) .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--fh-neutral-870-a10);
+    text-decoration: none;
+    color: var(--fh-black);
+    transition: opacity 0.2s ease;
+}
+
+:where(.page-member-member-profile) .menu-item:last-child {
+    border-bottom: none;
+}
+
+:where(.page-member-member-profile) .menu-item:hover {
+    opacity: 0.7;
+}
+
+:where(.page-member-member-profile) .menu-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+:where(body.page-member-member-profile--global) .nav-icon {
+    color: var(--fh-black);
+}
+
+:where(.page-member-member-profile) .menu-text {
+    font-size: 15px;
+    line-height: 22px;
+}
+
+:where(.page-member-member-profile) .logout-form {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+:where(.page-member-member-profile) .logout-button {
+    background: var(--fh-red-595);
+    color: var(--fh-white);
+    font-family: inherit;
+    font-size: 20px;
+    line-height: 18px;
+    padding: 15px 30px;
+    border-radius: var(--fh-radius-11);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+:where(.page-member-member-profile) .logout-button:hover {
+    background: var(--fh-red-660);
+}

@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body<?= isset($bodyClass) ? ' class="' . htmlspecialchars($bodyClass) . '"' : '' ?>>
   <div class="app-layout">
     <!-- Top Navigation Header -->
     <header class="top-header">
@@ -46,7 +46,7 @@
     </header>
 
     <!-- Page Content Container -->
-    <main class="main-content">
+    <main class="main-content <?= htmlspecialchars($pageClass ?? '') ?>">
       <?php echo $content; ?>
     </main>
 

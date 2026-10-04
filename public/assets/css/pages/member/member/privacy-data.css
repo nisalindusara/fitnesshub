@@ -1,0 +1,88 @@
+/* Scoped under .page-member-privacy-data (the layout's <main> on this page). */
+
+:where(.page-member-privacy-data) .privacy-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: var(--fh-font-system);
+}
+
+:where(.page-member-privacy-data) .privacy-card {
+    width: min(94%, 960px);
+    padding: 40px 48px;
+    background: var(--fh-white);
+    border-radius: var(--fh-radius-28);
+    box-shadow: 0 4px 24px var(--fh-black-a04);
+    box-sizing: border-box;
+}
+
+:where(.page-member-privacy-data) .privacy-header {
+    margin-bottom: 24px;
+}
+
+:where(.page-member-privacy-data) .privacy-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fh-gray-900);
+    letter-spacing: -0.2px;
+}
+
+:where(.page-member-privacy-data) .privacy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+:where(.page-member-privacy-data) .privacy-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 20px;
+    background-color: var(--fh-gray-100);
+    border-radius: var(--fh-radius-14);
+}
+
+:where(.page-member-privacy-data) .privacy-item-link {
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.15s ease;
+}
+
+:where(.page-member-privacy-data) .privacy-item-link:hover {
+    background-color: var(--fh-gray-160);
+}
+
+:where(.page-member-privacy-data) .privacy-item-text {
+    min-width: 0;
+}
+
+:where(.page-member-privacy-data) .privacy-item-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fh-gray-900);
+    margin-bottom: 4px;
+}
+
+:where(.page-member-privacy-data) .privacy-item-label-danger {
+    color: var(--fh-red-600);
+}
+
+:where(.page-member-privacy-data) .privacy-item-desc {
+    font-size: 12.5px;
+    color: var(--fh-gray-500);
+    line-height: 1.4;
+}
+
+:where(.page-member-privacy-data) .privacy-chevron {
+    flex-shrink: 0;
+}
+
+:where(.page-member-privacy-data) .privacy-chevron-danger {
+    opacity: 1;
+}
+
+/* Toggle switch */

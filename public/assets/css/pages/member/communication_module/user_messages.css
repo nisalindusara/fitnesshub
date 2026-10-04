@@ -1,0 +1,18 @@
+/* Scoped under .page-communication-module-user-messages (the layout's <main> on this page). */
+
+:where(.page-communication-module-user-messages) .cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 22px;
+  background-color: var(--fh-neutral-950);
+  border: none;
+  border-radius: var(--fh-radius-pill);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+:where(.page-communication-module-user-messages) .cta-button:hover {
+  background-color: var(--fh-neutral-950);
+}
