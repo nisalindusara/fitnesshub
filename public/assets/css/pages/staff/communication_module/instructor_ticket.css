@@ -1,0 +1,290 @@
+/* Scoped under .page-communication-module-instructor-ticket (the layout's <main> on this page). */
+
+/* Container */
+:where(.page-communication-module-instructor-ticket) #main-content-container.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0px 28px 24px 28px;
+  gap: 20px;
+  width: 1068px;
+  box-sizing: border-box;
+  background: var(--fh-white);
+  font-family: var(--fh-font-system);
+  color: var(--fh-gray-900);
+}
+
+/* Breadcrumb Header */
+:where(.page-communication-module-instructor-ticket) .breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0 14px 0;
+  border-bottom: 1px solid var(--fh-neutral-130);
+}
+
+:where(.page-communication-module-instructor-ticket) .back-nav-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--fh-gray-700);
+}
+
+:where(.page-communication-module-instructor-ticket) .nav-arrow-icon {
+  width: 16px;
+  height: 16px;
+}
+
+:where(.page-communication-module-instructor-ticket) .breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+}
+
+:where(.page-communication-module-instructor-ticket) .crumb-dimmed {
+  color: var(--fh-gray-400);
+  font-weight: 500;
+}
+
+:where(.page-communication-module-instructor-ticket) .crumb-separator {
+  color: var(--fh-gray-300);
+  font-size: 13px;
+}
+
+:where(.page-communication-module-instructor-ticket) .crumb-active {
+  color: var(--fh-gray-900);
+  font-weight: 600;
+}
+
+/* Sections */
+:where(.page-communication-module-instructor-ticket) .section-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+:where(.page-communication-module-instructor-ticket) .section-title {
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fh-gray-800);
+}
+
+/* Form Card Area */
+:where(.page-communication-module-instructor-ticket) .request-form-card {
+  background: var(--fh-gray-50);
+  border: 1px solid var(--fh-gray-100);
+  border-radius: var(--fh-radius-12);
+  padding: 20px 24px 20px 24px;
+  box-sizing: border-box;
+}
+
+:where(.page-communication-module-instructor-ticket) .request-entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+:where(.page-communication-module-instructor-ticket) .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+:where(.page-communication-module-instructor-ticket) .form-group-sm {
+  width: 40%;
+}
+
+:where(.page-communication-module-instructor-ticket) .form-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fh-gray-500);
+}
+
+:where(.page-communication-module-instructor-ticket) .input-container {
+  width: 100%;
+}
+
+:where(.page-communication-module-instructor-ticket) .text-input,
+:where(.page-communication-module-instructor-ticket) .text-area-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--fh-white);
+  border: 1px solid var(--fh-slate-200);
+  border-radius: var(--fh-radius-8);
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--fh-gray-800);
+  outline: none;
+  font-family: inherit;
+}
+
+:where(.page-communication-module-instructor-ticket) .text-input::placeholder,
+:where(.page-communication-module-instructor-ticket) .text-area-input::placeholder {
+  color: var(--fh-slate-400);
+  font-size: 13px;
+}
+
+:where(.page-communication-module-instructor-ticket) .text-area-input {
+  resize: vertical;
+  min-height: 80px;
+}
+
+:where(.page-communication-module-instructor-ticket) .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2px;
+}
+
+:where(.page-communication-module-instructor-ticket) .btn-submit {
+  background-color: var(--fh-gray-900);
+  color: var(--fh-white);
+  border: none;
+  border-radius: var(--fh-radius-8);
+  padding: 8px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px var(--fh-black-a05);
+}
+
+/* Requests List Area */
+:where(.page-communication-module-instructor-ticket) .requests-list-block {
+  margin-top: 4px;
+}
+
+:where(.page-communication-module-instructor-ticket) .request-list-header {
+  display: flex;
+  align-items: center;
+  padding: 0 8px 10px 8px;
+  border-bottom: 1px solid var(--fh-slate-120);
+  color: var(--fh-gray-400);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+:where(.page-communication-module-instructor-ticket) .header-col.col-main {
+  flex: 1;
+}
+
+:where(.page-communication-module-instructor-ticket) .header-col.col-date {
+  width: 190px;
+  text-align: right;
+  padding-right: 48px;
+}
+
+:where(.page-communication-module-instructor-ticket) .header-col.col-status {
+  width: 110px;
+  text-align: right;
+}
+
+:where(.page-communication-module-instructor-ticket) .request-list-items {
+  display: flex;
+  flex-direction: column;
+}
+
+:where(.page-communication-module-instructor-ticket) .request-row-item {
+  display: flex;
+  align-items: center;
+  padding: 13px 8px;
+  border-bottom: 1px solid var(--fh-gray-100);
+}
+
+:where(.page-communication-module-instructor-ticket) .row-left-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+}
+
+:where(.page-communication-module-instructor-ticket) .row-expand-arrow {
+  color: var(--fh-gray-400);
+  font-size: 16px;
+  line-height: 1.1;
+  font-weight: 400;
+  user-select: none;
+}
+
+:where(.page-communication-module-instructor-ticket) .row-info-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+:where(.page-communication-module-instructor-ticket) .row-primary-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fh-slate-800);
+}
+
+:where(.page-communication-module-instructor-ticket) .row-secondary-text {
+  font-size: 11.5px;
+  color: var(--fh-slate-400);
+}
+
+:where(.page-communication-module-instructor-ticket) .row-date-text {
+  width: 190px;
+  text-align: right;
+  padding-right: 48px;
+  font-size: 11.5px;
+  color: var(--fh-slate-400);
+}
+
+:where(.page-communication-module-instructor-ticket) .row-badge-wrap {
+  width: 110px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Badges */
+:where(.page-communication-module-instructor-ticket) .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--fh-radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+:where(.page-communication-module-instructor-ticket) .badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--fh-radius-circle);
+}
+
+/* Approved Status */
+:where(.page-communication-module-instructor-ticket) .badge-approved {
+  background-color: var(--fh-green-100);
+  color: var(--fh-green-700);
+}
+
+:where(.page-communication-module-instructor-ticket) .dot-approved {
+  background-color: var(--fh-green-500);
+}
+
+/* Under Review Status */
+:where(.page-communication-module-instructor-ticket) .badge-review {
+  background-color: var(--fh-sky-100);
+  color: var(--fh-sky-700);
+}
+
+:where(.page-communication-module-instructor-ticket) .dot-review {
+  background-color: var(--fh-sky-500);
+}
+
+/* Pending Status */
+:where(.page-communication-module-instructor-ticket) .badge-pending {
+  background-color: var(--fh-yellow-100);
+  color: var(--fh-yellow-700);
+}
+
+:where(.page-communication-module-instructor-ticket) .dot-pending {
+  background-color: var(--fh-yellow-500);
+}

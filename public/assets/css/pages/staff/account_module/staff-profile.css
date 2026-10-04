@@ -1,0 +1,199 @@
+/* Scoped under .page-account-module-staff-profile (the layout's <main> on this page). */
+
+:where(.page-account-module-staff-profile) .sp-page {
+    padding: 32px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* ---------- Header ---------- */
+:where(.page-account-module-staff-profile) .sp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background-color: var(--fh-gray-50);
+    border-radius: var(--fh-radius-16);
+    padding: 28px;
+    margin-bottom: 24px;
+}
+
+:where(.page-account-module-staff-profile) .sp-identity {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+}
+
+:where(.page-account-module-staff-profile) .sp-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--fh-radius-circle);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--fh-sky-90);
+    color: var(--fh-gray-740);
+    font-size: 22px;
+    font-weight: 700;
+    object-fit: cover;
+}
+
+:where(.page-account-module-staff-profile) .sp-name-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+:where(.page-account-module-staff-profile) .sp-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--fh-gray-850);
+}
+
+:where(.page-account-module-staff-profile) .sp-role {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fh-slate-600);
+}
+
+:where(.page-account-module-staff-profile) .sp-meta {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+:where(.page-account-module-staff-profile) .sp-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ---------- Buttons ---------- */
+:where(.page-account-module-staff-profile) .sp-btn {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: var(--fh-radius-8);
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid var(--fh-gray-850);
+    background-color: var(--fh-gray-850);
+    color: var(--fh-white);
+    display: inline-block;
+    line-height: normal;
+    text-decoration: none;
+}
+
+:where(.page-account-module-staff-profile) .sp-btn:hover {
+    background-color: var(--fh-gray-740);
+    border-color: var(--fh-gray-740);
+}
+
+:where(.page-account-module-staff-profile) .sp-btn-outline {
+    background-color: transparent;
+    color: var(--fh-gray-740);
+    border-color: var(--fh-slate-300);
+}
+
+:where(.page-account-module-staff-profile) .sp-btn-outline:hover {
+    background-color: var(--fh-slate-120);
+    border-color: var(--fh-slate-300);
+}
+
+:where(.page-account-module-staff-profile) .sp-btn:focus-visible {
+    outline: 2px solid var(--fh-sky-605);
+    outline-offset: 2px;
+}
+
+/* ---------- Detail panels ---------- */
+:where(.page-account-module-staff-profile) .sp-row {
+    display: flex;
+    gap: 24px;
+}
+
+:where(.page-account-module-staff-profile) .sp-panel {
+    flex: 1;
+    min-width: 0;
+    background-color: var(--fh-gray-50);
+    border-radius: var(--fh-radius-16);
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+:where(.page-account-module-staff-profile) .sp-panel-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fh-gray-740);
+    margin-bottom: 16px;
+}
+
+:where(.page-account-module-staff-profile) .sp-details {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+:where(.page-account-module-staff-profile) .sp-detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--fh-slate-120);
+    font-size: 13px;
+}
+
+:where(.page-account-module-staff-profile) .sp-detail:first-child {
+    padding-top: 0;
+}
+
+:where(.page-account-module-staff-profile) .sp-detail:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+:where(.page-account-module-staff-profile) .sp-label {
+    color: var(--fh-slate-380);
+    flex-shrink: 0;
+}
+
+:where(.page-account-module-staff-profile) .sp-value {
+    color: var(--fh-gray-740);
+    font-weight: 500;
+    text-align: right;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+:where(.page-account-module-staff-profile) .sp-value-green {
+    color: var(--fh-emerald-560);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    :where(.page-account-module-staff-profile) .sp-row {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    :where(.page-account-module-staff-profile) .sp-page {
+        padding: 16px;
+    }
+
+    :where(.page-account-module-staff-profile) .sp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    :where(.page-account-module-staff-profile) .sp-actions {
+        width: 100%;
+    }
+
+    :where(.page-account-module-staff-profile) .sp-actions .sp-btn {
+        flex: 1;
+    }
+}

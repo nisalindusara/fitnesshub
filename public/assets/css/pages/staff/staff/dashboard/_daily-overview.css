@@ -1,0 +1,459 @@
+/* Scoped under .page-staff-dashboard-index (the layout's <main> on this page). */
+
+/* ---------- Metrics ---------- */
+:where(.page-staff-dashboard-index) .metrics-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+:where(.page-staff-dashboard-index) .metric-card {
+    flex: 1;
+    padding: 24px;
+    border-radius: var(--fh-radius-12);
+    box-sizing: border-box;
+}
+
+:where(.page-staff-dashboard-index) .bg-light-blue {
+    background-color: var(--fh-sky-90);
+}
+
+:where(.page-staff-dashboard-index) .bg-light-gray {
+    background-color: var(--fh-slate-120);
+}
+
+:where(.page-staff-dashboard-index) .metric-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fh-gray-740);
+    margin-bottom: 12px;
+}
+
+:where(.page-staff-dashboard-index) .metric-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--fh-gray-850);
+}
+
+:where(.page-staff-dashboard-index) .metric-sub {
+    font-size: 12px;
+    color: var(--fh-slate-470);
+    margin-top: 6px;
+}
+
+/* ---------- Shared section / panel ---------- */
+:where(.page-staff-dashboard-index) .table-section {
+    background-color: var(--fh-gray-50);
+    border-radius: var(--fh-radius-16);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-sizing: border-box;
+}
+
+:where(.page-staff-dashboard-index) .section-heading {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fh-gray-740);
+    margin-bottom: 24px;
+}
+
+:where(.page-staff-dashboard-index) .section-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+}
+
+:where(.page-staff-dashboard-index) .section-heading-row .section-heading {
+    margin-bottom: 0;
+}
+
+:where(.page-staff-dashboard-index) .section-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fh-slate-600);
+    text-decoration: none;
+}
+
+:where(.page-staff-dashboard-index) .section-link:hover {
+    text-decoration: underline;
+}
+
+:where(.page-staff-dashboard-index) .panels-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+:where(.page-staff-dashboard-index) .panel-left,
+:where(.page-staff-dashboard-index) .panel-right {
+    flex: 1;
+    background-color: var(--fh-gray-50);
+    border-radius: var(--fh-radius-16);
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+:where(.page-staff-dashboard-index) .panel-wide {
+    flex: 3;
+}
+
+:where(.page-staff-dashboard-index) .panel-narrow {
+    flex: 2;
+}
+
+/* ---------- Buttons ---------- */
+:where(.page-staff-dashboard-index) .btn-dark {
+    background-color: var(--fh-gray-850);
+    color: var(--fh-white);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--fh-radius-6);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+:where(.page-staff-dashboard-index) .btn-dark:hover {
+    background-color: var(--fh-gray-740);
+}
+
+:where(.page-staff-dashboard-index) .btn-dark:focus-visible,
+:where(.page-staff-dashboard-index) .action-tile:focus-visible,
+:where(.page-staff-dashboard-index) .lookup-input:focus-visible,
+:where(.page-staff-dashboard-index) .section-link:focus-visible {
+    outline: 2px solid var(--fh-sky-605);
+    outline-offset: 2px;
+}
+
+/* ---------- Member lookup ---------- */
+:where(.page-staff-dashboard-index) .lookup-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+:where(.page-staff-dashboard-index) .lookup-input {
+    flex: 1;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--fh-gray-740);
+    background-color: var(--fh-white);
+    border: 1px solid var(--fh-slate-200);
+    border-radius: var(--fh-radius-8);
+    padding: 12px 14px;
+    box-sizing: border-box;
+}
+
+:where(.page-staff-dashboard-index) .lookup-input::placeholder {
+    color: var(--fh-slate-380);
+}
+
+:where(.page-staff-dashboard-index) .lookup-bar .btn-dark {
+    font-size: 13px;
+    padding: 0 18px;
+    border-radius: var(--fh-radius-8);
+}
+
+:where(.page-staff-dashboard-index) .lookup-result {
+    background-color: var(--fh-white);
+    border-radius: var(--fh-radius-12);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-left: 4px solid var(--fh-emerald-560);
+}
+
+:where(.page-staff-dashboard-index) .lookup-result.is-expired {
+    border-left-color: var(--fh-red-430);
+}
+
+:where(.page-staff-dashboard-index) .lookup-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+:where(.page-staff-dashboard-index) .lookup-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--fh-gray-850);
+}
+
+:where(.page-staff-dashboard-index) .lookup-meta {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+:where(.page-staff-dashboard-index) .lookup-facts {
+    display: flex;
+    gap: 28px;
+}
+
+:where(.page-staff-dashboard-index) .fact {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+:where(.page-staff-dashboard-index) .fact-label {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+:where(.page-staff-dashboard-index) .fact-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fh-gray-740);
+}
+
+:where(.page-staff-dashboard-index) .lookup-hint {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+    margin-top: 12px;
+}
+
+/* ---------- Quick actions ---------- */
+:where(.page-staff-dashboard-index) .actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+:where(.page-staff-dashboard-index) .action-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+    font-family: inherit;
+    background-color: var(--fh-white);
+    border: 1px solid var(--fh-slate-120);
+    border-radius: var(--fh-radius-12);
+    padding: 16px;
+    cursor: pointer;
+}
+
+:where(.page-staff-dashboard-index) .action-tile:hover {
+    border-color: var(--fh-slate-300);
+}
+
+:where(.page-staff-dashboard-index) .action-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-gray-740);
+}
+
+:where(.page-staff-dashboard-index) .action-desc {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+/* ---------- Check-in table ---------- */
+:where(.page-staff-dashboard-index) .table-header-row {
+    display: flex;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--fh-slate-120);
+    font-size: 13px;
+    color: var(--fh-slate-380);
+    font-weight: 500;
+}
+
+:where(.page-staff-dashboard-index) .table-row {
+    display: flex;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--fh-slate-120);
+    font-size: 13px;
+    align-items: center;
+}
+
+:where(.page-staff-dashboard-index) .table-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+:where(.page-staff-dashboard-index) .col-id {
+    width: 15%;
+}
+
+:where(.page-staff-dashboard-index) .col-name {
+    width: 30%;
+}
+
+:where(.page-staff-dashboard-index) .col-type {
+    width: 20%;
+}
+
+:where(.page-staff-dashboard-index) .col-time {
+    width: 15%;
+}
+
+:where(.page-staff-dashboard-index) .col-method {
+    width: 20%;
+}
+
+/* ---------- Text helpers ---------- */
+:where(.page-staff-dashboard-index) .text-mono {
+    font-family: var(--fh-font-mono);
+    color: var(--fh-slate-380);
+}
+
+:where(.page-staff-dashboard-index) .text-bold {
+    font-weight: 600;
+    color: var(--fh-gray-740);
+}
+
+:where(.page-staff-dashboard-index) .text-muted {
+    color: var(--fh-slate-470);
+}
+
+:where(.page-staff-dashboard-index) .text-green {
+    color: var(--fh-emerald-560);
+    font-weight: 500;
+}
+
+:where(.page-staff-dashboard-index) .text-red {
+    color: var(--fh-red-430);
+}
+
+:where(.page-staff-dashboard-index) .text-amber {
+    color: var(--fh-orange-670);
+    font-weight: 500;
+}
+
+/* ---------- Generic list rows (classes, floor duty, payments, expiring) ---------- */
+:where(.page-staff-dashboard-index) .item-list {
+    display: flex;
+    flex-direction: column;
+}
+
+:where(.page-staff-dashboard-index) .list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--fh-slate-120);
+}
+
+:where(.page-staff-dashboard-index) .list-item:first-child {
+    padding-top: 0;
+}
+
+:where(.page-staff-dashboard-index) .list-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+:where(.page-staff-dashboard-index) .item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+:where(.page-staff-dashboard-index) .item-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-gray-740);
+}
+
+:where(.page-staff-dashboard-index) .item-details {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+:where(.page-staff-dashboard-index) .item-side {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+:where(.page-staff-dashboard-index) .item-side-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+:where(.page-staff-dashboard-index) .time-text {
+    font-size: 12px;
+    color: var(--fh-slate-380);
+}
+
+:where(.page-staff-dashboard-index) .slots-text {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fh-slate-600);
+}
+
+:where(.page-staff-dashboard-index) .amount-text {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fh-gray-740);
+    white-space: nowrap;
+}
+
+:where(.page-staff-dashboard-index) .duty-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--fh-radius-circle);
+    background-color: var(--fh-emerald-560);
+    flex-shrink: 0;
+}
+
+:where(.page-staff-dashboard-index) .duty-dot.is-upcoming {
+    background-color: var(--fh-slate-300);
+}
+
+:where(.page-staff-dashboard-index) .duty-name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    :where(.page-staff-dashboard-index) .metrics-row {
+        flex-wrap: wrap;
+    }
+
+    :where(.page-staff-dashboard-index) .metric-card {
+        flex: 1 1 calc(50% - 8px);
+    }
+
+    :where(.page-staff-dashboard-index) .panels-row {
+        flex-direction: column;
+    }
+
+    :where(.page-staff-dashboard-index) .lookup-result {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    :where(.page-staff-dashboard-index) .lookup-facts {
+        flex-wrap: wrap;
+        gap: 16px 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    :where(.page-staff-dashboard-index) .metric-card {
+        flex: 1 1 100%;
+    }
+
+    :where(.page-staff-dashboard-index) .table-section {
+        overflow-x: auto;
+    }
+
+    :where(.page-staff-dashboard-index) .table-header-row,
+    :where(.page-staff-dashboard-index) .table-row {
+        min-width: 560px;
+    }
+
+    :where(.page-staff-dashboard-index) .actions-grid {
+        grid-template-columns: 1fr;
+    }
+}

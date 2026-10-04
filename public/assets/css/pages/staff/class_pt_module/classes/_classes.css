@@ -1,0 +1,36 @@
+/* Page header and table styles shared by the class screens.
+   Used by: create, index, show. */
+
+.cls-head p {
+  margin: 6px 0 0;
+  color: var(--fh-slate-405);
+  font-size: 13px;
+}
+
+.cls-table-wrap {
+  background: var(--fh-white);
+  border: 1px solid var(--fh-gray-200);
+  border-radius: var(--fh-radius-10);
+  overflow: hidden;
+}
+
+.cls-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.cls-table th {
+  background: var(--fh-gray-50);
+  color: var(--fh-slate-510);
+  text-transform: uppercase;
+  font-size: 10px;
+  text-align: left;
+  padding: 12px 16px;
+}
+
+.cls-primary {
+  background: var(--fh-zinc-780);
+  color: var(--fh-white);
+  border-color: var(--fh-zinc-780);
+}

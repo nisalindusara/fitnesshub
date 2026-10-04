@@ -1,0 +1,6 @@
+/* Delivered-status colour shared by the order list and order detail pages.
+   Used by: order-detail, order-history. */
+
+.order-status-delivered {
+  color: var(--fh-green-600);
+}

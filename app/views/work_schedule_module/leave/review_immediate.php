@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/_shared.php';
+$pageStyles[] = 'staff/work_schedule_module/leave/review_immediate';
 
 $leaveDate = new DateTimeImmutable($request['start_date']);
 $submitted = new DateTimeImmutable($request['submitted_at']);
@@ -15,45 +16,6 @@ foreach ($sessions as $s) {
     }
 }
 ?>
-<style>
-    .lv-countdown {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 16px;
-        flex-wrap: wrap;
-    }
-
-    .lv-countdown__label {
-        display: block;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        color: rgba(28, 28, 28, 0.45);
-    }
-
-    .lv-countdown__row {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-top: 4px;
-    }
-
-    .lv-countdown__time {
-        font-size: 34px;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        font-variant-numeric: tabular-nums;
-    }
-
-    .lv-countdown__sub {
-        display: block;
-        margin-top: 2px;
-        font-size: 12px;
-        color: rgba(28, 28, 28, 0.5);
-    }
-</style>
 
 <div class="page-header">
     <nav class="lv-crumbs" aria-label="Breadcrumb">

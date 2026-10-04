@@ -1,0 +1,586 @@
+/* Scoped under .page-work-schedule-module-instructor-my-schedule (the layout's <main> on this page). */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-page {
+    width: 100%;
+    padding: 24px 28px 40px;
+    color: var(--fh-slate-850);
+}
+
+/* Breadcrumb */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    color: var(--fh-slate-430);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-breadcrumb span {
+    color: var(--fh-gray-325);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-breadcrumb strong {
+    color: var(--fh-gray-700);
+    font-weight: 600;
+}
+
+/* Header */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-page-head h1 {
+    margin: 0;
+
+    font-size: 27px;
+    line-height: 1.2;
+
+    font-weight: 700;
+    letter-spacing: -0.4px;
+
+    color: var(--fh-slate-850);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-page-head p {
+    margin: 6px 0 0;
+
+    font-size: 13px;
+    color: var(--fh-gray-420);
+}
+
+/* Right header controls */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-head-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-week-control {
+    height: 37px;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid var(--fh-slate-220);
+    border-radius: var(--fh-radius-7);
+
+    background: var(--fh-white);
+    overflow: hidden;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-week-control span {
+    padding: 0 12px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    color: var(--fh-slate-560);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-icon-btn {
+    width: 34px;
+    height: 36px;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+
+    color: var(--fh-slate-510);
+    font-size: 16px;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-icon-btn:hover {
+    background: var(--fh-gray-100);
+}
+
+/* Main calendar card */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-card {
+    width: 100%;
+
+    background: var(--fh-white);
+
+    border: 1px solid var(--fh-slate-200);
+    border-radius: var(--fh-radius-12);
+
+    overflow: hidden;
+}
+
+/* Calendar toolbar */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-toolbar {
+    min-height: 57px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 14px;
+
+    border-bottom: 1px solid var(--fh-slate-180);
+
+    background: var(--fh-gray-50);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-tools {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-tool-btn {
+    width: 33px;
+    height: 33px;
+
+    border: 0;
+    border-radius: var(--fh-radius-6);
+
+    background: transparent;
+
+    color: var(--fh-gray-700);
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-tool-btn:hover {
+    background: var(--fh-slate-120);
+}
+
+/* Search */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-search {
+    width: 220px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 10px;
+
+    background: var(--fh-white);
+
+    border: 1px solid var(--fh-gray-230);
+    border-radius: var(--fh-radius-8);
+
+    color: var(--fh-slate-405);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-search input {
+    width: 100%;
+
+    border: 0;
+    outline: 0;
+
+    padding-left: 7px;
+
+    font-size: 12px;
+
+    background: transparent;
+    color: var(--fh-gray-700);
+}
+
+/* Day header */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-header {
+    display: grid;
+
+    grid-template-columns:
+        78px
+        repeat(7, minmax(115px, 1fr));
+
+    border-bottom: 1px solid var(--fh-gray-230);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-time-header {
+    min-height: 77px;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-day-header {
+    position: relative;
+
+    min-height: 77px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 6px;
+
+    border-left: 1px solid var(--fh-gray-200);
+
+    background: var(--fh-gray-50);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-day-header span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--fh-slate-510);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-day-header strong {
+    font-size: 17px;
+    font-weight: 700;
+
+    color: var(--fh-slate-770);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-day-header.is-current {
+    background: var(--fh-gray-100);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-day-header.is-current strong {
+    color: var(--fh-red-520);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-current-indicator {
+    position: absolute;
+
+    bottom: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 38px;
+    height: 4px;
+
+    border-radius: var(--fh-radius-4) var(--fh-radius-4) 0 0;
+
+    background: var(--fh-gray-900);
+}
+
+/* Body */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-body {
+    display: grid;
+
+    grid-template-columns:
+        78px
+        repeat(7, minmax(115px, 1fr));
+
+    min-width: 950px;
+}
+
+/* Time labels */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-times {
+    height: 880px;
+
+    background: var(--fh-white);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-time-label {
+    height: 88px;
+
+    padding: 14px 11px 0 0;
+
+    text-align: right;
+
+    border-bottom: 1px solid var(--fh-gray-200);
+
+    font-size: 11px;
+    color: var(--fh-gray-460);
+}
+
+/* Day columns */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-day-column {
+    position: relative;
+
+    height: 880px;
+
+    border-left: 1px solid var(--fh-slate-220);
+
+    background: var(--fh-white);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-hour-line {
+    height: 88px;
+
+    border-bottom: 1px solid var(--fh-gray-200);
+}
+
+/* Weekend subtle background */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-day-column:nth-child(7),
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-day-column:nth-child(8) {
+    background: var(--fh-gray-50);
+}
+
+/* Events */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event {
+    position: absolute;
+
+    left: 7px;
+    right: 7px;
+
+    box-sizing: border-box;
+
+    padding: 9px 9px;
+
+    border-radius: var(--fh-radius-8);
+
+    overflow: hidden;
+
+    border: 1px solid transparent;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event-time {
+    margin-bottom: 4px;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event h3 {
+    margin: 0 0 3px;
+
+    font-size: 12px;
+    line-height: 1.25;
+
+    font-weight: 700;
+
+    color: var(--fh-slate-850);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event p {
+    margin: 0;
+
+    font-size: 10px;
+    line-height: 1.35;
+
+    color: var(--fh-slate-510);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event-status {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 6px;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event-status span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: var(--fh-radius-circle);
+}
+
+/* Class session */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--class {
+    background: var(--fh-red-60);
+    border-color: var(--fh-red-250);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--class .ws-event-time,
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--class .ws-event-status {
+    color: var(--fh-red-520);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--class .ws-event-status span {
+    background: var(--fh-red-520);
+}
+
+/* PT */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--pt {
+    background: var(--fh-indigo-50);
+    border-color: var(--fh-blue-260);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--pt .ws-event-time,
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--pt .ws-event-status {
+    color: var(--fh-blue-600);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--pt .ws-event-status span {
+    background: var(--fh-blue-600);
+}
+
+/* Floor duty */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--floor {
+    background: var(--fh-slate-150);
+    border-color: var(--fh-slate-310);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--floor .ws-event-time,
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--floor .ws-event-status {
+    color: var(--fh-slate-560);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--floor .ws-event-status span {
+    background: var(--fh-slate-560);
+}
+
+/* Leave */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--leave {
+    background: var(--fh-emerald-80);
+    border-color: var(--fh-emerald-340);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--leave .ws-event-time,
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--leave .ws-event-status {
+    color: var(--fh-emerald-595);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--leave .ws-event-status span {
+    background: var(--fh-emerald-595);
+}
+
+/* Replacement */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--replacement {
+    background: var(--fh-amber-70);
+    border-color: var(--fh-amber-370);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--replacement .ws-event-time,
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--replacement .ws-event-status {
+    color: var(--fh-yellow-630);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event--replacement .ws-event-status span {
+    background: var(--fh-yellow-630);
+}
+
+/* Legend */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-legend {
+    min-height: 56px;
+
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    padding: 0 16px;
+
+    border-top: 1px solid var(--fh-gray-200);
+
+    font-size: 11px;
+    color: var(--fh-gray-560);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-legend > div {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-legend-title {
+    font-size: 10px;
+    color: var(--fh-slate-475);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-dot {
+    width: 8px;
+    height: 8px;
+
+    display: inline-block;
+
+    border-radius: var(--fh-radius-circle);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-dot--class {
+    background: var(--fh-red-520);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-dot--pt {
+    background: var(--fh-blue-600);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-dot--floor {
+    background: var(--fh-slate-560);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-dot--leave {
+    background: var(--fh-emerald-595);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-dot--replacement {
+    background: var(--fh-yellow-630);
+}
+
+/* Search hiding */
+
+:where(.page-work-schedule-module-instructor-my-schedule) .ws-event.is-hidden {
+    display: none;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+
+    :where(.page-work-schedule-module-instructor-my-schedule) .ws-page-head {
+        flex-direction: column;
+    }
+
+    :where(.page-work-schedule-module-instructor-my-schedule) .ws-calendar-card {
+        overflow-x: auto;
+    }
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .schedule-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) #btn-request-leave.btn-leave-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--fh-white);
+  color: var(--fh-gray-700);
+  border: 1px solid var(--fh-gray-200);
+  padding: 7px 14px;
+  border-radius: var(--fh-radius-8);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 1px 2px var(--fh-black-a04);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) #btn-request-leave.btn-leave-action:hover {
+  background-color: var(--fh-gray-50);
+  border-color: var(--fh-gray-300);
+  color: var(--fh-gray-900);
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .btn-leave-icon {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+:where(.page-work-schedule-module-instructor-my-schedule) .btn-leave-text {
+  line-height: 1;
+}

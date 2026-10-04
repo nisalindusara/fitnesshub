@@ -1,0 +1,488 @@
+/* Look shared by the leave-request screens (review_planned, review_immediate,
+   result), all of which include _shared.php. */
+
+.lv-page {
+    max-width: 1120px;
+    padding: 20px 28px 40px;
+    font-family: var(--fh-font-inter);
+    color: var(--fh-neutral-870);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+.lv-page *,
+.lv-page *::before,
+.lv-page *::after,
+.lv-modal * {
+    box-sizing: border-box;
+}
+
+.lv-crumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.lv-crumbs span {
+    color: var(--fh-neutral-870-a40);
+}
+
+.lv-crumbs .lv-crumbs__sep {
+    color: var(--fh-neutral-870-a20);
+}
+
+.lv-crumbs .lv-crumbs__current {
+    color: var(--fh-neutral-870);
+    font-weight: 500;
+}
+
+/* Heading */
+.lv-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.lv-title {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.lv-subtitle {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: var(--fh-neutral-870-a55);
+}
+
+.lv-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--fh-neutral-870-a70);
+    text-decoration: none;
+}
+
+.lv-back:hover {
+    color: var(--fh-neutral-870);
+}
+
+/* Cards */
+.lv-card {
+    border: 1px solid var(--fh-neutral-870-a10);
+    border-radius: var(--fh-radius-12);
+    background: var(--fh-white);
+    overflow: hidden;
+}
+
+.lv-card__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--fh-neutral-870-a08);
+}
+
+.lv-card__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.lv-card__meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--fh-neutral-870-a45);
+}
+
+.lv-count {
+    min-width: 22px;
+    padding: 1px 7px;
+    border-radius: var(--fh-radius-pill);
+    background: var(--fh-neutral-870-a06);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--fh-neutral-870-a60);
+    text-align: center;
+}
+
+.lv-fields {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px 24px;
+    padding: 18px;
+}
+
+.lv-fields--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.lv-field__label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--fh-neutral-870-a45);
+}
+
+.lv-field__value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.lv-field__sub {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: var(--fh-neutral-870-a50);
+}
+
+/* Chips */
+.lv-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: var(--fh-radius-pill);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.lv-chip::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: var(--fh-radius-circle);
+    background: currentColor;
+}
+
+.lv-chip--plain::before {
+    display: none;
+}
+
+.lv-chip--amber {
+    background: var(--fh-orange-60);
+    color: var(--fh-yellow-660);
+}
+
+.lv-chip--green {
+    background: var(--fh-emerald-80);
+    color: var(--fh-green-770);
+}
+
+.lv-chip--red {
+    background: var(--fh-red-70);
+    color: var(--fh-red-670);
+}
+
+.lv-chip--blue {
+    background: var(--fh-indigo-60);
+    color: var(--fh-blue-700);
+}
+
+.lv-chip--orange {
+    background: var(--fh-orange-85);
+    color: var(--fh-orange-700);
+}
+
+.lv-chip--grey {
+    background: var(--fh-neutral-870-a06);
+    color: var(--fh-neutral-870-a65);
+}
+
+.lv-chip svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* Avatars */
+.lv-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--fh-radius-circle);
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--fh-neutral-870-a06);
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--fh-neutral-870-a55);
+}
+
+.lv-avatar--lg {
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
+}
+
+.lv-avatar--green {
+    background: var(--fh-emerald-80);
+    color: var(--fh-green-770);
+}
+
+/* Sessions table */
+.lv-table-wrap {
+    overflow-x: auto;
+}
+
+.lv-table {
+    width: 100%;
+    min-width: 820px;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.lv-table th {
+    padding: 10px 18px;
+    background: var(--fh-gray-50);
+    border-bottom: 1px solid var(--fh-neutral-870-a08);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--fh-neutral-870-a45);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.lv-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--fh-neutral-870-a06);
+    vertical-align: middle;
+}
+
+.lv-table tr:last-child td {
+    border-bottom: none;
+}
+
+.lv-date {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.lv-time {
+    color: var(--fh-neutral-870-a65);
+    white-space: nowrap;
+}
+
+.lv-type {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: var(--fh-radius-6);
+    background: var(--fh-neutral-870-a06);
+    font-size: 12px;
+    color: var(--fh-neutral-870-a70);
+    white-space: nowrap;
+}
+
+.lv-cm {
+    display: block;
+    font-weight: 500;
+}
+
+.lv-cm-sub {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--fh-neutral-870-a50);
+}
+
+.lv-person {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.lv-muted {
+    color: var(--fh-neutral-870-a35);
+}
+
+.lv-note {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--fh-neutral-870-a50);
+}
+
+.lv-note--red {
+    color: var(--fh-red-670);
+}
+
+.lv-empty {
+    padding: 28px 18px;
+    font-size: 14px;
+    color: var(--fh-neutral-870-a50);
+    text-align: center;
+}
+
+.lv-foot-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-top: 1px solid var(--fh-neutral-870-a08);
+    background: var(--fh-gray-50);
+    font-size: 12px;
+    color: var(--fh-neutral-870-a55);
+}
+
+/* Actions */
+.lv-actions {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.lv-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 18px;
+    border: 1px solid var(--fh-neutral-870-a14);
+    border-radius: var(--fh-radius-10);
+    background: var(--fh-white);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fh-neutral-870);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.lv-btn:hover {
+    background: var(--fh-gray-50);
+}
+
+.lv-btn--dark {
+    background: var(--fh-neutral-870);
+    border-color: var(--fh-neutral-870);
+    color: var(--fh-white);
+}
+
+.lv-btn--dark:hover {
+    background: var(--fh-neutral-750);
+}
+
+.lv-btn--reject {
+    border-color: var(--fh-red-260);
+    background: var(--fh-red-35);
+    color: var(--fh-red-670);
+}
+
+.lv-btn--reject:hover {
+    background: var(--fh-red-70);
+}
+
+.lv-btn--danger {
+    background: var(--fh-red-670);
+    border-color: var(--fh-red-670);
+    color: var(--fh-white);
+}
+
+.lv-btn--danger:hover {
+    background: var(--fh-red-770);
+}
+
+.lv-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.lv-alert {
+    padding: 12px 16px;
+    border: 1px solid var(--fh-red-170);
+    border-radius: var(--fh-radius-10);
+    background: var(--fh-red-60);
+    font-size: 14px;
+    color: var(--fh-red-710);
+}
+
+/* Confirm dialog */
+.lv-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: var(--fh-neutral-930-a40);
+    font-family: var(--fh-font-inter);
+    color: var(--fh-neutral-870);
+}
+
+.lv-modal[hidden] {
+    display: none;
+}
+
+.lv-modal__box {
+    width: min(440px, 100%);
+    padding: 22px;
+    border-radius: var(--fh-radius-14);
+    background: var(--fh-white);
+    box-shadow: 0 24px 48px -12px var(--fh-black-a25);
+}
+
+.lv-modal__title {
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.lv-modal__text {
+    margin: 0 0 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--fh-neutral-870-a65);
+}
+
+.lv-modal__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+@media (max-width: 900px) {
+
+    .lv-fields,
+    .lv-fields--3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .lv-page {
+        padding: 16px;
+    }
+
+    .lv-fields,
+    .lv-fields--3 {
+        grid-template-columns: 1fr;
+    }
+}

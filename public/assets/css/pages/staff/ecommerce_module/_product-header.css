@@ -1,0 +1,48 @@
+/* Page header and field labels shared by the product screens.
+   Used by: product-detail, product-detail-edit, product-grid. */
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-svg {
+  display: block;
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.breadcrumb-text {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--fh-neutral-870-a40);
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.content-body {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field-label {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  color: var(--fh-neutral-870-a40);
+}

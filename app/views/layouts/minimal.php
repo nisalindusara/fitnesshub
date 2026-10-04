@@ -9,32 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <?php $surfaceStyle = 'landing';
+    include __DIR__ . '/../partials/_stylesheets.php'; ?>
 </head>
 
-<body>
+<body class="layout-minimal<?= isset($bodyClass) ? ' ' . htmlspecialchars($bodyClass) : '' ?>">
     <!-- Page Content Container -->
-    <main>
+    <main class="<?= htmlspecialchars($pageClass ?? '') ?>">
         <?php echo $content; ?>
     </main>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--color-background);
-        }
-    </style>
 </body>
 
 </html>
-
-<style>
-    body,
-    main {
-        width: 100vw;
-        overflow-x: hidden;
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background-color: #FFFFFF;
-    }
-</style>

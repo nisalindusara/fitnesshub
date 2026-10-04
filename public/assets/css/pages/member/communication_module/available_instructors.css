@@ -1,0 +1,234 @@
+/* Scoped under .page-communication-module-available-instructors (the layout's <main> on this page). */
+
+/* Outer Body Container - Centers the middle card */
+:where(.page-communication-module-available-instructors) #available-instructors-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 140px);
+  padding: 24px 16px;
+  box-sizing: border-box;
+  font-family: var(--fh-font-system);
+}
+
+/* Middle Card Shell */
+:where(.page-communication-module-available-instructors) #available-instructors-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 760px;
+  background: var(--fh-white);
+  border-radius: var(--fh-radius-28);
+  box-shadow: 0 4px 24px var(--fh-black-a05);
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid var(--fh-neutral-130);
+}
+
+/* Header with Back Button */
+:where(.page-communication-module-available-instructors) .instructors-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 32px 18px 32px;
+  border-bottom: 1px solid var(--fh-neutral-130);
+}
+
+:where(.page-communication-module-available-instructors) .instructors-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fh-neutral-930);
+  text-decoration: none;
+  padding: 6px;
+  border-radius: var(--fh-radius-8);
+  transition: background-color 0.15s ease;
+}
+
+:where(.page-communication-module-available-instructors) .instructors-back-btn:hover {
+  background-color: var(--fh-gray-100);
+}
+
+:where(.page-communication-module-available-instructors) .instructors-back-icon {
+  width: 20px;
+  height: 20px;
+}
+
+:where(.page-communication-module-available-instructors) .instructors-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+:where(.page-communication-module-available-instructors) .instructors-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fh-neutral-930);
+  margin: 0;
+}
+
+:where(.page-communication-module-available-instructors) .instructors-card-subtitle {
+  font-size: 13px;
+  color: var(--fh-neutral-490);
+  margin: 0;
+}
+
+/* Instructors List Feed */
+:where(.page-communication-module-available-instructors) .instructors-list-area {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 28px;
+  gap: 16px;
+}
+
+/* Instructor Card Row */
+:where(.page-communication-module-available-instructors) .instructor-item-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: var(--fh-white);
+  border: 1px solid var(--fh-neutral-130);
+  border-radius: var(--fh-radius-18);
+  gap: 16px;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-item-card:hover {
+  border-color: var(--fh-gray-200);
+  box-shadow: 0 4px 16px var(--fh-black-a04);
+}
+
+/* Left: Avatar + Details */
+:where(.page-communication-module-available-instructors) .instructor-card-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* Clickable Avatar */
+:where(.page-communication-module-available-instructors) .instructor-avatar-link {
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--fh-radius-circle);
+  flex-shrink: 0;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-avatar-link:hover {
+  transform: scale(1.06);
+  opacity: 0.9;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-avatar-wrap {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--fh-radius-circle);
+  background-color: var(--fh-gray-100);
+  overflow: hidden;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Metadata */
+:where(.page-communication-module-available-instructors) .instructor-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-name-link {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fh-neutral-930);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-name-link:hover {
+  color: var(--fh-blue-500);
+  text-decoration: underline;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-role-text {
+  font-size: 12.5px;
+  color: var(--fh-neutral-540);
+}
+
+:where(.page-communication-module-available-instructors) .instructor-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-pill-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--fh-radius-pill);
+  background-color: var(--fh-gray-100);
+  color: var(--fh-gray-600);
+}
+
+/* Right Action Buttons */
+:where(.page-communication-module-available-instructors) .instructor-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-profile-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fh-gray-700);
+  background-color: var(--fh-gray-50);
+  border: 1px solid var(--fh-gray-200);
+  border-radius: var(--fh-radius-pill);
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-profile-btn:hover {
+  background-color: var(--fh-gray-100);
+  border-color: var(--fh-gray-300);
+}
+
+/* "Select Instructor" non-navigatable button */
+:where(.page-communication-module-available-instructors) .instructor-select-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fh-white);
+  background-color: var(--fh-neutral-930);
+  border: none;
+  border-radius: var(--fh-radius-pill);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+:where(.page-communication-module-available-instructors) .instructor-select-btn:hover {
+  background-color: var(--fh-neutral-780);
+  transform: translateY(-1px);
+}
+
+:where(.page-communication-module-available-instructors) .instructor-select-btn:active {
+  transform: translateY(0);
+}

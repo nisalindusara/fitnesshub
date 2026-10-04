@@ -1,0 +1,263 @@
+/* Scoped under .page-landing-ecom-catalogue (the layout's <main> on this page).
+   Rules that also styled the layout chrome, <body> or <html> when this CSS was
+   inline are scoped under body.page-landing-ecom-catalogue--global instead, so they still do. */
+
+/* --- Base & Reset --- */
+*:where(html:has(> body.page-landing-ecom-catalogue--global), html:has(> body.page-landing-ecom-catalogue--global) *) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body:where(.page-landing-ecom-catalogue--global) {
+    font-family: var(--fh-font-barlow);
+    background-color: var(--fh-gray-50);
+    color: var(--fh-neutral-950);
+    line-height: 1.5;
+}
+
+/* --- Page Layout --- */
+:where(.page-landing-ecom-catalogue) .shop-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 32px;
+}
+
+/* --- Sidebar (Left Column) --- */
+:where(.page-landing-ecom-catalogue) .sidebar {
+    width: 286px;
+    flex-shrink: 0;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-gray-200);
+    padding: 32px 24px;
+    border-radius: var(--fh-radius-8);
+}
+
+:where(.page-landing-ecom-catalogue) .sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+:where(.page-landing-ecom-catalogue) .sidebar-line {
+    width: 4px;
+    height: 20px;
+    background-color: var(--fh-red-590);
+    /* FitnessHub Accent Red */
+}
+
+:where(.page-landing-ecom-catalogue) .sidebar-title {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--fh-neutral-950);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+:where(.page-landing-ecom-catalogue) .category-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+:where(.page-landing-ecom-catalogue) .category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--fh-gray-600);
+    cursor: pointer;
+    padding: 8px 0;
+    transition: color 0.2s;
+}
+
+:where(.page-landing-ecom-catalogue) .category-item:hover {
+    color: var(--fh-red-590);
+}
+
+:where(.page-landing-ecom-catalogue) .category-icon {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* --- Main Content (Right Column) --- */
+:where(.page-landing-ecom-catalogue) .main-content {
+    flex-grow: 1;
+    min-width: 0;
+    /* lets the grid shrink instead of overflowing */
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+:where(.page-landing-ecom-catalogue) .page-title {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 42px;
+    color: var(--fh-neutral-950);
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+/* --- Search Bar --- */
+:where(.page-landing-ecom-catalogue) .search-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+:where(.page-landing-ecom-catalogue) .search-input {
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-gray-200);
+    border-radius: var(--fh-radius-50);
+    font-family: var(--fh-font-barlow);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--fh-neutral-950);
+    outline: none;
+    transition: all 0.2s;
+}
+
+:where(.page-landing-ecom-catalogue) .search-input:focus {
+    border-color: var(--fh-red-590);
+    box-shadow: 0 4px 12px var(--fh-black-a05);
+}
+
+/* --- Results Header --- */
+:where(.page-landing-ecom-catalogue) .results-count {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--fh-gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Product Grid --- */
+:where(.page-landing-ecom-catalogue) .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* 3 Columns to match image; minmax(0) stops wide images stretching columns */
+    gap: 32px 24px;
+}
+
+:where(.page-landing-ecom-catalogue) .product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+:where(.page-landing-ecom-catalogue) .product-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    background: repeating-conic-gradient(var(--fh-gray-200) 0% 25%, var(--fh-white) 0% 50%) 50% / 20px 20px;
+    border-radius: var(--fh-radius-12);
+    overflow: hidden;
+    /* Added per previous instructions */
+}
+
+:where(.page-landing-ecom-catalogue) .product-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* image always fills the fixed 4:5 box, whatever its own size */
+    display: block;
+}
+
+:where(.page-landing-ecom-catalogue) .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+:where(.page-landing-ecom-catalogue) .product-title {
+    font-family: var(--fh-font-barlow);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--fh-gray-600);
+}
+
+:where(.page-landing-ecom-catalogue) .product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+:where(.page-landing-ecom-catalogue) .product-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+:where(.page-landing-ecom-catalogue) .product-title a:hover {
+    color: var(--fh-red-590);
+}
+
+:where(.page-landing-ecom-catalogue) .product-price {
+    font-weight: 900;
+    font-size: 14px;
+    color: var(--fh-neutral-950);
+}
+
+/* --- Load More Section --- */
+:where(.page-landing-ecom-catalogue) .load-more-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 48px;
+    gap: 24px;
+}
+
+:where(.page-landing-ecom-catalogue) .progress-bar-wrapper {
+    width: 100%;
+    max-width: 400px;
+    height: 2px;
+    background: var(--fh-gray-200);
+    position: relative;
+}
+
+:where(.page-landing-ecom-catalogue) .progress-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    /* Represents 12 of 24 items */
+    background: var(--fh-neutral-950);
+}
+
+:where(.page-landing-ecom-catalogue) .load-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: var(--fh-neutral-950);
+    color: var(--fh-white);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: var(--fh-radius-50);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+:where(.page-landing-ecom-catalogue) .load-more-btn:hover {
+    background: var(--fh-red-590);
+}

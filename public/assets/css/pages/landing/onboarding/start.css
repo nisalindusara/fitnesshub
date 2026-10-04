@@ -1,0 +1,211 @@
+/* Scoped under .page-onboarding-start (the layout's <main> on this page). */
+
+/* Main Layout Container */
+
+/* Left Hero Section */
+:where(.page-onboarding-start) .hero-section {
+    box-sizing: border-box;
+    flex: 1;
+    height: 100%;
+    position: relative;
+    background:
+        linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop') center/cover no-repeat;
+}
+
+:where(.page-onboarding-start) .back-btn {
+    box-sizing: border-box;
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--fh-white-a60);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-start) .back-btn:hover {
+    color: var(--fh-white);
+}
+
+:where(.page-onboarding-start) .back-icon {
+    display: block;
+}
+
+/* Right Content Section */
+:where(.page-onboarding-start) .content-section {
+    box-sizing: border-box;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px 80px;
+
+    /* Allow internal scrolling if screen height is unusually short on desktop */
+    overflow-y: auto;
+}
+
+:where(.page-onboarding-start) .content-wrapper {
+    box-sizing: border-box;
+    max-width: 448px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Typography & Content */
+:where(.page-onboarding-start) .heading {
+    box-sizing: border-box;
+    margin: 0 0 24px 0;
+    padding: 0;
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: clamp(48px, 5vw, 70px);
+    line-height: 0.88;
+    letter-spacing: -1.75px;
+    text-transform: uppercase;
+}
+
+:where(.page-onboarding-start) .description {
+    box-sizing: border-box;
+    margin: 0 0 48px 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.62;
+    color: var(--fh-white-a50);
+}
+
+/* Tags */
+:where(.page-onboarding-start) .tags-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 48px 0;
+    padding: 0;
+}
+
+:where(.page-onboarding-start) .tag {
+    box-sizing: border-box;
+    border: 1px solid var(--fh-white-a10);
+    padding: 6px 12px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.33;
+    letter-spacing: 0.3px;
+    color: var(--fh-white-a40);
+}
+
+/* Buttons */
+:where(.page-onboarding-start) .buttons-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 0 32px 0;
+    padding: 0;
+}
+
+:where(.page-onboarding-start) .btn {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
+
+:where(.page-onboarding-start) .btn-icon {
+    display: block;
+}
+
+:where(.page-onboarding-start) .btn-primary {
+    background: var(--fh-red-590);
+    color: var(--fh-white);
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+:where(.page-onboarding-start) .btn-primary:hover {
+    background: var(--fh-red-680);
+}
+
+:where(.page-onboarding-start) .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--fh-white-a20);
+    color: var(--fh-white);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+:where(.page-onboarding-start) .btn-secondary:hover {
+    background: var(--fh-white-a05);
+}
+
+/* Footer Links */
+:where(.page-onboarding-start) .footer-text {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1.62;
+    text-align: center;
+    color: var(--fh-white-a20);
+}
+
+:where(.page-onboarding-start) .footer-link {
+    color: var(--fh-white-a40);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-start) .footer-link:hover {
+    color: var(--fh-white);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+
+    :where(.page-onboarding-start) .hero-section {
+        min-height: 400px;
+    }
+
+    :where(.page-onboarding-start) .content-section {
+        padding: 64px 40px;
+        overflow-y: visible;
+    }
+}
+
+@media (max-width: 576px) {
+    :where(.page-onboarding-start) .content-section {
+        padding: 48px 24px;
+    }
+
+    :where(.page-onboarding-start) .heading {
+        font-size: 40px;
+    }
+}

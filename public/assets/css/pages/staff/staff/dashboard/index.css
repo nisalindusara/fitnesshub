@@ -1,0 +1,35 @@
+/* Scoped under .page-staff-dashboard-index (the layout's <main> on this page). */
+
+:where(.page-staff-dashboard-index) .dashboard-toolbar {
+    display: flex;
+    gap: 32px;
+    border-bottom: 1px solid var(--fh-slate-200);
+    margin-bottom: 32px;
+    padding-top: 16px;
+    padding-left: 16px;
+}
+
+:where(.page-staff-dashboard-index) .dashboard-toolbar__tab {
+    padding: 0 0 16px 0;
+    color: var(--fh-slate-380);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+:where(.page-staff-dashboard-index) .dashboard-toolbar__tab--active {
+    color: var(--fh-gray-850);
+    font-weight: 700;
+    border-bottom: 2px solid var(--fh-gray-850);
+}
+
+:where(.page-staff-dashboard-index) .dashboard-content {
+    font-family: var(--fh-font-system);
+    background-color: var(--fh-white);
+    padding: 32px;
+    padding-top: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    color: var(--fh-gray-850);
+}

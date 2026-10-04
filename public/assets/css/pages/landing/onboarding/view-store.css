@@ -1,0 +1,161 @@
+/* Scoped under .page-onboarding-view-store (the layout's <main> on this page). */
+
+/* Main Layout Container */
+
+/* Left Hero Section */
+:where(.page-onboarding-view-store) .hero-section-step3 {
+    box-sizing: border-box;
+    flex: 1;
+    height: 100%;
+    position: relative;
+    background:
+        linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.65) 100%),
+        url('https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=1470&auto=format&fit=crop') center/cover no-repeat;
+}
+
+:where(.page-onboarding-view-store) .back-btn {
+    box-sizing: border-box;
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--fh-white-a60);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-view-store) .back-btn:hover {
+    color: var(--fh-white);
+}
+
+/* Right Content Section */
+:where(.page-onboarding-view-store) .content-section {
+    box-sizing: border-box;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 80px;
+    overflow-y: auto;
+}
+
+:where(.page-onboarding-view-store) .content-wrapper {
+    box-sizing: border-box;
+    max-width: 423px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Progress Indicator */
+
+/* Typography & Content */
+
+:where(.page-onboarding-view-store) .heading-step3 {
+    box-sizing: border-box;
+    margin: 16px 0 0 0;
+    padding: 0;
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 58.32px);
+    line-height: 0.88;
+    letter-spacing: -1.458px;
+    text-transform: uppercase;
+}
+
+:where(.page-onboarding-view-store) .description {
+    box-sizing: border-box;
+    margin: 20px 0 0 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.62;
+    color: var(--fh-white-a50);
+}
+
+/* Buttons */
+:where(.page-onboarding-view-store) .buttons-container-step3 {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0 0 0;
+    padding: 0;
+    width: 100%;
+}
+
+:where(.page-onboarding-view-store) .btn {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px 0;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+    background: transparent;
+}
+
+:where(.page-onboarding-view-store) .btn-primary-step3 {
+    background: var(--fh-red-590);
+    color: var(--fh-white);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+:where(.page-onboarding-view-store) .btn-primary-step3:hover {
+    background: var(--fh-red-680);
+}
+
+:where(.page-onboarding-view-store) .btn-skip {
+    margin-top: 12px;
+    color: var(--fh-white-a25);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+
+    :where(.page-onboarding-view-store) .hero-section-step3 {
+        min-height: 400px;
+    }
+
+    :where(.page-onboarding-view-store) .content-section {
+        padding: 64px 40px;
+        overflow-y: visible;
+    }
+}
+
+@media (max-width: 576px) {
+    :where(.page-onboarding-view-store) .content-section {
+        padding: 48px 24px;
+    }
+}

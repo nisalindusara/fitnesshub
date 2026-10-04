@@ -1,0 +1,447 @@
+/* Scoped under .page-ecommerce-module-show (the layout's <main> on this page). */
+
+/*
+* Order details page: status block, actions, shipping & billing, cancel dialog.
+*
+* Only NEW classes (prefix os-) live here. The existing card, product-row,
+* totals, detail-* and status-badge classes are unchanged.
+*
+* Colours use var(--name, fallback). The names below are guesses: rename them to
+* the real variables in tokens.css and the fallbacks stop mattering.
+*/
+
+   :where(.page-ecommerce-module-show) .order-view {
+       --os-ink: var(--color-ink, var(--fh-neutral-900));
+       --os-muted: var(--color-muted, var(--fh-zinc-440));
+       --os-line: var(--color-border, var(--fh-gray-200));
+       --os-surface: var(--color-surface, var(--fh-white));
+       --os-soft: var(--color-surface-soft, var(--fh-gray-100));
+       --os-red: var(--color-brand-red, var(--fh-red-560));
+       --os-radius: var(--radius-card, 16px);
+   }
+
+   /* ---------- Buttons ---------- */
+
+   :where(.page-ecommerce-module-show) .os-actions {
+       display: flex;
+       align-items: center;
+       gap: 8px;
+   }
+
+   :where(.page-ecommerce-module-show) .os-form {
+       margin: 0;
+   }
+
+   :where(.page-ecommerce-module-show) .os-btn {
+       display: inline-flex;
+       align-items: center;
+       gap: 6px;
+       height: 36px;
+       padding: 0 14px;
+       border: 1px solid var(--os-line);
+       border-radius: var(--fh-radius-10);
+       background: var(--os-surface);
+       color: var(--os-ink);
+       font: inherit;
+       font-size: 14px;
+       font-weight: 500;
+       cursor: pointer;
+   }
+
+   :where(.page-ecommerce-module-show) .os-btn:hover {
+       background: var(--os-soft);
+   }
+
+   :where(.page-ecommerce-module-show) .os-btn:disabled {
+       opacity: 0.5;
+       cursor: not-allowed;
+   }
+
+   /* Forward action: ink black. Brand red is kept for cancelling only. */
+   :where(.page-ecommerce-module-show) .os-btn-primary {
+       background: var(--os-ink);
+       border-color: var(--os-ink);
+       color: var(--fh-white);
+   }
+
+   :where(.page-ecommerce-module-show) .os-btn-primary:hover {
+       background: var(--os-ink);
+       opacity: 0.88;
+   }
+
+   :where(.page-ecommerce-module-show) .os-btn-danger {
+       color: var(--os-red);
+       border-color: var(--os-red);
+   }
+
+   :where(.page-ecommerce-module-show) .os-btn-danger:hover {
+       background: color-mix(in srgb, var(--os-red) 8%, var(--fh-white));
+   }
+
+   :where(.page-ecommerce-module-show) .os-btn-danger-solid {
+       background: var(--os-red);
+       border-color: var(--os-red);
+       color: var(--fh-white);
+   }
+
+   :where(.page-ecommerce-module-show) .os-btn-danger-solid:hover {
+       background: var(--os-red);
+       opacity: 0.9;
+   }
+
+   /* ---------- Status card header ---------- */
+
+   :where(.page-ecommerce-module-show) .os-card-header {
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       gap: 12px;
+   }
+
+   /* ---------- Status track ---------- */
+
+   :where(.page-ecommerce-module-show) .os-track {
+       display: flex;
+       margin: 0 0 32px;
+       padding: 0;
+       list-style: none;
+   }
+
+   :where(.page-ecommerce-module-show) .os-step {
+       position: relative;
+       flex: 1;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       gap: 8px;
+       text-align: center;
+       outline: none;
+   }
+
+   /* Line from the previous step's centre to this step's centre.
+  ::before is the grey track, ::after is the fill that grows over it. */
+   :where(.page-ecommerce-module-show) .os-step:not(:first-child)::before,
+   :where(.page-ecommerce-module-show) .os-step:not(:first-child)::after {
+       content: '';
+       position: absolute;
+       top: 17px;
+       left: -50%;
+       width: 100%;
+       height: 2px;
+   }
+
+   :where(.page-ecommerce-module-show) .os-step:not(:first-child)::before {
+       background: var(--os-line);
+   }
+
+   :where(.page-ecommerce-module-show) .os-step:not(:first-child)::after {
+       background: var(--os-ink);
+       transform: scaleX(0);
+       transform-origin: left;
+   }
+
+   :where(.page-ecommerce-module-show) .os-step.is-reached:not(:first-child)::after {
+       transform: scaleX(1);
+   }
+
+   :where(.page-ecommerce-module-show) .os-node {
+       position: relative;
+       z-index: 1;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       width: 36px;
+       height: 36px;
+       border: 2px solid var(--os-line);
+       border-radius: var(--fh-radius-circle);
+       background: var(--os-surface);
+       color: var(--os-muted);
+   }
+
+   :where(.page-ecommerce-module-show) .os-step.is-reached .os-node {
+       background: var(--os-ink);
+       border-color: var(--os-ink);
+       color: var(--fh-white);
+   }
+
+   :where(.page-ecommerce-module-show) .os-step.is-current .os-node {
+       box-shadow: 0 0 0 4px color-mix(in srgb, var(--os-ink) 12%, transparent);
+   }
+
+   :where(.page-ecommerce-module-show) .os-label {
+       font-size: 13px;
+       font-weight: 500;
+       color: var(--os-muted);
+   }
+
+   :where(.page-ecommerce-module-show) .os-step.is-reached .os-label {
+       color: var(--os-ink);
+   }
+
+   :where(.page-ecommerce-module-show) .os-step.is-current .os-label {
+       font-weight: 600;
+   }
+
+   /* Date and time: only on hover (or keyboard focus). */
+   :where(.page-ecommerce-module-show) .os-time {
+       position: absolute;
+       top: 100%;
+       left: 50%;
+       z-index: 2;
+       margin-top: 6px;
+       padding: 6px 10px;
+       border-radius: var(--fh-radius-8);
+       background: var(--os-ink);
+       color: var(--fh-white);
+       font-size: 12px;
+       white-space: nowrap;
+       opacity: 0;
+       visibility: hidden;
+       transform: translateX(-50%);
+       transition: opacity 0.15s ease;
+       pointer-events: none;
+   }
+
+   :where(.page-ecommerce-module-show) .os-step:hover .os-time,
+   :where(.page-ecommerce-module-show) .os-step:focus-visible .os-time {
+       opacity: 1;
+       visibility: visible;
+   }
+
+   /* Fill animation: the line grows from the previous step, then the node fills.
+  Plays only when the controller sets $animateProgress (the load right after an advance). */
+   @keyframes os-segment-fill {
+       from {
+           transform: scaleX(0);
+       }
+
+       to {
+           transform: scaleX(1);
+       }
+   }
+
+   @keyframes os-node-fill {
+       from {
+           background: var(--os-surface);
+           border-color: var(--os-line);
+           color: var(--os-muted);
+       }
+
+       to {
+           background: var(--os-ink);
+           border-color: var(--os-ink);
+           color: var(--fh-white);
+       }
+   }
+
+   :where(.page-ecommerce-module-show) .os-step.os-animate:not(:first-child)::after {
+       animation: os-segment-fill 0.6s ease-out both;
+   }
+
+   :where(.page-ecommerce-module-show) .os-step.os-animate .os-node {
+       animation: os-node-fill 0.4s ease-out 0.5s both;
+   }
+
+   @media (prefers-reduced-motion: reduce) {
+
+       :where(.page-ecommerce-module-show) .os-step.os-animate:not(:first-child)::after,
+       :where(.page-ecommerce-module-show) .os-step.os-animate .os-node {
+           animation: none;
+       }
+   }
+
+   /* ---------- Cancelled state ---------- */
+
+   :where(.page-ecommerce-module-show) .os-cancelled {
+       display: flex;
+       align-items: flex-start;
+       gap: 12px;
+   }
+
+   :where(.page-ecommerce-module-show) .os-cancelled-icon {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       flex: none;
+       width: 36px;
+       height: 36px;
+       border-radius: var(--fh-radius-circle);
+       background: var(--os-red);
+       color: var(--fh-white);
+   }
+
+   :where(.page-ecommerce-module-show) .os-cancelled-title {
+       margin: 0;
+       font-weight: 600;
+       color: var(--os-red);
+   }
+
+   :where(.page-ecommerce-module-show) .os-cancelled-meta,
+   :where(.page-ecommerce-module-show) .os-cancelled-reason {
+       margin: 2px 0 0;
+       font-size: 14px;
+       color: var(--os-muted);
+   }
+
+   :where(.page-ecommerce-module-show) .os-cancelled-reason {
+       color: var(--os-ink);
+   }
+
+   /* ---------- Items: thumbnail ---------- */
+
+   :where(.page-ecommerce-module-show) .os-thumb {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       flex: none;
+       width: 56px;
+       height: 56px;
+       overflow: hidden;
+       border: 1px solid var(--os-line);
+       border-radius: var(--fh-radius-10);
+       background: var(--os-soft);
+       color: var(--os-muted);
+   }
+
+   :where(.page-ecommerce-module-show) .os-thumb img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+   }
+
+   /* ---------- Customer ---------- */
+
+   :where(.page-ecommerce-module-show) .os-customer {
+       display: flex;
+       align-items: center;
+       gap: 12px;
+       margin-bottom: 16px;
+       padding-bottom: 16px;
+       border-bottom: 1px solid var(--os-line);
+   }
+
+   :where(.page-ecommerce-module-show) .os-customer .detail-value,
+   :where(.page-ecommerce-module-show) .os-sub {
+       margin: 0;
+   }
+
+   :where(.page-ecommerce-module-show) .os-avatar {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       flex: none;
+       width: 44px;
+       height: 44px;
+       border-radius: var(--fh-radius-circle);
+       background: var(--os-ink);
+       color: var(--fh-white);
+       font-size: 14px;
+       font-weight: 600;
+   }
+
+   :where(.page-ecommerce-module-show) .os-sub {
+       font-size: 13px;
+       color: var(--os-muted);
+   }
+
+   /* ---------- Shipping & billing ---------- */
+
+   :where(.page-ecommerce-module-show) .os-sb-section+.os-sb-section {
+       margin-top: 20px;
+       padding-top: 20px;
+       border-top: 1px solid var(--os-line);
+   }
+
+   :where(.page-ecommerce-module-show) .os-sb-heading {
+       margin: 0 0 12px;
+       font-size: 12px;
+       font-weight: 600;
+       letter-spacing: 0.06em;
+       text-transform: uppercase;
+       color: var(--os-ink);
+   }
+
+   :where(.page-ecommerce-module-show) .os-pill {
+       display: inline-block;
+       padding: 2px 10px;
+       border-radius: var(--fh-radius-pill);
+       font-size: 13px;
+       font-weight: 500;
+   }
+
+   :where(.page-ecommerce-module-show) .os-pill-verified {
+       background: var(--fh-green-130);
+       color: var(--fh-green-900);
+   }
+
+   :where(.page-ecommerce-module-show) .os-pill-pending {
+       background: var(--fh-amber-100);
+       color: var(--fh-amber-900);
+   }
+
+   /* ---------- Status badges for the new statuses ----------
+  Merge with your existing .status-badge rules. Delete .status-paid,
+  which no longer exists. */
+
+   :where(.page-ecommerce-module-show) .status-badge.status-confirmed {
+       background: var(--fh-sky-90);
+   }
+
+   :where(.page-ecommerce-module-show) .status-badge.status-handed_for_delivery {
+       background: var(--fh-purple-100);
+   }
+
+   /* ---------- Cancel dialog ---------- */
+
+   :where(.page-ecommerce-module-show) .os-dialog {
+       width: min(440px, 92vw);
+       padding: 0;
+       border: none;
+       border-radius: var(--os-radius);
+       color: var(--os-ink);
+   }
+
+   :where(.page-ecommerce-module-show) .os-dialog::backdrop {
+       background: var(--fh-black-a40);
+   }
+
+   :where(.page-ecommerce-module-show) .os-dialog-form {
+       display: flex;
+       flex-direction: column;
+       gap: 8px;
+       padding: 24px;
+   }
+
+   :where(.page-ecommerce-module-show) .os-dialog-title {
+       margin: 0;
+       font-size: 18px;
+   }
+
+   :where(.page-ecommerce-module-show) .os-dialog-text {
+       margin: 0 0 8px;
+       font-size: 14px;
+       color: var(--os-muted);
+   }
+
+   :where(.page-ecommerce-module-show) .os-textarea {
+       width: 100%;
+       box-sizing: border-box;
+       padding: 10px 12px;
+       border: 1px solid var(--os-line);
+       border-radius: var(--fh-radius-10);
+       font: inherit;
+       font-size: 14px;
+       resize: vertical;
+   }
+
+   :where(.page-ecommerce-module-show) .os-textarea:focus {
+       outline: 2px solid var(--os-ink);
+       outline-offset: 1px;
+   }
+
+   :where(.page-ecommerce-module-show) .os-dialog-actions {
+       display: flex;
+       justify-content: flex-end;
+       gap: 8px;
+       margin-top: 12px;
+   }

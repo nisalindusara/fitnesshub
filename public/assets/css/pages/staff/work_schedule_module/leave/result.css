@@ -1,0 +1,104 @@
+/* Scoped under .page-work-schedule-module-leave-result (the layout's <main> on this page). */
+
+:where(.page-work-schedule-module-leave-result) .lv-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1px solid var(--fh-neutral-870-a10);
+    border-radius: var(--fh-radius-12);
+    background: var(--fh-white);
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__icon {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--fh-radius-10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__icon--blue {
+    background: var(--fh-indigo-60);
+    color: var(--fh-blue-700);
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__icon--green {
+    background: var(--fh-emerald-80);
+    color: var(--fh-green-770);
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__icon--red {
+    background: var(--fh-red-70);
+    color: var(--fh-red-670);
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__icon--orange {
+    background: var(--fh-orange-85);
+    color: var(--fh-orange-700);
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__icon--grey {
+    background: var(--fh-neutral-870-a06);
+    color: var(--fh-neutral-870-a60);
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--fh-neutral-870-a45);
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__value {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__value strong {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-stat__value span {
+    font-size: 12px;
+    color: var(--fh-neutral-870-a50);
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-decision {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 18px;
+    border: 1px solid var(--fh-neutral-870-a10);
+    border-radius: var(--fh-radius-12);
+    background: var(--fh-white);
+}
+
+:where(.page-work-schedule-module-leave-result) .lv-decision__label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    :where(.page-work-schedule-module-leave-result) .lv-stats {
+        grid-template-columns: 1fr;
+    }
+}

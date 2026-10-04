@@ -1,0 +1,112 @@
+/* Product cards, search and order-summary styles shared by the store pages.
+   Used by: cart, eCom-catalogue, eCom-landing, ecommerce-checkout, sample-product. */
+
+.search-input::placeholder {
+  color: var(--fh-gray-400);
+}
+
+.search-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--fh-neutral-950);
+  border: none;
+  border-radius: var(--fh-radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--fh-white);
+  transition: background 0.2s;
+}
+
+.search-btn:hover {
+  background: var(--fh-red-590);
+}
+
+.img-placeholder {
+  background: repeating-conic-gradient(var(--fh-gray-200) 0% 25%, var(--fh-gray-50) 0% 50%) 50% / 20px 20px;
+  border-radius: var(--fh-radius-8);
+  overflow: hidden;
+}
+
+.img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.qty-btn:hover {
+  color: var(--fh-neutral-950);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: var(--fh-neutral-950);
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: var(--fh-red-590);
+  border-color: var(--fh-red-590);
+}
+
+.btn-outline:hover {
+  background-color: var(--fh-gray-50);
+}
+
+.product-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-card-title {
+  font-family: var(--fh-font-barlow);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--fh-gray-600);
+}
+
+.product-card-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.product-card-title a:hover {
+  color: var(--fh-red-590);
+}
+
+.product-card-price {
+  font-weight: 900;
+  font-size: 14px;
+  color: var(--fh-neutral-950);
+}
+
+.add-btn {
+  background: none;
+  border: 1.5px solid var(--fh-neutral-950);
+  border-radius: var(--fh-radius-circle);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--fh-neutral-950);
+  transition: all 0.2s;
+}
+
+.add-btn:hover {
+  background: var(--fh-red-590);
+  border-color: var(--fh-red-590);
+  color: var(--fh-white);
+}

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Barlow:wght@400;700&display=swap');
+
+/* Scoped under .page-onboarding-membership-pick-date (the layout's <main> on this page). */
+
+:where(.page-onboarding-membership-pick-date) .pick-date-layout {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background: var(--fh-neutral-950);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-left-panel {
+    flex: 3;
+    min-width: 300px;
+    height: 100%;
+    background: url('image_ee2ab7.png') center/cover no-repeat;
+}
+
+:where(.page-onboarding-membership-pick-date) .back-btn {
+    box-sizing: border-box;
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--fh-white-a60);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-right-panel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8vw;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 448px;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-headline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 0px 0px;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-headline-text {
+    font-family: var(--fh-font-barlow-condensed);
+    font-style: normal;
+    font-weight: 900;
+    font-size: 52.488px;
+    line-height: 46px;
+    letter-spacing: -1.3122px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-body-text {
+    font-family: var(--fh-font-barlow);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--fh-white-a50);
+    margin: 16px 0 0 0;
+    width: 100%;
+    max-width: 384px;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 0px 0px;
+    width: 100%;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-label {
+    font-family: var(--fh-font-barlow);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--fh-white-a40);
+    margin: 0 0 8px 0;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 49.6px;
+    background: var(--fh-white-a05);
+    border: 0.8px solid var(--fh-white-a10);
+    color: var(--fh-white);
+    padding: 0 16px;
+    font-family: var(--fh-font-barlow);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-input:focus {
+    border-color: var(--fh-white-a30);
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 0px 0px;
+    width: 100%;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0px;
+    width: 100%;
+    height: 52px;
+    background: var(--fh-white-a10);
+    border: none;
+    cursor: not-allowed;
+}
+
+:where(.page-onboarding-membership-pick-date) .pick-date-btn-text {
+    font-family: var(--fh-font-barlow);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fh-white-a20);
+}

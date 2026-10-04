@@ -1,0 +1,677 @@
+/* Scoped under .page-ecommerce-module-add-product (the layout's <main> on this page).
+   Rules that also styled the layout chrome, <body> or <html> when this CSS was
+   inline are scoped under body.page-ecommerce-module-add-product--global instead, so they still do. */
+
+:root:where(:has(> body.page-ecommerce-module-add-product--global)) {
+    --accent: var(--fh-indigo-500);
+    --accent-hover: var(--fh-indigo-600);
+    --accent-light: var(--fh-indigo-50);
+}
+
+:where(.page-ecommerce-module-add-product) .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 24px 0px;
+    gap: 20px;
+    height: 902.39px;
+    background: var(--fh-gray-50);
+    box-sizing: border-box;
+    font-family: var(--fh-font-inter);
+}
+
+:where(.page-ecommerce-module-add-product) .header-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4px 8px;
+    width: 101px;
+    height: 28px;
+    border-radius: var(--fh-radius-8);
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .header-text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-ecommerce-module-add-product) .form-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .columns-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 637.33px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 318.67px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .card-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 22px;
+    width: 100%;
+    background: var(--fh-white);
+    box-shadow: 0px 1px 3px var(--fh-black-a06), 0px 1px 2px var(--fh-black-a04);
+    transition: box-shadow 0.15s ease;
+    border: 1px solid var(--fh-neutral-200);
+    border-radius: var(--fh-radius-12);
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 27px;
+    border-bottom: 1px solid var(--fh-neutral-200);
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .no-border {
+    border-bottom: none;
+    height: auto;
+    padding-bottom: 16px;
+}
+
+:where(.page-ecommerce-module-add-product) .card-title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 26px;
+    color: var(--fh-red-960);
+}
+
+:where(.page-ecommerce-module-add-product) .form-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .field-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .textarea-group {
+    padding-bottom: 7px;
+}
+
+:where(.page-ecommerce-module-add-product) .row-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .half-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: 283.66px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .field-label {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 21px;
+    color: var(--fh-red-960);
+}
+
+:where(.page-ecommerce-module-add-product) .text-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 12px;
+    width: 100%;
+    height: 40px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-300);
+    border-radius: var(--fh-radius-8);
+    box-sizing: border-box;
+    font-family: var(--fh-font-inter);
+    font-size: 12px;
+    color: var(--fh-red-960);
+    outline: none;
+}
+
+:where(.page-ecommerce-module-add-product) .text-input::placeholder {
+    color: var(--fh-neutral-400);
+}
+
+:where(.page-ecommerce-module-add-product) .textarea-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px 12px;
+    width: 100%;
+    height: 102px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-300);
+    border-radius: var(--fh-radius-12);
+    box-sizing: border-box;
+    font-family: var(--fh-font-inter);
+    font-size: 12px;
+    color: var(--fh-red-960);
+    resize: none;
+    outline: none;
+}
+
+:where(.page-ecommerce-module-add-product) .textarea-input::placeholder {
+    color: var(--fh-neutral-400);
+}
+
+:where(.page-ecommerce-module-add-product) .select-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+    height: 40px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-300);
+    border-radius: var(--fh-radius-12);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+:where(.page-ecommerce-module-add-product) .select-placeholder {
+    font-size: 12px;
+    color: var(--fh-red-960);
+}
+
+:where(.page-ecommerce-module-add-product) .input-with-prefix {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 12px;
+    width: 100%;
+    height: 40px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-300);
+    border-radius: var(--fh-radius-12);
+    box-sizing: border-box;
+    gap: 8px;
+}
+
+:where(.page-ecommerce-module-add-product) .prefix-text {
+    font-size: 12px;
+    line-height: 21px;
+    color: var(--fh-neutral-520);
+}
+
+:where(.page-ecommerce-module-add-product) .borderless-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    font-family: var(--fh-font-inter);
+    font-size: 12px;
+    color: var(--fh-red-960);
+    padding: 0;
+}
+
+:where(.page-ecommerce-module-add-product) .borderless-input::placeholder {
+    color: var(--fh-neutral-400);
+}
+
+:where(.page-ecommerce-module-add-product) .variants-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    width: 100%;
+    background: var(--fh-white);
+    border: 0.8px solid var(--fh-gray-100);
+    border-radius: var(--fh-radius-12);
+    box-sizing: border-box;
+    margin-top: 4px;
+}
+
+:where(.page-ecommerce-module-add-product) .variants-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 29.6px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .variants-title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--fh-gray-900);
+}
+
+:where(.page-ecommerce-module-add-product) .add-variant-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 12px;
+    gap: 6px;
+    height: 29.6px;
+    border: 0.8px solid var(--fh-gray-200);
+    border-radius: var(--fh-radius-8);
+    background: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .add-variant-text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--fh-gray-700);
+}
+
+:where(.page-ecommerce-module-add-product) .variants-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 16px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .table-headers {
+    position: relative;
+    width: 100%;
+    height: 16px;
+}
+
+:where(.page-ecommerce-module-add-product) .col-header {
+    position: absolute;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--fh-gray-400);
+}
+
+:where(.page-ecommerce-module-add-product) .col-size {
+    left: 4px;
+}
+
+:where(.page-ecommerce-module-add-product) .col-color {
+    left: 142px;
+}
+
+:where(.page-ecommerce-module-add-product) .col-qty {
+    left: 280px;
+}
+
+:where(.page-ecommerce-module-add-product) .col-price {
+    left: 418px;
+}
+
+:where(.page-ecommerce-module-add-product) .table-row {
+    position: relative;
+    width: 100%;
+    height: 37.6px;
+    margin-top: 12px;
+}
+
+:where(.page-ecommerce-module-add-product) .variant-input {
+    position: absolute;
+    top: 0;
+    height: 37.6px;
+    border: 0.8px solid var(--fh-gray-200);
+    border-radius: var(--fh-radius-8);
+    padding: 8px 12px;
+    box-sizing: border-box;
+    font-family: var(--fh-font-inter);
+    font-size: 14px;
+    color: var(--fh-gray-900);
+    outline: none;
+}
+
+:where(.page-ecommerce-module-add-product) .val-size {
+    left: 0px;
+    width: 128.32px;
+}
+
+:where(.page-ecommerce-module-add-product) .val-color {
+    left: 140.32px;
+    width: 128.34px;
+}
+
+:where(.page-ecommerce-module-add-product) .val-qty {
+    left: 280.66px;
+    width: 128.32px;
+}
+
+:where(.page-ecommerce-module-add-product) .val-price {
+    left: 420.99px;
+    width: 128.34px;
+}
+
+:where(.page-ecommerce-module-add-product) .input-with-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px 8px 28px;
+    background: var(--fh-white);
+}
+
+:where(.page-ecommerce-module-add-product) .currency-icon {
+    position: absolute;
+    left: 12px;
+    top: 8.8px;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--fh-gray-400);
+}
+
+:where(.page-ecommerce-module-add-product) .image-panel {
+    gap: 24px;
+}
+
+:where(.page-ecommerce-module-add-product) .upload-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    width: 100%;
+    height: 185.67px;
+    border: 1px dashed var(--fh-neutral-300);
+    border-radius: var(--fh-radius-12);
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .upload-icon {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+:where(.page-ecommerce-module-add-product) .upload-title {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 21px;
+    color: var(--fh-neutral-520);
+    text-align: center;
+}
+
+:where(.page-ecommerce-module-add-product) .upload-subtitle {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--fh-gray-400);
+    text-align: center;
+    margin-top: 4px;
+}
+
+:where(.page-ecommerce-module-add-product) .browse-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px;
+    width: 94px;
+    height: 28px;
+    background: var(--fh-gray-100);
+    border-radius: var(--fh-radius-8);
+    border: none;
+    cursor: pointer;
+    margin-top: 12px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .browse-text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--fh-gray-600);
+}
+
+:where(.page-ecommerce-module-add-product) .thumbnails-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+    height: 75.3px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .thumbnail-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 84.22px;
+    height: 75.3px;
+    background: var(--fh-gray-100);
+    border-radius: var(--fh-radius-8);
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .status-panel {
+    padding: 24px;
+    height: 132px;
+    gap: 0;
+}
+
+:where(.page-ecommerce-module-add-product) .status-select {
+    border: 0.8px solid var(--fh-gray-200);
+    border-radius: var(--fh-radius-8);
+    height: 40px;
+}
+
+:where(.page-ecommerce-module-add-product) .status-active-text {
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--fh-gray-700);
+}
+
+:where(.page-ecommerce-module-add-product) .actions-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0px 0px 12px;
+    gap: 8px;
+    height: 52.6px;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .action-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 16px;
+    height: 40.6px;
+    border-radius: var(--fh-radius-8);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+:where(.page-ecommerce-module-add-product) .discard-btn {
+    width: 82.6px;
+    background: var(--fh-white);
+    border: 0.8px solid var(--fh-neutral-870-a12);
+}
+
+:where(.page-ecommerce-module-add-product) .discard-text {
+    font-family: var(--fh-font-arimo);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-ecommerce-module-add-product) .save-btn {
+    background: var(--fh-neutral-870);
+    border: none;
+    padding: 9px 24px;
+}
+
+:where(.page-ecommerce-module-add-product) .save-text {
+    font-family: var(--fh-font-arimo);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--fh-white);
+}
+
+:where(.page-ecommerce-module-add-product) .svg-icon {
+    display: block;
+}
+
+:where(.page-ecommerce-module-add-product) .text-input:focus,
+:where(.page-ecommerce-module-add-product) .textarea-input:focus,
+:where(.page-ecommerce-module-add-product) .select-box:focus-within,
+:where(.page-ecommerce-module-add-product) .input-with-prefix:focus-within,
+:where(.page-ecommerce-module-add-product) .variant-input:focus-within,
+:where(.page-ecommerce-module-add-product) .status-select:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+:where(.page-ecommerce-module-add-product) .text-input:hover,
+:where(.page-ecommerce-module-add-product) .textarea-input:hover,
+:where(.page-ecommerce-module-add-product) .select-box:hover,
+:where(.page-ecommerce-module-add-product) .input-with-prefix:hover {
+    border-color: var(--fh-neutral-370);
+}
+
+:where(.page-ecommerce-module-add-product) .card-header {
+    border-bottom: 1px solid var(--fh-neutral-130);
+    position: relative;
+}
+
+:where(.page-ecommerce-module-add-product) .card-title::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 12px;
+    background: var(--accent);
+    margin-right: 8px;
+    border-radius: var(--fh-radius-2);
+    vertical-align: middle;
+}
+
+:where(.page-ecommerce-module-add-product) .upload-box {
+    background: var(--accent-light);
+    border-color: var(--fh-indigo-200);
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+:where(.page-ecommerce-module-add-product) .upload-box:hover {
+    border-color: var(--accent);
+    background: var(--fh-indigo-100);
+}
+
+:where(.page-ecommerce-module-add-product) .browse-btn {
+    background: var(--accent);
+    transition: background 0.15s ease;
+}
+
+:where(.page-ecommerce-module-add-product) .browse-text {
+    color: var(--fh-white);
+}
+
+:where(.page-ecommerce-module-add-product) .browse-btn:hover {
+    background: var(--accent-hover);
+}
+
+:where(.page-ecommerce-module-add-product) .thumbnail-placeholder {
+    background: var(--fh-gray-50);
+    border: 1px solid var(--fh-gray-200);
+}
+
+:where(.page-ecommerce-module-add-product) .status-select {
+    background: var(--fh-green-60);
+    border-color: var(--fh-green-260);
+}
+
+:where(.page-ecommerce-module-add-product) .status-active-text {
+    color: var(--fh-green-740);
+    font-weight: 600;
+}
+
+:where(.page-ecommerce-module-add-product) .status-active-text::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--fh-radius-circle);
+    background: var(--fh-emerald-520);
+    margin-right: 6px;
+}
+
+:where(.page-ecommerce-module-add-product) .discard-btn:hover {
+    background: var(--fh-gray-50);
+}
+
+:where(.page-ecommerce-module-add-product) .save-btn {
+    transition: background 0.15s ease, transform 0.05s ease;
+}
+
+:where(.page-ecommerce-module-add-product) .save-btn:hover {
+    background: var(--fh-black);
+}
+
+:where(.page-ecommerce-module-add-product) .save-btn:active {
+    transform: scale(0.98);
+}
+
+:where(.page-ecommerce-module-add-product) .add-variant-btn {
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+:where(.page-ecommerce-module-add-product) .add-variant-btn:hover {
+    background: var(--accent-light);
+    border-color: var(--accent);
+}
+
+:where(.page-ecommerce-module-add-product) .add-variant-btn:hover .add-variant-text {
+    color: var(--accent-hover);
+}

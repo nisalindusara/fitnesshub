@@ -1,0 +1,93 @@
+/* Scoped under .page-communication-module-empty-user-submit-ticket (the layout's <main> on this page). */
+
+/* Outer Body Container - Centers the middle card */
+:where(.page-communication-module-empty-user-submit-ticket) #ticket-view-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100vh - 140px);
+  padding: 0 0 10px;
+  box-sizing: border-box;
+  font-family: var(--fh-font-system);
+}
+
+/* Middle Content Card Shell */
+:where(.page-communication-module-empty-user-submit-ticket) #ticket-empty-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 832px;
+  min-height: 600px;
+  background: var(--fh-white);
+  border-radius: var(--fh-radius-28);
+  box-shadow: 0 4px 24px var(--fh-black-a05);
+  box-sizing: border-box;
+  padding: 48px 32px;
+  border: 1px solid var(--fh-neutral-130);
+  text-align: center;
+}
+
+/* Illustration Container */
+:where(.page-communication-module-empty-user-submit-ticket) .ticket-illustration-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 440px;
+  height: 260px;
+  margin-bottom: 28px;
+}
+
+:where(.page-communication-module-empty-user-submit-ticket) .ticket-illustration-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Heading & Description Text */
+:where(.page-communication-module-empty-user-submit-ticket) .ticket-empty-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--fh-neutral-930);
+  margin: 0 0 10px 0;
+  line-height: 1.3;
+}
+
+:where(.page-communication-module-empty-user-submit-ticket) .ticket-empty-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--fh-neutral-490);
+  max-width: 400px;
+  margin: 0 0 30px 0;
+}
+
+/* Red "New Request" Button */
+:where(.page-communication-module-empty-user-submit-ticket) .ticket-new-request-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--fh-red-600); /* Vibrant red matching Figma */
+  color: var(--fh-white);
+  padding: 13px 36px;
+  border-radius: var(--fh-radius-pill);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+  box-shadow: 0 2px 8px var(--fh-red-600-a25);
+}
+
+:where(.page-communication-module-empty-user-submit-ticket) .ticket-new-request-btn:hover {
+  background-color: var(--fh-red-700);
+  transform: translateY(-1px);
+}
+
+:where(.page-communication-module-empty-user-submit-ticket) .ticket-new-request-btn:active {
+  transform: translateY(0);
+}

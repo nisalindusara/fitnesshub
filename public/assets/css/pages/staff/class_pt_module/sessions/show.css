@@ -1,0 +1,147 @@
+/* Scoped under .page-class-pt-module-sessions-show (the layout's <main> on this page). */
+
+:where(.page-class-pt-module-sessions-show) .cs-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:24px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-head h1 {
+    margin:0;
+    font-size:28px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-actions {
+    display:flex;
+    gap:10px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:36px;
+    padding:0 15px;
+    border:1px solid var(--fh-gray-300);
+    border-radius:var(--fh-radius-7);
+    background:var(--fh-white);
+    color:var(--fh-gray-700);
+    font-size:12px;
+    text-decoration:none;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-danger {
+    color:var(--fh-red-605);
+    border-color:var(--fh-red-500);
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-card {
+    background:var(--fh-white);
+    border:1px solid var(--fh-gray-200);
+    border-radius:var(--fh-radius-10);
+    margin-bottom:25px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-card-title {
+    padding:17px 18px;
+    font-size:14px;
+    font-weight:600;
+    border-bottom:1px solid var(--fh-gray-160);
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-overview {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    padding:22px 18px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-overview div {
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-overview span {
+    font-size:10px;
+    text-transform:uppercase;
+    color:var(--fh-slate-405);
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-overview strong {
+    font-size:13px;
+    font-weight:500;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-status {
+    display:inline-flex;
+    width:max-content;
+    padding:4px 8px;
+    border-radius:var(--fh-radius-pill);
+    background:var(--fh-indigo-50);
+    color:var(--fh-blue-570);
+    font-size:10px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-members-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-members-head h2 {
+    margin:0;
+    font-size:16px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-members-head span {
+    font-size:11px;
+    color:var(--fh-slate-510);
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-table td {
+    padding:14px 15px;
+    border-top:1px solid var(--fh-gray-160);
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-member {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-avatar {
+    width:28px;
+    height:28px;
+    background:var(--fh-gray-100);
+    border-radius:var(--fh-radius-circle);
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-member-name strong {
+    display:block;
+    font-size:11px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-member-name small {
+    color:var(--fh-slate-405);
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-confirmed,
+:where(.page-class-pt-module-sessions-show) .cs-waitlisted {
+    display:inline-flex;
+    padding:4px 9px;
+    border-radius:var(--fh-radius-pill);
+    font-size:10px;
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-confirmed {
+    background:var(--fh-emerald-80);
+    color:var(--fh-emerald-605);
+}
+
+:where(.page-class-pt-module-sessions-show) .cs-waitlisted {
+    background:var(--fh-orange-60);
+    color:var(--fh-yellow-630);
+}

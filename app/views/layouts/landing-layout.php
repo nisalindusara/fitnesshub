@@ -2,8 +2,6 @@
 $currentRoute = $currentRoute ?? '/';
 $isLoggedIn   = !empty($isLoggedIn);
 $cartCount    = (int) ($cartCount ?? 0);   // pass the number of items in the cart from the controller
-$css          = $_SERVER['DOCUMENT_ROOT'] . '/assets/css/';
-$v            = fn($file) => file_exists($css . $file) ? filemtime($css . $file) : '1';
 $active       = fn($route) => $currentRoute === $route ? ' is-active' : '';
 ?>
 <!DOCTYPE html>
@@ -18,13 +16,11 @@ $active       = fn($route) => $currentRoute === $route ? ' is-active' : '';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/assets/css/tokens.css?v=<?= $v('tokens.css') ?>">
-    <link rel="stylesheet" href="/assets/css/landing-layout.css?v=<?= $v('landing-layout.css') ?>">
-    <link rel="stylesheet" href="/assets/css/landing.css?v=<?= $v('landing.css') ?>">
-    <link rel="stylesheet" href="/assets/css/classes.css?v=<?= $v('classes.css') ?>">
+    <?php $surfaceStyle = 'landing';
+    include __DIR__ . '/../partials/_stylesheets.php'; ?>
 </head>
 
-<body class="site">
+<body class="site<?= isset($bodyClass) ? ' ' . htmlspecialchars($bodyClass) : '' ?>">
 
     <!-- ─── Navigation ─── -->
     <nav class="site-nav" aria-label="Main">
@@ -98,7 +94,7 @@ $active       = fn($route) => $currentRoute === $route ? ' is-active' : '';
     </nav>
 
     <!-- ─── Page content ─── -->
-    <main class="site-main">
+    <main class="site-main <?= htmlspecialchars($pageClass ?? '') ?>">
         <?= $content ?>
     </main>
 

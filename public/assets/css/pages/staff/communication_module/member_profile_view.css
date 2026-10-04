@@ -1,0 +1,358 @@
+/* Scoped under .page-communication-module-member-profile-view (the layout's <main> on this page). */
+
+/* Layout Root Container */
+:where(.page-communication-module-member-profile-view) #main-content {
+   display: flex;
+   flex-direction: column;
+   align-items: stretch;
+   width: 100%;
+   max-width: 100%;
+   box-sizing: border-box;
+   padding: 24px 32px;
+   gap: 20px;
+   background: var(--fh-white);
+   font-family: var(--fh-font-system);
+   color: var(--fh-gray-800);
+ }
+
+ /* Top Navigation Bar */
+ :where(.page-communication-module-member-profile-view) .top-nav-bar {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   box-sizing: border-box;
+ }
+
+ :where(.page-communication-module-member-profile-view) .nav-left-section {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-size: 14px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .nav-icon {
+   font-size: 15px;
+   color: var(--fh-gray-500);
+   cursor: pointer;
+ }
+
+ :where(.page-communication-module-member-profile-view) .nav-breadcrumb-inactive {
+   color: var(--fh-gray-400);
+ }
+
+ :where(.page-communication-module-member-profile-view) .nav-breadcrumb-divider {
+   color: var(--fh-gray-300);
+ }
+
+ :where(.page-communication-module-member-profile-view) .nav-breadcrumb-active {
+   color: var(--fh-gray-900);
+   font-weight: 500;
+ }
+
+ :where(.page-communication-module-member-profile-view) .nav-right-section {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .search-input-box {
+   display: flex;
+   align-items: center;
+   background-color: var(--fh-gray-100);
+   padding: 6px 12px;
+   border-radius: var(--fh-radius-8);
+   gap: 8px;
+   font-size: 13px;
+   color: var(--fh-gray-400);
+   width: 170px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .search-shortcut {
+   margin-left: auto;
+   font-size: 11px;
+   color: var(--fh-gray-400);
+ }
+
+ :where(.page-communication-module-member-profile-view) .nav-action-icon {
+   color: var(--fh-gray-500);
+   font-size: 15px;
+   cursor: pointer;
+ }
+
+ /* Profile Header Card */
+ :where(.page-communication-module-member-profile-view) .profile-header-card {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   width: 100%;
+   box-sizing: border-box;
+   padding-top: 4px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .profile-left-details {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+ }
+
+:where(.page-communication-module-member-profile-view) .profile-avatar-circle {
+   width: 76px;
+   height: 76px;
+   border-radius: var(--fh-radius-circle);
+   background-color: var(--fh-gray-100);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-shrink: 0;
+   border: 1px solid var(--fh-slate-200);
+ } 
+
+ :where(.page-communication-module-member-profile-view) .avatar-initials {
+   font-size: 24px;
+   font-weight: 700;
+   color: var(--fh-slate-600);
+   letter-spacing: 0.5px;
+   user-select: none;
+ }
+
+ :where(.page-communication-module-member-profile-view) .profile-meta-info {
+   display: flex;
+   flex-direction: column;
+   gap: 6px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .profile-user-name {
+   font-size: 20px;
+   font-weight: 700;
+   color: var(--fh-gray-900);
+ }
+
+ :where(.page-communication-module-member-profile-view) .profile-contact-row {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 16px;
+   font-size: 13px;
+   color: var(--fh-gray-500);
+ }
+
+ :where(.page-communication-module-member-profile-view) .detail-bold-value {
+   color: var(--fh-gray-900);
+   font-weight: 700;
+   margin-left: 4px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .detail-inline-item {
+   display: flex;
+   align-items: center;
+   gap: 6px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .profile-member-date {
+   font-size: 12px;
+   color: var(--fh-gray-400);
+ }
+
+ :where(.page-communication-module-member-profile-view) .profile-actions-column {
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .primary-btn-action {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 8px;
+   background-color: var(--fh-gray-800);
+   color: var(--fh-white);
+   border: none;
+   padding: 8px 18px;
+   border-radius: var(--fh-radius-8);
+   font-size: 13px;
+   font-weight: 500;
+   cursor: pointer;
+   min-width: 110px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .secondary-btn-action {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 8px;
+   background-color: var(--fh-white);
+   color: var(--fh-gray-700);
+   border: 1px solid var(--fh-gray-200);
+   padding: 7px 18px;
+   border-radius: var(--fh-radius-8);
+   font-size: 13px;
+   font-weight: 500;
+   cursor: pointer;
+   min-width: 110px;
+ }
+
+ /* Divider */
+ :where(.page-communication-module-member-profile-view) .divider-line {
+   width: 100%;
+   height: 1px;
+   background-color: var(--fh-gray-200);
+   margin: 4px 0px;
+ }
+
+ /* Headings */
+ :where(.page-communication-module-member-profile-view) .section-title-heading {
+   font-size: 14px;
+   font-weight: 700;
+   color: var(--fh-gray-900);
+ }
+
+ /* Stat Cards Grid */
+ :where(.page-communication-module-member-profile-view) .stat-metrics-grid {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 16px;
+   width: 100%;
+   box-sizing: border-box;
+ }
+
+ :where(.page-communication-module-member-profile-view) .stat-card {
+   border-radius: var(--fh-radius-12);
+   padding: 22px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   min-height: 115px;
+   box-sizing: border-box;
+ }
+
+ :where(.page-communication-module-member-profile-view) .card-accent-blue {
+   background-color: var(--fh-indigo-50);
+ }
+
+ :where(.page-communication-module-member-profile-view) .card-neutral-light {
+   background-color: var(--fh-gray-50);
+ }
+
+ :where(.page-communication-module-member-profile-view) .card-growth-light {
+   background-color: var(--fh-slate-120);
+ }
+
+ :where(.page-communication-module-member-profile-view) .stat-card-title {
+   font-size: 13px;
+   font-weight: 600;
+   color: var(--fh-gray-700);
+ }
+
+ :where(.page-communication-module-member-profile-view) .stat-card-value {
+   font-size: 22px;
+   font-weight: 700;
+   color: var(--fh-gray-900);
+ }
+
+ :where(.page-communication-module-member-profile-view) .growth-row-wrapper {
+   display: flex;
+   align-items: baseline;
+   justify-content: space-between;
+   gap: 8px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .growth-badge {
+   font-size: 11px;
+   font-weight: 600;
+   color: var(--fh-gray-700);
+ }
+
+ /* Attendance Card & Bar Chart */
+ :where(.page-communication-module-member-profile-view) .attendance-card-container {
+   width: 100%;
+   background-color: var(--fh-gray-50);
+   border-radius: var(--fh-radius-14);
+   padding: 24px 28px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   box-sizing: border-box;
+ }
+
+ :where(.page-communication-module-member-profile-view) .attendance-card-header {
+   font-size: 14px;
+   font-weight: 600;
+   color: var(--fh-gray-800);
+ }
+
+ :where(.page-communication-module-member-profile-view) .chart-main-body {
+   display: flex;
+   height: 190px;
+   width: 100%;
+   position: relative;
+   box-sizing: border-box;
+ }
+
+ :where(.page-communication-module-member-profile-view) .chart-y-axis-labels {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   padding-bottom: 24px;
+   padding-right: 14px;
+   font-size: 11px;
+   color: var(--fh-gray-400);
+   text-align: right;
+   box-sizing: border-box;
+ }
+
+ :where(.page-communication-module-member-profile-view) .chart-columns-wrapper {
+   display: flex;
+   flex: 1;
+   justify-content: space-around;
+   align-items: flex-end;
+   border-bottom: 1px solid var(--fh-slate-200);
+   padding-bottom: 24px;
+   position: relative;
+ }
+
+ :where(.page-communication-module-member-profile-view) .chart-bar-column {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 100%;
+   justify-content: flex-end;
+   position: relative;
+   width: 36px;
+ }
+
+ :where(.page-communication-module-member-profile-view) .bar-fill-track {
+   display: flex;
+   align-items: flex-end;
+   height: 100%;
+   width: 100%;
+   justify-content: center;
+ }
+
+ :where(.page-communication-module-member-profile-view) .bar-pillar {
+   width: 16px;
+   border-radius: var(--fh-radius-3);
+ }
+
+ :where(.page-communication-module-member-profile-view) .x-tick-label {
+   position: absolute;
+   bottom: -22px;
+   font-size: 11px;
+   color: var(--fh-gray-400);
+ }
+
+ /* Bar Heights matching chart distribution */
+ :where(.page-communication-module-member-profile-view) .bar-height-25 { height: 25%; }
+ :where(.page-communication-module-member-profile-view) .bar-height-65 { height: 62%; }
+ :where(.page-communication-module-member-profile-view) .bar-height-75 { height: 75%; }
+ :where(.page-communication-module-member-profile-view) .bar-height-80 { height: 80%; }
+ :where(.page-communication-module-member-profile-view) .bar-height-87 { height: 87%; }
+ :where(.page-communication-module-member-profile-view) .bar-height-95 { height: 95%; }
+
+ /* Bar Colors from mockup */
+ :where(.page-communication-module-member-profile-view) .bar-color-purple { background-color: var(--fh-indigo-340); }
+ :where(.page-communication-module-member-profile-view) .bar-color-green { background-color: var(--fh-green-250); }
+ :where(.page-communication-module-member-profile-view) .bar-color-black { background-color: var(--fh-gray-800); }
+ :where(.page-communication-module-member-profile-view) .bar-color-sky { background-color: var(--fh-sky-220); }
+ :where(.page-communication-module-member-profile-view) .bar-color-slate { background-color: var(--fh-slate-340); }
+ :where(.page-communication-module-member-profile-view) .bar-color-mint { background-color: var(--fh-emerald-260); }

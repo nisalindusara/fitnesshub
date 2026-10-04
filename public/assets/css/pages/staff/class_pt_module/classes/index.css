@@ -1,0 +1,146 @@
+/* Scoped under .page-class-pt-module-classes-index (the layout's <main> on this page). */
+
+:where(.page-class-pt-module-classes-index) .cls-page {
+    padding:24px 28px 40px;
+    background:var(--fh-gray-50);
+    min-height:100vh;
+    font-family:var(--fh-font-inter);
+    color:var(--fh-neutral-870);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-breadcrumb {
+    font-size:12px;
+    color:var(--fh-slate-405);
+    margin-bottom:28px;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-breadcrumb strong {
+    color:var(--fh-gray-700);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:24px;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-head h1 {
+    margin:0;
+    font-size:28px;
+    font-weight:700;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:36px;
+    padding:0 15px;
+    border-radius:var(--fh-radius-7);
+    border:1px solid var(--fh-gray-300);
+    font-size:12px;
+    font-weight:600;
+    text-decoration:none;
+    color:var(--fh-gray-700);
+    background:var(--fh-white);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-btn-primary {
+    background:var(--fh-zinc-780);
+    color:var(--fh-white);
+    border-color:var(--fh-zinc-780);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-toolbar {
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:18px;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-search,
+:where(.page-class-pt-module-classes-index) .cls-select {
+    height:36px;
+    border:1px solid var(--fh-gray-300);
+    border-radius:var(--fh-radius-7);
+    background:var(--fh-white);
+    padding:0 12px;
+    font-size:12px;
+    box-sizing:border-box;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-search {
+    width:300px;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-select {
+    width:150px;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-table td {
+    padding:14px 16px;
+    border-top:1px solid var(--fh-slate-120);
+    vertical-align:middle;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-badge {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:4px 8px;
+    border-radius:var(--fh-radius-pill);
+    font-size:10px;
+    font-weight:600;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-badge:before {
+    content:'';
+    width:5px;
+    height:5px;
+    border-radius:var(--fh-radius-circle);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-active {
+    background:var(--fh-emerald-80);
+    color:var(--fh-emerald-605);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-active:before {
+    background:var(--fh-emerald-605);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-inactive {
+    background:var(--fh-red-60);
+    color:var(--fh-red-520);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-inactive:before {
+    background:var(--fh-red-520);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-actions {
+    white-space:nowrap;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-actions a {
+    margin-right:10px;
+    text-decoration:none;
+    font-size:11px;
+}
+
+:where(.page-class-pt-module-classes-index) .cls-view {
+    color:var(--fh-blue-600);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-edit {
+    color:var(--fh-slate-510);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-danger {
+    color:var(--fh-red-605);
+}
+
+:where(.page-class-pt-module-classes-index) .cls-success {
+    color:var(--fh-emerald-605);
+}

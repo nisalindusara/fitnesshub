@@ -1,0 +1,144 @@
+/* Scoped under .page-class-pt-module-sessions-index (the layout's <main> on this page). */
+
+:where(.page-class-pt-module-sessions-index) .cs-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:26px;
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-head h1 {
+    margin:0;
+    font-size:27px;
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-btn {
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    min-height:36px;
+    padding:0 15px;
+    border-radius:var(--fh-radius-7);
+    border:1px solid var(--fh-gray-300);
+    background:var(--fh-white);
+    color:var(--fh-gray-700);
+    font-size:12px;
+    font-weight:600;
+    text-decoration:none;
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-btn-primary {
+    background:var(--fh-zinc-805);
+    color:var(--fh-white);
+    border-color:var(--fh-zinc-805);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-toolbar {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:22px;
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-search {
+    width:250px;
+    height:36px;
+    padding:0 12px;
+    border:1px solid var(--fh-gray-300);
+    border-radius:var(--fh-radius-7);
+    font-size:12px;
+    background:var(--fh-white);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-filters {
+    display:flex;
+    gap:10px;
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-select {
+    height:36px;
+    min-width:110px;
+    padding:0 12px;
+    border:1px solid var(--fh-gray-300);
+    border-radius:var(--fh-radius-7);
+    background:var(--fh-white);
+    font-size:12px;
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-table td {
+    padding:15px;
+    border-top:1px solid var(--fh-gray-160);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-status {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    border-radius:var(--fh-radius-pill);
+    padding:4px 8px;
+    font-size:10px;
+    font-weight:600;
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-status:before {
+    content:'';
+    width:5px;
+    height:5px;
+    border-radius:var(--fh-radius-circle);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-scheduled {
+    background:var(--fh-indigo-50);
+    color:var(--fh-blue-570);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-scheduled:before {
+    background:var(--fh-blue-570);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-completed {
+    background:var(--fh-emerald-80);
+    color:var(--fh-emerald-640);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-completed:before {
+    background:var(--fh-emerald-640);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-cancelled {
+    background:var(--fh-red-60);
+    color:var(--fh-red-565);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-cancelled:before {
+    background:var(--fh-red-565);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-actions {
+    white-space:nowrap;
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-actions a {
+    margin-right:10px;
+    font-size:11px;
+    text-decoration:none;
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-view {
+    color:var(--fh-blue-600);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-edit {
+    color:var(--fh-slate-510);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-cancel {
+    color:var(--fh-red-605);
+}
+
+:where(.page-class-pt-module-sessions-index) .cs-footer {
+    padding:13px 15px;
+    font-size:11px;
+    color:var(--fh-gray-430);
+    border-top:1px solid var(--fh-gray-160);
+}

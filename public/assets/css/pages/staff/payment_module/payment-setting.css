@@ -1,0 +1,116 @@
+/* Scoped under .page-payment-module-payment-setting (the layout's <main> on this page). */
+
+/* Icon (back arrow) */
+:where(.page-payment-module-payment-setting) .icon-svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-payment-module-payment-setting) .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    border-radius: var(--fh-radius-8);
+    cursor: pointer;
+    padding: 0;
+}
+
+:where(.page-payment-module-payment-setting) .icon-btn:hover {
+    background: var(--fh-neutral-870-a05);
+}
+
+/* Layout */
+:where(.page-payment-module-payment-setting) .settings-row {
+    display: flex;
+    gap: 32px;
+    padding: 24px;
+}
+
+:where(.page-payment-module-payment-setting) .settings-row-info {
+    flex: 0 0 220px;
+}
+
+:where(.page-payment-module-payment-setting) .settings-row-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-neutral-870);
+    margin: 0 0 6px;
+}
+
+:where(.page-payment-module-payment-setting) .settings-row-desc {
+    font-size: 13px;
+    color: var(--fh-neutral-870-a50);
+    line-height: 18px;
+    margin: 0;
+}
+
+:where(.page-payment-module-payment-setting) .settings-row-fields {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+:where(.page-payment-module-payment-setting) .settings-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-top: 1px solid var(--fh-neutral-870-a08);
+}
+
+:where(.page-payment-module-payment-setting) .settings-last-saved {
+    font-size: 13px;
+    color: var(--fh-neutral-870-a40);
+}
+
+/* Form fields */
+:where(.page-payment-module-payment-setting) .form-group {
+    margin-bottom: 0;
+}
+
+:where(.page-payment-module-payment-setting) .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--fh-neutral-870-a12);
+    border-radius: var(--fh-radius-8);
+    font-size: 14px;
+    font-family: var(--fh-font-inter);
+    color: var(--fh-neutral-870);
+    background: var(--fh-white);
+    box-sizing: border-box;
+}
+
+:where(.page-payment-module-payment-setting) .form-input:focus {
+    outline: none;
+    border-color: var(--fh-blue-600);
+}
+
+/* Save button */
+:where(.page-payment-module-payment-setting) .btn-save {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: var(--fh-neutral-870);
+    border: none;
+    border-radius: var(--fh-radius-8);
+    font-size: 14px;
+    font-family: var(--fh-font-inter);
+    color: var(--fh-white);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-payment-setting) .btn-save:hover {
+    background: var(--fh-neutral-780);
+}

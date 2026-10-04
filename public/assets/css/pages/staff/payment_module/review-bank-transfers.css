@@ -1,0 +1,407 @@
+/* Scoped under .page-payment-module-review-bank-transfers (the layout's <main> on this page). */
+
+/* Icon base (shared, but re-stated here explicitly) */
+:where(.page-payment-module-review-bank-transfers) .icon-svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-payment-module-review-bank-transfers) .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    border-radius: var(--fh-radius-8);
+    cursor: pointer;
+    padding: 0;
+}
+
+:where(.page-payment-module-review-bank-transfers) .icon-btn:hover {
+    background: var(--fh-neutral-870-a05);
+}
+
+/* Toolbar above the list (title repeated inline per mock, pending count + refresh) */
+:where(.page-payment-module-review-bank-transfers) .queue-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--fh-gray-50);
+    border-radius: var(--fh-radius-12);
+    margin-bottom: 16px;
+}
+
+:where(.page-payment-module-review-bank-transfers) .queue-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--fh-neutral-870);
+}
+
+:where(.page-payment-module-review-bank-transfers) .queue-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+:where(.page-payment-module-review-bank-transfers) .pending-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fh-red-590);
+}
+
+:where(.page-payment-module-review-bank-transfers) .pending-icon-svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-refresh {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: var(--fh-neutral-870-a06);
+    border: none;
+    border-radius: var(--fh-radius-8);
+    font-size: 13px;
+    font-family: var(--fh-font-inter);
+    color: var(--fh-neutral-870);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-refresh:hover {
+    background: var(--fh-neutral-870-a10);
+}
+
+:where(.page-payment-module-review-bank-transfers) .refresh-icon-svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* List of queue rows */
+:where(.page-payment-module-review-bank-transfers) .queue-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+:where(.page-payment-module-review-bank-transfers) .queue-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-870-a08);
+    border-radius: var(--fh-radius-12);
+}
+
+:where(.page-payment-module-review-bank-transfers) .queue-row-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+:where(.page-payment-module-review-bank-transfers) .queue-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--fh-radius-circle);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+:where(.page-payment-module-review-bank-transfers) .queue-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-neutral-870);
+    white-space: nowrap;
+}
+
+:where(.page-payment-module-review-bank-transfers) .queue-meta {
+    font-size: 13px;
+    color: var(--fh-neutral-870-a40);
+    white-space: nowrap;
+}
+
+:where(.page-payment-module-review-bank-transfers) .queue-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--fh-neutral-870-a30);
+    white-space: nowrap;
+}
+
+:where(.page-payment-module-review-bank-transfers) .time-icon-svg {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Review button */
+:where(.page-payment-module-review-bank-transfers) .btn-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--fh-neutral-870);
+    border: none;
+    border-radius: var(--fh-radius-8);
+    font-size: 13px;
+    font-family: var(--fh-font-inter);
+    color: var(--fh-white);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-review:hover {
+    background: var(--fh-neutral-780);
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-icon-svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--fh-black-a40);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal-overlay.review-modal-overlay-open {
+    display: flex;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal {
+    width: 480px;
+    height: 640px;
+    overflow-y: auto;
+    background: var(--fh-white);
+    border-radius: var(--fh-radius-14);
+    box-shadow: 0 10px 30px var(--fh-black-a15);
+    display: flex;
+    flex-direction: column;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 18px 20px;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--fh-neutral-870);
+    margin: 0 0 4px;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal-subtitle {
+    font-size: 12px;
+    color: var(--fh-neutral-870-a40);
+    margin: 0;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: var(--fh-neutral-870-a06);
+    border-radius: var(--fh-radius-8);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal-close:hover {
+    background: var(--fh-neutral-870-a10);
+}
+
+:where(.page-payment-module-review-bank-transfers) .close-icon-svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--fh-neutral-870);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: var(--fh-gray-50);
+    display: block;
+}
+
+:where(.page-payment-module-review-bank-transfers) .review-modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Rejection panel (hidden until Reject is clicked) */
+:where(.page-payment-module-review-bank-transfers) .rejection-panel {
+    display: none;
+    margin: 0 20px 16px;
+    padding: 14px;
+    background: var(--fh-red-70);
+    border: 1px solid var(--fh-red-590-a20);
+    border-radius: var(--fh-radius-10);
+}
+
+:where(.page-payment-module-review-bank-transfers) .rejection-panel.rejection-panel-open {
+    display: block;
+}
+
+:where(.page-payment-module-review-bank-transfers) .rejection-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fh-red-590);
+    margin-bottom: 8px;
+}
+
+:where(.page-payment-module-review-bank-transfers) .rejection-textarea {
+    width: 100%;
+    min-height: 70px;
+    padding: 10px 12px;
+    border: 1px solid var(--fh-red-590-a25);
+    border-radius: var(--fh-radius-8);
+    font-size: 13px;
+    font-family: var(--fh-font-inter);
+    color: var(--fh-neutral-870);
+    background: var(--fh-white);
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+:where(.page-payment-module-review-bank-transfers) .rejection-textarea:focus {
+    outline: none;
+    border-color: var(--fh-red-590);
+}
+
+:where(.page-payment-module-review-bank-transfers) .rejection-panel-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-submit-rejection {
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--fh-radius-8);
+    font-size: 13px;
+    font-family: var(--fh-font-inter);
+    cursor: pointer;
+    background: var(--fh-red-305);
+    color: var(--fh-white);
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-submit-rejection:disabled {
+    cursor: not-allowed;
+    opacity: 0.85;
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-submit-rejection.btn-submit-rejection-active {
+    background: var(--fh-red-590);
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-submit-rejection.btn-submit-rejection-active:hover {
+    background: var(--fh-red-680);
+}
+
+/* Footer */
+:where(.page-payment-module-review-bank-transfers) .review-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--fh-neutral-870-a08);
+}
+
+:where(.page-payment-module-review-bank-transfers) .footer-icon-svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-reject {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--fh-red-70);
+    border: 1px solid var(--fh-red-590-a20);
+    border-radius: var(--fh-radius-8);
+    font-size: 13px;
+    font-family: var(--fh-font-inter);
+    color: var(--fh-red-590);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-reject:hover {
+    background: var(--fh-red-150);
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-approve {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--fh-green-620);
+    border: none;
+    border-radius: var(--fh-radius-8);
+    font-size: 13px;
+    font-family: var(--fh-font-inter);
+    color: var(--fh-white);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-review-bank-transfers) .btn-approve:hover {
+    background: var(--fh-green-705);
+}

@@ -1,0 +1,318 @@
+/* Scoped under .page-landing-contact (the layout's <main> on this page).
+   Rules that also styled the layout chrome, <body> or <html> when this CSS was
+   inline are scoped under body.page-landing-contact--global instead, so they still do. */
+
+/* --- Base & Reset --- */
+*:where(html:has(> body.page-landing-contact--global), html:has(> body.page-landing-contact--global) *) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body:where(.page-landing-contact--global) {
+    font-family: var(--fh-font-barlow);
+    background-color: var(--fh-white);
+    color: var(--fh-neutral-950);
+    line-height: 1.5;
+}
+
+:where(.page-landing-contact) .container {
+    width: 100%;
+    max-width: 1166px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* --- Hero Section --- */
+:where(.page-landing-contact) .hero-section {
+    position: relative;
+    height: 425px;
+    background-color: var(--fh-neutral-950);
+    /* Placeholder gradient, replace url() with your actual gym image */
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 100%), url('/assets/images/landing/contact_hero.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+:where(.page-landing-contact) .hero-content {
+    padding-top: 64px;
+}
+
+:where(.page-landing-contact) .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fh-white-a50);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    transition: color 0.2s;
+}
+
+:where(.page-landing-contact) .back-btn:hover {
+    color: var(--fh-white);
+}
+
+:where(.page-landing-contact) .subtitle {
+    color: var(--fh-red-590);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 3.6px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+}
+
+:where(.page-landing-contact) .hero-title {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 70px;
+    line-height: 0.9;
+    letter-spacing: -1.75px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+    margin-bottom: 16px;
+}
+
+:where(.page-landing-contact) .hero-desc {
+    color: var(--fh-white-a50);
+    font-size: 16px;
+    max-width: 512px;
+}
+
+/* --- Main Content Area --- */
+:where(.page-landing-contact) .main-content {
+    display: flex;
+    gap: 96px;
+    padding: 80px 32px;
+    max-width: 1166px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* --- Left Column: Info --- */
+:where(.page-landing-contact) .info-col {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+:where(.page-landing-contact) .section-title {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: -0.45px;
+    margin-bottom: 20px;
+}
+
+:where(.page-landing-contact) .info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+:where(.page-landing-contact) .info-item {
+    display: flex;
+    gap: 16px;
+}
+
+:where(.page-landing-contact) .info-label {
+    width: 64px;
+    color: var(--fh-red-590);
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding-top: 2px;
+}
+
+:where(.page-landing-contact) .info-text {
+    color: var(--fh-gray-600);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+:where(.page-landing-contact) .hours-section {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid var(--fh-gray-100);
+}
+
+:where(.page-landing-contact) .hours-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--fh-gray-100);
+}
+
+:where(.page-landing-contact) .hours-day {
+    color: var(--fh-gray-400);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+:where(.page-landing-contact) .hours-time {
+    color: var(--fh-neutral-950);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+:where(.page-landing-contact) .social-section {
+    margin-top: 40px;
+    padding-top: 40px;
+}
+
+:where(.page-landing-contact) .social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+:where(.page-landing-contact) .social-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--fh-gray-200);
+    color: var(--fh-gray-400);
+    transition: all 0.2s;
+}
+
+:where(.page-landing-contact) .social-btn:hover {
+    border-color: var(--fh-neutral-950);
+    color: var(--fh-neutral-950);
+}
+
+/* --- Right Column: Form --- */
+:where(.page-landing-contact) .form-col {
+    flex: 1.5;
+    min-width: 320px;
+}
+
+:where(.page-landing-contact) .form-title {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: -0.6px;
+    margin-bottom: 24px;
+}
+
+:where(.page-landing-contact) .form-sent {
+    margin: -8px 0 20px;
+    padding: 12px 16px;
+    border-radius: var(--fh-radius-8);
+    background: var(--fh-green-60);
+    border: 1px solid var(--fh-emerald-180);
+    color: var(--fh-green-770);
+    font-size: 14px;
+}
+
+:where(.page-landing-contact) .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 16px;
+}
+
+:where(.page-landing-contact) .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+:where(.page-landing-contact) .form-label {
+    display: block;
+    color: var(--fh-gray-400);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+:where(.page-landing-contact) .form-control {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--fh-white);
+    border: 1px solid var(--fh-gray-200);
+    font-family: var(--fh-font-barlow);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--fh-neutral-950);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+:where(.page-landing-contact) .form-control::placeholder {
+    color: var(--fh-gray-300);
+}
+
+:where(.page-landing-contact) .form-control:focus {
+    border-color: var(--fh-red-590);
+}
+
+:where(.page-landing-contact) textarea.form-control {
+    resize: vertical;
+    min-height: 130px;
+}
+
+:where(.page-landing-contact) .submit-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 16px 0;
+    background: var(--fh-red-590);
+    color: var(--fh-white);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.2s;
+}
+
+/* --- Map Section --- */
+:where(.page-landing-contact) .map-wrapper {
+    background: var(--fh-gray-50);
+    border-top: 1px solid var(--fh-gray-100);
+    padding: 80px 0;
+}
+
+:where(.page-landing-contact) .map-box {
+    margin-top: 24px;
+    height: 288px;
+    background: var(--fh-gray-200);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+:where(.page-landing-contact) .map-pin {
+    color: var(--fh-red-590);
+    margin-bottom: 12px;
+}
+
+:where(.page-landing-contact) .map-title {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+:where(.page-landing-contact) .map-subtitle {
+    color: var(--fh-gray-400);
+    font-size: 14px;
+}

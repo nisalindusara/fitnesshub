@@ -1,0 +1,123 @@
+/* Scoped under .page-class-pt-module-classes-create (the layout's <main> on this page). */
+
+:where(.page-class-pt-module-classes-create) .cls-page {
+    padding:24px 28px 40px;
+    background:var(--fh-gray-50);
+    min-height:100vh;
+    font-family:var(--fh-font-inter);
+    color:var(--fh-zinc-780);
+}
+
+:where(.page-class-pt-module-classes-create) .cls-breadcrumb {
+    font-size:12px;
+    color:var(--fh-slate-405);
+    margin-bottom:25px;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-breadcrumb strong {
+    color:var(--fh-gray-700);
+}
+
+:where(.page-class-pt-module-classes-create) .cls-title {
+    font-size:28px;
+    margin:0 0 22px;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-form-layout {
+    display:grid;
+    grid-template-columns:minmax(0,1.7fr) minmax(280px,.9fr);
+    gap:20px;
+    align-items:start;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-card {
+    background:var(--fh-white);
+    border:1px solid var(--fh-gray-200);
+    border-radius:var(--fh-radius-10);
+    padding:20px;
+    margin-bottom:18px;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-card h2 {
+    font-size:13px;
+    margin:0 0 18px;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-field {
+    margin-bottom:15px;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-field label {
+    display:block;
+    margin-bottom:6px;
+    font-size:10px;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--fh-gray-700);
+}
+
+:where(.page-class-pt-module-classes-create) .cls-field input,
+:where(.page-class-pt-module-classes-create) .cls-field textarea,
+:where(.page-class-pt-module-classes-create) .cls-field select {
+    width:100%;
+    box-sizing:border-box;
+    border:1px solid var(--fh-gray-300);
+    border-radius:var(--fh-radius-6);
+    padding:10px 11px;
+    font:inherit;
+    font-size:12px;
+    background:var(--fh-white);
+}
+
+:where(.page-class-pt-module-classes-create) .cls-field textarea {
+    resize:none;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-grid-2 {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-upload {
+    height:95px;
+    border:1px dashed var(--fh-gray-300);
+    border-radius:var(--fh-radius-8);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:var(--fh-slate-405);
+    font-size:11px;
+    margin-bottom:20px;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-upload strong {
+    color:var(--fh-slate-600);
+    margin-bottom:4px;
+    font-weight:500;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-actions {
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-btn {
+    height:36px;
+    padding:0 15px;
+    border-radius:var(--fh-radius-7);
+    border:1px solid var(--fh-gray-300);
+    background:var(--fh-white);
+    color:var(--fh-slate-510);
+    font-size:12px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+:where(.page-class-pt-module-classes-create) .cls-primary {
+    background:var(--fh-zinc-780);
+    color:var(--fh-white);
+    border-color:var(--fh-zinc-780);
+}

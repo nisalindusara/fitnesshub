@@ -1,0 +1,324 @@
+/* Scoped under .page-landing-ecommerce-checkout (the layout's <main> on this page).
+   Rules that also styled the layout chrome, <body> or <html> when this CSS was
+   inline are scoped under body.page-landing-ecommerce-checkout--global instead, so they still do. */
+
+/* --- Base & Reset --- */
+*:where(html:has(> body.page-landing-ecommerce-checkout--global), html:has(> body.page-landing-ecommerce-checkout--global) *) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body:where(.page-landing-ecommerce-checkout--global) {
+    font-family: var(--fh-font-barlow);
+    background-color: var(--fh-white);
+    color: var(--fh-neutral-950);
+    line-height: 1.5;
+}
+
+:where(.page-landing-ecommerce-checkout) .container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 80px 32px;
+}
+
+/* --- Checkout Layout --- */
+:where(.page-landing-ecommerce-checkout) .checkout-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Shared Header Style */
+:where(.page-landing-ecommerce-checkout) .box-header {
+    background-color: var(--fh-gray-400);
+    border-radius: var(--fh-radius-12) var(--fh-radius-12) 0 0;
+    padding: 24px 32px;
+    color: var(--fh-white);
+}
+
+/* --- Left Column: Form Section --- */
+:where(.page-landing-ecommerce-checkout) .checkout-form-container {
+    flex: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+:where(.page-landing-ecommerce-checkout) .step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+:where(.page-landing-ecommerce-checkout) .step-item {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--fh-white-a60);
+}
+
+:where(.page-landing-ecommerce-checkout) .step-item.active {
+    font-weight: 700;
+    color: var(--fh-white);
+}
+
+:where(.page-landing-ecommerce-checkout) .checkout-form {
+    background-color: var(--fh-white);
+    border: 1px solid var(--fh-gray-200);
+    border-top: none;
+    border-radius: 0 0 var(--fh-radius-12) var(--fh-radius-12);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+:where(.page-landing-ecommerce-checkout) .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+:where(.page-landing-ecommerce-checkout) .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+:where(.page-landing-ecommerce-checkout) .form-label {
+    font-size: 16px;
+    color: var(--fh-gray-600);
+    font-weight: 500;
+}
+
+:where(.page-landing-ecommerce-checkout) .form-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--fh-gray-200);
+    border-radius: var(--fh-radius-8);
+    font-family: var(--fh-font-barlow);
+    font-size: 16px;
+    color: var(--fh-neutral-950);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+:where(.page-landing-ecommerce-checkout) .form-input:focus {
+    border-color: var(--fh-red-590);
+}
+
+:where(.page-landing-ecommerce-checkout) .btn-next {
+    align-self: flex-start;
+    background-color: var(--fh-neutral-950);
+    color: var(--fh-white);
+    font-family: var(--fh-font-barlow);
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 40px;
+    border: none;
+    border-radius: var(--fh-radius-50);
+    /* Pill shape */
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background-color 0.2s;
+}
+
+:where(.page-landing-ecommerce-checkout) .btn-next:hover {
+    background-color: var(--fh-red-590);
+}
+
+/* --- Right Column: Cart Details --- */
+:where(.page-landing-ecommerce-checkout) .cart-details-container {
+    flex: 1;
+    min-width: 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+:where(.page-landing-ecommerce-checkout) .cart-details-header {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+:where(.page-landing-ecommerce-checkout) .cart-details-body {
+    background-color: var(--fh-gray-50);
+    border: 1px solid var(--fh-gray-200);
+    border-top: none;
+    border-radius: 0 0 var(--fh-radius-12) var(--fh-radius-12);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+:where(.page-landing-ecommerce-checkout) .cart-table-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--fh-gray-600);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+:where(.page-landing-ecommerce-checkout) .dashed-divider {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed var(--fh-gray-300);
+}
+
+:where(.page-landing-ecommerce-checkout) .cart-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: var(--fh-gray-400);
+}
+
+:where(.page-landing-ecommerce-checkout) .item-name {
+    flex: 1;
+    color: var(--fh-gray-600);
+    font-weight: 500;
+}
+
+:where(.page-landing-ecommerce-checkout) .item-qty {
+    flex: 1;
+    text-align: center;
+}
+
+:where(.page-landing-ecommerce-checkout) .item-subtotal {
+    flex: 1;
+    text-align: right;
+}
+
+:where(.page-landing-ecommerce-checkout) .summary-row .value {
+    color: var(--fh-gray-400);
+}
+
+:where(.page-landing-ecommerce-checkout) .summary-row.total-row {
+    font-weight: 700;
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 968px) {
+    :where(.page-landing-ecommerce-checkout) .checkout-wrapper {
+        flex-direction: column;
+    }
+
+    :where(.page-landing-ecommerce-checkout) .cart-details-container {
+        width: 100%;
+    }
+
+    :where(.page-landing-ecommerce-checkout) .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    :where(.page-landing-ecommerce-checkout) .step-item {
+        font-size: 16px;
+    }
+}
+
+/* --- Confirmation Card --- */
+:where(.page-landing-ecommerce-checkout) .confirmation-card {
+    background-color: var(--fh-white);
+    width: 100%;
+    max-width: 800px;
+    /* Matching the wide proportion of the image */
+    padding: 80px 40px;
+    border: 1px solid var(--fh-gray-200);
+    border-radius: var(--fh-radius-12);
+    box-shadow: 0px 20px 45px var(--fh-black-a05);
+    /* Cleaned up from Figma's raw export */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+:where(.page-landing-ecommerce-checkout) .success-icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--fh-gray-600);
+    color: var(--fh-white);
+    border-radius: var(--fh-radius-circle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+:where(.page-landing-ecommerce-checkout) .confirmation-title {
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--fh-neutral-950);
+    margin-bottom: 12px;
+}
+
+:where(.page-landing-ecommerce-checkout) .confirmation-desc {
+    font-size: 16px;
+    color: var(--fh-gray-400);
+    max-width: 480px;
+    margin-bottom: 32px;
+}
+
+/* --- Button Group --- */
+:where(.page-landing-ecommerce-checkout) .button-group {
+    display: flex;
+    gap: 16px;
+}
+
+:where(.page-landing-ecommerce-checkout) .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 28px;
+    font-family: var(--fh-font-barlow);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: var(--fh-radius-50);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+:where(.page-landing-ecommerce-checkout) .btn-primary {
+    background-color: var(--fh-neutral-950);
+    color: var(--fh-white);
+    border: 1px solid var(--fh-neutral-950);
+}
+
+:where(.page-landing-ecommerce-checkout) .btn-outline {
+    background-color: var(--fh-white);
+    color: var(--fh-neutral-950);
+    border: 1px solid var(--fh-neutral-950);
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 600px) {
+    :where(.page-landing-ecommerce-checkout) .confirmation-card {
+        padding: 60px 20px;
+    }
+
+    :where(.page-landing-ecommerce-checkout) .button-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    :where(.page-landing-ecommerce-checkout) .btn {
+        width: 100%;
+    }
+}
+
+:where(.page-landing-ecommerce-checkout) dialog {
+    border: none;
+    background: transparent;
+    /* Makes the wrapper seamless with your card */
+    margin: auto;
+    /* Enforces exact browser viewport centering */
+}
+
+:where(.page-landing-ecommerce-checkout) dialog::backdrop {
+    background-color: var(--fh-black-a50);
+}

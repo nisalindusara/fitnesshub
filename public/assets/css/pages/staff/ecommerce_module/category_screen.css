@@ -1,0 +1,332 @@
+/* Scoped under .page-ecommerce-module-category-screen (the layout's <main> on this page).
+   Rules that also styled the layout chrome, <body> or <html> when this CSS was
+   inline are scoped under body.page-ecommerce-module-category-screen--global instead, so they still do. */
+
+/* Define the missing CSS variables based on your design */
+:root:where(:has(> body.page-ecommerce-module-category-screen--global)) {
+    --text-main: var(--fh-neutral-870);
+    --text-muted: var(--fh-gray-400);
+    --text-label: var(--fh-neutral-870);
+    --border-color: var(--fh-gray-200);
+    --border-medium: var(--fh-gray-200);
+    --divider-color: var(--fh-gray-100);
+    --primary-btn: var(--fh-neutral-370);
+    --primary-btn-hover: var(--fh-gray-400);
+    --bg-surface: var(--fh-gray-50);
+    --danger-btn: var(--fh-red-500);
+    --danger-btn-hover: var(--fh-red-600);
+}
+
+*:where(html:has(> body.page-ecommerce-module-category-screen--global), html:has(> body.page-ecommerce-module-category-screen--global) *) {
+    box-sizing: border-box;
+}
+
+body:where(.page-ecommerce-module-category-screen--global) {
+    font-family: var(--fh-font-system);
+    margin: 0;
+}
+
+/* Header */
+:where(.page-ecommerce-module-category-screen) .header {
+    display: flex;
+    align-items: center;
+    padding: 20px 28px;
+    height: 72px;
+    border-bottom: 1px solid var(--border-medium);
+    gap: 8px;
+}
+
+:where(.page-ecommerce-module-category-screen) .header-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--fh-radius-8);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+:where(.page-ecommerce-module-category-screen) .header-title {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Main Content */
+:where(.page-ecommerce-module-category-screen) .main-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Toolbar */
+:where(.page-ecommerce-module-category-screen) .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    background: var(--fh-gray-50);
+    border-radius: var(--fh-radius-8);
+    height: 44px;
+}
+
+:where(.page-ecommerce-module-category-screen) .toolbar-actions {
+    display: flex;
+    gap: 16px;
+}
+
+:where(.page-ecommerce-module-category-screen) .btn-action {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--fh-black);
+    cursor: pointer;
+    border-radius: var(--fh-radius-8);
+}
+
+:where(.page-ecommerce-module-category-screen) .search-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 160px;
+    height: 28px;
+    padding: 4px 8px;
+    background: var(--fh-white-a40);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--fh-radius-8);
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+:where(.page-ecommerce-module-category-screen) .search-input input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    width: 100%;
+}
+
+:where(.page-ecommerce-module-category-screen) .search-input input::placeholder {
+    color: var(--fh-neutral-870-a20);
+}
+
+/* Table */
+:where(.page-ecommerce-module-category-screen) .table {
+    display: flex;
+    flex-direction: column;
+}
+
+:where(.page-ecommerce-module-category-screen) .table-row {
+    display: grid;
+    grid-template-columns: 1fr 138px 48px;
+    align-items: center;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--fh-neutral-870-a05);
+}
+
+:where(.page-ecommerce-module-category-screen) .table-row:hover {
+    background: var(--fh-gray-50);
+}
+
+:where(.page-ecommerce-module-category-screen) .table-header {
+    border-bottom: 1px solid var(--fh-neutral-870-a20);
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+:where(.page-ecommerce-module-category-screen) .col-center {
+    text-align: center;
+}
+
+:where(.page-ecommerce-module-category-screen) .col-action {
+    display: flex;
+    justify-content: center;
+}
+
+:where(.page-ecommerce-module-category-screen) .btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--fh-radius-8);
+    width: 24px;
+    height: 24px;
+}
+
+/* Dropdown Positioning and Styling */
+:where(body.page-ecommerce-module-category-screen--global) .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+:where(.page-ecommerce-module-category-screen) .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--fh-white);
+    min-width: 120px;
+    box-shadow: 0px 4px 8px var(--fh-black-a10);
+    border: 1px solid var(--fh-neutral-250);
+    border-radius: var(--fh-radius-4);
+    z-index: 10;
+}
+
+:where(.page-ecommerce-module-category-screen) .dropdown-menu.show {
+    display: flex;
+    flex-direction: column;
+}
+
+:where(.page-ecommerce-module-category-screen) .dropdown-item {
+    padding: 10px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+:where(.page-ecommerce-module-category-screen) .dropdown-item:hover {
+    background-color: var(--fh-gray-100);
+}
+
+/* Dialog specific styling */
+:where(.page-ecommerce-module-category-screen) dialog {
+    border: none;
+    border-radius: var(--fh-radius-16);
+    padding: 28px 32px;
+    width: 90%;
+    max-width: 460px;
+    background: var(--fh-white);
+    box-shadow: 0 20px 25px -5px var(--fh-black-a10), 0 10px 10px -5px var(--fh-black-a04);
+    margin: auto;
+}
+
+:where(.page-ecommerce-module-category-screen) dialog::backdrop {
+    background-color: var(--fh-black-a40);
+    backdrop-filter: blur(2px);
+}
+
+:where(.page-ecommerce-module-category-screen) .dialog-header {
+    margin-bottom: 20px;
+}
+
+:where(.page-ecommerce-module-category-screen) .dialog-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0 0 6px 0;
+}
+
+:where(.page-ecommerce-module-category-screen) .dialog-subtitle {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin: 0;
+}
+
+:where(.page-ecommerce-module-category-screen) .divider {
+    border: none;
+    border-top: 1px solid var(--divider-color);
+    margin-bottom: 24px;
+    margin-top: 0;
+}
+
+:where(.page-ecommerce-module-category-screen) .form-group {
+    margin-bottom: 40px;
+}
+
+:where(.page-ecommerce-module-category-screen) .form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-label);
+    margin-bottom: 10px;
+}
+
+:where(.page-ecommerce-module-category-screen) .form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--fh-radius-10);
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+:where(.page-ecommerce-module-category-screen) .form-input::placeholder {
+    color: var(--text-muted);
+}
+
+:where(.page-ecommerce-module-category-screen) .form-input:focus {
+    border-color: var(--fh-gray-300);
+}
+
+:where(.page-ecommerce-module-category-screen) .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+:where(.page-ecommerce-module-category-screen) .btn-cancel {
+    background: transparent;
+    border: none;
+    color: var(--fh-gray-500);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: color 0.2s;
+}
+
+:where(.page-ecommerce-module-category-screen) .btn-cancel:hover {
+    color: var(--text-main);
+}
+
+:where(.page-ecommerce-module-category-screen) .btn-submit {
+    background-color: var(--primary-btn);
+    color: var(--fh-white);
+    border: none;
+    border-radius: var(--fh-radius-10);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+:where(.page-ecommerce-module-category-screen) .btn-submit:hover {
+    background-color: var(--primary-btn-hover);
+}
+
+:where(.page-ecommerce-module-category-screen) .btn-danger {
+    background-color: var(--danger-btn);
+    color: var(--fh-white);
+    border: none;
+    border-radius: var(--fh-radius-10);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+:where(.page-ecommerce-module-category-screen) .btn-danger:hover {
+    background-color: var(--danger-btn-hover);
+}

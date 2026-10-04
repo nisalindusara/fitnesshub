@@ -1,0 +1,734 @@
+/* Scoped under .page-member-dashboard (the layout's <main> on this page). */
+
+/* Member dashboard – page content (id/class selectors only)
+   Font (Plus Jakarta Sans), page background and chrome spacing come from member-layout
+
+   Colour meaning (same as Analytics)
+   green  #1E8E5A  done / logged / on track
+   amber  #D08A0B  partly done / needs attention soon
+   red    #C62828  missed (week view)
+   light grey      booked / upcoming
+*/
+
+  :where(.page-member-dashboard) #dashboard-page {
+    --ink: var(--fh-zinc-900);
+    --muted: var(--fh-slate-500);
+    --line: var(--fh-gray-160);
+    --card: var(--fh-white);
+    --track: var(--fh-neutral-130);
+    --bar: var(--fh-gray-230);
+
+    --green: var(--fh-emerald-630);
+    --green-dark: var(--fh-emerald-720);
+    --green-soft: var(--fh-emerald-80);
+    --amber: var(--fh-yellow-590);
+    --amber-text: var(--fh-yellow-705);
+    --amber-soft: var(--fh-orange-80);
+    --red: var(--fh-red-650);
+    --red-soft: var(--fh-red-70);
+
+    box-sizing: border-box;
+    width: min(100%, 960px);
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    font-family: var(--fh-font-plus-jakarta);
+    color: var(--ink);
+  }
+
+  /* ---------- Greeting ---------- */
+  :where(.page-member-dashboard) .greet {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  :where(.page-member-dashboard) .greet__avatar {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--fh-radius-circle);
+    background: var(--green);
+    box-shadow: 0 0 0 4px var(--card), 0 0 0 5px var(--line);
+    color: var(--fh-white);
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  :where(.page-member-dashboard) .greet__text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  :where(.page-member-dashboard) .greet__title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  :where(.page-member-dashboard) .greet__title strong {
+    font-weight: 700;
+  }
+
+  :where(.page-member-dashboard) .greet__subtitle {
+    margin: 4px 0 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  :where(.page-member-dashboard) .greet__badge {
+    flex: none;
+    padding: 6px 12px;
+    border-radius: var(--fh-radius-pill);
+    background: var(--ink);
+    color: var(--fh-white);
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  /* ---------- Section block ---------- */
+  :where(.page-member-dashboard) .block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  :where(.page-member-dashboard) .block__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  :where(.page-member-dashboard) .link {
+    flex: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--green);
+    text-decoration: none;
+  }
+
+  :where(.page-member-dashboard) .link:hover {
+    color: var(--green-dark);
+    text-decoration: underline;
+  }
+
+  :where(.page-member-dashboard) .link--small {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.85rem;
+  }
+
+  /* ---------- Card ---------- */
+  :where(.page-member-dashboard) .card {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 24px;
+    border-radius: var(--fh-radius-20);
+    background: var(--card);
+    box-shadow: 0 1px 3px var(--fh-gray-900-a04);
+  }
+
+  :where(.page-member-dashboard) .card__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  :where(.page-member-dashboard) .card__title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  :where(.page-member-dashboard) .card__caption {
+    margin: 2px 0 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  :where(.page-member-dashboard) .icon-circle {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--fh-radius-circle);
+    background: var(--green-soft);
+  }
+
+  :where(.page-member-dashboard) .icon-circle svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :where(.page-member-dashboard) .icon-circle--small {
+    width: 34px;
+    height: 34px;
+  }
+
+  :where(.page-member-dashboard) .icon-circle--small svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  :where(.page-member-dashboard) .icon-circle--warn {
+    background: var(--amber-soft);
+  }
+
+  :where(.page-member-dashboard) .icon-circle--warn svg {
+    stroke: var(--amber-text);
+  }
+
+  /* ---------- Schedule: week view ---------- */
+  :where(.page-member-dashboard) .week-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  :where(.page-member-dashboard) .cal {
+    position: relative;
+    padding: 24px 28px 22px;
+  }
+
+  :where(.page-member-dashboard) .cal__panel {
+    display: none;
+  }
+
+  :where(.page-member-dashboard) #week-prev:checked~.cal .cal__panel--prev,
+  :where(.page-member-dashboard) #week-current:checked~.cal .cal__panel--current,
+  :where(.page-member-dashboard) #week-next:checked~.cal .cal__panel--next {
+    display: block;
+  }
+
+  :where(.page-member-dashboard) .cal__top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  :where(.page-member-dashboard) .cal__month {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  :where(.page-member-dashboard) .cal__range {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  :where(.page-member-dashboard) .cal__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+
+  :where(.page-member-dashboard) .cal__day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  :where(.page-member-dashboard) .cal__name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+
+  :where(.page-member-dashboard) .cal__date {
+    width: 100%;
+    max-width: 96px;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: var(--fh-radius-14);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  :where(.page-member-dashboard) .cal__day--today .cal__name {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  :where(.page-member-dashboard) .cal__day--today .cal__date {
+    background: var(--ink);
+    color: var(--fh-white);
+    font-weight: 600;
+  }
+
+  /* Day tile colour: green attended, red missed, light grey booked */
+  :where(.page-member-dashboard) .cal__day--attended .cal__date {
+    background: var(--green-soft);
+    color: var(--green-dark);
+    font-weight: 600;
+  }
+
+  :where(.page-member-dashboard) .cal__day--missed .cal__date {
+    background: var(--red-soft);
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  :where(.page-member-dashboard) .cal__day--upcoming .cal__date {
+    background: var(--fh-gray-100);
+  }
+
+  /* What it was (past) or what is booked (future), in plain text */
+  :where(.page-member-dashboard) .cal__type {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  :where(.page-member-dashboard) .cal__detail {
+    margin-top: -6px;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  :where(.page-member-dashboard) .cal__day--missed .cal__detail {
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  :where(.page-member-dashboard) .cal__summary {
+    margin: 20px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* Week arrows, sitting on the card edges */
+  :where(.page-member-dashboard) .cal__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    margin-top: -21px;
+    border-radius: var(--fh-radius-circle);
+    background: var(--card);
+    box-shadow: 0 2px 10px var(--fh-gray-900-a10);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  :where(.page-member-dashboard) .cal__arrow:hover {
+    background: var(--fh-gray-100);
+  }
+
+  :where(.page-member-dashboard) .cal__arrow svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :where(.page-member-dashboard) .cal__arrow--left {
+    left: -21px;
+  }
+
+  :where(.page-member-dashboard) .cal__arrow--right {
+    right: -21px;
+  }
+
+  :where(.page-member-dashboard) .cal__arrow--disabled {
+    cursor: default;
+    box-shadow: 0 1px 3px var(--fh-gray-900-a06);
+  }
+
+  :where(.page-member-dashboard) .cal__arrow--disabled svg {
+    stroke: var(--fh-gray-330);
+  }
+
+  :where(.page-member-dashboard) .cal__arrow--disabled:hover {
+    background: var(--card);
+  }
+
+  /* ---------- Today ---------- */
+  :where(.page-member-dashboard) .today {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+
+  :where(.page-member-dashboard) .meals-today {
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+  }
+
+  :where(.page-member-dashboard) .meal-list {
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  :where(.page-member-dashboard) .meal {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  :where(.page-member-dashboard) .meal__check {
+    box-sizing: border-box;
+    flex: none;
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--fh-radius-circle);
+    border: 1.5px dashed var(--fh-gray-350);
+  }
+
+  :where(.page-member-dashboard) .meal__check--done {
+    border: 0;
+    background: var(--green);
+  }
+
+  :where(.page-member-dashboard) .meal__check svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: var(--fh-white);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  :where(.page-member-dashboard) .meal__slot {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  :where(.page-member-dashboard) .meal__name {
+    margin: 2px 0 0;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  :where(.page-member-dashboard) .meal__name--empty {
+    font-weight: 500;
+    color: var(--fh-gray-400);
+  }
+
+  :where(.page-member-dashboard) .feature {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  :where(.page-member-dashboard) .feature__meta {
+    margin: 4px 0 0;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Buttons ---------- */
+  :where(.page-member-dashboard) .btn {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 46px;
+    margin-top: auto;
+    padding: 0 20px;
+    border-radius: var(--fh-radius-12);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+  }
+
+  :where(.page-member-dashboard) .btn:focus-visible,
+  :where(.page-member-dashboard) .link:focus-visible {
+    outline: 2.5px solid var(--green);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Stats ---------- */
+  :where(.page-member-dashboard) .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  :where(.page-member-dashboard) .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  :where(.page-member-dashboard) .stat__value {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  :where(.page-member-dashboard) .stat__label {
+    margin: 4px 0 16px;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  /* Mini bar: green on track, amber below 80% */
+  :where(.page-member-dashboard) .mini-bar {
+    width: 100%;
+    height: 6px;
+    border-radius: var(--fh-radius-pill);
+    background: var(--track);
+    overflow: hidden;
+  }
+
+  :where(.page-member-dashboard) .mini-bar--blank {
+    background: transparent;
+  }
+
+  /* ---------- Target ---------- */
+
+  :where(.page-member-dashboard) .target__percent {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--green);
+  }
+
+  :where(.page-member-dashboard) .target__track,
+  :where(.page-member-dashboard) .membership__track {
+    height: 10px;
+    border-radius: var(--fh-radius-pill);
+    background: var(--track);
+    overflow: hidden;
+  }
+
+  :where(.page-member-dashboard) .target__fill {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--green);
+  }
+
+  :where(.page-member-dashboard) .target__note,
+  :where(.page-member-dashboard) .membership__note {
+    margin: 12px 0 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Membership ---------- */
+  :where(.page-member-dashboard) .membership__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  :where(.page-member-dashboard) .membership__plan {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  :where(.page-member-dashboard) .membership__meta {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  :where(.page-member-dashboard) .membership__days {
+    color: var(--amber-text);
+    font-weight: 700;
+  }
+
+  /* time used is neutral, not good or bad */
+  :where(.page-member-dashboard) .membership__fill {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--fh-gray-400);
+  }
+
+  /* ---------- Recent activity ---------- */
+  :where(.page-member-dashboard) .activity {
+    list-style: none;
+    padding: 8px 24px;
+  }
+
+  :where(.page-member-dashboard) .activity__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  :where(.page-member-dashboard) .activity__item:last-child {
+    border-bottom: 0;
+  }
+
+  :where(.page-member-dashboard) .activity__text {
+    flex: 1;
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  :where(.page-member-dashboard) .activity__time {
+    flex: none;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 640px) {
+    :where(.page-member-dashboard) #dashboard-page {
+      gap: 36px;
+    }
+
+    :where(.page-member-dashboard) .greet {
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    :where(.page-member-dashboard) .greet__avatar {
+      width: 52px;
+      height: 52px;
+      font-size: 1.1rem;
+    }
+
+    :where(.page-member-dashboard) .greet__title {
+      font-size: 1.35rem;
+    }
+
+    :where(.page-member-dashboard) .greet__text {
+      flex: 1 1 calc(100% - 66px);
+    }
+
+    :where(.page-member-dashboard) .greet__badge {
+      margin-left: 66px;
+      /* wraps under the name */
+    }
+
+    :where(.page-member-dashboard) .card {
+      padding: 18px 16px;
+      border-radius: var(--fh-radius-18);
+    }
+
+    :where(.page-member-dashboard) .cal {
+      padding: 18px 14px;
+    }
+
+    :where(.page-member-dashboard) .cal__top {
+      flex-direction: column;
+      gap: 2px;
+      padding: 0 18px;
+    }
+
+    :where(.page-member-dashboard) .cal__grid {
+      gap: 3px;
+      padding: 0 16px;
+    }
+
+    :where(.page-member-dashboard) .cal__name {
+      font-size: 0.7rem;
+    }
+
+    :where(.page-member-dashboard) .cal__date {
+      font-size: 1.05rem;
+      border-radius: var(--fh-radius-10);
+    }
+
+    :where(.page-member-dashboard) .cal__type {
+      font-size: 0.7rem;
+    }
+
+    :where(.page-member-dashboard) .cal__detail {
+      font-size: 0.56rem;
+      white-space: nowrap;
+    }
+
+    :where(.page-member-dashboard) .cal__arrow {
+      width: 34px;
+      height: 34px;
+      margin-top: -17px;
+    }
+
+    :where(.page-member-dashboard) .cal__arrow--left {
+      left: -12px;
+    }
+
+    :where(.page-member-dashboard) .cal__arrow--right {
+      right: -12px;
+    }
+
+    :where(.page-member-dashboard) .today {
+      grid-template-columns: 1fr;
+    }
+
+    :where(.page-member-dashboard) .meals-today {
+      grid-row: auto;
+    }
+
+    :where(.page-member-dashboard) .stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    :where(.page-member-dashboard) .activity {
+      padding: 4px 16px;
+    }
+
+    :where(.page-member-dashboard) .activity__item {
+      flex-wrap: wrap;
+    }
+
+    :where(.page-member-dashboard) .activity__time {
+      width: 100%;
+      padding-left: 48px;
+      margin-top: -8px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    :where(.page-member-dashboard) .cal__arrow,
+    :where(.page-member-dashboard) .btn {
+      transition: none;
+    }
+  }

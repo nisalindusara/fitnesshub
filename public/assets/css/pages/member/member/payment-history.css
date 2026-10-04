@@ -1,0 +1,95 @@
+/* Scoped under .page-member-payment-history (the layout's <main> on this page). */
+
+:where(.page-member-payment-history) .payment-history-page {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     box-sizing: border-box;
+     font-family: var(--fh-font-system);
+ }
+
+ :where(.page-member-payment-history) .payment-history-card {
+     width: min(94%, 960px);
+     min-height: 490px;
+     padding: 40px 48px;
+     background: var(--fh-white);
+     border-radius: var(--fh-radius-28);
+     box-shadow: 0 4px 24px var(--fh-black-a04);
+     box-sizing: border-box;
+ }
+
+ :where(.page-member-payment-history) .payment-history-header {
+     margin-bottom: 24px;
+ }
+
+ :where(.page-member-payment-history) .payment-history-title {
+     margin: 0;
+     font-size: 20px;
+     font-weight: 700;
+     color: var(--fh-gray-900);
+     letter-spacing: -0.2px;
+ }
+
+ :where(.page-member-payment-history) .payment-list {
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+ }
+
+ /* Grid columns: date | name (flexible) | card | amount | status | chevron
+Each column has a fixed width, so the same field lines up
+at the exact same x-position across every row. */
+ :where(.page-member-payment-history) .payment-item {
+     display: grid;
+     grid-template-columns: 100px 1fr 70px 90px 70px 16px;
+     align-items: center;
+     column-gap: 20px;
+     padding: 16px 20px;
+     background-color: var(--fh-gray-100);
+     border-radius: var(--fh-radius-14);
+     text-decoration: none;
+     color: inherit;
+     transition: background-color 0.15s ease;
+ }
+
+ :where(.page-member-payment-history) .payment-item:hover {
+     background-color: var(--fh-gray-160);
+ }
+
+ :where(.page-member-payment-history) .payment-date {
+     font-size: 13px;
+     color: var(--fh-gray-400);
+ }
+
+ :where(.page-member-payment-history) .payment-name {
+     font-size: 14px;
+     font-weight: 700;
+     color: var(--fh-gray-900);
+     min-width: 0;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+ }
+
+ :where(.page-member-payment-history) .payment-method-label {
+     font-size: 13px;
+     color: var(--fh-gray-500);
+ }
+
+ :where(.page-member-payment-history) .payment-amount {
+     font-size: 14px;
+     font-weight: 700;
+     color: var(--fh-gray-900);
+ }
+
+ :where(.page-member-payment-history) .payment-status {
+     font-size: 11px;
+     font-weight: 700;
+     letter-spacing: 0.04em;
+     color: var(--fh-green-600);
+ }
+
+ :where(.page-member-payment-history) .payment-chevron {
+     justify-self: end;
+ }

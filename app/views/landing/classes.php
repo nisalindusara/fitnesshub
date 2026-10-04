@@ -1,5 +1,6 @@
 <?php
-// Classes / weekly schedule view (styles: classes.css, script: classes.js — loaded by layout/at bottom)
+// Classes / weekly schedule view (script: classes.js, loaded at the bottom)
+$pageStyles = ['landing/classes'];
 
 $isLoggedIn = !empty($isLoggedIn);
 

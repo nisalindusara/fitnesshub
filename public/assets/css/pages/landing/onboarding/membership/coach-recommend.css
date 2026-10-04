@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=Barlow:wght@400;700&display=swap');
+
+/* Scoped under .page-onboarding-membership-coach-recommend (the layout's <main> on this page). */
+
+:where(.page-onboarding-membership-coach-recommend) .coach-recommend {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: var(--fh-neutral-950);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--fh-font-barlow);
+}
+
+:where(.page-onboarding-membership-coach-recommend) .left-panel {
+    flex: 2;
+    min-width: 300px;
+    height: 100%;
+    /* Using the exact image reference requested, with a fallback color/gradient */
+    background: url('image_edc88b.png') center/cover no-repeat,
+        linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
+    background-size: cover;
+    background-position: center;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .back-btn {
+    box-sizing: border-box;
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: var(--fh-white-a60);
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .right-panel {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 8vw;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .onboarding-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 448px;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .tag-text {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 3.6px;
+    text-transform: uppercase;
+    color: var(--fh-red-590);
+    margin-bottom: 12px;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .headline-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .headline-text {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 52.488px;
+    line-height: 46px;
+    letter-spacing: -1.3122px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .paragraph-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: var(--fh-white-a50);
+    margin: 0 0 24px 0;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .highlight-text {
+    font-weight: 700;
+    color: var(--fh-white);
+}
+
+:where(.page-onboarding-membership-coach-recommend) .instructor-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--fh-red-590-a05);
+    border: 0.8px solid var(--fh-red-590-a40);
+    margin-bottom: 16px;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .instructor-avatar {
+    width: 64px;
+    height: 64px;
+    /* Adding a placeholder image to match the avatar aesthetic */
+    background: #1E2939 url('https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=200&auto=format&fit=crop') center/cover no-repeat;
+    flex-shrink: 0;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .instructor-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .instructor-name {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .instructor-title {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--fh-red-590);
+    margin: 0 0 8px 0;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .instructor-desc {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--fh-white-a50);
+    margin: 0;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .disclaimer-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: var(--fh-white-a30);
+    margin: 0 0 24px 0;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .actions-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .primary-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0px;
+    gap: 12px;
+    width: 100%;
+    height: 52px;
+    background: var(--fh-red-590);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .primary-button:hover {
+    background: var(--fh-red-680);
+}
+
+:where(.page-onboarding-membership-coach-recommend) .primary-button-text {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+}
+
+:where(.page-onboarding-membership-coach-recommend) .primary-button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .outline-button {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0px;
+    width: 100%;
+    height: 54px;
+    background: transparent;
+    border: 0.8px solid var(--fh-white-a20);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .outline-button:hover {
+    background: var(--fh-white-a05);
+    border-color: var(--fh-white-a40);
+}
+
+:where(.page-onboarding-membership-coach-recommend) .outline-button-text {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fh-white);
+}
+
+:where(.page-onboarding-membership-coach-recommend) .skip-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .skip-button-text {
+    font-family: var(--fh-font-barlow);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--fh-white-a25);
+    transition: color 0.2s ease;
+}
+
+:where(.page-onboarding-membership-coach-recommend) .skip-button:hover .skip-button-text {
+    color: var(--fh-white-a50);
+}

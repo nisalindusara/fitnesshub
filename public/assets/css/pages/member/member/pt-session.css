@@ -1,0 +1,473 @@
+/* Scoped under .page-member-pt-session (the layout's <main> on this page). */
+
+/* Book a session – page content (id/class selectors only)
+   Font (Plus Jakarta Sans), page background and chrome spacing come from member-layout
+
+   States
+   dark tile       selected
+   light grey      already booked (same as upcoming on the dashboard)
+   faded           not available
+*/
+
+    :where(.page-member-pt-session) #booking-page {
+        --ink: var(--fh-zinc-900);
+        --muted: var(--fh-slate-500);
+        --line: var(--fh-gray-160);
+        --card: var(--fh-white);
+        --track: var(--fh-gray-100);
+        --border: var(--fh-gray-200);
+
+        --green: var(--fh-emerald-630);
+        --green-dark: var(--fh-emerald-720);
+        --green-soft: var(--fh-emerald-80);
+
+        box-sizing: border-box;
+        width: min(100%, 960px);
+        align-self: flex-start;
+        font-family: var(--fh-font-plus-jakarta);
+        color: var(--ink);
+    }
+
+    :where(.page-member-pt-session) .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+
+    /* ---------- Page heading ---------- */
+    :where(.page-member-pt-session) .page-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 44px;
+    }
+
+    :where(.page-member-pt-session) .page-head__back {
+        flex: none;
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: var(--fh-radius-circle);
+        background: var(--card);
+        box-shadow: 0 1px 3px var(--fh-gray-900-a06);
+        transition: background-color 0.15s ease;
+    }
+
+    :where(.page-member-pt-session) .page-head__back:hover {
+        background: var(--track);
+    }
+
+    :where(.page-member-pt-session) .page-head__back svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: var(--ink);
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    :where(.page-member-pt-session) .page-head__subtitle {
+        margin: 4px 0 0;
+        font-size: 0.95rem;
+        color: var(--muted);
+    }
+
+    /* ---------- Form layout ---------- */
+    :where(.page-member-pt-session) .booking__form {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    :where(.page-member-pt-session) .block {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    :where(.page-member-pt-session) .card {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 24px;
+        border: 0;
+        border-radius: var(--fh-radius-20);
+        background: var(--card);
+        box-shadow: 0 1px 3px var(--fh-gray-900-a04);
+    }
+
+    /* ---------- Instructor ---------- */
+    :where(.page-member-pt-session) .coach {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    :where(.page-member-pt-session) .coach__avatar {
+        flex: none;
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        border-radius: var(--fh-radius-circle);
+        background: var(--green);
+        color: var(--fh-white);
+        font-size: 1.05rem;
+        font-weight: 700;
+    }
+
+    :where(.page-member-pt-session) .coach__text {
+        flex: 1;
+        min-width: 0;
+    }
+
+    :where(.page-member-pt-session) .coach__name {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+
+    :where(.page-member-pt-session) .coach__meta {
+        margin: 3px 0 0;
+        font-size: 0.88rem;
+        color: var(--muted);
+    }
+
+    :where(.page-member-pt-session) .coach__next {
+        flex: none;
+        margin: 0;
+        font-size: 0.82rem;
+        line-height: 1.5;
+        color: var(--muted);
+        text-align: right;
+    }
+
+    :where(.page-member-pt-session) .coach__next strong {
+        color: var(--ink);
+        font-weight: 600;
+    }
+
+    /* ---------- Day picker ---------- */
+    :where(.page-member-pt-session) .dates {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+    }
+
+    :where(.page-member-pt-session) .date {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+    }
+
+    :where(.page-member-pt-session) .date__input,
+    :where(.page-member-pt-session) .slot__input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    :where(.page-member-pt-session) .date__label {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 96px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 14px 0 16px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--fh-radius-16);
+        cursor: pointer;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    :where(.page-member-pt-session) .date__label:hover {
+        border-color: var(--ink);
+    }
+
+    :where(.page-member-pt-session) .date__name {
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--muted);
+    }
+
+    :where(.page-member-pt-session) .date__num {
+        font-size: 1.45rem;
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    :where(.page-member-pt-session) .date__note {
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: var(--muted);
+        white-space: nowrap;
+    }
+
+    /* selected */
+    :where(.page-member-pt-session) .date__input:checked+.date__label {
+        background: var(--ink);
+        border-color: var(--ink);
+    }
+
+    :where(.page-member-pt-session) .date__input:checked+.date__label .date__name {
+        color: var(--fh-white-a70);
+    }
+
+    :where(.page-member-pt-session) .date__input:checked+.date__label .date__num {
+        color: var(--fh-white);
+    }
+
+    /* already booked */
+    :where(.page-member-pt-session) .date--booked .date__label {
+        background: var(--track);
+        border-color: var(--track);
+        cursor: default;
+    }
+
+    /* instructor off */
+    :where(.page-member-pt-session) .date--off .date__label {
+        border-style: dashed;
+        cursor: default;
+    }
+
+    :where(.page-member-pt-session) .date--off .date__num,
+    :where(.page-member-pt-session) .date--off .date__name {
+        color: var(--fh-gray-350);
+    }
+
+    :where(.page-member-pt-session) .date--booked .date__label:hover,
+    :where(.page-member-pt-session) .date--off .date__label:hover {
+        border-color: var(--border);
+    }
+
+    :where(.page-member-pt-session) .date--booked .date__label:hover {
+        border-color: var(--track);
+    }
+
+    /* ---------- Time picker ---------- */
+    :where(.page-member-pt-session) .times {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    :where(.page-member-pt-session) .slot-group__title {
+        margin: 0 0 10px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--muted);
+    }
+
+    :where(.page-member-pt-session) .slots {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    :where(.page-member-pt-session) .slot__label {
+        box-sizing: border-box;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--fh-radius-12);
+        font-size: 0.92rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    :where(.page-member-pt-session) .slot__label:hover {
+        border-color: var(--ink);
+    }
+
+    :where(.page-member-pt-session) .slot__check {
+        display: none;
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: var(--fh-white);
+        stroke-width: 2.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    :where(.page-member-pt-session) .slot__input:checked+.slot__label {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--fh-white);
+    }
+
+    :where(.page-member-pt-session) .slot__input:checked+.slot__label .slot__check {
+        display: block;
+    }
+
+    :where(.page-member-pt-session) .slot--taken .slot__label,
+    :where(.page-member-pt-session) .slot--taken .slot__label:hover {
+        background: var(--track);
+        border-color: var(--track);
+        color: var(--fh-gray-390);
+        font-weight: 500;
+        cursor: default;
+    }
+
+    :where(.page-member-pt-session) .slot__taken {
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    /* keyboard focus on the hidden radios */
+    :where(.page-member-pt-session) .date__input:focus-visible+.date__label,
+    :where(.page-member-pt-session) .slot__input:focus-visible+.slot__label {
+        outline: 2.5px solid var(--green);
+        outline-offset: 2px;
+    }
+
+    /* ---------- Note ---------- */
+    :where(.page-member-pt-session) .note {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        min-height: 110px;
+        padding: 14px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--fh-radius-12);
+        background: var(--card);
+        font: 500 0.92rem/1.5 var(--fh-font-plus-jakarta);
+        color: var(--ink);
+        resize: vertical;
+        outline: none;
+        transition: border-color 0.15s ease;
+    }
+
+    :where(.page-member-pt-session) .note::placeholder {
+        color: var(--fh-gray-390);
+    }
+
+    :where(.page-member-pt-session) .note:focus {
+        border-color: var(--green);
+    }
+
+    /* ---------- Confirm ---------- */
+    :where(.page-member-pt-session) .confirm {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    :where(.page-member-pt-session) .confirm__text {
+        margin: 0;
+        font-size: 0.88rem;
+        color: var(--muted);
+    }
+
+    :where(.page-member-pt-session) .btn {
+        box-sizing: border-box;
+        flex: none;
+        height: 48px;
+        padding: 0 28px;
+        border: 0;
+        border-radius: var(--fh-radius-12);
+        font: 600 0.95rem var(--fh-font-plus-jakarta);
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+    }
+
+    :where(.page-member-pt-session) .btn:focus-visible,
+    :where(.page-member-pt-session) .page-head__back:focus-visible {
+        outline: 2.5px solid var(--green);
+        outline-offset: 3px;
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 640px) {
+        :where(.page-member-pt-session) .page-head {
+            margin-bottom: 36px;
+        }
+
+        :where(.page-member-pt-session) .page-head__title {
+            font-size: 1.45rem;
+        }
+
+        :where(.page-member-pt-session) .booking__form {
+            gap: 34px;
+        }
+
+        :where(.page-member-pt-session) .card {
+            padding: 18px 14px;
+            border-radius: var(--fh-radius-18);
+        }
+
+        :where(.page-member-pt-session) .coach {
+            flex-wrap: wrap;
+        }
+
+        :where(.page-member-pt-session) .coach__next {
+            width: 100%;
+            padding-top: 12px;
+            border-top: 1px solid var(--line);
+            text-align: left;
+        }
+
+        :where(.page-member-pt-session) .coach__next br {
+            display: none;
+        }
+
+        :where(.page-member-pt-session) .dates {
+            gap: 4px;
+        }
+
+        :where(.page-member-pt-session) .date__label {
+            padding: 10px 0 12px;
+            border-radius: var(--fh-radius-12);
+        }
+
+        :where(.page-member-pt-session) .date__name {
+            font-size: 0.68rem;
+        }
+
+        :where(.page-member-pt-session) .date__num {
+            font-size: 1.1rem;
+        }
+
+        :where(.page-member-pt-session) .date__note {
+            font-size: 0.6rem;
+        }
+
+        :where(.page-member-pt-session) .slots {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        :where(.page-member-pt-session) .confirm {
+            flex-direction: column-reverse;
+            align-items: stretch;
+            text-align: center;
+        }
+
+        :where(.page-member-pt-session) .btn {
+            width: 100%;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        :where(.page-member-pt-session) .date__label,
+        :where(.page-member-pt-session) .slot__label,
+        :where(.page-member-pt-session) .note,
+        :where(.page-member-pt-session) .btn,
+        :where(.page-member-pt-session) .page-head__back {
+            transition: none;
+        }
+    }

@@ -1,0 +1,207 @@
+/* Scoped under .page-member-personal-details (the layout's <main> on this page). */
+
+:where(.page-member-personal-details) .profile-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+:where(.page-member-personal-details) .profile-card {
+    width: min(94%, 960px);
+    padding: 40px 48px;
+    background: var(--fh-white);
+    border-radius: var(--fh-radius-28);
+    box-shadow: 0 4px 24px var(--fh-black-a04);
+    box-sizing: border-box;
+}
+
+/* Header */
+:where(.page-member-personal-details) .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+:where(.page-member-personal-details) .card-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fh-gray-900);
+    letter-spacing: -0.2px;
+}
+
+:where(.page-member-personal-details) .btn-edit {
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fh-gray-700);
+    background: var(--fh-white);
+    border: 1px solid var(--fh-gray-200);
+    border-radius: var(--fh-radius-pill);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+:where(.page-member-personal-details) .btn-edit:hover {
+    background-color: var(--fh-gray-100);
+}
+
+/* Identity row */
+:where(.page-member-personal-details) .profile-identity {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+:where(.page-member-personal-details) .avatar-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--fh-radius-circle);
+    background: var(--fh-gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fh-gray-500);
+    flex-shrink: 0;
+}
+
+:where(.page-member-personal-details) .identity-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--fh-gray-900);
+}
+
+:where(.page-member-personal-details) .identity-meta {
+    font-size: 12.5px;
+    color: var(--fh-gray-400);
+    margin-top: 2px;
+}
+
+/* Field grid */
+:where(.page-member-personal-details) .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 24px;
+}
+
+:where(.page-member-personal-details) .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+:where(.page-member-personal-details) .field-group-full {
+    grid-column: 1 / -1;
+}
+
+:where(.page-member-personal-details) .field-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--fh-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+:where(.page-member-personal-details) .field-input,
+:where(.page-member-personal-details) .field-select,
+:where(.page-member-personal-details) .field-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--fh-gray-900);
+    background-color: var(--fh-gray-100);
+    border: 1px solid transparent;
+    border-radius: var(--fh-radius-12);
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+:where(.page-member-personal-details) .field-input:focus,
+:where(.page-member-personal-details) .field-select:focus,
+:where(.page-member-personal-details) .field-textarea:focus {
+    outline: none;
+    background-color: var(--fh-white);
+    border-color: var(--fh-gray-300);
+}
+
+:where(.page-member-personal-details) .field-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+:where(.page-member-personal-details) .field-textarea {
+    resize: vertical;
+    min-height: 64px;
+    line-height: 1.5;
+}
+
+/* Section divider + headers */
+:where(.page-member-personal-details) .section-divider {
+    height: 1px;
+    background-color: var(--fh-neutral-130);
+    margin: 32px 0 24px;
+}
+
+:where(.page-member-personal-details) .section-header {
+    margin-bottom: 20px;
+}
+
+:where(.page-member-personal-details) .section-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--fh-gray-900);
+}
+
+/* Footer */
+:where(.page-member-personal-details) .card-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--fh-neutral-130);
+}
+
+:where(.page-member-personal-details) .btn-cancel {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-gray-500);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+:where(.page-member-personal-details) .btn-cancel:hover {
+    color: var(--fh-gray-700);
+}
+
+:where(.page-member-personal-details) .btn-save {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-white);
+    background-color: var(--fh-red-620);
+    border: none;
+    border-radius: var(--fh-radius-pill);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+:where(.page-member-personal-details) .btn-save:hover {
+    background-color: var(--fh-red-690);
+}
+
+:where(.page-member-personal-details) .btn-save:active {
+    transform: scale(0.98);
+}

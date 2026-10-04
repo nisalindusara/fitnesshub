@@ -1,0 +1,168 @@
+/* Scoped under .page-class-pt-module-classes-show (the layout's <main> on this page). */
+
+:where(.page-class-pt-module-classes-show) .cls-page {
+    padding:24px 28px 40px;
+    background:var(--fh-gray-50);
+    min-height:100vh;
+    font-family:var(--fh-font-inter);
+    color:var(--fh-zinc-780);
+}
+
+:where(.page-class-pt-module-classes-show) .cls-breadcrumb {
+    font-size:12px;
+    color:var(--fh-slate-405);
+    margin-bottom:25px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-head {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:22px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-head h1 {
+    margin:0;
+    font-size:28px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-actions {
+    display:flex;
+    gap:10px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-btn {
+    height:36px;
+    padding:0 15px;
+    border-radius:var(--fh-radius-7);
+    border:1px solid var(--fh-gray-300);
+    background:var(--fh-white);
+    color:var(--fh-gray-700);
+    font-size:12px;
+    font-weight:600;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-primary {
+    background:var(--fh-zinc-780);
+    color:var(--fh-white);
+    border-color:var(--fh-zinc-780);
+}
+
+:where(.page-class-pt-module-classes-show) .cls-card {
+    background:var(--fh-white);
+    border:1px solid var(--fh-gray-200);
+    border-radius:var(--fh-radius-10);
+    padding:20px;
+    margin-bottom:22px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-details {
+    display:grid;
+    grid-template-columns:1.2fr .7fr .7fr .7fr;
+    gap:28px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-details span {
+    display:block;
+    font-size:10px;
+    color:var(--fh-slate-405);
+    text-transform:uppercase;
+    margin-bottom:5px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-details strong {
+    font-size:13px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-description {
+    margin-top:18px;
+    border-top:1px solid var(--fh-slate-120);
+    padding-top:14px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-description span {
+    font-size:10px;
+    color:var(--fh-slate-405);
+    text-transform:uppercase;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-description p {
+    margin:6px 0 0;
+    font-size:12px;
+    color:var(--fh-slate-510);
+}
+
+:where(.page-class-pt-module-classes-show) .cls-badge {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:4px 8px;
+    border-radius:var(--fh-radius-pill);
+    font-size:10px;
+    background:var(--fh-emerald-80);
+    color:var(--fh-emerald-605);
+}
+
+:where(.page-class-pt-module-classes-show) .cls-badge:before {
+    content:'';
+    width:5px;
+    height:5px;
+    background:var(--fh-emerald-605);
+    border-radius:var(--fh-radius-circle);
+}
+
+:where(.page-class-pt-module-classes-show) .cls-section-title {
+    font-size:16px;
+    margin:0 0 16px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-table td {
+    padding:14px 16px;
+    border-top:1px solid var(--fh-slate-120);
+}
+
+:where(.page-class-pt-module-classes-show) .cls-avatar {
+    display:inline-block;
+    width:18px;
+    height:18px;
+    border-radius:var(--fh-radius-circle);
+    background:var(--fh-gray-200);
+    margin-right:7px;
+    vertical-align:middle;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-status {
+    display:inline-flex;
+    padding:4px 8px;
+    border-radius:var(--fh-radius-pill);
+    font-size:10px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-scheduled {
+    background:var(--fh-indigo-50);
+    color:var(--fh-blue-600);
+}
+
+:where(.page-class-pt-module-classes-show) .cls-full {
+    background:var(--fh-orange-60);
+    color:var(--fh-amber-600);
+}
+
+:where(.page-class-pt-module-classes-show) .cls-open {
+    background:var(--fh-emerald-80);
+    color:var(--fh-emerald-605);
+}
+
+:where(.page-class-pt-module-classes-show) .cls-action-view {
+    color:var(--fh-blue-600);
+    text-decoration:none;
+    margin-right:12px;
+}
+
+:where(.page-class-pt-module-classes-show) .cls-action-cancel {
+    color:var(--fh-red-605);
+    text-decoration:none;
+}

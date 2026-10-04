@@ -1,0 +1,118 @@
+/* Scoped under .page-payment-module-payment-list (the layout's <main> on this page). */
+
+/* Customer cell (not covered by staff.css) */
+:where(.page-payment-module-payment-list) .payments-customer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+:where(.page-payment-module-payment-list) .payments-customer img {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--fh-radius-circle);
+    object-fit: cover;
+}
+
+/* Two payment-specific status colors that don't already exist */
+:where(.page-payment-module-payment-list) .status-payment-pending {
+    color: var(--fh-blue-600);
+}
+
+:where(.page-payment-module-payment-list) .status-payment-progress {
+    color: var(--fh-violet-700);
+    background: var(--fh-violet-100);
+    padding: 2px 10px;
+    border-radius: var(--fh-radius-16);
+}
+
+/* Toolbar buttons — no button styling exists in staff.css yet */
+:where(.page-payment-module-payment-list) #payments-record-btn {
+    background: var(--fh-neutral-870);
+    color: var(--fh-white);
+    border: none;
+    padding: 6px 14px;
+    border-radius: var(--fh-radius-8);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+:where(.page-payment-module-payment-list) #payments-filter-btn,
+:where(.page-payment-module-payment-list) #payments-sort-btn {
+    background: transparent;
+    color: var(--fh-neutral-870);
+    border: 1px solid var(--fh-neutral-870-a15);
+    padding: 6px 12px;
+    border-radius: var(--fh-radius-8);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* Footer / pagination — page-specific, not in staff.css */
+:where(.page-payment-module-payment-list) #payments-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+:where(.page-payment-module-payment-list) #payments-footer-showing {
+    font-size: 13px;
+    color: var(--fh-neutral-870-a50);
+}
+
+:where(.page-payment-module-payment-list) #payments-footer-rows {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--fh-neutral-870-a50);
+}
+
+:where(.page-payment-module-payment-list) #payments-rows-select {
+    border: 1px solid var(--fh-neutral-870-a15);
+    border-radius: var(--fh-radius-8);
+    padding: 4px 8px;
+    font-size: 13px;
+}
+
+:where(.page-payment-module-payment-list) #payments-pagination {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+:where(.page-payment-module-payment-list) #payments-prev-btn,
+:where(.page-payment-module-payment-list) #payments-next-btn {
+    background: var(--fh-white);
+    border: 1px solid var(--fh-neutral-870-a15);
+    border-radius: var(--fh-radius-8);
+    padding: 6px 12px;
+    font-size: 13px;
+    color: var(--fh-neutral-870);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-payment-list) .page-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--fh-radius-circle);
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    color: var(--fh-neutral-870-a50);
+    cursor: pointer;
+}
+
+:where(.page-payment-module-payment-list) .page-btn-active {
+    background: var(--fh-neutral-870);
+    color: var(--fh-white);
+}
+
+:where(.page-payment-module-payment-list) #payments-page-dots {
+    font-size: 13px;
+    color: var(--fh-neutral-870-a30);
+    padding: 0 4px;
+}

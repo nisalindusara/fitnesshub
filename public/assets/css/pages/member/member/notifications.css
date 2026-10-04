@@ -1,0 +1,114 @@
+/* Scoped under .page-member-notifications (the layout's <main> on this page). */
+
+:where(.page-member-notifications) .mn-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+:where(.page-member-notifications) .mn-card {
+    width: min(94%, 960px);
+    padding: 40px 48px;
+    background: var(--fh-white);
+    border-radius: var(--fh-radius-28);
+    box-shadow: 0 4px 24px var(--fh-black-a04);
+    box-sizing: border-box;
+}
+
+:where(.page-member-notifications) .mn-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+:where(.page-member-notifications) .mn-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--fh-gray-900);
+    letter-spacing: -0.2px;
+}
+
+:where(.page-member-notifications) .mn-settings {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fh-gray-700);
+    text-decoration: none;
+}
+
+:where(.page-member-notifications) .mn-settings:hover {
+    text-decoration: underline;
+}
+
+:where(.page-member-notifications) .mn-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+:where(.page-member-notifications) .mn-item {
+    display: flex;
+    gap: 14px;
+    padding: 18px 20px;
+    background-color: var(--fh-gray-100);
+    border-radius: var(--fh-radius-14);
+    color: inherit;
+    text-decoration: none;
+}
+
+:where(.page-member-notifications) a.mn-item:hover {
+    background-color: var(--fh-gray-200);
+}
+
+:where(.page-member-notifications) .mn-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--fh-radius-circle);
+    background: transparent;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+:where(.page-member-notifications) .mn-item.is-unread .mn-dot {
+    background: var(--fh-gray-900);
+}
+
+:where(.page-member-notifications) .mn-body {
+    flex: 1;
+    min-width: 0;
+}
+
+:where(.page-member-notifications) .mn-item-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fh-gray-900);
+}
+
+:where(.page-member-notifications) .mn-item.is-unread .mn-item-title {
+    font-weight: 700;
+}
+
+:where(.page-member-notifications) .mn-item-text {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--fh-gray-500);
+}
+
+:where(.page-member-notifications) .mn-time {
+    font-size: 12px;
+    color: var(--fh-gray-400);
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    :where(.page-member-notifications) .mn-card {
+        padding: 28px 20px;
+    }
+}

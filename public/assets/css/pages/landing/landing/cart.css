@@ -1,0 +1,272 @@
+/* Scoped under .page-landing-cart (the layout's <main> on this page).
+   Rules that also styled the layout chrome, <body> or <html> when this CSS was
+   inline are scoped under body.page-landing-cart--global instead, so they still do. */
+
+/* --- Base & Reset --- */
+*:where(html:has(> body.page-landing-cart--global), html:has(> body.page-landing-cart--global) *) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body:where(.page-landing-cart--global) {
+    font-family: var(--fh-font-barlow);
+    background-color: var(--fh-white);
+    color: var(--fh-neutral-950);
+    line-height: 1.5;
+}
+
+:where(.page-landing-cart) .container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* --- Shared Utilities --- */
+
+/* Product packshots: show the whole tub on white instead of cropping */
+:where(.page-landing-cart) .img-placeholder img.img-contain {
+    object-fit: contain;
+    background: var(--fh-white);
+}
+
+/* --- Cart Layout --- */
+:where(.page-landing-cart) .cart-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+    padding: 80px 0;
+}
+
+/* --- Left Column: Cart Table --- */
+:where(.page-landing-cart) .cart-table-container {
+    flex: 1.8;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CSS Grid for perfect column alignment */
+:where(.page-landing-cart) .cart-grid {
+    display: grid;
+    grid-template-columns: 40px 80px 1fr 120px 120px 120px;
+    align-items: center;
+    gap: 16px;
+}
+
+:where(.page-landing-cart) .cart-header {
+    background-color: var(--fh-gray-400);
+    /* Matches the gray header in the image */
+    color: var(--fh-white);
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: var(--fh-radius-8) var(--fh-radius-8) 0 0;
+}
+
+:where(.page-landing-cart) .cart-row {
+    padding: 24px;
+    border-bottom: 1px solid var(--fh-gray-200);
+}
+
+/* Column Specifics */
+:where(.page-landing-cart) .col-remove {
+    display: flex;
+    justify-content: center;
+}
+
+:where(.page-landing-cart) .remove-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--fh-neutral-950);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+:where(.page-landing-cart) .remove-btn:hover {
+    color: var(--fh-red-590);
+}
+
+:where(.page-landing-cart) .col-img .img-placeholder {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--fh-radius-8);
+    border: 1px solid var(--fh-gray-200);
+}
+
+:where(.page-landing-cart) .col-product {
+    font-weight: 500;
+    color: var(--fh-gray-600);
+    font-size: 16px;
+}
+
+:where(.page-landing-cart) .col-price {
+    color: var(--fh-gray-400);
+    font-size: 16px;
+}
+
+:where(.page-landing-cart) .col-qty {
+    display: flex;
+    justify-content: center;
+}
+
+:where(.page-landing-cart) .qty-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+    border: 1px solid var(--fh-gray-200);
+    border-radius: var(--fh-radius-50);
+    padding: 6px 12px;
+    font-weight: 700;
+    color: var(--fh-neutral-950);
+}
+
+:where(.page-landing-cart) .qty-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--fh-gray-400);
+    transition: color 0.2s;
+}
+
+:where(.page-landing-cart) .col-total {
+    color: var(--fh-gray-400);
+    font-size: 16px;
+    text-align: right;
+}
+
+/* Header Specific Overrides */
+:where(.page-landing-cart) .cart-header .col-total {
+    color: var(--fh-white);
+}
+
+/* --- Right Column: Cart Summary --- */
+:where(.page-landing-cart) .cart-summary-container {
+    flex: 1;
+    min-width: 350px;
+    border: 1px solid var(--fh-gray-200);
+    border-radius: var(--fh-radius-10);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+:where(.page-landing-cart) .summary-header {
+    background-color: var(--fh-gray-400);
+    color: var(--fh-white);
+    padding: 24px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+:where(.page-landing-cart) .summary-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+:where(.page-landing-cart) .summary-row.total-row {
+    padding-top: 24px;
+}
+
+:where(.page-landing-cart) .summary-value {
+    color: var(--fh-gray-400);
+    font-weight: 400;
+}
+
+:where(.page-landing-cart) .summary-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--fh-gray-200);
+}
+
+:where(.page-landing-cart) .checkout-btn {
+    display: block;
+    width: 100%;
+    background-color: var(--fh-neutral-950);
+    color: var(--fh-white);
+    border: none;
+    padding: 24px;
+    font-family: var(--fh-font-barlow);
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+:where(.page-landing-cart) .checkout-btn:hover {
+    background-color: var(--fh-red-590);
+    color: var(--fh-white);
+}
+
+/* --- Similar Products Section --- */
+:where(.page-landing-cart) .similar-products-section {
+    padding: 80px 0;
+    border-top: 1px solid var(--fh-gray-200);
+}
+
+:where(.page-landing-cart) .section-header {
+    position: relative;
+    margin-bottom: 48px;
+}
+
+:where(.page-landing-cart) .section-title {
+    font-family: var(--fh-font-barlow-condensed);
+    font-weight: 900;
+    font-size: 36px;
+    text-transform: uppercase;
+    color: var(--fh-neutral-950);
+    display: inline-block;
+}
+
+/* The signature red accent line */
+:where(.page-landing-cart) .section-title::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--fh-red-590);
+}
+
+:where(.page-landing-cart) .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+:where(.page-landing-cart) .product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+:where(.page-landing-cart) .product-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--fh-radius-12);
+}
+
+/* Image always fills the fixed 4:5 box, so it can't change the card size */
+:where(.page-landing-cart) .product-image img {
+    position: absolute;
+    inset: 0;
+}
+
+:where(.page-landing-cart) .product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

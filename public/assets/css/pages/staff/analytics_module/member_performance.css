@@ -1,0 +1,604 @@
+/* Scoped under .page-analytics-module-member-performance (the layout's <main> on this page). */
+
+/* Container Viewport-Fit Lock */
+:where(.page-analytics-module-member-performance) #member-profile-main.main-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.2vh 2.5vw;
+  gap: 1.2vh;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  background: var(--fh-white);
+  box-sizing: border-box;
+  font-family: var(--fh-font-system);
+  color: var(--fh-slate-800);
+  user-select: none;
+}
+
+/* Breadcrumb Navigation */
+:where(.page-analytics-module-member-performance) .breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--fh-slate-420);
+  flex-shrink: 0;
+}
+
+:where(.page-analytics-module-member-performance) .breadcrumb-back-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+:where(.page-analytics-module-member-performance) .nav-chevron-svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--fh-slate-500);
+}
+
+:where(.page-analytics-module-member-performance) .breadcrumb-link {
+  color: var(--fh-slate-420);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+:where(.page-analytics-module-member-performance) .breadcrumb-divider {
+  color: var(--fh-slate-300);
+}
+
+:where(.page-analytics-module-member-performance) .breadcrumb-current {
+  color: var(--fh-slate-800);
+  font-weight: 700;
+}
+
+/* Header Banner Card */
+:where(.page-analytics-module-member-performance) .member-header-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 78px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--fh-green-325) 0%, var(--fh-green-290) 100%);
+  border-radius: var(--fh-radius-14);
+  padding: 10px 24px;
+  box-sizing: border-box;
+}
+
+:where(.page-analytics-module-member-performance) .member-identity-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+:where(.page-analytics-module-member-performance) .member-avatar-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--fh-radius-circle);
+  overflow: hidden;
+  background: var(--fh-slate-200);
+  flex-shrink: 0;
+}
+
+:where(.page-analytics-module-member-performance) .member-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+:where(.page-analytics-module-member-performance) .member-profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+:where(.page-analytics-module-member-performance) .member-name-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fh-gray-900);
+  line-height: 1.1;
+}
+
+:where(.page-analytics-module-member-performance) .member-id-text {
+  font-size: 10.5px;
+  color: var(--fh-slate-600);
+  font-weight: 500;
+}
+
+:where(.page-analytics-module-member-performance) .member-contact-info {
+  font-size: 11.5px;
+  color: var(--fh-slate-700);
+  font-weight: 500;
+}
+
+:where(.page-analytics-module-member-performance) .member-meta-columns {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+:where(.page-analytics-module-member-performance) .meta-item-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+:where(.page-analytics-module-member-performance) .meta-border-left {
+  border-left: 1px solid var(--fh-black-a08);
+  padding-left: 20px;
+}
+
+:where(.page-analytics-module-member-performance) .meta-label {
+  font-size: 10.5px;
+  color: var(--fh-slate-500);
+  font-weight: 500;
+}
+
+:where(.page-analytics-module-member-performance) .meta-val-bold {
+  font-size: 12.5px;
+  color: var(--fh-gray-900);
+  font-weight: 700;
+}
+
+:where(.page-analytics-module-member-performance) .meta-val-regular {
+  font-size: 12.5px;
+  color: var(--fh-slate-800);
+  font-weight: 600;
+}
+
+/* Quick KPI Row */
+:where(.page-analytics-module-member-performance) .kpi-summary-strip {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding: 4px 0 6px 0;
+  flex-shrink: 0;
+}
+
+:where(.page-analytics-module-member-performance) .kpi-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+:where(.page-analytics-module-member-performance) .kpi-label {
+  font-size: 11.5px;
+  color: var(--fh-slate-500);
+  font-weight: 500;
+}
+
+:where(.page-analytics-module-member-performance) .kpi-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--fh-gray-900);
+  line-height: 1;
+}
+
+/* 2x2 Auto-Fitting Layout Grid */
+:where(.page-analytics-module-member-performance) .analytics-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1.3fr;
+  gap: 14px;
+  width: 100%;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+/* Base Card Style */
+:where(.page-analytics-module-member-performance) .panel-card {
+  background: var(--fh-gray-50);
+  border-radius: var(--fh-radius-14);
+  padding: 16px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+:where(.page-analytics-module-member-performance) .panel-card-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--fh-slate-800);
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+/* Attendance Card */
+:where(.page-analytics-module-member-performance) .chart-legend-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+:where(.page-analytics-module-member-performance) .legend-indicator-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+:where(.page-analytics-module-member-performance) .legend-circle-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--fh-radius-circle);
+}
+
+:where(.page-analytics-module-member-performance) .dot-actual {
+  background: var(--fh-indigo-400);
+}
+
+:where(.page-analytics-module-member-performance) .dot-target {
+  background: var(--fh-slate-200);
+}
+
+:where(.page-analytics-module-member-performance) .legend-text {
+  font-size: 10.5px;
+  color: var(--fh-slate-500);
+  font-weight: 500;
+}
+
+:where(.page-analytics-module-member-performance) .attendance-barchart-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex: 1 1 0;
+  min-height: 0;
+  padding-bottom: 2px;
+}
+
+:where(.page-analytics-module-member-performance) .axis-scale-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 20px);
+  margin-bottom: 20px;
+}
+
+:where(.page-analytics-module-member-performance) .axis-scale-label {
+  font-size: 10.5px;
+  color: var(--fh-slate-400);
+  font-weight: 500;
+  line-height: 1;
+}
+
+:where(.page-analytics-module-member-performance) .chart-bars-horizontal-flow {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+}
+
+:where(.page-analytics-module-member-performance) .bar-day-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+:where(.page-analytics-module-member-performance) .bar-pair-track {
+  position: relative;
+  width: 22px;
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+:where(.page-analytics-module-member-performance) .bar-target-bg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: var(--fh-gray-200);
+  border-radius: var(--fh-radius-4);
+}
+
+:where(.page-analytics-module-member-performance) .bar-actual-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: var(--fh-indigo-400);
+  border-radius: var(--fh-radius-4);
+}
+
+:where(.page-analytics-module-member-performance) .bar-h-target-3 { height: 60%; }
+:where(.page-analytics-module-member-performance) .bar-h-actual-2 { height: 40%; }
+:where(.page-analytics-module-member-performance) .bar-h-actual-1 { height: 20%; }
+
+:where(.page-analytics-module-member-performance) .slot-week-label {
+  font-size: 10.5px;
+  color: var(--fh-slate-400);
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* Workout Schedule Completion Card */
+:where(.page-analytics-module-member-performance) .schedule-stats-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+/* Radial Donut Charts */
+:where(.page-analytics-module-member-performance) .donut-circle-chart {
+  width: 76px;
+  height: 76px;
+  border-radius: var(--fh-radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+:where(.page-analytics-module-member-performance) .donut-circle-chart::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--fh-gray-50);
+  border-radius: var(--fh-radius-circle);
+}
+
+:where(.page-analytics-module-member-performance) .ring-blue-58 {
+  background: conic-gradient(var(--fh-indigo-400) 0% 58%, var(--fh-slate-200) 58% 100%);
+}
+
+:where(.page-analytics-module-member-performance) .ring-teal-61 {
+  background: conic-gradient(var(--fh-emerald-360) 0% 61%, var(--fh-slate-200) 61% 100%);
+}
+
+:where(.page-analytics-module-member-performance) .donut-center-value {
+  position: relative;
+  z-index: 1;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fh-indigo-400);
+}
+
+:where(.page-analytics-module-member-performance) .color-teal {
+  color: var(--fh-emerald-510);
+}
+
+:where(.page-analytics-module-member-performance) .completion-linear-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+:where(.page-analytics-module-member-performance) .progress-linear-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+:where(.page-analytics-module-member-performance) .progress-bar-legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--fh-slate-600);
+  font-weight: 500;
+}
+
+:where(.page-analytics-module-member-performance) .progress-bar-pct {
+  font-weight: 700;
+  color: var(--fh-slate-800);
+}
+
+:where(.page-analytics-module-member-performance) .progress-track-bg {
+  width: 100%;
+  height: 6px;
+  background: var(--fh-slate-200);
+  border-radius: var(--fh-radius-4);
+  overflow: hidden;
+}
+
+:where(.page-analytics-module-member-performance) .progress-fill-bar {
+  height: 100%;
+  border-radius: var(--fh-radius-4);
+}
+
+:where(.page-analytics-module-member-performance) .bar-fill-completed {
+  background: var(--fh-indigo-400);
+}
+
+:where(.page-analytics-module-member-performance) .bar-fill-missed {
+  background: var(--fh-slate-400);
+}
+
+:where(.page-analytics-module-member-performance) .bar-w-58 { width: 58%; }
+:where(.page-analytics-module-member-performance) .bar-w-42 { width: 42%; }
+
+/* Meal Plan Adherence Card */
+:where(.page-analytics-module-member-performance) .meal-top-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 2px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+:where(.page-analytics-module-member-performance) .adherence-details-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+:where(.page-analytics-module-member-performance) .subtext-muted {
+  font-size: 10.5px;
+  color: var(--fh-slate-500);
+  font-weight: 500;
+}
+
+:where(.page-analytics-module-member-performance) .adherence-bold-value {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--fh-gray-900);
+  line-height: 1.1;
+}
+
+:where(.page-analytics-module-member-performance) .status-warning-badge {
+  font-size: 10.5px;
+  color: var(--fh-orange-640);
+  font-weight: 600;
+}
+
+:where(.page-analytics-module-member-performance) .weekly-adherence-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+:where(.page-analytics-module-member-performance) .week-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+:where(.page-analytics-module-member-performance) .week-row-label {
+  font-size: 10.5px;
+  color: var(--fh-slate-420);
+  width: 20px;
+  font-weight: 500;
+}
+
+:where(.page-analytics-module-member-performance) .week-line-track {
+  flex: 1;
+  height: 4.5px;
+  background: var(--fh-gray-160);
+  border-radius: var(--fh-radius-3);
+  overflow: hidden;
+}
+
+:where(.page-analytics-module-member-performance) .week-line-fill {
+  height: 100%;
+  border-radius: var(--fh-radius-3);
+}
+
+:where(.page-analytics-module-member-performance) .fill-yellow { background: var(--fh-amber-405); }
+:where(.page-analytics-module-member-performance) .fill-pink { background: var(--fh-red-400); }
+
+:where(.page-analytics-module-member-performance) .fill-p-64 { width: 64%; }
+:where(.page-analytics-module-member-performance) .fill-p-54 { width: 54%; }
+:where(.page-analytics-module-member-performance) .fill-p-57 { width: 57%; }
+:where(.page-analytics-module-member-performance) .fill-p-67 { width: 67%; }
+:where(.page-analytics-module-member-performance) .fill-p-73 { width: 73%; }
+:where(.page-analytics-module-member-performance) .fill-p-62 { width: 62%; }
+:where(.page-analytics-module-member-performance) .fill-p-52 { width: 52%; }
+:where(.page-analytics-module-member-performance) .fill-p-58 { width: 58%; }
+
+:where(.page-analytics-module-member-performance) .week-row-pct {
+  font-size: 10.5px;
+  color: var(--fh-slate-420);
+  width: 26px;
+  text-align: right;
+  font-weight: 500;
+}
+
+/* Personal Training Sessions Card */
+:where(.page-analytics-module-member-performance) .pt-top-stats-row {
+  display: flex;
+  gap: 28px;
+  margin-top: 2px;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+:where(.page-analytics-module-member-performance) .pt-metric-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+:where(.page-analytics-module-member-performance) .pt-meta-subhead {
+  font-size: 10.5px;
+  color: var(--fh-slate-500);
+  font-weight: 500;
+}
+
+:where(.page-analytics-module-member-performance) .pt-meta-highlight {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--fh-gray-900);
+}
+
+:where(.page-analytics-module-member-performance) .session-items-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
+:where(.page-analytics-module-member-performance) .session-entry-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--fh-neutral-130);
+}
+
+:where(.page-analytics-module-member-performance) .session-last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+:where(.page-analytics-module-member-performance) .session-main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+:where(.page-analytics-module-member-performance) .session-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fh-slate-800);
+  line-height: 1.1;
+}
+
+:where(.page-analytics-module-member-performance) .session-time {
+  font-size: 10px;
+  color: var(--fh-slate-400);
+  font-weight: 500;
+}
+
+/* Status Badges */
+:where(.page-analytics-module-member-performance) .pill-status {
+  padding: 2px 10px;
+  border-radius: var(--fh-radius-10);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+:where(.page-analytics-module-member-performance) .pill-completed {
+  background: var(--fh-emerald-90);
+  color: var(--fh-emerald-650);
+}
+
+:where(.page-analytics-module-member-performance) .pill-upcoming {
+  background: var(--fh-sky-90);
+  color: var(--fh-blue-530);
+}
+
+:where(.page-analytics-module-member-performance) .pill-noshow {
+  background: var(--fh-red-70);
+  color: var(--fh-red-525);
+}
