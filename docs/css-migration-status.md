@@ -7,11 +7,11 @@ Tracks the `refactor/css-structure` work: moving inline `<style>` blocks into
 
 - **Landing (landing-layout.php, minimal.php)**: migrated. 26 of 26 views have no inline `<style>`.
 - **Member (member-layout.php)**: migrated. 25 of 25 views have no inline `<style>`.
-- **Staff (staff-layout.php)**: shared files built (Phase 3); page CSS still inline. 15 of 49 views have no inline `<style>`.
+- **Staff (staff-layout.php)**: shared files built (Phase 3); page CSS still inline. 16 of 49 views have no inline `<style>`.
 
 ## Views that still have a `<style>` block
 
-### Staff (staff-layout.php): 34 views
+### Staff (staff-layout.php): 33 views
 
 - `account_module/`: mark-attendance, staff-profile
 - `analytics_module/`: member_performance
@@ -22,7 +22,6 @@ Tracks the `refactor/css-structure` work: moving inline `<style>` blocks into
 - `ecommerce_module/`: add-order, add-product, category_screen, product-detail, product-detail-edit, product-grid, show
 - `instructor/`: instructor-overview, my-clients
 - `payment_module/`: add-cash-payment, payment-list, payment-setting, review-bank-transfers
-- `staff/`: preview-screen
 - `work_schedule_module/admin/`: instructor_sessions
 - `work_schedule_module/leave/`: result, review_immediate
 
@@ -53,4 +52,4 @@ Views that link a stylesheet from `<body>`: `work_schedule_module/instructor/my_
 
 ## Next step
 
-Phase 4, staff surface, one commit per module folder. Still to migrate: `account_module`, `analytics_module`, `class_pt_module`, `communication_module`, `daily_plan_module`, `ecommerce_module`, `instructor`, `payment_module`, `staff/preview-screen`, `work_schedule_module`. Then Phase 5: remove dead CSS and unused files, and update `public/README.md`.
+Phase 4, staff surface, one commit per module folder. Still to migrate: `account_module`, `analytics_module`, `class_pt_module`, `communication_module`, `daily_plan_module`, `ecommerce_module`, `instructor`, `payment_module`, `work_schedule_module`. Then Phase 5: remove dead CSS and unused files, and update `public/README.md`.
