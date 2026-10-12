@@ -16,7 +16,8 @@
   --color-text-primary: var(--fh-zinc-900);
   --color-text-muted: var(--fh-slate-500);
   --font-family: var(--fh-font-plus-jakarta);
-  --shadow-dock: 0 10px 30px -4px var(--fh-black-a08), 0 4px 8px -2px var(--fh-black-a04);
+  --shadow-dock:
+    0 10px 30px -4px var(--fh-black-a08), 0 4px 8px -2px var(--fh-black-a04);
 
   /* NEW: single source of truth for chrome sizes, used to size .main-content */
   --header-height: 76px;
@@ -77,7 +78,7 @@ body {
   gap: 16px;
 }
 
-.header-actions>a {
+.header-actions > a {
   color: currentColor;
 }
 
@@ -110,8 +111,6 @@ body {
   align-items: center;
   box-sizing: border-box;
   padding: 108px 20px 128px;
-  /* 108px = 76px header clearance + 32px gap; 128px = dock clearance */
-  font-family: var(--fh-font-dm-sans);
   background-color: var(--fh-gray-50);
 }
 

@@ -11,10 +11,6 @@
                 </svg>
                 <span>Back to Orders</span>
             </a>
-            <span class="delivery-badge">
-                <span class="delivery-badge-dot"></span>
-                Standard Delivery
-            </span>
         </div>
 
         <!-- Order heading -->
