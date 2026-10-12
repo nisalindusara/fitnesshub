@@ -7,7 +7,7 @@
   <header class="greet">
     <span class="greet__avatar" aria-hidden="true">MV</span>
     <div class="greet__text">
-      <h1 class="greet__title">Good morning, <strong>Marcus</strong></h1>
+      <h1 class="greet__title"><?= htmlspecialchars($greeting) ?>, <strong><?= htmlspecialchars($userName) ?></strong></h1>
       <p class="greet__subtitle">Sunday, 27 September. It's a rest day, so take it easy.</p>
     </div>
     <span class="greet__badge">VIP Elite</span>
