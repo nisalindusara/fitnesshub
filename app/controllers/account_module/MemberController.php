@@ -11,6 +11,15 @@ class MemberController extends Controller
 
         $data['userName'] = $_SESSION['user_name'];
 
+        $hour = (int) (new DateTime('now', new DateTimeZone('Asia/Colombo')))->format('G');
+
+        $data['greeting'] = match (true) {
+            $hour < 12 => 'Good morning',
+            $hour < 17 => 'Good afternoon',
+            default    => 'Good evening',
+        };
+
+
         $this->render('member/dashboard', 'member-layout', $data);
     }
 
