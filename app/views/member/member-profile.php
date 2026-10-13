@@ -1,4 +1,5 @@
-<?php $bodyClass = 'page-member-member-profile--global'; $pageStyles = ['member/member/member-profile']; ?>
+<?php $bodyClass = 'page-member-member-profile--global';
+$pageStyles = ['member/member/member-profile']; ?>
 
 <div class="profile-container">
     <header class="profile-header">
@@ -10,7 +11,7 @@
                 </svg>
             </button>
         </div>
-        <h1 class="profile-name">John Fernando</h1>
+        <h1 class="profile-name"><?= htmlspecialchars($username) ?></h1>
         <p class="profile-subtitle">Member since 2024</p>
     </header>
 

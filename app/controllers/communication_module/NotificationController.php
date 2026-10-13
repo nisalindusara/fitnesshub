@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Notifications: what staff send out, and what a member receives.
- * Not connected to the database yet — shows sample data.
- */
 class NotificationController extends Controller
 {
     public function showStaffNotificationsScreen(): void

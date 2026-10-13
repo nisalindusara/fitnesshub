@@ -103,7 +103,9 @@ class MemberController extends Controller
 
     public function showMemberProfileScreen(): void
     {
-        $this->render('member/member-profile', 'member-layout');
+        $data['username'] = $_SESSION['user_name'] . " " . $_SESSION['user_last_name'];
+
+        $this->render('member/member-profile', 'member-layout', $data);
     }
 
     public function search(): void
